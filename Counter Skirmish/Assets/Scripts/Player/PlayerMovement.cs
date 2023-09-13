@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,10 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private LayerMask useLayer = 1 << 7, groundLayer = (1 << 6);
 
     private float maxUseDistance = 1000f, downA = 40f, forwardA = 3.5f, timeDiv = 0.2f, circleS = 0.5f;
+    private Ray ray;
     private RaycastHit hit;
-    private bool isOverUI;
+    private bool isOverUI, mbDown;
 
-    private Coroutine clickAnim;
+    private Coroutine clickHold, clickAnim;
     
     private void Awake()
     {
@@ -41,10 +39,12 @@ public class PlayerMovement : MonoBehaviour
         
         navMA = GetComponent<NavMeshAgent>();
         navMA.updateRotation = false;
+
+        mbDown = false;
     }
     private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //isOverUI = EventSystem.current.IsPointerOverGameObject();
         
         //if (!isOverUI){Enclose the next 'if' statement in these brackets}
@@ -52,12 +52,18 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
+                mbDown = true;
+                
+                if (clickHold != null)
+                    StopCoroutine(clickHold);
+                clickHold = StartCoroutine(HoldMove(hit));
+                
                 if (clickAnim != null)
                     StopCoroutine(clickAnim);
                 clickAnim = StartCoroutine(ClickMarker(hit.point));
             }
-            if (Input.GetKey(KeyCode.Mouse1))
-                navMA.SetDestination(hit.point);
+            if (Input.GetKeyUp(KeyCode.Mouse1)) // It not hold, fix it
+                mbDown = false;
         }
     }
     private void LateUpdate()
@@ -66,6 +72,18 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(navMA.velocity.normalized);
     }
 
+    private IEnumerator HoldMove(RaycastHit target)
+    {
+        navMA.SetDestination(target.point);
+        yield return null;
+        while (mbDown)
+        {
+            if (Physics.Raycast(ray, out hit, maxUseDistance, groundLayer))
+                navMA.SetDestination(hit.point);
+            yield return null;
+        }
+    }
+    
     private IEnumerator ClickMarker(Vector3 clickSpot)
     {
         arrowEffect.gameObject.SetActive(false);
