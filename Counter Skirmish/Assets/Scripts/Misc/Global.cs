@@ -1,12 +1,14 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Global : MonoBehaviour
 {
     public GameObject player, menuScreen;
     public bool startPaused;
     [HideInInspector] public bool disabled;
-    
+
     private void Start()
     {
         Screen.SetResolution(1920, 1080, true);
@@ -15,7 +17,7 @@ public class Global : MonoBehaviour
              Pause();
     }
     
-    void Update()
+    /*void Update()
     {
         if (!menuScreen.activeSelf)
         {
@@ -62,16 +64,16 @@ public class Global : MonoBehaviour
                 }
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!menuScreen.activeSelf)
-                Pause();
-            else
-                Play();
-        }
+    }*/
+
+    public void PauseMenu()
+    {
+        if (!menuScreen.activeSelf)
+            Pause();
+        else
+            Play();
     }
-    
+
     public void Disabled(bool state)
     {
         disabled = state;
@@ -84,7 +86,6 @@ public class Global : MonoBehaviour
         Time.timeScale = 0;
         disabled = true;
     }
-    
     public void Play()
     {
         MenuToggle(false);

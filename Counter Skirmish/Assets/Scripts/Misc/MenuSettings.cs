@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MenuSettings : MonoBehaviour
 {
-    [SerializeField] private CameraController playerCam;
     [SerializeField] private PlayerMovement player;
     
     [SerializeField] private TMPro.TMP_Dropdown resolutionDropdown;
@@ -21,11 +20,11 @@ public class MenuSettings : MonoBehaviour
     {
         //player.transform.GetChild(0).GetComponent<AudioSource>().volume = volume;
     }
-    public void SetSensitivity(float sensitivity)
+    /*public void SetSensitivity(float sensitivity)
     {
         playerCam.mouseSens = sensitivity * 100f;
     }
-    /*public void SetInvertY(bool isInverted)
+    public void SetInvertY(bool isInverted)
     {
         playerCam.invY = isInverted;
     }

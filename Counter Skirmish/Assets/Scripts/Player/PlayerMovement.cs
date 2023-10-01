@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Arrow
     [SerializeField] private Transform arrowEffect;
     private Transform circle;
     private Transform[] arrows = new Transform[4];
@@ -19,71 +21,54 @@ public class PlayerMovement : MonoBehaviour
                                 new Vector3(-0.5f, 0.5f, 0f),
                                 new Vector3(0f, 0.5f, 0.5f),
                                 new Vector3(0.5f, 0.5f, 0f)};
+
+    private float downA = 40f, forwardA = 3.5f, timeDiv = 0.2f, circleS = 0.5f;
     
+    // Movement
     private NavMeshAgent navMA;
     private LayerMask useLayer = 1 << 7, groundLayer = (1 << 6);
-
-    private float maxUseDistance = 1000f, downA = 40f, forwardA = 3.5f, timeDiv = 0.2f, circleS = 0.5f;
+    
+    private float maxUseDistance = 1000f;
     private Ray ray;
     private RaycastHit hit;
-    private bool isOverUI, mbDown;
+    //private bool isOverUI;
 
-    private Coroutine clickHold, clickAnim;
-    
+    private Coroutine clickAnim;
+
     private void Awake()
     {
+        // Arrow
         circle = arrowEffect.GetChild(0);
-
+        
         for (int i = 0; i < arrows.Length; i++)
             arrows[i] = arrowEffect.GetChild(i+1);
         
+        // Movement
         navMA = GetComponent<NavMeshAgent>();
         navMA.updateRotation = false;
-
-        mbDown = false;
     }
-    private void Update()
-    {
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //isOverUI = EventSystem.current.IsPointerOverGameObject();
-        
-        //if (!isOverUI){Enclose the next 'if' statement in these brackets}
-        if (Physics.Raycast(ray, out hit, maxUseDistance, groundLayer))
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                mbDown = true;
-                
-                if (clickHold != null)
-                    StopCoroutine(clickHold);
-                clickHold = StartCoroutine(HoldMove(hit));
-                
-                if (clickAnim != null)
-                    StopCoroutine(clickAnim);
-                clickAnim = StartCoroutine(ClickMarker(hit.point));
-            }
-            if (Input.GetKeyUp(KeyCode.Mouse1)) // It not hold, fix it
-                mbDown = false;
-        }
-    }
+    
     private void LateUpdate()
     {
         if (navMA.velocity.sqrMagnitude > Mathf.Epsilon)
             transform.rotation = Quaternion.LookRotation(navMA.velocity.normalized);
     }
 
-    private IEnumerator HoldMove(RaycastHit target)
+    private void OnMove()
     {
-        navMA.SetDestination(target.point);
-        yield return null;
-        while (mbDown)
+        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        
+        if (Physics.Raycast(ray, out hit, maxUseDistance, groundLayer))
         {
-            if (Physics.Raycast(ray, out hit, maxUseDistance, groundLayer))
-                navMA.SetDestination(hit.point);
-            yield return null;
+            navMA.SetDestination(hit.point); // Movement
+            
+            if (clickAnim != null) // Arrow
+                StopCoroutine(clickAnim);
+            clickAnim = StartCoroutine(ClickMarker(hit.point));
         }
     }
-    
+
+    #region Arrow
     private IEnumerator ClickMarker(Vector3 clickSpot)
     {
         arrowEffect.gameObject.SetActive(false);
@@ -154,4 +139,5 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         arrowEffect.gameObject.SetActive(false);
     }
+    #endregion
 }
