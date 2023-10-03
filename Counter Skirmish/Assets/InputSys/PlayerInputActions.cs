@@ -89,6 +89,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""b98920cf-5b78-429e-86be-2bb9e4519457"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ba54acc-a85d-48f8-bc22-9597d5b956fd"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""CameraZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -200,6 +220,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Instance_E = m_Instance.FindAction("E", throwIfNotFound: true);
         m_Instance_R = m_Instance.FindAction("R", throwIfNotFound: true);
         m_Instance_Menu = m_Instance.FindAction("Menu", throwIfNotFound: true);
+        m_Instance_CameraZoom = m_Instance.FindAction("CameraZoom", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -266,6 +287,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Instance_E;
     private readonly InputAction m_Instance_R;
     private readonly InputAction m_Instance_Menu;
+    private readonly InputAction m_Instance_CameraZoom;
     public struct InstanceActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -277,6 +299,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @E => m_Wrapper.m_Instance_E;
         public InputAction @R => m_Wrapper.m_Instance_R;
         public InputAction @Menu => m_Wrapper.m_Instance_Menu;
+        public InputAction @CameraZoom => m_Wrapper.m_Instance_CameraZoom;
         public InputActionMap Get() { return m_Wrapper.m_Instance; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +330,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Menu.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMenu;
                 @Menu.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMenu;
                 @Menu.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMenu;
+                @CameraZoom.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
+                @CameraZoom.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
+                @CameraZoom.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
             }
             m_Wrapper.m_InstanceActionsCallbackInterface = instance;
             if (instance != null)
@@ -332,6 +358,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
+                @CameraZoom.started += instance.OnCameraZoom;
+                @CameraZoom.performed += instance.OnCameraZoom;
+                @CameraZoom.canceled += instance.OnCameraZoom;
             }
         }
     }
@@ -354,5 +383,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnE(InputAction.CallbackContext context);
         void OnR(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnCameraZoom(InputAction.CallbackContext context);
     }
 }

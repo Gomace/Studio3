@@ -6,6 +6,7 @@ public class PlayerActions : MonoBehaviour
 {
     [SerializeField] private Global global;
     [SerializeField] private RectTransform uiOverlay;
+    private CameraController camCont;
     
     private GameObject roster;
     
@@ -16,7 +17,11 @@ public class PlayerActions : MonoBehaviour
         if (!global || !uiOverlay)
             Debug.Log("Missing inspector drag & drop reference. Please help :[");
 
-        roster = uiOverlay.GetChild(1).gameObject;
+        if (Camera.main != null)
+            camCont = Camera.main.GetComponent<CameraController>();
+        
+        if (uiOverlay.GetChild(1) != null)
+            roster = uiOverlay.GetChild(1).gameObject;
     }
     
     /*private void Update()
@@ -25,6 +30,11 @@ public class PlayerActions : MonoBehaviour
             return;
     }*/
 
+    private void OnCameraZoom(InputValue value)
+    {
+        camCont.CameraZoom(value.Get<float>());
+    }
+    
     void OnMenu()
     {
         global.PauseMenu();
