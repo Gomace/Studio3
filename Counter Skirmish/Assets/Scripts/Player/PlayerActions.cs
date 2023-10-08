@@ -24,26 +24,17 @@ public class PlayerActions : MonoBehaviour
             roster = uiOverlay.GetChild(1).gameObject;
     }
     
-    /*private void Update()
+    /* void Update()
     {
         if (global.disabled)
             return;
     }*/
 
-    private void OnCameraZoom(InputValue value)
-    {
-        camCont.CameraZoom(value.Get<float>());
-    }
+    private void OnCameraZoom(InputValue value) => camCont.CameraZoom(value.Get<float>());
     
-    void OnMenu()
-    {
-        global.PauseMenu();
-    }
+    private void OnMenu() => global.PauseMenu();
 
-    private void OnRoster()
-    {
-        roster.SetActive(!roster.activeSelf);
-    }
+    private void OnRoster() => roster.SetActive(!roster.activeSelf);
 
     public void OnQ(InputValue value)
     {

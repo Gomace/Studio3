@@ -74,10 +74,7 @@ public class Global : MonoBehaviour
             Play();
     }
 
-    public void Disabled(bool state)
-    {
-        disabled = state;
-    }
+    public void Disabled(bool state) => disabled = state;
 
     #region Menu
     private void Pause()
@@ -93,15 +90,9 @@ public class Global : MonoBehaviour
         disabled = false;
     }
     
-    public void Restart()
-    {
-        SceneManager.LoadScene("1stLevel");
-    }
+    public void Restart() => SceneManager.LoadScene("1stLevel");
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+    public void Quit() => Application.Quit();
     
     private void MenuToggle(bool state)
     {
@@ -116,10 +107,6 @@ public class Global : MonoBehaviour
     #endregion Menu
 
     #region Scenes
-
-    public void PreLoad2nd()
-    {
-        SceneManager.LoadSceneAsync("PolygonPirates/Scenes/Demo_Main");
-    }
+    public void PreLoad2nd() => SceneManager.LoadSceneAsync("PolygonPirates/Scenes/Demo_Main");
     #endregion Scenes
 }
