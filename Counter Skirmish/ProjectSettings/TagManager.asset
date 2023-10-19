@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Palisade
+  - Flame
+  - Rope
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -14,9 +18,9 @@ TagManager:
   - Ground
   - Usable
   - 
-  - 
-  - 
-  - 
+  - Palisade
+  - Fire
+  - Rope
   - 
   - 
   - 
