@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,9 @@ public class CreatureBase : ScriptableObject
     [TextArea]
     [SerializeField] private string description;
 
+    [SerializeField] private Sprite icon;
+    [SerializeField] private GameObject model;
+
     [SerializeField] private CreatureType type1, type2;
     
     // BASE STATS
@@ -19,6 +21,8 @@ public class CreatureBase : ScriptableObject
 
     public string Name => name;
     public string Description => description;
+    public Sprite Icon => icon;
+    public GameObject Model => model;
     public int MaxHealth => maxHealth;
     public int Attack => attack;
     public int Magic => magic;

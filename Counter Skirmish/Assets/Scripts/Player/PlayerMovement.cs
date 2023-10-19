@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private float downA = 40f, forwardA = 3.5f, timeDiv = 0.2f, circleS = 0.5f;
     
     // Movement
+    [SerializeField] private Transform _character;
     private NavMeshAgent navMA;
     private LayerMask useLayer = 1 << 7, groundLayer = (1 << 6);
     
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         if (navMA.velocity.sqrMagnitude > Mathf.Epsilon)
-            transform.rotation = Quaternion.LookRotation(navMA.velocity.normalized);
+            _character.rotation = Quaternion.LookRotation(navMA.velocity.normalized);
     }
 
     private void OnMove()

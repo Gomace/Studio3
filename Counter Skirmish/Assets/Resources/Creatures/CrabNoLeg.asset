@@ -10,22 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
-  m_Name: Drumsticks
+  m_Name: CrabNoLeg
   m_EditorClassIdentifier: 
-  name: Drumsticks
+  name: 
   description: 
   icon: {fileID: 0}
   model: {fileID: 0}
-  type1: 7
-  type2: 3
+  type1: 0
+  type2: 0
   maxHealth: 0
   attack: 0
   magic: 0
   defense: 0
   resistance: 0
   speed: 0
-  learnableAbilities:
-  - abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
-    level: 6
-  - abilityBase: {fileID: 11400000, guid: 3f929742b3bcea343a95efaaa599b3fd, type: 2}
-    level: 7
+  learnableAbilities: []
