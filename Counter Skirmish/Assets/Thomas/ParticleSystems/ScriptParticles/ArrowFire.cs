@@ -34,7 +34,7 @@ public class ArrowFire : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("ColliderEntered");
-        if (other.tag == "Fire")
+        if (other.CompareTag("Fire"))
         {
             
             hasCaughtFire = true;

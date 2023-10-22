@@ -19,29 +19,52 @@ public class SphereCastFlame : MonoBehaviour
    to tell the raycast that it has hit something.*/
     RaycastHit hit;
 
-    public GameObject decalPrefab;
+    [SerializeField] GameObject decalPrefab;
+
     [SerializeField] bool decalOn;
     [SerializeField] ParticleSystem flamePS;
+
+    [SerializeField] float decalTimer;
+
+    public bool timerCheck = false;
 
     // Start is called before the first frame update
     void Start()
     {
         decalOn = false;
+        decalTimer = 2.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (timerCheck == true)
+            decalTimer -= Time.deltaTime;
+
+        if (FirePSOn == false)
+        {
+            timerCheck = false;
+            decalTimer = 2.0f;
+        }
+            
+
         //If the fire particle boolean is on, the fire PS will start emitting and run the RayHasCast function
         if (FirePSOn == true)
         {
+            timerCheck = true;
             decalOn = true;
             FirePS.SetActive(true);
+            
+            if (decalTimer < 0)
             RayHasCast();
+
             //A Debug Log to test if the script has reached this if statement
             Debug.Log("Sphere has cast");
         }
+       
         //If the if statement above is not true (boolean is off) the fire PS will stop emitting    
+       
         else
         {
             FirePS.SetActive(false);
@@ -60,13 +83,15 @@ public class SphereCastFlame : MonoBehaviour
         if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, maxDistance, layerMask) && decalOn == true) 
         {
             //Checks if the raycast has hit the collider of the gameobject or not.
-            Debug.Log(hit.collider.gameObject);
+
             Debug.Log("ObectHit");
             //Get me the difference between the angle of the object that we hit (The normal is a line going perpendicular away from the object)
             //We are getting the difference between that and Vector3.Back. 
+
             Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
             Instantiate(decalPrefab, hit.point, spawnRotation);
-            
+
+            decalTimer = 2.0f;
         }
     }
     
