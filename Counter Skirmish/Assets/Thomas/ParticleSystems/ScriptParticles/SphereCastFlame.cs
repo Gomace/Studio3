@@ -47,9 +47,9 @@ public class SphereCastFlame : MonoBehaviour
             timerCheck = false;
             decalTimer = 2.0f;
         }
-            
-
-        //If the fire particle boolean is on, the fire PS will start emitting and run the RayHasCast function
+        //If the fire particle boolean is on,
+        //the fire PS will start emitting and
+        //run the RayHasCast function
         if (FirePSOn == true)
         {
             timerCheck = true;
@@ -59,17 +59,16 @@ public class SphereCastFlame : MonoBehaviour
             if (decalTimer < 0)
             RayHasCast();
 
-            //A Debug Log to test if the script has reached this if statement
+            //A Debug Log to test if the script
+            //has reached this if statement
             Debug.Log("Sphere has cast");
         }
-       
-        //If the if statement above is not true (boolean is off) the fire PS will stop emitting    
-       
+        //If the if statement above is not true
+        //(boolean is off) the fire PS will stop emitting    
         else
         {
             FirePS.SetActive(false);
         }
-             
     }
 
     void RayHasCast()
@@ -83,10 +82,9 @@ public class SphereCastFlame : MonoBehaviour
         if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, maxDistance, layerMask) && decalOn == true) 
         {
             //Checks if the raycast has hit the collider of the gameobject or not.
-
             Debug.Log("ObectHit");
             //Get me the difference between the angle of the object that we hit (The normal is a line going perpendicular away from the object)
-            //We are getting the difference between that and Vector3.Back. 
+            //We are getting the difference between Vector3.Back. and hit.normal so that it spawns in the corret angle.
 
             Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
             Instantiate(decalPrefab, hit.point, spawnRotation);
