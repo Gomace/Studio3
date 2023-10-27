@@ -19,8 +19,8 @@ public class RopeBroken : MonoBehaviour
      * In the update method I have an if statement that checks if all ropes have been destroyed, if they have, they will
      * replace the palisade model with ones that have colliders without triggers and rigidbodies so that they become
      * physics objects and will therefore fall over.*/
-    /*
-    [SerializeField] GameObject ropeModel;
+    
+    /*[SerializeField] GameObject ropeModel;
 
     //The palisade models, parent is the regular one, Broken has the rigidbody.
     public GameObject palisadeParent;
