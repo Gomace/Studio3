@@ -1567,8 +1567,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291566171}
-  - component: {fileID: 291566170}
-  - component: {fileID: 291566169}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1576,34 +1574,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &291566169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291566168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2385f2d89c5abf04d80d9ce72e413127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerUnit: {fileID: 0}
-  enemyUnit: {fileID: 0}
-  playerHud: {fileID: 0}
-  enemyHud: {fileID: 0}
---- !u!114 &291566170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291566168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaf85438cc00c024da464d48be153d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &291566171
 Transform:
   m_ObjectHideFlags: 0
@@ -3273,7 +3243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f82360ddb3322045af7acaf8b1c2190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  global: {fileID: 317969217}
+  gameManager: {fileID: 0}
   uiOverlay: {fileID: 912654456}
 --- !u!1 &912654452
 GameObject:

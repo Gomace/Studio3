@@ -6,23 +6,42 @@ using Object = UnityEngine.Object;
 
 public class DontDestroy : MonoBehaviour
 {
+    // public static SceneLoader Instance { get; private set; }
+    
     [HideInInspector] public string objectID;
 
-    private void Awake()
+    /*private void Awake()
     {
-        objectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
-    }
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+        {
+            Instance = this; 
+            DontDestroyOnLoad(gameObject);
+        }
+    }*/
+    
+    private void Awake() => objectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
 
     private void Start()
     {
-        for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
+        foreach (DontDestroy script in Object.FindObjectsOfType<DontDestroy>())
         {
-            if (Object.FindObjectsOfType<DontDestroy>()[i] != this)
+            if (script != this)
             {
-                if (Object.FindObjectsOfType<DontDestroy>()[i].objectID == objectID)
+                if (script.objectID == objectID)
                     Destroy(gameObject);
             }
         }
+        
+        /*for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
+        {
+             if (Object.FindObjectsOfType<DontDestroy>()[i] != this)
+             {
+                 if (Object.FindObjectsOfType<DontDestroy>()[i].objectID == objectID)
+                     Destroy(gameObject);
+             }
+        }*/
         DontDestroyOnLoad(gameObject);
     }
 }

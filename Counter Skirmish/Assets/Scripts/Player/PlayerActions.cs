@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerActions : MonoBehaviour
 {
-    [SerializeField] private Global global;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private RectTransform uiOverlay;
     private CameraController camCont;
     
@@ -14,7 +14,7 @@ public class PlayerActions : MonoBehaviour
 
     private void Awake()
     {
-        if (!global || !uiOverlay)
+        if (!gameManager || !uiOverlay)
             Debug.Log("Missing inspector drag & drop reference. Please help :[");
 
         if (Camera.main != null)
@@ -32,7 +32,7 @@ public class PlayerActions : MonoBehaviour
 
     private void OnCameraZoom(InputValue value) => camCont.CameraZoom(value.Get<float>());
     
-    private void OnMenu() => global.PauseMenu();
+    private void OnMenu() => gameManager.PauseMenu();
 
     private void OnRoster() => roster.SetActive(!roster.activeSelf);
 
