@@ -9,11 +9,6 @@ public class ChangeMaterial : MonoBehaviour
 
     Renderer rend;
 
-    public GameObject[] palisadeParts;
-    public GameObject fireSystem;
-    public GameObject Palisade;
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +20,10 @@ public class ChangeMaterial : MonoBehaviour
         rend.sharedMaterial = material[0];
     }
 
-    public void OnCollisionEnter(Collision collider)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collider.gameObject.tag == "Palisade")
-        {
+        if (other.gameObject.tag == "Fire")
+        { 
             //If there is collision, the material will change to the second option in the array.
             rend.sharedMaterial = material[1];
         }

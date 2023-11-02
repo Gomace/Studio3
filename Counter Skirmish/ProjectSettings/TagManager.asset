@@ -8,6 +8,9 @@ TagManager:
   - Flame
   - Rope
   - Fire
+  - Rope1
+  - Rope2
+  - Rope3
   layers:
   - Default
   - TransparentFX
