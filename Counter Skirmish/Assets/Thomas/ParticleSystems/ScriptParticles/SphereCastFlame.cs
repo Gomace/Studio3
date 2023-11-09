@@ -28,11 +28,13 @@ public class SphereCastFlame : MonoBehaviour
 
     public bool timerCheck = false;
 
+    Collider other;
+
     // Start is called before the first frame update
     void Start()
     {
         decalOn = false;
-        decalTimer = 2.0f;
+        decalTimer = 0.1f;
     }
 
     // Update is called once per frame
@@ -73,24 +75,39 @@ public class SphereCastFlame : MonoBehaviour
 
     void RayHasCast()
     {
+        
         Debug.Log("Void entered");
         /* The spherecast takes information on where it needs to start, the radius of the sphere, the direction it point towards
          * An out variable that tells the ray cast that it has hit something, the max distance (How far it will go) and what 
          * layer mask it should hit to get a reaction. The public LayerMask I set up above is the layer that the raycast will react
          * to, I can put a ~ before the layermask to invert it, meaning that it will answer to every layer except the one mentioned
          * in the script.*/
-        if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, maxDistance, layerMask) && decalOn == true) 
+
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, maxDistance) && decalOn == true && hit.transform.CompareTag("Tool"))
         {
             //Checks if the raycast has hit the collider of the gameobject or not.
+
+            hit.collider.GetComponent<GameObject>();
+            hit.collider.transform.GetChild(0).gameObject.SetActive(true);
+            ///hit.collider.transform.GetChild(1).gameObject.SetActive(true);
+            //hit.collider.gameObject.SetActive();
+
+
             Debug.Log("ObectHit");
+
             //Get me the difference between the angle of the object that we hit (The normal is a line going perpendicular away from the object)
             //We are getting the difference between Vector3.Back. and hit.normal so that it spawns in the corret angle.
 
-            Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
-            Instantiate(decalPrefab, hit.point, spawnRotation);
+            //Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
+            //Instantiate(decalPrefab, hit.point, spawnRotation);
 
-            decalTimer = 2.0f;
+            decalTimer = 0.1f;
         }
     }
-    
 }
+        
+            
+
+        
+    
+

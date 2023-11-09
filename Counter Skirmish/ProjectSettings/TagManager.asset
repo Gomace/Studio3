@@ -11,6 +11,8 @@ TagManager:
   - Rope1
   - Rope2
   - Rope3
+  - PrePlacedFire
+  - Tool
   layers:
   - Default
   - TransparentFX
