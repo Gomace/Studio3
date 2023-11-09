@@ -5960,6 +5960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 6145847003197986524, guid: 5b2bf0da66d9db04c8eae7f0ae889061, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6145847003197986525, guid: 5b2bf0da66d9db04c8eae7f0ae889061, type: 3}
       propertyPath: m_RootOrder
       value: 5

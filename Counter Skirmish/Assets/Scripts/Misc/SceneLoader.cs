@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private RectTransform loadingIndicator;
     
     [Header("Are you testing the loading screen?")]
-    [SerializeField] private bool _testing = false;
+    [SerializeField] private bool testing = false;
     
     float delay = 0, dots = 0;
     
@@ -29,11 +29,9 @@ public class SceneLoader : MonoBehaviour
         loadingText.text = "Loading";
     }
     
-    public void LoadScene(string sceneName) => StartCoroutine(LoadingScreen(sceneName));
-
     private void Update()
     {
-        if (!_testing)
+        if (!testing)
             return;
         
         delay = Mathf.Clamp01(delay);
@@ -66,13 +64,16 @@ public class SceneLoader : MonoBehaviour
         delay += Time.deltaTime;
     }
     
-
+    public void LoadScene(string sceneName) => StartCoroutine(LoadingScreen(sceneName));
+    
     private IEnumerator LoadingScreen(string sceName)
     {
         AsyncOperation loading = SceneManager.LoadSceneAsync(sceName);
 
-        if (loadingScreen)
-            loadingScreen.SetActive(true);
+        if (!loadingScreen)
+            yield break;
+        
+        loadingScreen.SetActive(true);
         
         loadingText.text = "Loading";
         delay = dots = 0;

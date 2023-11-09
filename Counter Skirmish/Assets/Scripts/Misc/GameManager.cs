@@ -8,7 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public GameObject player, menuScreen;
-    private SceneLoader _sceneLoader;
+    [SerializeField] private SceneLoader _sceneLoader;
     
     public bool startPaused;
     [HideInInspector] public bool disabled;
@@ -17,8 +17,6 @@ public class GameManager : MonoBehaviour
     {
         if (GetComponent<SceneLoader>())
             _sceneLoader = GetComponent<SceneLoader>();
-        else
-            Debug.Log($"Missing SceneLoader script on {gameObject.name}");
     }
 
     private void Start()
