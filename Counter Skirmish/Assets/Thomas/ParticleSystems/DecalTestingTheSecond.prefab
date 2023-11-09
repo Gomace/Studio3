@@ -10,9 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6739881762986449687}
   - component: {fileID: 6739881762986449688}
-  - component: {fileID: 8570385129527538322}
   - component: {fileID: 7607691716066919847}
-  - component: {fileID: 9094389807322613312}
+  - component: {fileID: 2175020502951705472}
   m_Layer: 0
   m_Name: DecalTestingTheSecond
   m_TagString: Untagged
@@ -59,31 +58,6 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0.5}
   m_Size: {x: 1, y: 1, z: 1}
   m_FadeFactor: 1
---- !u!114 &8570385129527538322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6739881762986449689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6ce4bd2aa6a484ba1d82e6572b5c89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ropeModel: {fileID: 2888783944212025610, guid: 0f204d11ec944b8478d23f075a63bb84, type: 3}
-  palisadeParent: {fileID: 0}
-  palisadeBroken: {fileID: 0}
-  brokenRope: {fileID: 0}
-  brokenRope1: {fileID: 0}
-  brokenRope2: {fileID: 0}
-  brokenRope3: {fileID: 0}
-  brokenRope4: {fileID: 0}
-  brokenRope5: {fileID: 0}
-  brokenRope6: {fileID: 0}
-  brokenRope7: {fileID: 0}
-  brokenRope8: {fileID: 0}
-  brokenRope9: {fileID: 0}
 --- !u!65 &7607691716066919847
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -97,7 +71,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9094389807322613312
+--- !u!114 &2175020502951705472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,22 +80,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6739881762986449689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6ce4bd2aa6a484ba1d82e6572b5c89, type: 3}
+  m_Script: {fileID: 11500000, guid: e7dc1d5ef9918a646a64b452c3aba5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeModel: {fileID: 0}
-  palisadeParent: {fileID: 0}
-  palisadeBroken: {fileID: 0}
-  brokenRope: {fileID: 0}
-  brokenRope1: {fileID: 0}
-  brokenRope2: {fileID: 0}
-  brokenRope3: {fileID: 0}
-  brokenRope4: {fileID: 0}
-  brokenRope5: {fileID: 0}
-  brokenRope6: {fileID: 0}
-  brokenRope7: {fileID: 0}
-  brokenRope8: {fileID: 0}
-  brokenRope9: {fileID: 0}
+  ropeSlot: {fileID: 0}
 --- !u!1 &6739881764054067851
 GameObject:
   m_ObjectHideFlags: 0
