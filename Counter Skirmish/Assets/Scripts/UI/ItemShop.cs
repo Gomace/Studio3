@@ -1,20 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemShop : MonoBehaviour
 {
-    [SerializeField] private 
+    [SerializeField] private RectTransform _categories, _shops;
+    [SerializeField] private Color _clickColor, _normalColor;
     
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ItemBase[] _wares;
+    
+    public void SelectCategory(GameObject category)
     {
+        foreach (RectTransform btn in _categories)
+            btn.GetComponent<Image>().color = _normalColor;
+        EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = _clickColor;
         
+        foreach (RectTransform shop in _shops)
+            shop.gameObject.SetActive(false);
+        category.SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void PurchaseItem()
     {
         
     }
