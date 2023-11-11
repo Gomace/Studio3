@@ -28,8 +28,6 @@ public class SphereCastFlame : MonoBehaviour
 
     public bool timerCheck = false;
 
-    Collider other;
-
     // Start is called before the first frame update
     void Start()
     {

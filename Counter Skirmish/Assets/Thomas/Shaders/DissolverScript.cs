@@ -4,110 +4,63 @@ using UnityEngine;
 
 public class DissolverScript : MonoBehaviour
 {
-
-    public float dissolveDuration = 2;
+    // The duration of how long it takes for the lerp to go from 0 to 1 
+    public float dissolveDuration = 10;
+    // The lerp amount, starting at 0.
     public float dissolveStrength;
-    public float timerCheck = 0;
 
-    public float transitionDuration = 5;
-    public float transitionStrength;
-
-    public bool onOff = false;
-
-    public Color startColor;
-    public Color endColor;
-
-    public Material startMaterial;
-    public Material endMaterial;
-
-    Renderer rend;
-
-    Rigidbody rb;
-    public Rigidbody cubeRigidBody;
-
-    private void Start()
-    {
-        rb = this.GetComponent<Rigidbody>();
-
-        rb.useGravity = false;
-        rb.isKinematic = true;
-
-        rend = GetComponent<Renderer>();
-        rend.material = startMaterial;
-    }
-
+    // A function that tells Unity to start running the code.
     public void StartDissolver()
     {
-        StartCoroutine(dissolver());
+        StartCoroutine(Dissolver());
     }
 
-    public IEnumerator dissolver()
+    // A Coroutine runs across multiple frames or until a contition is met
+    //Example: frame 1, frame 2, frame 3, condition is met
+
+    //The update function will run this code every single frame, which will cost a lot of performance.
+    //The coroutine can run the same code across multiple frames, allowing for better performance.
+    public IEnumerator Dissolver()
     {
+        // Since the texture change is running over a period of time, we need to keep track of
+        // how long it takes.
         float elapsedTime = 0;
 
+        // I access the renderer component of a gameObject, which holds the material. In this case
+        // I am getting the shader material, due to it being assigned to the gameobject that has this script (The palisade poles)
         Material dissolveMaterial = GetComponent<Renderer>().material;
-        Color lerpedColor;
 
-        Material lerpedMaterial;
-
+        //I want this to run until the time I have set is over.
+        // While the elapsed time is less than the dissolveDuration, run the following code:
         while ( elapsedTime < dissolveDuration)
         {
+            // Keeps track of how much time has passed. By writing += Time.deltaTime we count up by seconds.
             elapsedTime += Time.deltaTime;
 
-            timerCheck /= elapsedTime;
-
+            //Mathf.Lerp takes three values (start value, end value and time).
+            // We set elapsedTime over dissolve duration so that no matter how long the duration is
+            //the lerp will always happen at the same rate. This means you can have as long or short duration as you want
+            //and the effect will always be the same, it just takes longer or shorter.
             dissolveStrength = Mathf.Lerp(0, 1, elapsedTime / dissolveDuration);
+
+            // Here I access the dissolve strength property in my shader and set it as a float value. The SetFloat takes two values
+            // (the reference we are trying to change, the number we want it to be.
             dissolveMaterial.SetFloat("_DissolveStrength", dissolveStrength);
 
-            lerpedColor = Color.Lerp(startColor, endColor, dissolveStrength);
-
-            transitionStrength = Mathf.Lerp(0, 1, elapsedTime / transitionDuration);
-            dissolveMaterial.SetFloat("_DiffuseTransition", transitionStrength);
-
-            dissolveMaterial.SetColor("_BaseColor", lerpedColor);
-
-
+            // Rather than running this code every frame, I use a yield return null; statement to tell Unity when I want it to run
+            // and when it should be paused saving performance. This tells Unity when to continue in the next frame.
             yield return null;
         }
-
-        //Destroy(gameObject);
-        //Destroy(dissolveMaterial);
-
     }
 
-    private void Update()
-    {
-
-
-
-        if (timerCheck == 1)
-        {
-            Debug.Log("TimerIsChecked");
-            
-        }
-            
-
-        if (dissolveStrength == 1f)
-        {
-            Debug.Log("Dissolved");
-            rb.useGravity = true;
-            rb.isKinematic = false;
-            Debug.Log("RigidChanged");
-        }
-
-        if (onOff == true)
-            StartDissolver();
-
-
-        
-
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.CompareTag("Fire"))
         {
-            onOff = true;
+            // If the Palisade collides with the tag "Fire", run the coroutine.
+            StartDissolver();
 
         }
     }
