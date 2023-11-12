@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Image bar;
-    [SerializeField] private TextMeshProUGUI progressText, loadingText;
+    [SerializeField] private TMP_Text progressText, loadingText;
     [SerializeField] private RectTransform loadingIndicator;
     
     [Header("Are you testing the loading screen?")]
@@ -31,37 +31,8 @@ public class SceneLoader : MonoBehaviour
     
     private void Update()
     {
-        if (!testing)
-            return;
-        
-        delay = Mathf.Clamp01(delay);
-        Debug.Log(delay);
-            
-        if (bar)
-            bar.fillAmount = delay;
-
-        float progress = delay * 100f;
-        if (progressText)
-            progressText.text = (int)progress + "%";
-        
-        if (loadingIndicator)
-            loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
-
-        if (delay >= 1f)
-        {
-            if (dots < 3f)
-            {
-                loadingText.text += ".";
-                dots++;
-            }
-            else
-            {
-                loadingText.text = "Loading";
-                dots = 0;
-            }
-            delay = 0;
-        }
-        delay += Time.deltaTime;
+        if (testing)
+            LoadTesting();
     }
     
     public void LoadScene(string sceneName) => StartCoroutine(LoadingScreen(sceneName));
@@ -108,5 +79,37 @@ public class SceneLoader : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private void LoadTesting()
+    {
+        delay = Mathf.Clamp01(delay);
+        Debug.Log(delay);
+            
+        if (bar)
+            bar.fillAmount = delay;
+
+        float progress = delay * 100f;
+        if (progressText)
+            progressText.text = (int)progress + "%";
+        
+        if (loadingIndicator)
+            loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
+
+        if (delay >= 1f)
+        {
+            if (dots < 3f)
+            {
+                loadingText.text += ".";
+                dots++;
+            }
+            else
+            {
+                loadingText.text = "Loading";
+                dots = 0;
+            }
+            delay = 0;
+        }
+        delay += Time.deltaTime;
     }
 }
