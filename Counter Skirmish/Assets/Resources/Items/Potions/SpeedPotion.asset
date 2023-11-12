@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a0ad2f34ddadd4cbf78392e0894f60, type: 3}
+  m_Name: SpeedPotion
+  m_EditorClassIdentifier: 
+  name: Speed Potion
+  description: 'If you are in a rush give this to your monster and it will run around
+    at the speed of light for 10 seconds. No refunds for false marketing. '
+  icon: {fileID: 0}
+  quality: 2
+  price: 125
