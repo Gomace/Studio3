@@ -11,7 +11,10 @@ public class PalisadeFallOver : MonoBehaviour
 
     // Rigidbody of the rope
     public Rigidbody ropeRigidbody;
+    public List<GameObject> fireList = new List<GameObject>();
 
+    public float timer = 1;
+    private bool timerStart = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +24,38 @@ public class PalisadeFallOver : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Set
-        rb.useGravity = ropeRigidbody.useGravity;
-        rb.isKinematic = ropeRigidbody.isKinematic;
+        if (rb.useGravity = ropeRigidbody.useGravity && timerStart == false)
+        {
+            timerStart = true;
+        }
+
+        if (timerStart == true)
+        {
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                rb.useGravity = ropeRigidbody.useGravity;
+                rb.isKinematic = ropeRigidbody.isKinematic;
+            }
+        }
+
+        
+
+        
+        
+
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if (other.GetComponentInChildren<PalisadeFireDisabler>())
+        {
+            fireList.Add(other.GetComponent<GameObject>());
+        }
+        
 
         if (other.CompareTag("Fire") == false)
             return;
@@ -40,6 +66,9 @@ public class PalisadeFallOver : MonoBehaviour
             Debug.Log("RopeIsStaying");
             staying = true;
         }
+
+        
+
     }
 
     private void OnTriggerExit(Collider other)

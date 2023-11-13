@@ -9,15 +9,6 @@ public class ArrowFire : MonoBehaviour
     
     // The fire placed on the particle effect
     public GameObject arrowFire;
-
-
-
-    // The decal prefab that will spawn when hitting the palisade
-    /*public GameObject decalPrefab;
-    public float radius;
-    public LayerMask layerMask;
-    public float maxDistance;
-    RaycastHit hit;*/
     
     // Start is called before the first frame update
     void Start()
@@ -44,14 +35,4 @@ public class ArrowFire : MonoBehaviour
             other.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
-
-    /*void Update()
-    {
-        if (hasCaughtFire == true && (Physics.SphereCast(transform.position, radius, 
-            transform.forward, out hit, maxDistance, layerMask)))
-        {
-            Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.back, hit.normal);
-            Instantiate(decalPrefab, hit.point, spawnRotation);
-        }
-    }*/
 }
