@@ -36,19 +36,19 @@ public class PlayerActions : MonoBehaviour
 
     private void OnRoster() => roster.SetActive(!roster.activeSelf);
 
-    public void OnQ(InputValue value)
+    public void OnAbilityQ(InputValue value)
     {
         
     }
-    public void OnW(InputValue value)
+    public void OnAbilityW(InputValue value)
     {
         
     }
-    public void OnE(InputValue value)
+    public void OnAbilityE(InputValue value)
     {
         
     }
-    public void OnR(InputValue value)
+    public void OnAbilityR(InputValue value)
     {
         
     }

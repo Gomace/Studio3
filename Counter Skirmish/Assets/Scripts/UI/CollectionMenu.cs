@@ -5,11 +5,8 @@ using UnityEngine.UI;
 
 public class CollectionMenu : MonoBehaviour
 {
-    #region Events
     public delegate void OnCollectionLoad();
     public static event OnCollectionLoad onCollectionLoad;
-    
-    #endregion Events
     
     [SerializeField] private RectTransform _categories, _shops;
     [SerializeField] private Color _clickColor, _normalColor;
