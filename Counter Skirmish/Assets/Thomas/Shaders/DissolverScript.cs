@@ -5,7 +5,7 @@ using UnityEngine;
 public class DissolverScript : MonoBehaviour
 {
     // The duration of how long it takes for the lerp to go from 0 to 1 
-    public float dissolveDuration = 10;
+    public float dissolveDuration = 5;
     // The lerp amount, starting at 0.
     public float dissolveStrength;
 
