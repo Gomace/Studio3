@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: ResistancePotion
   m_EditorClassIdentifier: 
   name: Resistance Potion
-  description: Give this to your monster and it will pratically be made of steel.
-    For 15 seconds...
+  description: 'This will be sure to make you tough
+
+
+    15% damage resistance for
+    10 seconds.'
   icon: {fileID: 0}
   quality: 3
   price: 175

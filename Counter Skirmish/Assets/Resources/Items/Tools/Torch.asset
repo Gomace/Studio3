@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Torch
   m_EditorClassIdentifier: 
   name: Torch
-  description: Things getting too dark for you? This torch will reveal your surroundings.
+  description: 'Things getting too dark for you?
+
+
+    Light up the surrounding area.'
   icon: {fileID: 0}
   quality: 1
   price: 50

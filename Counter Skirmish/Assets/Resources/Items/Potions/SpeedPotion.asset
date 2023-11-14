@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
   name: Speed Potion
-  description: 'If you are in a rush give this to your monster and it will run around
-    at the speed of light for 10 seconds. No refunds for false marketing. '
+  description: 'Makes you run at the speed of light.
+
+
+    20% movement speed for
+    10 seconds.'
   icon: {fileID: 0}
   quality: 2
   price: 125

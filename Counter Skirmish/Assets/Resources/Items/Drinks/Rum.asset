@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f94ca498c02f246bbba853e98a2126, type: 3}
-  m_Name: Burgoo
+  m_Script: {fileID: 11500000, guid: ac85e7944cad53c4e840f0fdb460ea4d, type: 3}
+  m_Name: Rum
   m_EditorClassIdentifier: 
-  name: Burgoo
-  description: 'Not the most tasty meal, but it''s cheap and will keep you going
-    for a long time.
+  name: Rum
+  description: 'Where has it gone? I could swear I had it.
 
 
-    Become 5% more resistant to damage.'
+    Out of stock.'
   icon: {fileID: 0}
-  quality: 1
-  price: 50
+  quality: 2
+  price: 175

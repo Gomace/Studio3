@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: SilverHorn
   m_EditorClassIdentifier: 
   name: Silver Horn
-  description: If the hunters are not much of help, call in a group of soliders instead,
-    better equipped for the task at hand.
+  description: 'Hunters not enough for you?
+
+
+    Call in a group of soldiers better
+    equipped for the task.'
   icon: {fileID: 0}
   quality: 2
   price: 500

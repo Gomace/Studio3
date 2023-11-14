@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: GrapeWine
   m_EditorClassIdentifier: 
   name: Grape Wine
-  description: Freshly made Grape Wine produced from locally grown grapes.
+  description: 'Grape Wine produced from locally grown grapes.
+
+
+    Gain 10% additional
+    magic.'
   icon: {fileID: 21300000, guid: 44a74e4dca2517646b8915b417fb4261, type: 3}
   quality: 4
   price: 325

@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: BronzeHorn
   m_EditorClassIdentifier: 
   name: Bronze Horn
-  description: Are you having trouble capturing a monster? Use this horn to call
-    in a group of hunters to help you out.
+  description: 'Are you having trouble capturing a monster?
+
+
+    Call in a group
+    of hunters to help you out.'
   icon: {fileID: 0}
   quality: 1
   price: 500

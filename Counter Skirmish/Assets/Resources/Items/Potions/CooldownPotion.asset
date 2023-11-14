@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: CooldownPotion
   m_EditorClassIdentifier: 
   name: Cooldown Potion
-  description: Tired of waiting? Give this to your monster and its next 3 abilities
-    will be available quicker.
+  description: 'Tired of waiting?
+
+
+    Double cooldown reduction on all abilities
+    for 15 seconds.'
   icon: {fileID: 0}
   quality: 5
   price: 1000

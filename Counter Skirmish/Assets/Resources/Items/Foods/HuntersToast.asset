@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: HuntersToast
   m_EditorClassIdentifier: 
   name: Hunter's Toast
-  description: Nutritious and lightweight, perfect for a day of hunting.
+  description: 'Nutritious and lightweight, perfect for a day of hunting.
+
+
+    10%
+    increased movement speed.'
   icon: {fileID: 0}
   quality: 1
   price: 50

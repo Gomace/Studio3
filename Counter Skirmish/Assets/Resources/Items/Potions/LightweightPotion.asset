@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: LightweightPotion
   m_EditorClassIdentifier: 
   name: Lightweight Potion
-  description: Is your monster too heavy to jump over walls? Do not worry, this potion
-    will make them cross any heights for a whole minute!
+  description: 'Will make any monster lighter, almost like magic.
+
+
+    15% damage
+    resistance for 10 seconds.'
   icon: {fileID: 0}
   quality: 3
   price: 250

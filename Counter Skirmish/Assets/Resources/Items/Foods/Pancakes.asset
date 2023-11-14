@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21f94ca498c02f246bbba853e98a2126, type: 3}
-  m_Name: Burgoo
+  m_Name: Pancakes
   m_EditorClassIdentifier: 
-  name: Burgoo
-  description: 'Not the most tasty meal, but it''s cheap and will keep you going
-    for a long time.
+  name: Pancakes
+  description: 'Nutritious and lightweight, perfect for a day of hunting.
 
 
-    Become 5% more resistant to damage.'
+    10%
+    increased movement speed.'
   icon: {fileID: 0}
   quality: 1
   price: 50

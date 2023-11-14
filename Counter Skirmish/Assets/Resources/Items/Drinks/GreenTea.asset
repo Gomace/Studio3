@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: GreenTea
   m_EditorClassIdentifier: 
   name: Green Tea
-  description: You ever feel stressed and need to relax? Then this cup of hot green
-    tea is the perfect choice for you.
+  description: 'Become extra focused with some delicious green tea.
+
+
+    4% ability
+    cooldown reduction.'
   icon: {fileID: 0}
   quality: 2
   price: 175

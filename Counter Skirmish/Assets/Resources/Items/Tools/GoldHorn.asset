@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: GoldHorn
   m_EditorClassIdentifier: 
   name: Gold Horn
-  description: 'If not even soldiers are enough help, call in our most top trained
-    soldiers who is ready for anything.
+  description: 'If even soldiers are not enough...
 
-'
+
+    Call in our most top trained
+    soldiers.'
   icon: {fileID: 0}
   quality: 3
   price: 500

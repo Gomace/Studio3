@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: DamagePotion
   m_EditorClassIdentifier: 
   name: Damage Potion
-  description: It does what it says on the tin. I would not like to be on the recieving
-    end of this one, especially since it lasts 20 seconds.
+  description: 'It does what it says on the tin.
+
+
+    Do double damage for 15 seconds.'
   icon: {fileID: 0}
   quality: 4
   price: 400

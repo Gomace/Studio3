@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: BarrelAle
   m_EditorClassIdentifier: 
   name: Barrel Ale
-  description: You can never go wrong with a glass of Ale before a day of hard work.
+  description: 'You can never go wrong with a glass of Ale.
+
+
+    Gain 15% damage
+    resistance.
+
+
+'
   icon: {fileID: 0}
   quality: 1
   price: 100

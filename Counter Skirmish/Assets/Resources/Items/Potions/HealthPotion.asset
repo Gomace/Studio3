@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   name: Health Potion
-  description: Is your monster feeling down and need boost? This potion will solve
-    their problems with ease.
+  description: 'A little booster if you are feeling down.
+
+
+    Double health regeneration
+    for 10 seconds.'
   icon: {fileID: 0}
   quality: 1
   price: 100

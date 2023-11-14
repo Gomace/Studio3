@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: CaptainsStew
   m_EditorClassIdentifier: 
   name: Captain's Stew
-  description: Need a lift after a long day? Our Captain got you covered with this
-    stew that will fill you right up.
+  description: 'Our Captain''s favorite!
+
+
+    Killing an enemy reduces ability cooldowns
+    by 2 seconds.'
   icon: {fileID: 0}
   quality: 2
   price: 75
