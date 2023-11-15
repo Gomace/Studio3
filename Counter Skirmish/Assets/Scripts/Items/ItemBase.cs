@@ -9,17 +9,17 @@ public class ItemBase : ScriptableObject
 
     [SerializeField] private Sprite icon;
     
-    [SerializeField] private ItemQuality quality;
+    [SerializeField] private Quality quality;
     [SerializeField] private int price;
     
     public string Name => name;
     public string Description => description;
     public Sprite Icon => icon;
-    public ItemQuality Quality => quality;
+    public Quality Quality => quality;
     public int Price => price;
 }
 
-public enum ItemQuality
+public enum Quality
 {
     None,
     Common,
