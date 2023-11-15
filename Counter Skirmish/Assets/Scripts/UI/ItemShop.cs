@@ -9,7 +9,8 @@ public class ItemShop : MonoBehaviour
     public static event OnShopLoad onShopLoad;
     
     [SerializeField] private RectTransform _categories, _shops;
-    [SerializeField] private Color _clickColor, _normalColor;
+    [SerializeField] private Color _clickColor = new Color(55, 55, 55, 255),
+                                    _normalColor = new Color(128, 128, 128, 255);
 
     private void OnEnable() => LoadShop();
 
