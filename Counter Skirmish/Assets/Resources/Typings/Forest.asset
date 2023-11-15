@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Forest
   _icon: {fileID: 0}
-  _strength: []
-  _weakness: []
-  _immunity: []
+  _strength:
+  - {fileID: 11400000, guid: 6158491a94068424b936388a85d801b4, type: 2}
+  _weakness:
+  - {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}

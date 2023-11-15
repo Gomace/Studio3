@@ -16,4 +16,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _strength:
   - {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _weakness: []
+  _weakness:
+  - {fileID: 11400000}
