@@ -15,5 +15,5 @@ MonoBehaviour:
   _name: Tech
   _icon: {fileID: 0}
   _strength: []
-  _weakness: []
-  _immunity: []
+  _weakness:
+  - {fileID: 11400000, guid: 66ddc9cc6d551564087b5c8e4232c559, type: 2}

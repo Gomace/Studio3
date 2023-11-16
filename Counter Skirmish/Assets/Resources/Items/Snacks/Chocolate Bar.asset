@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91ca6582125c4479d56611c5a07057, type: 3}
-  m_Name: Dark
+  m_Script: {fileID: 11500000, guid: 36864da07a8112049a85cf9270662d75, type: 3}
+  m_Name: Chocolate Bar
   m_EditorClassIdentifier: 
-  _name: Dark
-  _icon: {fileID: 0}
-  _strength: []
-  _weakness: []
+  name: Chocolate Bar
+  description: Bobdobid
+  icon: {fileID: 0}
+  quality: 3
+  price: 200

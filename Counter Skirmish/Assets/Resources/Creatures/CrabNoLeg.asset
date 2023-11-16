@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: CrabNoLeg
   m_EditorClassIdentifier: 
-  name: CrabbyRoll
-  description: 
-  icon: {fileID: 0}
-  model: {fileID: 0}
-  type1: 8
-  type2: 4
-  maxHealth: 500
-  attack: 70
-  magic: 34
-  defense: 23
-  resistance: 225
-  speed: 255
-  learnableAbilities:
-  - abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
-    level: 5
-  - abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
-    level: 8
+  _name: 
+  _description: 
+  _icon: {fileID: 0}
+  _card: {fileID: 0}
+  _splash: {fileID: 0}
+  _model: {fileID: 0}
+  _type1: {fileID: 11400000, guid: 73b53d9cd6a1d85478fbb0bc39210f1b, type: 2}
+  _type2: {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
+  _maxHealth: 0
+  _attack: 0
+  _magic: 0
+  _defense: 0
+  _resistance: 0
+  _speed: 0
+  _learnableAbilities: []

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Host
   _icon: {fileID: 0}
-  _strength: []
+  _strength:
+  - {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}
   _weakness: []

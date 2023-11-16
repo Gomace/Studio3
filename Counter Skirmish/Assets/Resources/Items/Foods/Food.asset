@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f91ca6582125c4479d56611c5a07057, type: 3}
-  m_Name: Energy
+  m_Script: {fileID: 11500000, guid: 21f94ca498c02f246bbba853e98a2126, type: 3}
+  m_Name: Food
   m_EditorClassIdentifier: 
-  _name: Energy
-  _icon: {fileID: 0}
-  _strength: []
-  _weakness: []
-  _immunity: []
+  name: Licorice
+  description: EWewe
+  icon: {fileID: 0}
+  quality: 0
+  price: 652

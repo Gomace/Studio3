@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  name: Fireball
-  description: Fireball shoots forward. Does damage and has a chance to burn.
-  type: 1
-  power: 100
-  cooldown: 3
-  resource: 40
+  _name: 
+  _description: 
+  _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
+  _power: 0
+  _cooldown: 0
+  _resource: 0

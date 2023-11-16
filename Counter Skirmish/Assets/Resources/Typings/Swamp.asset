@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Swamp
   _icon: {fileID: 0}
-  _strength: []
+  _strength:
+  - {fileID: 11400000, guid: ada4b6c1778b17e47be9bce7d0833926, type: 2}
   _weakness: []
-  _immunity: []
