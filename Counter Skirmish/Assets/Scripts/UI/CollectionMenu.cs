@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,30 +8,36 @@ public class CollectionMenu : MonoBehaviour
     public delegate void OnCollectionLoad();
     public static event OnCollectionLoad onCollectionLoad;
     
-    [SerializeField] private RectTransform _categories, _filters;
-    [SerializeField] private Color _clickColor = new Color(55, 55, 55, 255),
-                                    _normalColor = new Color(128, 128, 128, 255);
+    [SerializeField] private RectTransform _filters, _cards;
+    private List<string> _keywords;
 
     private void OnEnable() => LoadCollection();
 
-    public void LoadCollection() => onCollectionLoad?.Invoke();
-
-    public void SelectCategory(GameObject category)
+    public void LoadCollection()
     {
-        foreach (RectTransform btn in _categories)
-            btn.GetComponent<Image>().color = _normalColor;
-        EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = _clickColor;
-
-        foreach (RectTransform filter in _filters)
-            filter.gameObject.SetActive(false);
-        category.SetActive(true);
+        /*foreach (GameObject card in _cards)
+        {
+            card.GetComponent<CardInfo>().Base
+        }*/
         
-        LoadCollection();
+        onCollectionLoad?.Invoke();
     }
 
-    public void PurchaseItem()
+    public void OpenFilter()
     {
-        //EventSystem.current.currentSelectedGameObject.GetComponent<ItemInfo>().Base; // the item you bought
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        foreach (RectTransform filter in _filters)
+            filter.gameObject.SetActive(!selected.GetComponent<Toggle>().isOn);
+        selected.SetActive(true);
+    }
+    
+    public void SelectFilter(string keyword)
+    {
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>().isOn)
+            _keywords.Add(keyword);
+        else
+            _keywords.Remove(keyword);
+
         LoadCollection();
     }
 }

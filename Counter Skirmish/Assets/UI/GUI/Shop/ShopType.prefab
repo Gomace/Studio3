@@ -157,6 +157,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5563517003995850312, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5832b99780396874d9d162097a36e1e8, type: 3}
 --- !u!224 &944164181409096959 stripped

@@ -61,9 +61,7 @@ public class MenuSettings : MonoBehaviour
             if (resolutions[i].width == Screen.currentResolution.width &&
                 resolutions[i].height == Screen.currentResolution.height &&
                 resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
-            {
                 currentResolutionIndex = i;
-            }
         }
         
         resolutionDropdown.AddOptions(options);

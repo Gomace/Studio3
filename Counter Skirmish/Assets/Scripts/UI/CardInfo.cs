@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -22,6 +23,7 @@ public class CardInfo : MonoBehaviour
         _card.sprite = _cBase.Card;
         _type1.sprite = _cBase.Type1.Icon;
         _type2.sprite = _cBase.Type2.Icon;
+        //_role.sprite = _cBase.Role;
         // find gold on player
     }
 }
