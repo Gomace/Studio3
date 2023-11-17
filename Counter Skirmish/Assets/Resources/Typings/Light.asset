@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Light
   m_EditorClassIdentifier: 
   _name: Light
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: ba920d7d739489e44adc04009518a657, type: 3}
   _strength: []
   _weakness: []

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   _name: Water
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: d42aeb9930b65dd448098b6ba2f40f7f, type: 3}
   _strength:
   - {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
   - {fileID: 11400000, guid: 73b53d9cd6a1d85478fbb0bc39210f1b, type: 2}

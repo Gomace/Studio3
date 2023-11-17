@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Entropy
   m_EditorClassIdentifier: 
   _name: Entropy
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: b655c5ef68675334ba365f27da9119d5, type: 3}
   _strength: []
   _weakness: []
-  _immunity: []

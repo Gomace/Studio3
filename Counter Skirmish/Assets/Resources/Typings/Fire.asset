@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   _name: Fire
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 4b541f9624a40b04ab3b343defa6083d, type: 3}
   _strength:
   - {fileID: 11400000, guid: ada4b6c1778b17e47be9bce7d0833926, type: 2}
-  - {fileID: 11400000, guid: bb65451bf71be6b48a9e9937e8ecdc12, type: 2}
   _weakness:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: bb8b9926594749447a32a72c568d73ad, type: 2}

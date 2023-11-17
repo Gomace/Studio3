@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   _name: Earth
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 033d793208db77840ab9d0477c7c2af0, type: 3}
   _strength:
   - {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
   _weakness:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tech
   m_EditorClassIdentifier: 
   _name: Tech
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: ebc2f0331e1a5304981276d953afb93c, type: 3}
   _strength: []
   _weakness:
   - {fileID: 11400000, guid: 66ddc9cc6d551564087b5c8e4232c559, type: 2}

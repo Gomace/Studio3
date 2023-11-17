@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Predator
   m_EditorClassIdentifier: 
   _name: Predator
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: cd1eab65f00b98f47a831f00db41f2d6, type: 3}
   _strength:
   - {fileID: 11400000, guid: ada4b6c1778b17e47be9bce7d0833926, type: 2}
   - {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
