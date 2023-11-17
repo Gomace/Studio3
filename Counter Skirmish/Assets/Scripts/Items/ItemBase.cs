@@ -19,6 +19,7 @@ public class ItemBase : ScriptableObject
     public int Price => price;
 }
 
+
 public enum Quality
 {
     None,

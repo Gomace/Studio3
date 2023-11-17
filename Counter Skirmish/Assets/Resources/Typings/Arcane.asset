@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f91ca6582125c4479d56611c5a07057, type: 3}
-  m_Name: Source
+  m_Name: Arcane
   m_EditorClassIdentifier: 
-  _name: Source
+  _name: Arcane
   _icon: {fileID: 0}
   _strength: []
   _weakness: []
-  _immunity: []
