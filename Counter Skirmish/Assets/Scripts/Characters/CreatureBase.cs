@@ -9,13 +9,12 @@ public class CreatureBase : ScriptableObject
     [TextArea]
     [SerializeField] private string _description;
 
-    [SerializeField] private Sprite _icon;
-    [SerializeField] private Sprite _card;
-    [SerializeField] private Sprite _splash;
+    [SerializeField] private Sprite _icon, _card, _splash;
     [SerializeField] private GameObject _model;
 
     [SerializeField] private TypeBase _type1, _type2;
-    
+    [SerializeField] private RoleBase _role;
+
     // BASE STATS
     [SerializeField] private int _maxHealth, _attack, _magic, _defense, _resistance, _speed;
 
@@ -31,6 +30,8 @@ public class CreatureBase : ScriptableObject
 
     public TypeBase Type1 => _type1;
     public TypeBase Type2 => _type2;
+
+    public RoleBase Role => _role;
     
     public int MaxHealth => _maxHealth;
     public int Attack => _attack;
