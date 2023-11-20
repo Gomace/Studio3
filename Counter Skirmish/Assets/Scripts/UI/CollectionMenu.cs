@@ -9,6 +9,7 @@ public class CollectionMenu : MonoBehaviour
     public static event OnCollectionLoad onCollectionLoad;
     
     [SerializeField] private RectTransform _filters, _cards;
+    [SerializeField] private GameObject _reveal, _hover;
     public List<string> _keywords;
 
     private void OnEnable() => LoadCollection();
@@ -31,5 +32,10 @@ public class CollectionMenu : MonoBehaviour
             _keywords.Remove(keyword);
 
         //LoadCollection();
+    }
+
+    public void CardHover(bool reveal, RectTransform card)
+    {
+        _reveal.SetActive(reveal);
     }
 }

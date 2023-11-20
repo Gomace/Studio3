@@ -10,8 +10,6 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private TMP_Text _name;
     
     [SerializeField] private Image _card, _type1, _type2, _role;
-    
-    [SerializeField] private GameObject _reveal;
 
     [SerializeField] private Color _normal = new Color(255, 255, 255, 255),
                                     _hover = new Color(150, 150, 150, 255) ;
@@ -21,7 +19,7 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void OnEnable() => CollectionMenu.onCollectionLoad += LoadInfo;
     private void OnDisable() => CollectionMenu.onCollectionLoad -= LoadInfo;
 
-    private void LoadInfo()
+    private void LoadInfo() // connect details to overview
     {
         if (!_cBase)
             return;
@@ -37,11 +35,11 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         _card.color = _hover;
-        _reveal.SetActive(true);
+        //_reveal.SetActive(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {
         _card.color = _normal;
-        _reveal.SetActive(false);
+        //_reveal.SetActive(false);
     }
 }
