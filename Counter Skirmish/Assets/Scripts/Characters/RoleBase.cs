@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Role", menuName = "Role")]
+[CreateAssetMenu(fileName = "Role", menuName = "CouSki/Role")]
 public class RoleBase : ScriptableObject
 {
     [SerializeField] private string _name;

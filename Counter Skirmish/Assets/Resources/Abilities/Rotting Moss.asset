@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
   m_Name: Rotting Moss
   m_EditorClassIdentifier: 
-  name: Rotting Moss
-  description: 
-  type: 9
-  power: 100
-  cooldown: 8
-  resource: 80
+  _name: Rotting Moss
+  _description: 
+  _icon: {fileID: 0}
+  _type: {fileID: 0}
+  _power: 0
+  _cooldown: 0
+  _resource: 0

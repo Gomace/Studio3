@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Type")]
+[CreateAssetMenu(fileName = "Type", menuName = "CouSki/Type")]
 public class TypeBase : ScriptableObject
 {
     [SerializeField] private string _name;

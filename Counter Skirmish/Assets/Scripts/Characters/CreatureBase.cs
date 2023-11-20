@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Creature", menuName = "Creature")]
+[CreateAssetMenu(fileName = "Creature", menuName = "CouSki/Creature")]
 public class CreatureBase : ScriptableObject
 {
     [SerializeField] private string _name;

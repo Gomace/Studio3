@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Food", menuName = "Item/Food")]
+[CreateAssetMenu(fileName = "Food", menuName = "CouSki/Item/Food")]
 public class Food : ItemBase
 {
     public ItemBase Base { get; set; }

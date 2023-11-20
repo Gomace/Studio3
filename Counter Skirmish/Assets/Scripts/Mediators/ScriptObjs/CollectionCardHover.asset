@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
-  m_Name: Fireball
+  m_Script: {fileID: 11500000, guid: eb5f49bfdead91b49b19b2e75908fb94, type: 3}
+  m_Name: CollectionCardHover
   m_EditorClassIdentifier: 
-  _name: Fireball
-  _description: 
-  _icon: {fileID: 0}
-  _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 0
-  _cooldown: 0
-  _resource: 0
+  _reveal: {fileID: 0}
+  _hover: {fileID: 0}

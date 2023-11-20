@@ -9,7 +9,7 @@ public class CollectionMenu : MonoBehaviour
     public static event OnCollectionLoad onCollectionLoad;
     
     [SerializeField] private RectTransform _filters, _cards;
-    [SerializeField] private GameObject _reveal, _hover;
+    [SerializeField] private GameObject _hover, _popUp;
     public List<string> _keywords;
 
     private void OnEnable() => LoadCollection();
@@ -34,8 +34,8 @@ public class CollectionMenu : MonoBehaviour
         //LoadCollection();
     }
 
-    public void CardHover(bool reveal, RectTransform card)
+    public void CardHover(bool reveal, RectTransform card) //HoverBase will replace this?
     {
-        _reveal.SetActive(reveal);
+        _hover.SetActive(reveal);
     }
 }

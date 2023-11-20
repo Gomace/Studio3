@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Tool", menuName = "Item/Tool")]
+[CreateAssetMenu(fileName = "Tool", menuName = "CouSki/Item/Tool")]
 public class Tool : ItemBase
 {
     public ItemBase Base { get; set; }

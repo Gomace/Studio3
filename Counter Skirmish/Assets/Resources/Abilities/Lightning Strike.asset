@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
   m_Name: Lightning Strike
   m_EditorClassIdentifier: 
-  name: Lightning Strike
-  description: 
-  type: 6
-  power: 90
-  cooldown: 7
-  resource: 65
+  _name: Lightning Strike
+  _description: 
+  _icon: {fileID: 0}
+  _type: {fileID: 0}
+  _power: 0
+  _cooldown: 0
+  _resource: 0
