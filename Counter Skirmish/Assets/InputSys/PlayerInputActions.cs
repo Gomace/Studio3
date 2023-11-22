@@ -517,6 +517,54 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""ThomasTesting"",
+            ""id"": ""8e8c2cc2-b7e0-47c6-85f3-982755c7d10d"",
+            ""actions"": [
+                {
+                    ""name"": ""FireButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""9aeaf935-8edd-415e-bf24-d94722b82f4a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FireOff"",
+                    ""type"": ""Button"",
+                    ""id"": ""772c9034-4e09-4c13-9100-d3e1ae7972b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ced32142-a7b7-4a5e-bb38-472c472b892e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b70e695-287a-414f-b264-a52974e1dc5c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FireOff"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -567,6 +615,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Collection_Collection = m_Collection.FindAction("Collection", throwIfNotFound: true);
         m_Collection_Exit = m_Collection.FindAction("Exit", throwIfNotFound: true);
         m_Collection_Scroll = m_Collection.FindAction("Scroll", throwIfNotFound: true);
+        // ThomasTesting
+        m_ThomasTesting = asset.FindActionMap("ThomasTesting", throwIfNotFound: true);
+        m_ThomasTesting_FireButton = m_ThomasTesting.FindAction("FireButton", throwIfNotFound: true);
+        m_ThomasTesting_FireOff = m_ThomasTesting.FindAction("FireOff", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -881,6 +933,47 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public CollectionActions @Collection => new CollectionActions(this);
+
+    // ThomasTesting
+    private readonly InputActionMap m_ThomasTesting;
+    private IThomasTestingActions m_ThomasTestingActionsCallbackInterface;
+    private readonly InputAction m_ThomasTesting_FireButton;
+    private readonly InputAction m_ThomasTesting_FireOff;
+    public struct ThomasTestingActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public ThomasTestingActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @FireButton => m_Wrapper.m_ThomasTesting_FireButton;
+        public InputAction @FireOff => m_Wrapper.m_ThomasTesting_FireOff;
+        public InputActionMap Get() { return m_Wrapper.m_ThomasTesting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ThomasTestingActions set) { return set.Get(); }
+        public void SetCallbacks(IThomasTestingActions instance)
+        {
+            if (m_Wrapper.m_ThomasTestingActionsCallbackInterface != null)
+            {
+                @FireButton.started -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireButton;
+                @FireButton.performed -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireButton;
+                @FireButton.canceled -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireButton;
+                @FireOff.started -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireOff;
+                @FireOff.performed -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireOff;
+                @FireOff.canceled -= m_Wrapper.m_ThomasTestingActionsCallbackInterface.OnFireOff;
+            }
+            m_Wrapper.m_ThomasTestingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @FireButton.started += instance.OnFireButton;
+                @FireButton.performed += instance.OnFireButton;
+                @FireButton.canceled += instance.OnFireButton;
+                @FireOff.started += instance.OnFireOff;
+                @FireOff.performed += instance.OnFireOff;
+                @FireOff.canceled += instance.OnFireOff;
+            }
+        }
+    }
+    public ThomasTestingActions @ThomasTesting => new ThomasTestingActions(this);
     private int m_PCSchemeIndex = -1;
     public InputControlScheme PCScheme
     {
@@ -921,5 +1014,10 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnCollection(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+    }
+    public interface IThomasTestingActions
+    {
+        void OnFireButton(InputAction.CallbackContext context);
+        void OnFireOff(InputAction.CallbackContext context);
     }
 }
