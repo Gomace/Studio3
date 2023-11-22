@@ -495,6 +495,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "ThomasTesting",
+            "id": "8e8c2cc2-b7e0-47c6-85f3-982755c7d10d",
+            "actions": [
+                {
+                    "name": "FireButton",
+                    "type": "Button",
+                    "id": "9aeaf935-8edd-415e-bf24-d94722b82f4a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "FireOff",
+                    "type": "Button",
+                    "id": "772c9034-4e09-4c13-9100-d3e1ae7972b9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ced32142-a7b7-4a5e-bb38-472c472b892e",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b70e695-287a-414f-b264-a52974e1dc5c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FireOff",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

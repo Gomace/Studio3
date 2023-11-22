@@ -47,28 +47,15 @@ public class SpreadingFireSystemVFX : MonoBehaviour
     }
     private void OnTriggerEnter (Collider other)
     {
-        if (other.CompareTag("Tool") && onFire == true && !other.transform.GetChild(0).gameObject.activeInHierarchy && timer <= 0 && other.gameObject)
+        if (other.CompareTag("Tool") && onFire == true && !other.transform.GetChild(0).gameObject.activeInHierarchy && timer <= 0 /*&& other.gameObject*/)
         {
             
-
-            Debug.Log("CollidedSpreadAbove");
             // If the object I collide with has the tag "Tool" and I am on fire and the first child of the other object is not active and the timer is less than 0 then:
             // Activate the first and second child of the object I collided with
  
             other.transform.GetChild(0).gameObject.SetActive(true);
 
             other.transform.GetChild(1).gameObject.SetActive(true);
-            
-            //BoxCollider child0Collider = transform.GetChild(0).gameObject.GetComponent<BoxCollider>();
-            //child0Collider.enabled = true;
-
-            //BoxCollider child1Collider = transform.GetChild(1).gameObject.GetComponent<BoxCollider>();
-            //child1Collider.enabled = true;
-
-            // Get my collider and enable it
-            //BoxCollider myCollider = GetComponent<BoxCollider>();
-            //myCollider.enabled = true;'
-
         }
      
         if (other.CompareTag("Tool") && other.transform.GetChild(0).gameObject.activeInHierarchy)
@@ -78,77 +65,5 @@ public class SpreadingFireSystemVFX : MonoBehaviour
             onFire = true;
             
         }
-
-
-            
-        /*if (other.transform.GetChild(0).gameObject.activeInHierarchy && timer <= -1)
-        {
-                // if the first child of the other object is active and the timer is less than or equal to -1
-                // Remove the fire
-                onFire = false;
-        }*/
-
-        /*if (other.transform.GetChild(0).gameObject.activeInHierarchy && timer > 0)
-        {
-            // If the child of the other object is active and is more than 0
-            // set it on fire.
-            onFire = true;
-        }*/
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-
-        /*if (other.CompareTag("Palisade") && onFire == true && other.transform.GetChild(0).gameObject.activeInHierarchy && other.gameObject)
-        {
-            Destroy(other);
-        }*/
-    }
-
-    /*private void OnTriggerStay(Collider other)
-{
-    if (other.CompareTag("Tool") && onFire == true && !other.transform.GetChild(0).gameObject.activeInHierarchy && timer <= 0)
-    {
-        Debug.Log("HelloWorld");
-
-        other.transform.GetChild(0).gameObject.SetActive(true);
-
-
-        //transform.gameObject.SetActive(false);
-        //other.transform.gameObject.SetActive(false);
-
-    }
-
-    if (other.transform.GetChild(0).gameObject.activeInHierarchy && timer <= -1)
-    {
-        onFire = false;
-
-    }
-
-    if (other.transform.GetChild(0).gameObject.activeInHierarchy && timer > 0)
-    {
-        onFire = true;
-    }
-}*/
-
-    /*if (other.CompareTag("Tool") && onFire == true && !other.transform.GetChild(0).gameObject.activeInHierarchy && timerOnOff == true && timer == 0.1f)
-{
-    Debug.Log("HelloWorld");
-    Debug.Log(transform.childCount);
-
-
-    other.transform.GetChild(0).gameObject.SetActive(true);
-    Debug.Log(transform.GetChild(0).name);
-
-    //transform.gameObject.SetActive(false);
-    //other.transform.gameObject.SetActive(false);
-
-}
-
-if (other.transform.GetChild(0).gameObject.activeInHierarchy)
-{
-    onFire = true;
-}*/
-
+     }
 }

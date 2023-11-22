@@ -1,32 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UniversalTestScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] fire;
+
+    public void RemoveFire()
     {
-        
+        foreach (GameObject decal in fire)
+            decal.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!this.CompareTag("Palisade"))
-        {
-            Debug.Log("PalisadeColided");
-            Debug.Log(other.name);
-
-            this.gameObject.SetActive(false);
-
-            
-        }
-    }
-
 }

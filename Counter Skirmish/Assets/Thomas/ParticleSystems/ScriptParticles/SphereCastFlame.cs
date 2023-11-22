@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Jobs;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SphereCastFlame : MonoBehaviour
 {
@@ -34,10 +35,21 @@ public class SphereCastFlame : MonoBehaviour
         decalOn = false;
         decalTimer = 0.1f;
     }
+    void OnFireButton(InputValue value)
+    {
+        FirePSOn = true;
+    }
+
+    void OnFireOff(InputValue value)
+    {
+        FirePSOn = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
+
+        
 
         if (timerCheck == true)
             decalTimer -= Time.deltaTime;

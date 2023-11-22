@@ -13,7 +13,6 @@ public class NewRigidTest : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
             if (other.CompareTag("Rope"))
         {
             Debug.Log("FireInTheRope");
@@ -28,6 +27,8 @@ public class NewRigidTest : MonoBehaviour
             // and roll. The spherecollider is inactive on start.
             SphereCollider ropeCollider = other.GetComponent<SphereCollider>();
             ropeCollider.enabled = true;
+
+            //other.GetComponent<UniversalTestScript>().RemoveFire();
 
         }
     }
