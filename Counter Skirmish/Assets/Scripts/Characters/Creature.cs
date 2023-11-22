@@ -29,8 +29,8 @@ public class Creature
     }
 
     public int MaxHealth => Mathf.FloorToInt((Base.MaxHealth * Level) / 100f) + 10;
-    public int Attack => Mathf.FloorToInt((Base.Attack * Level) / 100f) + 5;
-    public int Magic => Mathf.FloorToInt((Base.Magic * Level) / 100f) + 5;
+    public int Physical => Mathf.FloorToInt((Base.Physical * Level) / 100f) + 5;
+    public int Magical => Mathf.FloorToInt((Base.Magical * Level) / 100f) + 5;
     public int Defense => Mathf.FloorToInt((Base.Defense * Level) / 100f) + 5;
     public int Resistance => Mathf.FloorToInt((Base.Resistance * Level) / 100f) + 5;
     public int Speed => Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5;

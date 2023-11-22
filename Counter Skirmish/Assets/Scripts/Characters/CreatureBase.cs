@@ -16,7 +16,7 @@ public class CreatureBase : ScriptableObject
     [SerializeField] private RoleBase _role;
 
     // BASE STATS
-    [SerializeField] private int _maxHealth, _attack, _magic, _defense, _resistance, _speed;
+    [SerializeField] private int _maxHealth, _physical, _magical, _defense, _resistance, _speed;
 
     [SerializeField] private List<LearnableAbility> _learnableAbilities;
 
@@ -34,8 +34,8 @@ public class CreatureBase : ScriptableObject
     public RoleBase Role => _role;
     
     public int MaxHealth => _maxHealth;
-    public int Attack => _attack;
-    public int Magic => _magic;
+    public int Physical => _physical;
+    public int Magical => _magical;
     public int Defense => _defense;
     public int Resistance => _resistance;
     public int Speed => _speed;

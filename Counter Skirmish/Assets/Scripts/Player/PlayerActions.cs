@@ -30,6 +30,7 @@ public class PlayerActions : MonoBehaviour
             return;
     }*/
 
+    #region Actions
     private void OnCameraZoom(InputValue value) => camCont.CameraZoom(value.Get<float>());
     
     private void OnMenu() => gameManager.PauseMenu();
@@ -52,4 +53,5 @@ public class PlayerActions : MonoBehaviour
     {
         
     }
+    #endregion Actions
 }
