@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI Code.unity
-    guid: c3446a3fcc55ded48a32e91e0a7e5dda
+    path: Assets/Scenes/StartMenu.unity
+    guid: 576f5bae7828e8b40a1c2401da7a3247
   - enabled: 1
-    path: Assets/Scenes/CodeTesting.unity
-    guid: 6d6021a41fcf08b4a8b542e8821cb7ab
+    path: Assets/Scenes/Hub.unity
+    guid: e4855a5362d1dae49bdbc2e2347890b6
   - enabled: 1
-    path: Assets/Scenes/Thomas/ThomasTesting.unity
-    guid: 36f0b7b7d848d1244845c312264a3cf3
+    path: Assets/Scenes/Instances/Forest.unity
+    guid: ee42b60ac495d0d4f9b289769eca431f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a897259a4ad5a13499ec24091476074a, type: 2}

@@ -152,6 +152,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Hub"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c20c926-350c-40e1-984a-3320f6f619ca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hunt"",
+                    ""type"": ""Button"",
+                    ""id"": ""c98033f3-9eea-45c7-ad35-5d1f049092bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -308,6 +326,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Roster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2aca41ad-8510-4094-84cd-f1dc07cb1422"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Hub"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e99378a0-9080-4442-8171-d83b8f7add05"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -359,6 +399,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shop"",
+                    ""type"": ""Button"",
+                    ""id"": ""6cddcefc-10f0-4738-872e-4c2e0a6966a7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Instance"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e3b7363-450d-4446-b5af-35ae9723056f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4005cfc-85c7-4f66-800c-a90f1a62335d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -425,6 +492,50 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afd55003-932b-450d-ad2b-8d0c22bbc2f5"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""770b333b-566a-4af7-bb13-e22c03179a54"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf3eaf40-8a72-415a-8134-2f6cd6a13a0a"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Instance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e94dfc0-78ff-4a2c-9953-f2ee43c0ce14"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -602,6 +713,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Instance_Roster = m_Instance.FindAction("Roster", throwIfNotFound: true);
         m_Instance_Menu = m_Instance.FindAction("Menu", throwIfNotFound: true);
         m_Instance_CameraZoom = m_Instance.FindAction("CameraZoom", throwIfNotFound: true);
+        m_Instance_Hub = m_Instance.FindAction("Hub", throwIfNotFound: true);
+        m_Instance_Hunt = m_Instance.FindAction("Hunt", throwIfNotFound: true);
         // Hub
         m_Hub = asset.FindActionMap("Hub", throwIfNotFound: true);
         m_Hub_Move = m_Hub.FindAction("Move", throwIfNotFound: true);
@@ -609,6 +722,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Hub_Collection = m_Hub.FindAction("Collection", throwIfNotFound: true);
         m_Hub_Menu = m_Hub.FindAction("Menu", throwIfNotFound: true);
         m_Hub_CameraZoom = m_Hub.FindAction("CameraZoom", throwIfNotFound: true);
+        m_Hub_Shop = m_Hub.FindAction("Shop", throwIfNotFound: true);
+        m_Hub_Instance = m_Hub.FindAction("Instance", throwIfNotFound: true);
+        m_Hub_Start = m_Hub.FindAction("Start", throwIfNotFound: true);
         // Collection
         m_Collection = asset.FindActionMap("Collection", throwIfNotFound: true);
         m_Collection_QuickEquip = m_Collection.FindAction("QuickEquip", throwIfNotFound: true);
@@ -692,6 +808,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Instance_Roster;
     private readonly InputAction m_Instance_Menu;
     private readonly InputAction m_Instance_CameraZoom;
+    private readonly InputAction m_Instance_Hub;
+    private readonly InputAction m_Instance_Hunt;
     public struct InstanceActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -710,6 +828,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Roster => m_Wrapper.m_Instance_Roster;
         public InputAction @Menu => m_Wrapper.m_Instance_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_Instance_CameraZoom;
+        public InputAction @Hub => m_Wrapper.m_Instance_Hub;
+        public InputAction @Hunt => m_Wrapper.m_Instance_Hunt;
         public InputActionMap Get() { return m_Wrapper.m_Instance; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -761,6 +881,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
+                @Hub.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHub;
+                @Hub.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHub;
+                @Hub.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHub;
+                @Hunt.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
+                @Hunt.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
+                @Hunt.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
             }
             m_Wrapper.m_InstanceActionsCallbackInterface = instance;
             if (instance != null)
@@ -807,6 +933,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started += instance.OnCameraZoom;
                 @CameraZoom.performed += instance.OnCameraZoom;
                 @CameraZoom.canceled += instance.OnCameraZoom;
+                @Hub.started += instance.OnHub;
+                @Hub.performed += instance.OnHub;
+                @Hub.canceled += instance.OnHub;
+                @Hunt.started += instance.OnHunt;
+                @Hunt.performed += instance.OnHunt;
+                @Hunt.canceled += instance.OnHunt;
             }
         }
     }
@@ -820,6 +952,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Hub_Collection;
     private readonly InputAction m_Hub_Menu;
     private readonly InputAction m_Hub_CameraZoom;
+    private readonly InputAction m_Hub_Shop;
+    private readonly InputAction m_Hub_Instance;
+    private readonly InputAction m_Hub_Start;
     public struct HubActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -829,6 +964,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Collection => m_Wrapper.m_Hub_Collection;
         public InputAction @Menu => m_Wrapper.m_Hub_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_Hub_CameraZoom;
+        public InputAction @Shop => m_Wrapper.m_Hub_Shop;
+        public InputAction @Instance => m_Wrapper.m_Hub_Instance;
+        public InputAction @Start => m_Wrapper.m_Hub_Start;
         public InputActionMap Get() { return m_Wrapper.m_Hub; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -853,6 +991,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
+                @Shop.started -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
+                @Shop.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
+                @Shop.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
+                @Instance.started -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
+                @Instance.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
+                @Instance.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
+                @Start.started -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_HubActionsCallbackInterface = instance;
             if (instance != null)
@@ -872,6 +1019,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started += instance.OnCameraZoom;
                 @CameraZoom.performed += instance.OnCameraZoom;
                 @CameraZoom.canceled += instance.OnCameraZoom;
+                @Shop.started += instance.OnShop;
+                @Shop.performed += instance.OnShop;
+                @Shop.canceled += instance.OnShop;
+                @Instance.started += instance.OnInstance;
+                @Instance.performed += instance.OnInstance;
+                @Instance.canceled += instance.OnInstance;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -999,6 +1155,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRoster(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
+        void OnHub(InputAction.CallbackContext context);
+        void OnHunt(InputAction.CallbackContext context);
     }
     public interface IHubActions
     {
@@ -1007,6 +1165,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnCollection(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
+        void OnShop(InputAction.CallbackContext context);
+        void OnInstance(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
     public interface ICollectionActions
     {

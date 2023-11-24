@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -34,6 +33,8 @@ public class SceneLoader : MonoBehaviour
         if (testing)
             LoadTesting();
     }
+    
+    public void Quit() => Application.Quit();
     
     public void LoadScene(string sceneName) => StartCoroutine(LoadingScreen(sceneName));
     
