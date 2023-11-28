@@ -8,11 +8,9 @@ public class SpreadingFireSystemVFX : MonoBehaviour
     public bool onFire = false;
 
     // Timer between each grid activation
-    public float timer = 5f;
+    public float timer = 0.5f;
     // Bool to turn on and off the timer
     private bool timerOnOff = false;
-
-   
 
     private void Update()
     {

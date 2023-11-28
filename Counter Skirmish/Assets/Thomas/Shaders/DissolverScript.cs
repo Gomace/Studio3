@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DissolverScript : MonoBehaviour
+public class TextureChangeScript : MonoBehaviour
 {
     // The duration of how long it takes for the lerp to go from 0 to 1 
-    public float dissolveDuration = 5;
+    public float textureChangeDuration = 5;
     // The lerp amount, starting at 0.
-    public float dissolveStrength;
+    public float textureStrength;
 
     // A function that tells Unity to start running the code.
-    public void StartDissolver()
+    public void StartTextureChange()
     {
-        StartCoroutine(Dissolver());
+        StartCoroutine(textureChange());
     }
 
     // A Coroutine runs across multiple frames or until a contition is met
@@ -20,7 +20,7 @@ public class DissolverScript : MonoBehaviour
 
     //The update function will run this code every single frame, which will cost a lot of performance.
     //The coroutine can run the same code across multiple frames, allowing for better performance.
-    public IEnumerator Dissolver()
+    public IEnumerator textureChange()
     {
         // Since the texture change is running over a period of time, we need to keep track of
         // how long it takes.
@@ -32,7 +32,7 @@ public class DissolverScript : MonoBehaviour
 
         //I want this to run until the time I have set is over.
         // While the elapsed time is less than the dissolveDuration, run the following code:
-        while ( elapsedTime < dissolveDuration)
+        while ( elapsedTime < textureChangeDuration)
         {
             // Keeps track of how much time has passed. By writing += Time.deltaTime we count up by seconds.
             elapsedTime += Time.deltaTime;
@@ -41,11 +41,11 @@ public class DissolverScript : MonoBehaviour
             // We set elapsedTime over dissolve duration so that no matter how long the duration is
             //the lerp will always happen at the same rate. This means you can have as long or short duration as you want
             //and the effect will always be the same, it just takes longer or shorter.
-            dissolveStrength = Mathf.Lerp(0, 1, elapsedTime / dissolveDuration);
+            textureStrength = Mathf.Lerp(0, 1, elapsedTime / textureChangeDuration);
 
             // Here I access the dissolve strength property in my shader and set it as a float value. The SetFloat takes two values
             // (the reference we are trying to change, the number we want it to be.
-            dissolveMaterial.SetFloat("_DissolveStrength", dissolveStrength);
+            dissolveMaterial.SetFloat("_TextureStrength", textureStrength);
 
             // Rather than running this code every frame, I use a yield return null; statement to tell Unity when I want it to run
             // and when it should be paused saving performance. This tells Unity when to continue in the next frame.
@@ -60,7 +60,7 @@ public class DissolverScript : MonoBehaviour
         if (other.CompareTag("Fire"))
         {
             // If the Palisade collides with the tag "Fire", run the coroutine.
-            StartDissolver();
+            StartTextureChange();
 
         }
     }

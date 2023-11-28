@@ -5,43 +5,16 @@ using UnityEngine;
 public class DissolverScriptForPR : MonoBehaviour
 {
     // The duration of how long it takes for the lerp to go from 0 to 1 
-    public float dissolveDuration = 10;
+    public float textureChangeDuration = 10;
     // The lerp amount, starting at 0.
-    public float dissolveStrength;
-    //A timer that checks how 
-    //public float timerCheck = 0;
+    public float textureStrength;
 
-    //public bool onOff = false;
-
-    //public Color startColor;
-    //public Color endColor;
-
-    //Cause of the issues
-    //public Material startMaterial;
-    //public Material endMaterial;
-
-    /*Rigidbody rb;
-    public Rigidbody cubeRigidBody;*/
-
-    private void Start()
+    public void StartTextureChange()
     {
-        /*rb = this.GetComponent<Rigidbody>();
-
-        rb.useGravity = false;
-        rb.isKinematic = true;*/
-
-
-        //Cause of the issues
-        //rend = GetComponent<Renderer>();
-        //rend.material = startMaterial;
+        StartCoroutine(textureChange());
     }
 
-    public void StartDissolver()
-    {
-        StartCoroutine(Dissolver());
-    }
-
-    public IEnumerator Dissolver()
+    public IEnumerator textureChange()
     {
         float elapsedTime = 0;
 
@@ -50,19 +23,14 @@ public class DissolverScriptForPR : MonoBehaviour
 
         //Material lerpedMaterial;
 
-        while ( elapsedTime < dissolveDuration)
+        while ( elapsedTime < textureChangeDuration)
         {
             elapsedTime += Time.deltaTime;
 
             //timerCheck /= elapsedTime;
 
-            dissolveStrength = Mathf.Lerp(0, 1, elapsedTime / dissolveDuration);
-            dissolveMaterial.SetFloat("_DissolveStrength", dissolveStrength);
-
-            //lerpedColor = Color.Lerp(startColor, endColor, dissolveStrength);
-
-            //dissolveMaterial.SetColor("_BaseColor", lerpedColor);
-
+            textureStrength = Mathf.Lerp(0, 1, elapsedTime / textureChangeDuration);
+            dissolveMaterial.SetFloat("_TextureStrength", textureStrength);
 
             yield return null;
         }
@@ -73,7 +41,7 @@ public class DissolverScriptForPR : MonoBehaviour
     {
         if (other.CompareTag("Fire"))
         {
-            StartDissolver();
+            //Dissolver();
 
         }
     }

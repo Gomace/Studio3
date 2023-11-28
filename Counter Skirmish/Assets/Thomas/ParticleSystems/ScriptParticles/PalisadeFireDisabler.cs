@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class PalisadeFireDisabler : MonoBehaviour
 {
-    private bool isDead = false;
-    private Rigidbody palisadeRigidbody;
-
-    private GameObject palisade;
-
 
     private void OnTriggerExit(Collider other)
     {
