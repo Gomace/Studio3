@@ -12,7 +12,7 @@ public class InstanceActions : MonoBehaviour
     private void Awake()
     {
         if (!_settings)
-            Debug.Log("Missing inspector drag & drop reference. Please help :[");
+            Debug.Log($"Missing inspector drag & drop reference in {gameObject.name}. Please help :[");
 
         if (Camera.main != null)
             camCont = Camera.main.GetComponent<CameraController>();
