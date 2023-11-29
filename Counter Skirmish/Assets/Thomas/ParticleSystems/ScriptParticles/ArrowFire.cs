@@ -19,7 +19,7 @@ public class ArrowFire : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Fire"))
+        if (other.CompareTag("Flamethrower"))
         {
             // If the arrow collides with an object that has the tag "Fire"
             // the bool will be set to true and the particle system will activate
@@ -27,7 +27,7 @@ public class ArrowFire : MonoBehaviour
             arrowFire.SetActive(true);
         }   
 
-        if (other.CompareTag("Tool"))
+        if (other.CompareTag("Tool") && hasCaughtFire == true)
         {
             // If the arrow collides with an object that has the tag "Tool"
             // it will get the gameobject it collided with and activate its first child

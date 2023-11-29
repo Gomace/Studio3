@@ -13,6 +13,7 @@ TagManager:
   - Rope3
   - PrePlacedFire
   - Tool
+  - Flamethrower
   layers:
   - Default
   - TransparentFX

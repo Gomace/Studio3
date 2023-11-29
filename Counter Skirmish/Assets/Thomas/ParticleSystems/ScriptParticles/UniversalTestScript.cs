@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 public class UniversalTestScript : MonoBehaviour
 {
-    [SerializeField] private GameObject[] fire;
-
-    public void RemoveFire()
+    private void OnTriggerEnter(Collider other)
     {
-        foreach (GameObject decal in fire)
-            decal.SetActive(false);
+        Rigidbody cubeRigid;
+
+        if (other.CompareTag("Fire"))
+        {
+            cubeRigid = GetComponent<Rigidbody>();
+            cubeRigid.isKinematic = false;
+            cubeRigid.useGravity = true;
+        }
     }
 }

@@ -10,8 +10,6 @@ public class SphereCastFlame : MonoBehaviour
     [SerializeField] float radius;
     //Makes me able to change the max distance of the ray in-engine
     [SerializeField] float maxDistance;
-    //Makes me able to change the layers it should collide with or ignore in-engine
-    [SerializeField] LayerMask layerMask;
     //Lets me manipulate the fire particle system within the script
     [SerializeField] GameObject FirePS;
     //A bool I will use to turn the particle system on and off to test the raycast

@@ -8,17 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: NewPalisade_Mat
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ValidKeywords:
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
+  m_Shader: {fileID: -6465566751694194690, guid: bf284978984f91e40b43f8012c64535a, type: 3}
+  m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap:
-    RenderType: Opaque
+  stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -63,6 +60,30 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_13cfe69751f04116950f4745892977b3_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 391b6aae156feb94687a80b814b52f79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7867177cc5c047cc86a9d4b8e2f59f0d_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 61f9d2ca813b558419293a822c4be7ca, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_8b8c421da74343b082dffaf5ba406a0c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2dac1a83a75a8cc408ee39ea37c9a8cb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_a8fab2ff01ab488a82ddadcb88bd37a7_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1a9b1d07711b1e641b825c08a8c94698, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_de8f3ce39f024fe19e9240b153129481_Texture_1:
+        m_Texture: {fileID: 2800000, guid: f4c9abe1248e123429238f56ddcacb32, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_fa7b0465241f45f9ba8356cdb307acb6_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 1ad001d82a2456c4ab612a64893714b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -98,6 +119,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -105,6 +127,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TextureStrength: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
