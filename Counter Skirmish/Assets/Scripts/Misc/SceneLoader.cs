@@ -57,7 +57,7 @@ public class SceneLoader : MonoBehaviour
             if (bar)
                 bar.fillAmount = progress;
             if (progressText)
-                progressText.text = progress * 100f + "%";
+                progressText.text = (int)(progress * 100f) + "%";
             
             if (loadingIndicator)
                 loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);

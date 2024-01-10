@@ -3704,10 +3704,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _original: {fileID: 626643834}
-  _stages: 30
-  _stageReduce: 3
+  _stages: 7
+  _stageMore: 0
   _splits: 3
-  _splitLess: 5
+  _splitLess: 0
   _scaleMin: 0.8
   _scaleMax: 1.3
   _angleMin: -45

@@ -8,7 +8,7 @@ public class RecursiveInstantiator : MonoBehaviour
     
     [Header("Random branch cutoff:")]
     [SerializeField] private int _stages = 5;
-    [SerializeField] private int _stageReduce;
+    [SerializeField] private int _stageMore;
 
     [Header("Random split amount:")]
     [SerializeField] private int _splits = 2;
@@ -89,7 +89,7 @@ public class RecursiveInstantiator : MonoBehaviour
 
     private int StageCutoff(int stage)
     {
-        int c = Random.Range(1, 2+_stageReduce); // Biased towards shorter lengths
+        int c = Random.Range(1, 3+_stageMore); // Biased towards shorter lengths
         switch (c)
         {
             case 1:
@@ -101,7 +101,7 @@ public class RecursiveInstantiator : MonoBehaviour
     
     private int LessSplits(int i) // Makes the lightning split less often
     {
-        int c = Random.Range(1, 2+_splitLess); // Biased towards not splitting
+        int c = Random.Range(1, 3+_splitLess); // Biased towards not splitting
         switch (c)
         {
             case 1:
