@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bob
   m_EditorClassIdentifier: 
   _name: Bob
-  _description: 
+  _description: Bob de boop.
   _icon: {fileID: 0}
   _card: {fileID: 21300000, guid: 6777986ec47ce0e4e86a3de76d18a242, type: 3}
   _splash: {fileID: 0}
@@ -21,10 +21,10 @@ MonoBehaviour:
   _type1: {fileID: 11400000, guid: a618ebd92dda27d4bbe2340cd6ba69ae, type: 2}
   _type2: {fileID: 11400000, guid: 42c976234de47c14d93395004b424616, type: 2}
   _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}
-  _maxHealth: 0
-  _attack: 0
-  _magic: 0
-  _defense: 0
-  _resistance: 0
-  _speed: 0
+  _maxHealth: 1200
+  _physical: 110
+  _magical: 140
+  _defense: 40
+  _resistance: 50
+  _speed: 105
   _learnableAbilities: []

@@ -22,10 +22,10 @@ MonoBehaviour:
   _type1: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
   _type2: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
   _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
-  _maxHealth: 0
-  _attack: 0
-  _magic: 0
-  _defense: 0
-  _resistance: 0
-  _speed: 0
+  _maxHealth: 2000
+  _physical: 100
+  _magical: 20
+  _defense: 80
+  _resistance: 60
+  _speed: 90
   _learnableAbilities: []
