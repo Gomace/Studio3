@@ -6,26 +6,26 @@ using UnityEngine;
 
 public class InstanceSystem : MonoBehaviour
 {
-    [SerializeField] private InstanceUnit playerUnit;
-    [SerializeField] private InstanceUnit enemyUnit;
-    [SerializeField] private CharacterHud playerHud;
-    [SerializeField] private CharacterHud enemyHud;
-    //[SerializeField] private InstanceDialog dialogBox;
+    [SerializeField] private InstanceUnit _playerUnit;
+    [SerializeField] private InstanceUnit _enemyUnit;
+    [SerializeField] private CharacterHud _playerHud;
+    [SerializeField] private CharacterHud _enemyHud;
+    //[SerializeField] private InstanceDialog _dialogBox;
 
-    //private InstanceState state;
+    //private InstanceState _state;
     
     //private void Start() => SetupInstance(); // StartCoroutine(SetupInstance())
 
     public void SetupInstance() // IEnumerator
     {
-        playerUnit.Setup();
-        enemyUnit.Setup();
-        playerHud.SetData(playerUnit.Creature);
-        enemyHud.SetData(enemyUnit.Creature);
+        _playerUnit.Setup();
+        _enemyUnit.Setup();
+        _playerHud.SetData(_playerUnit.Creature);
+        _enemyHud.SetData(_enemyUnit.Creature);
 
-        //dialogBox.SetAbilities(playerUnit.Creature.Abilities);
+        //_dialogBox.SetAbilities(_playerUnit.Creature.Abilities);
 
-        /*yield return dialogBox.TypeDialog($"A wild {enemyUnit.Creature.Base.Name} appeared.");
+        /*yield return _dialogBox.TypeDialog($"A wild {_enemyUnit.Creature.Base.Name} appeared.");
         yield return new WaitForSeconds(1f);
 
         PlayerAction();*/
@@ -33,8 +33,8 @@ public class InstanceSystem : MonoBehaviour
 
     /*private void PlayerAction()
     {
-        state = InstanceState.PlayerAction;
-        StartCoroutine(dialogBox.TypeDialog("Choose an action."));
-        dialogBox.EnableActionSelector(true);
+        _state = InstanceState.PlayerAction;
+        StartCoroutine(_dialogBox.TypeDialog("Choose an action."));
+        _dialogBox.EnableActionSelector(true);
     }*/
 }

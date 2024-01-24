@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac85e7944cad53c4e840f0fdb460ea4d, type: 3}
   m_Name: Coffee
   m_EditorClassIdentifier: 
-  name: Coffee
-  description: 'An effective energy booster.
-
-
-    Gain 10% faster movement'
-  icon: {fileID: 0}
-  quality: 2
-  price: 175
+  _name: Coffee
+  _description: 
+  _icon: {fileID: 0}
+  _quality: 0
+  _price: 250

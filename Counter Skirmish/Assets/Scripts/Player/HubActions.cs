@@ -6,8 +6,8 @@ public class HubActions : MonoBehaviour
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private GameObject _inventory, _collection, _shop, _settings;
     
-    private CameraController camCont;
-    private LayerMask useLayer = 1 << 6;
+    private CameraController _camCont;
+    private LayerMask _useLayer = 1 << 6;
 
     private void Awake()
     {
@@ -15,11 +15,11 @@ public class HubActions : MonoBehaviour
             Debug.Log("Missing inspector drag & drop reference. Please help :[");
 
         if (Camera.main != null)
-            camCont = Camera.main.GetComponent<CameraController>();
+            _camCont = Camera.main.GetComponent<CameraController>();
     }
 
     #region Actions
-    private void OnCameraZoom(InputValue value) => camCont.CameraZoom(value.Get<float>());
+    private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());
     
     private void OnInventory() => _inventory.SetActive(!_inventory.activeSelf);
 

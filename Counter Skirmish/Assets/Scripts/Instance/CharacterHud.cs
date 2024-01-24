@@ -14,8 +14,8 @@ public class CharacterHud : MonoBehaviour
     public void SetData(Creature creature)
     {
         _nameText.text = creature.Base.Name;
-        _levelText.text = creature._level.ToString();
-        _healthBar.SetHealth((float) creature._health / creature.MaxHealth);
+        _levelText.text = creature.Level.ToString();
+        _healthBar.SetHealth((float) creature.Health / creature.MaxHealth);
     }
 
     private void LateUpdate()
