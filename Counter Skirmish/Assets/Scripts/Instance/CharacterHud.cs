@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CharacterHud : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI nameText, levelText;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private TMP_Text _nameText, _levelText;
+    [SerializeField] private HealthBar _healthBar;
 
     private Camera _mainCam;
 
@@ -13,9 +13,9 @@ public class CharacterHud : MonoBehaviour
     
     public void SetData(Creature creature)
     {
-        nameText.text = creature.Base.Name;
-        levelText.text = creature.Level.ToString();
-        healthBar.SetHealth((float) creature.Health / creature.MaxHealth);
+        _nameText.text = creature.Base.Name;
+        _levelText.text = creature._level.ToString();
+        _healthBar.SetHealth((float) creature._health / creature.MaxHealth);
     }
 
     private void LateUpdate()

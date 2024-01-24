@@ -12,9 +12,11 @@ public class CollectionMenu : MonoBehaviour
     //[SerializeField] private RectTransform _filters, _cards;
     //[SerializeField] private GameObject _popUp;
     [SerializeField] private RosterEquipper[] _slots = new RosterEquipper[6]; // Roster slots
-    public List<string> _keywords;
+    private List<string> _keywords;
     
     private CreatureBase _currentCreature;
+
+    public List<string> Keywords => _keywords;
 
     private void OnEnable() => LoadCollection();
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21f94ca498c02f246bbba853e98a2126, type: 3}
-  m_Name: Food
+  m_Name: Licorice
   m_EditorClassIdentifier: 
   name: Licorice
   description: EWewe

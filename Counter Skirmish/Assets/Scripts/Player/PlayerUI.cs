@@ -11,7 +11,7 @@ public class PlayerUI : MonoBehaviour
     public void SetData(Creature creature)
     {
         iconDisplay.sprite = creature.Base.Icon;
-        levelText.text = creature.Level.ToString();
-        healthBar.SetHealth((float) creature.Health / creature.MaxHealth);
+        levelText.text = creature._level.ToString();
+        healthBar.SetHealth((float) creature._health / creature.MaxHealth);
     }
 }
