@@ -245,12 +245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b18aa1c5625004f80ce9e50945dbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 1566536202}
-  bar: {fileID: 1566536206}
-  progressText: {fileID: 1566536205}
-  loadingText: {fileID: 1566536204}
-  loadingIndicator: {fileID: 1566536203}
-  testing: 0
+  _loadingScreen: {fileID: 1566536202}
+  _bar: {fileID: 1566536206}
+  _progressTxt: {fileID: 1566536205}
+  _loadingTxt: {fileID: 1566536204}
+  _loadingIndicator: {fileID: 1566536203}
+  _testing: 0
 --- !u!1 &574474533
 GameObject:
   m_ObjectHideFlags: 0

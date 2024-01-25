@@ -16,13 +16,13 @@ public class CollectionMenu : MonoBehaviour
     
     private CreatureBase _currentCreature;
 
-    public List<string> Keywords => _keywords;
+    public List<string> Keywords => _keywords; // Filters
 
-    private void OnEnable() => LoadCollection();
+    private void OnEnable() => LoadCollection(); // Load cards on window open
 
     public void LoadCollection() => onCollectionLoad?.Invoke(); // Load all cards
     
-    public void SelectFilter(string keyword) // Find filter from click
+    public void SelectFilter(string keyword) // Add filter
     {
         if (EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>().isOn)
             _keywords.Add(keyword);
@@ -38,13 +38,13 @@ public class CollectionMenu : MonoBehaviour
     }*/
     public void AddCreatureToRoster(CreatureBase creature) // Add Creature to slot
     {
-        foreach (RosterEquipper slot in _slots)
+        foreach (RosterEquipper slot in _slots) // Check creature is not already equipped
         {
             if (slot.CBase == creature)
                 return;
         }
 
-        foreach (RosterEquipper slot in _slots)
+        foreach (RosterEquipper slot in _slots) // Add creature to potentially empty slot
         {
             if (slot.CBase == null)
             {
@@ -56,7 +56,7 @@ public class CollectionMenu : MonoBehaviour
         LoadCollection();
     }
     
-    public void DetailsScreen(CreatureBase creature) // Get details from card
+    public void DetailsScreen(CreatureBase creature) // Open that creature's detail screen
     {
         _detailsMenu.SetActive(true);
         _detailsMenu.GetComponent<DetailsMenu>().CBase = creature;

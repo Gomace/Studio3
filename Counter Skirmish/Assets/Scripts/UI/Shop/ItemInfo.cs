@@ -10,7 +10,7 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Color _redPrice = new Color(245, 31, 31, 255),
                                     _yelPrice = new Color(255, 218, 0, 255);
     
-    private int gold = 100;
+    private int gold = 100; //temporary
     
     public ItemBase Base => _iBase;
 

@@ -6,31 +6,31 @@ using TMPro;
 
 public class SceneLoader : MonoBehaviour
 {
-    [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private Image bar;
-    [SerializeField] private TMP_Text progressText, loadingText;
-    [SerializeField] private RectTransform loadingIndicator;
+    [SerializeField] private GameObject _loadingScreen;
+    [SerializeField] private Image _bar;
+    [SerializeField] private TMP_Text _progressTxt, _loadingTxt;
+    [SerializeField] private RectTransform _loadingIndicator;
     
     [Header("Are you testing the loading screen?")]
-    [SerializeField] private bool testing = false;
+    [SerializeField] private bool _testing = false;
     
-    float delay = 0, dots = 0;
+    private float _delay = 0, _dots = 0;
     
     private void Awake()
     {
-        if (!loadingScreen)
+        if (!_loadingScreen)
             Debug.Log("Loading Screen component missing from " + gameObject.name);
-        if (!bar)
+        if (!_bar)
             Debug.Log("Slider component missing from " + gameObject.name);
-        if (!progressText)
+        if (!_progressTxt)
             Debug.Log("Progress Text component missing from " + gameObject.name);
         
-        loadingText.text = "Loading";
+        _loadingTxt.text = "Loading";
     }
     
     private void Update()
     {
-        if (testing)
+        if (_testing)
             LoadTesting();
     }
     
@@ -42,41 +42,41 @@ public class SceneLoader : MonoBehaviour
     {
         AsyncOperation loading = SceneManager.LoadSceneAsync(sceName);
 
-        if (!loadingScreen)
+        if (!_loadingScreen)
             yield break;
         
-        loadingScreen.SetActive(true);
+        _loadingScreen.SetActive(true);
         
-        loadingText.text = "Loading";
-        delay = dots = 0;
+        _loadingTxt.text = "Loading";
+        _delay = _dots = 0;
         while (!loading.isDone)
         {
             float progress = Mathf.Clamp01(loading.progress / 0.9f);
             Debug.Log(progress);
             
-            if (bar)
-                bar.fillAmount = progress;
-            if (progressText)
-                progressText.text = (int)(progress * 100f) + "%";
+            if (_bar)
+                _bar.fillAmount = progress;
+            if (_progressTxt)
+                _progressTxt.text = (int)(progress * 100f) + "%";
             
-            if (loadingIndicator)
-                loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
+            if (_loadingIndicator)
+                _loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
             
-            if (delay > 1f)
+            if (_delay > 1f)
             {
-                if (dots < 3f)
+                if (_dots < 3f)
                 {
-                    loadingText.text += ".";
-                    dots++;
+                    _loadingTxt.text += ".";
+                    _dots++;
                 }
                 else
                 {
-                    loadingText.text = "Loading";
-                    dots = 0;
+                    _loadingTxt.text = "Loading";
+                    _dots = 0;
                 }
-                delay = 0;
+                _delay = 0;
             }
-            delay += Time.deltaTime;
+            _delay += Time.deltaTime;
 
             yield return null;
         }
@@ -84,33 +84,33 @@ public class SceneLoader : MonoBehaviour
 
     private void LoadTesting()
     {
-        delay = Mathf.Clamp01(delay);
-        Debug.Log(delay);
+        _delay = Mathf.Clamp01(_delay);
+        Debug.Log(_delay);
             
-        if (bar)
-            bar.fillAmount = delay;
+        if (_bar)
+            _bar.fillAmount = _delay;
 
-        float progress = delay * 100f;
-        if (progressText)
-            progressText.text = (int)progress + "%";
+        float progress = _delay * 100f;
+        if (_progressTxt)
+            _progressTxt.text = (int)progress + "%";
         
-        if (loadingIndicator)
-            loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
+        if (_loadingIndicator)
+            _loadingIndicator.Rotate(Vector3.forward, 180f * Time.deltaTime);
 
-        if (delay >= 1f)
+        if (_delay >= 1f)
         {
-            if (dots < 3f)
+            if (_dots < 3f)
             {
-                loadingText.text += ".";
-                dots++;
+                _loadingTxt.text += ".";
+                _dots++;
             }
             else
             {
-                loadingText.text = "Loading";
-                dots = 0;
+                _loadingTxt.text = "Loading";
+                _dots = 0;
             }
-            delay = 0;
+            _delay = 0;
         }
-        delay += Time.deltaTime;
+        _delay += Time.deltaTime;
     }
 }

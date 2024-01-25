@@ -2,34 +2,31 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
-using TMPro;
 
+[RequireComponent(typeof(SceneLoader))]
 public class GameManager : MonoBehaviour
 {
-    public GameObject player, menuScreen;
     [SerializeField] private SceneLoader _sceneLoader;
-    
-    public bool startPaused;
-    [HideInInspector] public bool disabled;
 
-    private void Awake()
-    {
-        if (GetComponent<SceneLoader>())
-            _sceneLoader = GetComponent<SceneLoader>();
-    }
+    [HideInInspector] public bool Disable { get; set; }
+    
+    public GameObject Player { get; set; }
+    public GameObject MenuScreen { get; set; }
+    public bool StartPaused { get; set; }
+
+    private void Awake() => _sceneLoader = GetComponent<SceneLoader>();
 
     private void Start()
     {
         Screen.SetResolution(1920, 1080, true);
         
-        if (startPaused)
+        if (StartPaused)
              Pause();
     }
     
     /*void Update()
     {
-        if (!menuScreen.activeSelf)
+        if (!MenuScreen.activeSelf)
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
                 Time.timeScale = 1;
@@ -78,26 +75,26 @@ public class GameManager : MonoBehaviour
 
     public void PauseMenu()
     {
-        if (!menuScreen.activeSelf)
+        if (!MenuScreen.activeSelf)
             Pause();
         else
             Play();
     }
 
-    public void Disabled(bool state) => disabled = state;
+    public void Disabled(bool state) => Disable = state;
 
     #region Menu
     private void Pause()
     {
         MenuToggle(true);
         Time.timeScale = 0;
-        disabled = true;
+        Disable = true;
     }
     public void Play()
     {
         MenuToggle(false);
         Time.timeScale = 1;
-        disabled = false;
+        Disable = false;
     }
 
     public void Restart()
@@ -110,12 +107,12 @@ public class GameManager : MonoBehaviour
     
     private void MenuToggle(bool state)
     {
-        menuScreen.SetActive(state);
+        MenuScreen.SetActive(state);
         
         if (state)
         {
-            menuScreen.transform.GetChild(0).gameObject.SetActive(true);
-            menuScreen.transform.GetChild(1).gameObject.SetActive(false);
+            MenuScreen.transform.GetChild(0).gameObject.SetActive(true);
+            MenuScreen.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
     #endregion Menu

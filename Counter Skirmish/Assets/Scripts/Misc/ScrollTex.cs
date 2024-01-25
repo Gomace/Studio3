@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,21 @@ using UnityEngine.Serialization;
 public class ScrollTex : MonoBehaviour
 {
     // by Jimmy Vegas on YouTube
-    public float scrollX = 0.5f;
-    public float scrollY = 0.5f;
+    private Renderer _renderer;
     
-    void Update()
+    private float _scrollX = 0.5f;
+    private float _scrollY = 0.5f;
+
+    public float ScrollX => _scrollX;
+    public float ScrollY => _scrollY;
+
+    private void Awake() => _renderer = GetComponent<Renderer>();
+        
+
+    private void Update()
     {
-        float offsetX = Time.time * scrollX;
-        float offsetY = Time.time * scrollY;
-        GetComponent<Renderer>().material.mainTextureOffset = new Vector2(offsetX, offsetY);
+        float offsetX = Time.time * _scrollX;
+        float offsetY = Time.time * _scrollY;
+        _renderer.material.mainTextureOffset = new Vector2(offsetX, offsetY);
     }
 }

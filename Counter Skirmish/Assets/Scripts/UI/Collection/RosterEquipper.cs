@@ -61,7 +61,7 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         _role.sprite = CBase.Role.Icon;
     }
 
-    public void UnequipCreature() // Adds Creature to open slot in Roster.
+    public void UnequipCreature() // Removes creature from roster.
     {
         CBase = null;
         

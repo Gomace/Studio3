@@ -11103,12 +11103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b18aa1c5625004f80ce9e50945dbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 1006895699}
-  bar: {fileID: 1347666032}
-  progressText: {fileID: 1289307454}
-  loadingText: {fileID: 1596761315}
-  loadingIndicator: {fileID: 598286176}
-  testing: 0
+  _loadingScreen: {fileID: 1006895699}
+  _bar: {fileID: 1347666032}
+  _progressTxt: {fileID: 1289307454}
+  _loadingTxt: {fileID: 1596761315}
+  _loadingIndicator: {fileID: 598286176}
+  _testing: 0
 --- !u!114 &1057899377
 MonoBehaviour:
   m_ObjectHideFlags: 0

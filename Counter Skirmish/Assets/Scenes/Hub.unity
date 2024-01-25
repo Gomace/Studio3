@@ -3492,7 +3492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebb1c7588f54ce4297e62ae8e9ead35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1133067531}
+  _target: {fileID: 1133067531}
 --- !u!20 &920300745
 Camera:
   m_ObjectHideFlags: 0
@@ -4047,7 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e74c8163227fa046ba48895f89d3950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowEffect: {fileID: 89124157}
+  _arrowEffect: {fileID: 89124157}
   _character: {fileID: 774967369}
 --- !u!195 &1133067529
 NavMeshAgent:
@@ -5511,12 +5511,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b18aa1c5625004f80ce9e50945dbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 142929188}
-  bar: {fileID: 142929192}
-  progressText: {fileID: 142929191}
-  loadingText: {fileID: 142929190}
-  loadingIndicator: {fileID: 142929189}
-  testing: 0
+  _loadingScreen: {fileID: 142929188}
+  _bar: {fileID: 142929192}
+  _progressTxt: {fileID: 142929191}
+  _loadingTxt: {fileID: 142929190}
+  _loadingIndicator: {fileID: 142929189}
+  _testing: 0
 --- !u!1 &1346095100
 GameObject:
   m_ObjectHideFlags: 0

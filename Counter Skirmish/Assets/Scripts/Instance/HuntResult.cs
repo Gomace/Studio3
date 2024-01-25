@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class HuntResult : MonoBehaviour
 {
-    [SerializeField] private Sprite _success, fail;
+    [SerializeField] private Sprite _success, _fail;
 }

@@ -14,8 +14,10 @@ public class HubActions : MonoBehaviour
         if (!_settings)
             Debug.Log("Missing inspector drag & drop reference. Please help :[");
 
-        if (Camera.main != null)
+        if (Camera.main != null || Camera.main.GetComponent<CameraController>())
             _camCont = Camera.main.GetComponent<CameraController>();
+        else
+            Debug.Log("Put CameraController script on Camera :|");
     }
 
     #region Actions

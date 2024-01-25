@@ -7,8 +7,8 @@ using Object = UnityEngine.Object;
 public class DontDestroy : MonoBehaviour
 {
     // public static SceneLoader Instance { get; private set; }
-    
-    [HideInInspector] public string objectID;
+
+    [HideInInspector] public string ObjectID { get; set; }
 
     /*private void Awake()
     {
@@ -21,7 +21,7 @@ public class DontDestroy : MonoBehaviour
         }
     }*/
     
-    private void Awake() => objectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
+    private void Awake() => ObjectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class DontDestroy : MonoBehaviour
         {
             if (script != this)
             {
-                if (script.objectID == objectID)
+                if (script.ObjectID == ObjectID)
                     Destroy(gameObject);
             }
         }

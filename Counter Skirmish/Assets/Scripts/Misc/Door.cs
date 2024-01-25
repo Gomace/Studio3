@@ -3,37 +3,38 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public bool IsOpen = false;
-    [SerializeField] private float Speed = 1f;
+    [SerializeField] private float _speed = 1f;
     [Header("Rotation Configs")]
-    [SerializeField] private float RotationAmount = 90f;
-    [SerializeField] private bool ForwardDirection = false;
+    [SerializeField] private float _rotationAmount = 90f;
+    [SerializeField] private bool _forwardDirection = false;
 
-    private Vector3 StartRotation;
-    private Quaternion EndRotation;
+    private Vector3 _startRotation;
+    private Quaternion _endRotation;
 
-    private Coroutine AnimationCoroutine;
-
+    private Coroutine _animationCoroutine;
+    
+    public bool IsOpen { get; set; } = false;
+    
     private void Awake()
     {
-        StartRotation = transform.rotation.eulerAngles;
+        _startRotation = transform.rotation.eulerAngles;
 
         if (IsOpen)
-            StartRotation.y += (ForwardDirection
-            ? - RotationAmount
-            : RotationAmount);
+            _startRotation.y += (_forwardDirection
+            ? - _rotationAmount
+            : _rotationAmount);
         
-        EndRotation = ForwardDirection
-            ? Quaternion.Euler(new Vector3(0, StartRotation.y + RotationAmount, 0))
-            : Quaternion.Euler(new Vector3(0, StartRotation.y - RotationAmount, 0));
+        _endRotation = _forwardDirection
+            ? Quaternion.Euler(new Vector3(0, _startRotation.y + _rotationAmount, 0))
+            : Quaternion.Euler(new Vector3(0, _startRotation.y - _rotationAmount, 0));
     }
 
     public void OpenClose()
     {
-        if (AnimationCoroutine != null)
-            StopCoroutine(AnimationCoroutine);
+        if (_animationCoroutine != null)
+            StopCoroutine(_animationCoroutine);
         
-        AnimationCoroutine = StartCoroutine(IsOpen ? DoRotationClose() : DoRotationOpen());
+        _animationCoroutine = StartCoroutine(IsOpen ? DoRotationClose() : DoRotationOpen());
     }
 
     private IEnumerator DoRotationOpen()
@@ -45,16 +46,16 @@ public class Door : MonoBehaviour
         float time = 0;
         while (time < 1)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, EndRotation, time);
+            transform.rotation = Quaternion.Slerp(startRotation, _endRotation, time);
             yield return null;
-            time += Time.deltaTime * Speed;
+            time += Time.deltaTime * _speed;
         }
     }
 
     private IEnumerator DoRotationClose()
     {
         Quaternion startRotation = transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(StartRotation);
+        Quaternion endRotation = Quaternion.Euler(_startRotation);
 
         IsOpen = false;
 
@@ -63,7 +64,7 @@ public class Door : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
             yield return null;
-            time += Time.deltaTime * Speed;
+            time += Time.deltaTime * _speed;
         }
         transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
     }    

@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7b0b73cd3c25c40b04bbc20b1ff7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 77598025}
+  _health: {fileID: 0}
 --- !u!114 &146874582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2588,7 +2588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e74c8163227fa046ba48895f89d3950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowEffect: {fileID: 1150602133}
+  _arrowEffect: {fileID: 1150602133}
   _character: {fileID: 1709124248}
 --- !u!114 &876384246
 MonoBehaviour:
@@ -2903,7 +2903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebb1c7588f54ce4297e62ae8e9ead35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 876384244}
+  _target: {fileID: 876384244}
 --- !u!1 &1013848466
 GameObject:
   m_ObjectHideFlags: 0
