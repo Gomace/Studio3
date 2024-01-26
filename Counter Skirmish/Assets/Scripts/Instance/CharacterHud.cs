@@ -7,10 +7,17 @@ public class CharacterHud : MonoBehaviour
     [SerializeField] private TMP_Text _nameText, _levelText;
     [SerializeField] private HealthBar _healthBar;
 
-    private Camera _mainCam;
+    private Transform _mainCam;
 
-    private void Start() => _mainCam = Camera.main;
-    
+    private void Start()
+    {
+        if (!Camera.main)
+            Debug.Log("No Main Camera in scene :(");
+        
+        _mainCam = Camera.main.transform;
+    }
+
+
     public void SetData(Creature creature)
     {
         _nameText.text = creature.Base.Name;
@@ -20,11 +27,9 @@ public class CharacterHud : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!_mainCam)
-            return;
+        Quaternion camRot = _mainCam.rotation;
         
-        //transform.look <- fix this
-        transform.LookAt(_mainCam.transform);
+        transform.LookAt(transform.position + camRot * -Vector3.forward, camRot * Vector3.up);
         transform.Rotate(0f, 180f, 0f);
     }
 }
