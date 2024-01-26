@@ -28,10 +28,5 @@ public class CharacterHud : MonoBehaviour
         _healthBar.SetHealth((float) creature.Health / creature.MaxHealth);
     }
 
-    private void LateUpdate()
-    {
-        Quaternion camRot = _mainCam.rotation;
-        
-        transform.LookAt(transform.position + camRot * Vector3.forward, camRot * Vector3.up);
-    }
+    private void LateUpdate() => transform.LookAt(transform.position + _mainCam.rotation * Vector3.forward);
 }
