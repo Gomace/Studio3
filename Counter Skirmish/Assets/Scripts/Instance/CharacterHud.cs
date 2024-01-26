@@ -12,7 +12,10 @@ public class CharacterHud : MonoBehaviour
     private void Start()
     {
         if (!Camera.main)
+        {
             Debug.Log("No Main Camera in scene :(");
+            return;
+        }
         
         _mainCam = Camera.main.transform;
     }
@@ -29,7 +32,6 @@ public class CharacterHud : MonoBehaviour
     {
         Quaternion camRot = _mainCam.rotation;
         
-        transform.LookAt(transform.position + camRot * -Vector3.forward, camRot * Vector3.up);
-        transform.Rotate(0f, 180f, 0f);
+        transform.LookAt(transform.position + camRot * Vector3.forward, camRot * Vector3.up);
     }
 }
