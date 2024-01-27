@@ -33,4 +33,27 @@ public class Creature
                 break;
         }
     }
+    
+    /*public bool TakeDamage(Ability ability, Creature attacker)
+     {
+        float modifiers = Random.Range(0.85f, 1f);
+        float a = (2 * attacker.Level + 10) / 250f;
+        float d = a * ability.Base.Power * ((float)attacker.Attack / Defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+        
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Health = 0;
+            return true;
+        }
+        
+        return false;
+     }
+     
+     public Ability GetRandomAbility()
+     {
+        int r = Random.Range(0, Abilities.Count);
+        return Abilities[r];
+     }*/
 }
