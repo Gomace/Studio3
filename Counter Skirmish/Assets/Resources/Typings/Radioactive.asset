@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Radioactive
   _icon: {fileID: 21300000, guid: 7d49a7e0e37fef1499ca01a484879266, type: 3}
-  _strength: []
-  _weakness: []
+  _strengths:
+  - {fileID: 11400000, guid: a618ebd92dda27d4bbe2340cd6ba69ae, type: 2}
+  - {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
+  - {fileID: 11400000, guid: ada4b6c1778b17e47be9bce7d0833926, type: 2}
+  - {fileID: 11400000, guid: 66ddc9cc6d551564087b5c8e4232c559, type: 2}
+  - {fileID: 11400000, guid: bb8b9926594749447a32a72c568d73ad, type: 2}
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 42c976234de47c14d93395004b424616, type: 2}
+  _weaknesses:
+  - {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
+  - {fileID: 11400000, guid: 8b8056f274bb7a843b82b70ef0f52567, type: 2}
+  - {fileID: 11400000, guid: d25ee32040d547d43a1a5d98408d2855, type: 2}

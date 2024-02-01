@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Arcane
   _icon: {fileID: 21300000, guid: 05d8a508ca6438b44a67af9d3200b128, type: 3}
-  _strength: []
-  _weakness: []
+  _strengths:
+  - {fileID: 11400000, guid: ec85a6ff7eef6c644a0a9d213423af1d, type: 2}
+  - {fileID: 11400000, guid: 17ccc98e396bd67479aa4ca6bb24ba3a, type: 2}
+  _weaknesses:
+  - {fileID: 11400000, guid: a618ebd92dda27d4bbe2340cd6ba69ae, type: 2}
+  - {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
+  - {fileID: 11400000, guid: bb8b9926594749447a32a72c568d73ad, type: 2}
+  - {fileID: 11400000, guid: 42c976234de47c14d93395004b424616, type: 2}

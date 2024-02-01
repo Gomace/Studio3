@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Creature
 {
@@ -34,26 +35,46 @@ public class Creature
         }
     }
     
-    /*public bool TakeDamage(Ability ability, Creature attacker)
-     {
-        float modifiers = Random.Range(0.85f, 1f);
-        float a = (2 * attacker.Level + 10) / 250f;
-        float d = a * ability.Base.Power * ((float)attacker.Attack / Defense) + 2;
-        int damage = Mathf.FloorToInt(d * modifiers);
+    public DamageDetails TakeDamage(Ability ability, Creature attacker)
+    {
+        float critical = 1f;
+        if (Random.value * 100f <= 6.25f)
+            critical = 2f;
+         
+        float type = TypeChart.GetEffectiveness(CreatureType.Earth/*ability.Base.Type*/, CreatureType.Arcane/*this.Base.Type1*/) * TypeChart.GetEffectiveness(CreatureType.Energy/*ability.Base.Type*/, CreatureType.Dark/*this.Base.Type2*/);
+
+        DamageDetails damageDetails = new DamageDetails()
+        {
+            TypeEffectiveness = type,
+            Critical = critical,
+            Fainted = false
+        };
         
+        float modifiers = Random.Range(0.85f, 1f) * type * critical;
+        float a = (2 * attacker.Level + 10) / 250f;
+        float d = a * ability.Base.Power * ((float)attacker.Physical / Defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+
         Health -= damage;
         if (Health <= 0)
         {
             Health = 0;
-            return true;
+            damageDetails.Fainted = true;
         }
-        
-        return false;
+
+        return damageDetails;
      }
      
      public Ability GetRandomAbility()
      {
         int r = Random.Range(0, Abilities.Count);
         return Abilities[r];
-     }*/
+     }
+}
+
+public class DamageDetails
+{
+    public bool Fainted { get; set; }
+    public float Critical { get; set; }
+    public float TypeEffectiveness { get; set; }
 }

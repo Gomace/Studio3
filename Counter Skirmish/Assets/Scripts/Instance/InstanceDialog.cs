@@ -26,6 +26,8 @@ public class InstanceDialog : MonoBehaviour
             _dialog.text += letter;
             yield return new WaitForSeconds(1f/_lettersPerSec);
         }
+
+        yield return new WaitForSeconds(1f);
     }
 
     public void EnableDialogText(bool enabled) => _dialog.enabled = enabled;

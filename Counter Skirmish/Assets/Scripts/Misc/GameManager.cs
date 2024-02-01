@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private SceneLoader _sceneLoader;
-
-    [HideInInspector] public bool Disable { get; set; }
     
+    [HideInInspector] public bool Disable { get; set; }
+
     public GameObject Player { get; set; }
     public GameObject MenuScreen { get; set; }
     public bool StartPaused { get; set; }
@@ -23,8 +23,8 @@ public class GameManager : MonoBehaviour
         if (StartPaused)
              Pause();
     }
-    
-    /*void Update()
+
+    /*private void Update()
     {
         if (!MenuScreen.activeSelf)
         {

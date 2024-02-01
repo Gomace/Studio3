@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Dark
   _icon: {fileID: 21300000, guid: 39c8ca0c77bcbe24c8416c8aca47df4d, type: 3}
-  _strength: []
-  _weakness: []
+  _strengths:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
+  - {fileID: 11400000, guid: 17ccc98e396bd67479aa4ca6bb24ba3a, type: 2}
+  - {fileID: 11400000, guid: 6158491a94068424b936388a85d801b4, type: 2}
+  _weaknesses:
+  - {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
+  - {fileID: 11400000, guid: 8b8056f274bb7a843b82b70ef0f52567, type: 2}
+  - {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
+  - {fileID: 11400000, guid: bb8b9926594749447a32a72c568d73ad, type: 2}
+  - {fileID: 11400000, guid: 86d5cdc3f15a27040aaa1b6706e03df7, type: 2}
+  - {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}

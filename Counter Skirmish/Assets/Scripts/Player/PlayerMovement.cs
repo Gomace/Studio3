@@ -1,6 +1,8 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -32,9 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private float _maxUseDistance = 1000f;
     private Ray _ray;
     private RaycastHit _hit;
-    //private bool _isOverUI;
 
     private Coroutine _clickAnim;
+
+    public bool MoveOnUI { get; set; } = true;
 
     private void Awake()
     {
@@ -57,6 +60,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove()
     {
+        //Debug.Log("MoveOnUI is: " + MoveOnUI + " and EventSystem is: " + EventSystem.current.IsPointerOverGameObject());
+        if (!MoveOnUI && EventSystem.current.IsPointerOverGameObject())
+                return;
+        
         _ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         
         if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))

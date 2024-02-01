@@ -12,8 +12,8 @@ public class CreatureBase : ScriptableObject
     [SerializeField] private Sprite _icon, _card, _splash;
     [SerializeField] private GameObject _model;
 
-    [SerializeField] private TypeBase _type1, _type2;
-    [SerializeField] private RoleBase _role;
+    [SerializeField] private Typing _type1, _type2;
+    [SerializeField] private Role _role;
 
     // BASE STATS
     [SerializeField] private int _maxHealth, _physical, _magical, _defense, _resistance, _speed;
@@ -28,10 +28,10 @@ public class CreatureBase : ScriptableObject
     public Sprite Splash => _splash;
     public GameObject Model => _model;
 
-    public TypeBase Type1 => _type1;
-    public TypeBase Type2 => _type2;
+    public Typing Type1 => _type1;
+    public Typing Type2 => _type2;
 
-    public RoleBase Role => _role;
+    public Role Role => _role;
     
     public int MaxHealth => _maxHealth;
     public int Physical => _physical;
@@ -56,20 +56,59 @@ public class LearnableAbility
 public enum CreatureType
 {
     None,
-    Fire,
-    Source,
-    Forest,
-    Earth,
-    Predator,
-    Energy,
-    Light,
-    Water,
-    Swamp,
+    Arcane,
     Dark,
-    Matter,
-    Tech,
-    Wind,
+    Earth,
+    Energy,
+    Entropy,
+    Ethereal,
+    Fire,
+    Forest,
     Host,
+    Light,
+    Matter,
+    Predator,
+    Radioactive,
+    Swamp,
+    Tech,
     Void,
-    Entropy
+    Water,
+    Wind
+}
+
+public class TypeChart
+{
+    public static float[][] chart =
+    {
+        //                   ARC    DRK   ERT   NRG   NTP   ETH   FIR   FOR   HOS   LIT   MTR   PRD   RAD   SWP   TEC   VOI   WAT   WIN
+        /*ARC*/new float[] { 1f,    1f,   1f,  0.5f, 1.5f, 1.5f,  1f,   1f,   1f,  1.5f,  1f,   1f,   1f,  0.5f, 1.5f, 0.5f,  1f,   1f },
+        /*DRK*/new float[] { 1.5f, 0.5f,  1f,   1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f,  1f,  0.5f, 0.5f, 0.5f, 0.5f,  1f,   1f,  1.5f },
+        /*ERT*/new float[] { 1f,    1f,  0.5f,  1f,   1f,  0.5f, 1.5f,  1f,   1f,   1f,   1f,  1.5f,  1f,  0.5f, 1.5f, 0.5f, 0.5f,  1f },
+        /*NRG*/new float[] { 1f,   1.5f,  1f,   1f,  0.5f,  1f,   1f,   1f,   1f,  0.5f,  1f,   1f,  0.5f,  1f,   1f,  0.5f, 1.5f,  1f },
+        /*NTP*/new float[] { 1.5f, 0.5f, 1.5f,  1f,   1f,   1f,  0.5f, 1.5f, 1.5f,  1f,  1.5f,  1f,   1f,   1f,  1.5f,  1f,  0.5f, 0.5f },
+        /*ETH*/new float[] { 1f,   1.5f, 0.5f,  1f,   1f,   1f,  0.5f,  1f,  1.5f, 0.5f, 0.5f, 0.5f, 1.5f,  1f,   1f,  0.5f,  1f,   1f },
+        /*FIR*/new float[] { 1f,   1.5f, 0.5f, 0.5f,  1f,  1.5f, 0.5f, 1.5f, 1.5f, 0.5f,  1f,   1f,   1f,   1f,  1.5f,  1f,  0.5f,  1f },
+        /*FOR*/new float[] { 1f,    1f,   1f,   1f,   1f,   1f,  0.5f,  1f,   1f,  1.5f,  1f,   1f,  0.5f,  1f,  1.5f,  1f,  1.5f, 0.5f },
+        /*HOS*/new float[] { 1f,    1f,  1.5f,  1f,  0.5f, 0.5f, 0.5f, 1.5f,  1f,   1f,  1.5f, 1.5f, 0.5f,  1f,  0.5f,  1f,   1f,   1f },
+        /*LIT*/new float[] { 1.5f, 1.5f, 0.5f,  1f,   1f,  1.5f, 0.5f, 0.5f,  1f,  0.5f, 0.5f,  1f,  0.5f, 1.5f,  1f,  1.5f,  1f,  0.5f },
+        /*MTR*/new float[] { 0.5f, 0.5f,  1f,  0.5f, 0.5f, 0.5f,  1f,   1f,   1f,  0.5f,  1f,  1.5f,  1f,   1f,  1.5f, 0.5f,  1f,  0.5f },
+        /*PRD*/new float[] { 1f,   1.5f, 0.5f,  1f,   1f,  0.5f, 0.5f,  1f,  1.5f, 0.5f,  1f,  1.5f,  1f,   1f,  0.5f, 0.5f,  1f,  0.5f },
+        /*RAD*/new float[] { 0.5f,  1f,  0.5f, 0.5f, 1.5f, 1.5f, 1.5f,  1f,   1f,  0.5f, 1.5f, 1.5f, 0.5f,  1f,  1.5f, 0.5f,  1f,   1f },
+        /*SWP*/new float[] { 1f,    1f,  1.5f,  1f,   1f,   1f,   1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f,  1f,  1.5f,  1f,  0.5f, 1.5f },
+        /*TEC*/new float[] { 1f,   1.5f, 1.5f, 1.5f, 0.5f, 0.5f,  1f,  1.5f,  1f,   1f,  1.5f, 1.5f,  1f,  0.5f,  1f,  0.5f, 0.5f,  1f },
+        /*VOI*/new float[] { 1.5f,  1f,  1.5f, 1.5f,  1f,   1f,  1.5f,  1f,  1.5f, 0.5f, 1.5f, 1.5f, 0.5f, 1.5f, 1.5f, 0.5f, 1.5f, 0.5f },
+        /*WAT*/new float[] { 1f,   0.5f, 1.5f,  1f,   1f,   1f,  1.5f, 0.5f, 1.5f,  1f,   1f,   1f,   1f,  0.5f, 1.5f, 0.5f, 0.5f,  1f},
+        /*WIN*/new float[] { 1f,    1f,  0.5f, 0.5f,  1f,  1.5f, 1.5f,  1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f, 0.5f, 0.5f,  1f,  0.5f},
+    };
+
+    public static float GetEffectiveness(CreatureType attackType, CreatureType defenseType)
+    {
+        if (attackType == CreatureType.None || defenseType == CreatureType.None)
+            return 1;
+
+        int row = (int)attackType - 1;
+        int col = (int)defenseType - 1;
+
+        return chart[row][col];
+    }
 }
