@@ -20,9 +20,10 @@ MonoBehaviour:
   _model: {fileID: 0}
   _type1: {fileID: 11400000, guid: 73b53d9cd6a1d85478fbb0bc39210f1b, type: 2}
   _type2: {fileID: 11400000, guid: f77b7d5b46878814da3b5c38f1f95de6, type: 2}
+  _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
   _maxHealth: 0
-  _attack: 0
-  _magic: 0
+  _physical: 0
+  _magical: 0
   _defense: 0
   _resistance: 0
   _speed: 0

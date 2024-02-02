@@ -12,20 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Drumsticks
   m_EditorClassIdentifier: 
-  name: Drumsticks
-  description: 
-  icon: {fileID: 0}
-  model: {fileID: 0}
-  type1: 7
-  type2: 3
-  maxHealth: 0
-  attack: 0
-  magic: 0
-  defense: 0
-  resistance: 0
-  speed: 0
-  learnableAbilities:
-  - abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
-    level: 6
-  - abilityBase: {fileID: 11400000, guid: 3f929742b3bcea343a95efaaa599b3fd, type: 2}
-    level: 7
+  _name: 
+  _description: 
+  _icon: {fileID: 0}
+  _card: {fileID: 0}
+  _splash: {fileID: 0}
+  _model: {fileID: 0}
+  _type1: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
+  _type2: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
+  _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
+  _maxHealth: 0
+  _physical: 0
+  _magical: 0
+  _defense: 0
+  _resistance: 0
+  _speed: 0
+  _learnableAbilities: []

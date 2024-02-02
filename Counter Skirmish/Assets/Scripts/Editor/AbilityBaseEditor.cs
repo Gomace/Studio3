@@ -63,34 +63,36 @@ public class AbilityBaseEditor : Editor
         {
             T[] _scriptObjs = GetAllScriptObjs<T>(typeof(T).Name == "Typing" ? "Assets/Resources/Typings" : "Assets/Resources/Abilities/Details/" + typeof(T).Name);
 
-            for (int i = 0; i < _scriptObjs.Length; i++)
+            for (int i = 0; i < _scriptObjs.Length; ++i)
             {
                 if (_scriptObjs[i] == _selScriptObj)
                     return i;
             }
         }
 
-        return 0; // Default to the first item
+        return 0; // Default to "None"
     }
 
     private string[] GetScriptObjNames<T>(T[] scriptObjs) where T : ScriptableObject
     {
-        string[] _names = new string[scriptObjs.Length];
+        string[] _names = new string[scriptObjs.Length + (typeof(T).Name == "Typing" ? 1 : 0)];
 
-        for (int i = 0; i < scriptObjs.Length; i++)
-            _names[i] = scriptObjs[i].name;
+        _names[0] = "None";
+        
+        for (int i = 0; i < scriptObjs.Length; ++i)
+            _names[i+(typeof(T).Name == "Typing" ? 1 : 0)] = scriptObjs[i].name;
 
         return _names;
     }
 
     private T[] GetAllScriptObjs<T>(string path) where T : ScriptableObject
     {
-        string[] guids = AssetDatabase.FindAssets("t:" + typeof(T).Name, new[] { path });
+        string[] _guids = AssetDatabase.FindAssets("t:" + typeof(T).Name, new[] { path });
 
-        T[] _scriptObjs = new T[guids.Length];
+        T[] _scriptObjs = new T[_guids.Length];
 
-        for (int i = 0; i < guids.Length; i++)
-            _scriptObjs[i] = AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(guids[i]));
+        for (int i = 0; i < _guids.Length; ++i)
+            _scriptObjs[i] = AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(_guids[i]));
 
         return _scriptObjs;
     }

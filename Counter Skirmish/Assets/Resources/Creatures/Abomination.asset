@@ -19,13 +19,15 @@ MonoBehaviour:
   _card: {fileID: 21300000, guid: 6aa5c58c725fadc48bbbd6d34d5d209a, type: 3}
   _splash: {fileID: 0}
   _model: {fileID: 0}
-  _type1: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _type2: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
-  _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
+  _type1: {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}
+  _type2: {fileID: 11400000, guid: d25ee32040d547d43a1a5d98408d2855, type: 2}
+  _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}
   _maxHealth: 2000
   _physical: 100
   _magical: 20
   _defense: 80
   _resistance: 60
   _speed: 90
-  _learnableAbilities: []
+  _learnableAbilities:
+  - _abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
+    _level: 3
