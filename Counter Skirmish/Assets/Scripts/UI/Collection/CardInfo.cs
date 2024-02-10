@@ -6,7 +6,7 @@ using TMPro;
 public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private CreatureBase _cBase; // Creature this card is about
-    [SerializeField] private CollectionMenu _collectionMenu; // Card menu chief
+    [SerializeField] private CollectionMenu _collMenu; // Card menu chief
 
     #region Elements
     [Header("These should already be referenced.")] // Card display elements
@@ -17,11 +17,11 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private RectTransform _hover;
     #endregion Elements
 
-    public CreatureBase CBase => _cBase; // Can know what Creature is here, but can't change it
+    public CreatureBase CBase => _cBase; //Is this even being used? // Can know what Creature is here, but can't change it
 
     // Add self to CollectionMenu loading pool
-    private void OnEnable() => CollectionMenu.onCollectionLoad += LoadInfo;
-    private void OnDisable() => CollectionMenu.onCollectionLoad -= LoadInfo;
+    private void OnEnable() => _collMenu.onCollectionLoad += LoadInfo;
+    private void OnDisable() => _collMenu.onCollectionLoad -= LoadInfo;
 
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);
@@ -47,6 +47,6 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         _role.sprite = _cBase.Role.Icon;
     }
 
-    public void DetailsInfo() => _collectionMenu.DetailsScreen(_cBase); // What Creature to show in DetailsMenu
-    public void EquipCreature() => _collectionMenu.AddCreatureToRoster(_cBase);// Adds Creature to open slot in Roster.
+    public void DetailsInfo() => _collMenu.DetailsScreen(_cBase); // What Creature to show in DetailsMenu
+    public void EquipCreature() => _collMenu.AddCreatureToRoster(_cBase);// Adds Creature to open slot in Roster.
 }

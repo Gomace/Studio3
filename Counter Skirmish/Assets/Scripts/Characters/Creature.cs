@@ -1,16 +1,20 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Random = UnityEngine.Random;
 
 public class Creature
 {
     public CreatureBase Base { get; set; }
     public int Level { get; set; }
     public int Health { get; set; }
+    public int Resource { get; set; }
     
     public List<Ability> Abilities { get; set; }
     
     public int MaxHealth => Mathf.FloorToInt((Base.MaxHealth * Level) / 100f) + 10;
+    public int MaxResource => Mathf.FloorToInt((Base.MaxResource * Level) / 100f) + 10;
     public int Physical => Mathf.FloorToInt((Base.Physical * Level) / 100f) + 5;
     public int Magical => Mathf.FloorToInt((Base.Magical * Level) / 100f) + 5;
     public int Defense => Mathf.FloorToInt((Base.Defense * Level) / 100f) + 5;
@@ -22,6 +26,7 @@ public class Creature
         Base = cBase;
         Level = cLevel;
         Health = MaxHealth;
+        Resource = MaxResource;
 
         // GENERATE MOVES
         Abilities = new List<Ability>();
@@ -35,12 +40,12 @@ public class Creature
         }
     }
     
-    public DamageDetails TakeDamage(Ability ability, Creature attacker)
+    public void TakeDamage(Ability ability, Creature attacker)
     {
         float critical = 1f;
-        if (Random.value * 100f <= 6.25f)
-            critical = 2f;
-         
+        if (Random.value * 100f <= 4f /** ability.CritChance * attacker.CritDamage*/)
+            critical = 1.5f/* * ability.CritDamage * attacker.CritDamage*/;
+        
         float type = TypeChart.GetEffectiveness(CreatureType.Earth/*ability.Base.Type*/, CreatureType.Arcane/*this.Base.Type1*/) * TypeChart.GetEffectiveness(CreatureType.Energy/*ability.Base.Type*/, CreatureType.Dark/*this.Base.Type2*/);
 
         DamageDetails damageDetails = new DamageDetails()
@@ -49,6 +54,9 @@ public class Creature
             Critical = critical,
             Fainted = false
         };
+
+        //float attack = (ability.Base.IsSpecial) ? attacker.Magical : attacker.Physical;
+        //float defense = (ability.Base.IsSpecial) ? Resistance : Defense;
         
         float modifiers = Random.Range(0.85f, 1f) * type * critical;
         float a = (2 * attacker.Level + 10) / 250f;
@@ -61,15 +69,22 @@ public class Creature
             Health = 0;
             damageDetails.Fainted = true;
         }
-
-        return damageDetails;
-     }
+    }
      
      public Ability GetRandomAbility()
      {
         int r = Random.Range(0, Abilities.Count);
         return Abilities[r];
      }
+     
+     public void PlayEnterAnim()
+     {
+     }
+     public void PlayAttackAnim()
+     {
+     }
+     public void PlayHitAnim() => Debug.Log(Base.Name + " hit.");
+     public void PlayFaintAnim() => Debug.Log(Base.Name + " fainted.");
 }
 
 public class DamageDetails

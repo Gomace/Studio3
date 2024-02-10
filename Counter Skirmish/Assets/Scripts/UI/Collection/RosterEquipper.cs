@@ -1,3 +1,4 @@
+using Mono.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,6 +6,7 @@ using TMPro;
 
 public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] private CollectionMenu _collMenu;
     #region Elements
     [Header("These should already be referenced.")] // Slot display elements
     [SerializeField] private TMP_Text _name;
@@ -29,8 +31,8 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     // Add self to CollectionMenu loading pool
-    private void OnEnable() => CollectionMenu.onCollectionLoad += LoadInfo;
-    private void OnDisable() => CollectionMenu.onCollectionLoad -= LoadInfo;
+    private void OnEnable() => _collMenu.onCollectionLoad += LoadInfo;
+    private void OnDisable() => _collMenu.onCollectionLoad -= LoadInfo;
     
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);

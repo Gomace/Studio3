@@ -15,10 +15,14 @@ public class CreatureBase : ScriptableObject
     [SerializeField] private Typing _type1, _type2;
     [SerializeField] private Role _role;
 
-    // BASE STATS
-    [SerializeField] private int _maxHealth, _physical, _magical, _defense, _resistance, _speed;
+    // Base Stats
+    [SerializeField] private int _maxHealth, _maxResource, _physical, _magical, _defense, _resistance, _speed;
+    
+    // Extra Modifiers
+    [SerializeField] private float _critChance = 1f, _critDamage = 1f;
 
     [SerializeField] private List<LearnableAbility> _learnableAbilities;
+    [SerializeField] private List<PossiblePassives> _possiblePassives;
 
     public string Name => _name;
     public string Description => _description;
@@ -33,14 +37,21 @@ public class CreatureBase : ScriptableObject
 
     public Role Role => _role;
     
+    // Base Stats
     public int MaxHealth => _maxHealth;
+    public int MaxResource => _maxResource;
     public int Physical => _physical;
     public int Magical => _magical;
     public int Defense => _defense;
     public int Resistance => _resistance;
     public int Speed => _speed;
     
+    // Extra Modifiers
+    public float CritChance => _critChance;
+    public float CritDamage => _critDamage;
+    
     public List<LearnableAbility> LearnableAbilities => _learnableAbilities;
+    public List<PossiblePassives> PossiblePassives => _possiblePassives;
 }
 
 [System.Serializable]
@@ -51,6 +62,14 @@ public class LearnableAbility
     
     public AbilityBase Base => _abilityBase;
     public int Level => _level;
+}
+
+[System.Serializable]
+public class PossiblePassives
+{
+    [SerializeField] private Passive _passive;
+    
+    public Passive Passive => _passive;
 }
 
 public enum CreatureType

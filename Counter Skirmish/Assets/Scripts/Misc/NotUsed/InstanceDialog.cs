@@ -57,7 +57,7 @@ public class InstanceDialog : MonoBehaviour
                 _abilityTxts[i].color = Color.black;
         }
 
-        _resourceTxt.text = $"Resource {ability.Resource}/{ability.Base.Resource}";
+        //_resourceTxt.text = $"Resource {ability.Resource}/{ability.Base.Resource}";
         _typeTxt.text = ability.Base.Type.ToString();
     }
 

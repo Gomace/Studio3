@@ -4,6 +4,7 @@ using TMPro;
 
 public class OverviewLoader : MonoBehaviour
 {
+    [SerializeField] private DetailsMenu _detMenu;
     #region Elements
     [Header("These should already be referenced.")] // Overview display elements
     [SerializeField] private TMP_Text _name;
@@ -15,8 +16,8 @@ public class OverviewLoader : MonoBehaviour
     [SerializeField] private TMP_Text _phyiscal, _magical, _defense, _resistance, _speed, _total;
     #endregion Elements
     
-    private void OnEnable() => DetailsMenu.onDetailsLoad += LoadDetails;
-    private void OnDisable() => DetailsMenu.onDetailsLoad -= LoadDetails;
+    private void OnEnable() => _detMenu.onDetailsLoad += LoadDetails;
+    private void OnDisable() => _detMenu.onDetailsLoad -= LoadDetails;
     
     private void LoadDetails(CreatureBase cBase)
     {

@@ -6,8 +6,10 @@ using UnityEngine;
 [CustomEditor(typeof(AbilityBase))] // Assuming MyComponent is a MonoBehaviour that has a reference to MyScriptableObject
 public class AbilityBaseEditor : Editor
 {
-    private string[] _fields = new[] { "_name", "_icon", "_description", "_power", "_cooldown", "_resource", "_range" };
-    private string[] _scriptObjFields = new [] { "_type", "_targeting", "_abiClass", "_calcNumFrom", "_metric", "_style" };
+    private string[] _fields = new[] { "_name", "_icon", "_description", // 0-2
+                                    "_power", "_cooldown", "_resource", "_range", // 3-6
+                                    "_critChance", "_critDamage" }; // 7-8
+    private string[] _scriptObjFields = new [] { "_type", "_targeting", "_abiClass", "_calcNumFrom", "_metric", "_style" }; // All in a row
     private SerializedProperty[] _scriptObjProps = new SerializedProperty[6];
 
     private void OnEnable()
@@ -20,14 +22,21 @@ public class AbilityBaseEditor : Editor
     {
         serializedObject.Update();
         
-        DrawFields(0, 3);
+        DrawFields(0, 3); // Stop at first of next
         
         DrawScriptObj<Typing>(_scriptObjProps[0], "Type");
-        DrawFields(3, _fields.Length);
+        DrawFields(3, 7);
         
-        EditorGUILayout.LabelField("Ability Functionality Details");
+        EditorGUILayout.LabelField("Ability Functionality Details", EditorStyles.boldLabel);
         DrawDropDowns();
 
+        EditorGUILayout.LabelField("Extra Modifiers", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+            EditorGUIUtility.labelWidth = 70;
+            DrawFields(7, _fields.Length);
+            EditorGUIUtility.labelWidth = 120;
+        EditorGUILayout.EndHorizontal();
+        
         serializedObject.ApplyModifiedProperties();
     }
 
@@ -48,7 +57,7 @@ public class AbilityBaseEditor : Editor
     
     private void DrawScriptObj<T>(SerializedProperty property, string label) where T : ScriptableObject
     {
-        T[] _scriptObjs = GetAllScriptObjs<T>(typeof(T).Name == "Typing" ? "Assets/Resources/Typings" : "Assets/Resources/Abilities/Details/" + typeof(T).Name); // Get all ScriptableObjects of type T in a folder
+        T[] _scriptObjs = GetAllScriptObjs<T>(typeof(T).Name == "Typing" ? "Assets/ScrObjs/Typings" : "Assets/ScrObjs/Abilities/Details/" + typeof(T).Name); // Get all ScriptableObjects of type T in a folder
         
         int i = EditorGUILayout.Popup(label, GetSelectedIndex<T>(property), GetScriptObjNames(_scriptObjs)); // Display a dropdown to select a ScriptableObject
         
@@ -61,7 +70,7 @@ public class AbilityBaseEditor : Editor
 
         if (_selScriptObj != null)
         {
-            T[] _scriptObjs = GetAllScriptObjs<T>(typeof(T).Name == "Typing" ? "Assets/Resources/Typings" : "Assets/Resources/Abilities/Details/" + typeof(T).Name);
+            T[] _scriptObjs = GetAllScriptObjs<T>(typeof(T).Name == "Typing" ? "Assets/ScrObjs/Typings" : "Assets/ScrObjs/Abilities/Details/" + typeof(T).Name);
 
             for (int i = 0; i < _scriptObjs.Length; ++i)
             {

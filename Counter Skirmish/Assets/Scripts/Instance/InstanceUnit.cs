@@ -1,53 +1,35 @@
+using System;
 using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class InstanceUnit : MonoBehaviour
 {
-    [SerializeField] private CreatureBase _base;
-    [SerializeField] private int _level;
+    public delegate void OnLoadHUD(Creature @creature);
+    public event OnLoadHUD onLoadHUD;
     
     [Header("Only players get icons.")]
-    [SerializeField] private Image _icon;
     [SerializeField] private bool isPlayerUnit;
-
+    
+    [Header("These should always be the same.")]
+    [SerializeField] private CreatureBase _base; // Should not be drag & drop reference
+    [SerializeField] private int _level; // - || -
+    [SerializeField] private Object _model;
+    
     private Creature _creature;
 
     public CreatureBase Base => _base;
     public Creature Creature => _creature;
-    
-    public void Setup()
+
+    private void OnEnable() => InstanceSystem.onLoadInstance += SetupUnit;
+    private void OnDisable() => InstanceSystem.onLoadInstance -= SetupUnit;
+
+    private void SetupUnit()
     {
         _creature = new Creature(_base, _level); // add model somehow. Figure it out vvv icon there
-        if (_icon || isPlayerUnit)
-            _icon.sprite = _creature.Base.Icon;
+        onLoadHUD?.Invoke(Creature);
         
-        PlayEnterAnim();
-    }
-
-    public void PlayEnterAnim()
-    {
-        if (isPlayerUnit)
-            Debug.Log("Player entered.");
-        else
-            Debug.Log("Enemy entered.");
-    }
-
-    public void PlayAttackAnim()
-    {
-        if (isPlayerUnit)
-            Debug.Log("Player attacked.");
-        else
-            Debug.Log("Enemy attacked.");
-    }
-
-    public void PlayHitAnim()
-    {
-        Debug.Log("Target hit.");
-    }
-
-    public void PlayFaintAnim()
-    {
-        Debug.Log("Target fainted.");
+        _creature.PlayEnterAnim();
     }
 }

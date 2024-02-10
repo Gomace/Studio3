@@ -7106,6 +7106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf841410910a9a4db67cfa720e0cc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _detMenu: {fileID: 3420533270001772907}
   _name: {fileID: 3420533269756356969}
   _splash: {fileID: 3420533268965692581}
   _type1: {fileID: 3420533269667262152}

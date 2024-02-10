@@ -5,7 +5,7 @@ using UnityEngine;
 public class DetailsMenu : MonoBehaviour
 {
     public delegate void OnDetailsLoad(CreatureBase @base);
-    public static event OnDetailsLoad onDetailsLoad;
+    public event OnDetailsLoad onDetailsLoad;
     
     [SerializeField] private RectTransform _categories, _screens;
     [SerializeField] private Color _clickColor = new Color(55, 55, 55, 255),

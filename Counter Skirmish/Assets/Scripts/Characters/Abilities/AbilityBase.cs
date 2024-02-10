@@ -15,27 +15,35 @@ public class AbilityBase : ScriptableObject
     [SerializeField] private float _cooldown;
     [SerializeField] private int _resource, _range;
     
-    [Header("Ability Functionality Details")]
+    // Ability Functionality Details
     [SerializeField] private Targeting _targeting;
     [SerializeField] private AbiClass _abiClass;
     [SerializeField] private CalcNumFrom _calcNumFrom;
     [SerializeField] private CalcMetric _metric;
     [SerializeField] private DmgStyle _style;
 
+    // Extra Modifiers
+    [SerializeField] private float _critChance = 1f, _critDamage = 1f;
+    
     public string Name => _name;
-    public string Description => _description;
     public Sprite Icon => _icon;
+    public string Description => _description;
     
     public Typing Type => _type;
     
+    public int Power => _power;
+    public float Cooldown => _cooldown;
+    public int Resource => _resource;
+    public int Range => _range;
+    
+    // Ability Functionality Details
     public Targeting Targeting => _targeting;
     public AbiClass AbiClass => _abiClass;
     public CalcNumFrom CalcNumFrom => _calcNumFrom;
     public CalcMetric Metric => _metric;
     public DmgStyle Style => _style;
-
-    public int Power => _power;
-    public float Cooldown => _cooldown;
-    public int Resource => _resource;
-    public int Range => _range;
+    
+    // Extra Modifiers
+    public float CritChance => _critChance;
+    public float CritDamage => _critDamage;
 }

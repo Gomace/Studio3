@@ -5,8 +5,12 @@ using UnityEngine;
 [CustomEditor(typeof(CreatureBase))] // Assuming MyComponent is a MonoBehaviour that has a reference to MyScriptableObject
 public class CreatureBaseEditor : Editor
 {
-    private string[] _fields = new[] { "_name", "_description", "_icon", "_card", "_splash", "_model", "_maxHealth", "_physical", "_magical", "_defense", "_resistance", "_speed", "_learnableAbilities" };
-    private string[] _scriptObjFields = new [] { "_type1", "_type2", "_role" };
+    private string[] _fields = new[] { "_name", "_description", "_icon", "_card", "_splash", "_model", // 0-5
+                                    "_maxHealth", "_maxResource", "_physical", "_magical", "_defense", "_resistance", "_speed", // 6-12
+                                    "_critChance", "_critDamage", // 13-14
+                                    "_learnableAbilities", "_possiblePassives" }; // 15-16
+    private string[] _scriptObjFields = new [] { "_type1", "_type2", // 0-1
+                                                "_role" }; // 2
     private SerializedProperty[] _scriptObjProps = new SerializedProperty[3];
 
     private void OnEnable()
@@ -19,16 +23,25 @@ public class CreatureBaseEditor : Editor
     {
         serializedObject.Update();
         
-        DrawFields(0, 7);
+        DrawFields(0, 6); // Stop at first of next
         DrawDropDowns();
         
-        EditorGUILayout.LabelField("Base Stats");
-        DrawFields(7, _fields.Length);
+        EditorGUILayout.LabelField("Base Stats", EditorStyles.boldLabel);
+        DrawFields(6, 13);
+        
+        EditorGUILayout.LabelField("Extra Modifiers", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+            EditorGUIUtility.labelWidth = 70;
+            DrawFields(13, 15);
+            EditorGUIUtility.labelWidth = 120;
+        EditorGUILayout.EndHorizontal();
+        
+        DrawFields(15, _fields.Length);
 
         serializedObject.ApplyModifiedProperties();
     }
 
-    private void DrawFields(int start, int stop)
+    private void DrawFields(int start, int stop) 
     {
         for (int i = start; i < stop; ++i)
             EditorGUILayout.PropertyField(serializedObject.FindProperty(_fields[i]));
@@ -40,14 +53,15 @@ public class CreatureBaseEditor : Editor
             EditorGUIUtility.labelWidth = 70;
             DrawScriptObj<Typing>(_scriptObjProps[0], "Types", GUILayout.MinWidth(120f));
             DrawScriptObj<Typing>(_scriptObjProps[1], "", GUILayout.MinWidth(10f), GUILayout.MaxWidth(90f));
+            EditorGUIUtility.labelWidth = 120;
         EditorGUILayout.EndHorizontal();
+        
         DrawScriptObj<Role>(_scriptObjProps[2], "Role");
-        EditorGUIUtility.labelWidth = 120;
     }
     
     private void DrawScriptObj<T>(SerializedProperty property, string label, params GUILayoutOption[] options) where T : ScriptableObject
     {
-        T[] _scriptObjs = GetAllScriptObjs<T>("Assets/Resources/" + typeof(T).Name + "s"); // Get all ScriptableObjects of type T in a folder
+        T[] _scriptObjs = GetAllScriptObjs<T>("Assets/ScrObjs/" + typeof(T).Name + "s"); // Get all ScriptableObjects of type T in a folder
         
         int i = EditorGUILayout.Popup(label, GetSelectedIndex<T>(property), GetScriptObjNames(_scriptObjs), options); // Display a dropdown to select a ScriptableObject
         
@@ -60,7 +74,7 @@ public class CreatureBaseEditor : Editor
 
         if (_selScriptObj != null)
         {
-            T[] _scriptObjs = GetAllScriptObjs<T>("Assets/Resources/" + typeof(T).Name + "s");
+            T[] _scriptObjs = GetAllScriptObjs<T>("Assets/ScrObjs/" + typeof(T).Name + "s");
 
             for (int i = 0; i < _scriptObjs.Length; ++i)
             {

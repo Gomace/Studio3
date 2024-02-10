@@ -20,14 +20,19 @@ MonoBehaviour:
   _splash: {fileID: 0}
   _model: {fileID: 0}
   _type1: {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}
-  _type2: {fileID: 11400000, guid: d25ee32040d547d43a1a5d98408d2855, type: 2}
-  _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}
+  _type2: {fileID: 11400000, guid: 8b8056f274bb7a843b82b70ef0f52567, type: 2}
+  _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
   _maxHealth: 2000
+  _maxResource: 0
   _physical: 100
   _magical: 20
   _defense: 80
   _resistance: 60
   _speed: 90
+  _critChance: 1
+  _critDamage: 1
   _learnableAbilities:
   - _abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
     _level: 3
+  _possiblePassives:
+  - _passive: {fileID: 11400000, guid: c36baa883bf828243a82e5811f0acc91, type: 2}

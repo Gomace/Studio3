@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CollectionMenu : MonoBehaviour
 {
     public delegate void OnCollectionLoad();
-    public static event OnCollectionLoad onCollectionLoad; // All cards add themselves to this
+    public event OnCollectionLoad onCollectionLoad; // All cards add themselves to this
 
     [SerializeField] private GameObject _detailsMenu;
     //[SerializeField] private RectTransform _filters, _cards;
