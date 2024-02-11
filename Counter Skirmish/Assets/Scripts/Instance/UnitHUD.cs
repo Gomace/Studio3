@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterHud : MonoBehaviour
+public class UnitHUD : MonoBehaviour
 {
     [SerializeField] private InstanceUnit _unit;
 

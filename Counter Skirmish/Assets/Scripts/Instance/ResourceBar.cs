@@ -9,49 +9,54 @@ public class ResourceBar : MonoBehaviour
     [Header("These should all be filled.")]
     [SerializeField] private Image _mainBar;
     [SerializeField] private Image _incBar, _lossBar;
-    [SerializeField] private float _barSpeed = 1f;
 
-    private Coroutine _changingBar;
-    
+    private float _barSpeed = 2f;
+    private Coroutine _damageBar;
+
+    private void Awake()
+    {
+        _mainBar.fillAmount = 1f;
+        _incBar.fillAmount = 1f;
+        _lossBar.fillAmount = 1f;
+    }
+
     private void OnEnable() => _unit.onResourceChanged += SetBar;
     private void OnDisable() => _unit.onResourceChanged -= SetBar;
 
-    private void SetBar(float healthNormalized)
+    private void SetBar(float newR)
     {
-        if (_changingBar != null)
-            StopCoroutine(_changingBar);
-
-        _changingBar = StartCoroutine(SetHealthSmooth(healthNormalized));
-    }
-
-    private IEnumerator SetHealthSmooth(float newH)
-    {
-        float cur = _mainBar.fillAmount,
-              chaAmt;
-        
-        if (newH < cur) // Damaged
+        if (newR < _mainBar.fillAmount) // Spent
         {
-            chaAmt = cur - newH;
-            _mainBar.fillAmount -= chaAmt;
-            _incBar.fillAmount -= chaAmt;
+            _incBar.fillAmount -= _mainBar.fillAmount - newR; // _incBar has same incoming Resource
             // Dead?
-
-            while (cur - newH > Mathf.Epsilon)
-            {
-                cur -= chaAmt * Time.deltaTime * _barSpeed;
-                _lossBar.fillAmount = cur;
-                yield return null;
-            }
+            
+            if (_damageBar != null)
+                StopCoroutine(_damageBar);
+    
+            _damageBar = StartCoroutine(DamageBar(newR));
         }
-        else // Healed
+        else // Gained
         {
-            chaAmt = newH - cur;
-            while (newH - cur > Mathf.Epsilon)
+            if (_lossBar.fillAmount < newR)
             {
-                cur += chaAmt * Time.deltaTime;
-                _incBar.fillAmount = cur;
-                yield return null;
+                if (_damageBar != null)
+                    StopCoroutine(_damageBar);
+                _lossBar.fillAmount = newR;
             }
+            
+            if (_incBar.fillAmount < newR)
+                _incBar.fillAmount = newR; // _incBar did its job
+        }
+        
+        _mainBar.fillAmount = newR; // Change _mainBar to new value
+    }
+    
+    private IEnumerator DamageBar(float newR)
+    {
+        while (newR < _lossBar.fillAmount) // While _lossBar can shrink, go agane
+        {
+            _lossBar.fillAmount -= Time.deltaTime * _barSpeed; // _lossBar shrinks to _mainBar size
+            yield return null;
         }
     }
 }

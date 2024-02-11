@@ -12,19 +12,13 @@ public class InstanceActions : MonoBehaviour
     private void Awake()
     {
         if (!_settings)
-            Debug.Log($"Missing inspector drag & drop reference in {gameObject.name}. Please help :[");
+            Debug.Log($"Missing inspector drag & drop reference in {name} on {gameObject.name}. Please help :[");
 
-        if (Camera.main != null || Camera.main.GetComponent<CameraController>())
+        if (Camera.main != null && Camera.main.GetComponent<CameraController>())
             _camCont = Camera.main.GetComponent<CameraController>();
         else
             Debug.Log("Put CameraController script on the Camera :|");
     }
-    
-    /* void Update()
-    {
-        if (global.disabled)
-            return;
-    }*/
 
     #region Actions
     private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());

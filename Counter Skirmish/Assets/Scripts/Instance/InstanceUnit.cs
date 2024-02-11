@@ -1,5 +1,4 @@
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 public class InstanceUnit : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class InstanceUnit : MonoBehaviour
     [Header("These should always be the same.")]
     [SerializeField] private CreatureBase _base; // Should not be drag & drop reference
     [SerializeField] private int _level; // - || -
-    [SerializeField] private Object _model;
+    [SerializeField] private GameObject _model;
     
     private Creature _creature;
 
@@ -29,9 +28,6 @@ public class InstanceUnit : MonoBehaviour
     {
         _creature = new Creature(_base, _level); // add model somehow. Figure it out vvv icon there
         onLoadHUD?.Invoke(_creature);
-        
-        onHealthChanged?.Invoke((float) _creature.Health / _creature.MaxHealth);
-        onResourceChanged?.Invoke((float) _creature.Resource / _creature.MaxResource);
         
         PlayEnterAnim();
     }
