@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7b0b73cd3c25c40b04bbc20b1ff7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charHud: {fileID: 0}
+  _unit: {fileID: 0}
   _mainBar: {fileID: 0}
   _incBar: {fileID: 0}
   _lossBar: {fileID: 0}
@@ -953,10 +953,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 344743302}
     m_Modifications:
+    - target: {fileID: 2534329420200596392, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 344743303}
     - target: {fileID: 2534329420200596395, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.015014648
       objectReference: {fileID: 0}
+    - target: {fileID: 2534329420255142278, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 344743303}
     - target: {fileID: 2534329421492110481, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -1045,6 +1053,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2534329421492110483, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 344743303}
     - target: {fileID: 2534329421492110493, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Name
       value: UnitHealthBar
@@ -1195,6 +1207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291566171}
+  - component: {fileID: 291566172}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1217,6 +1230,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291566172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291566168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2385f2d89c5abf04d80d9ce72e413127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &327735726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,7 +1413,7 @@ MonoBehaviour:
   isPlayerUnit: 0
   _base: {fileID: 11400000, guid: 0039945c75dc5ac4ca0186fe574e180b, type: 2}
   _level: 5
-  _model: {fileID: 0}
+  _model: {fileID: 327735726}
 --- !u!1 &352900653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerUnit: 1
   _base: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
-  _level: 5
+  _level: 100
   _model: {fileID: 1709124247}
 --- !u!1 &912654452
 GameObject:
@@ -3115,6 +3140,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 876384244}
     m_Modifications:
+    - target: {fileID: 2534329420200596392, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
+    - target: {fileID: 2534329420255142278, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
     - target: {fileID: 2534329421225712001, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -3203,6 +3236,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2534329421492110483, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
+    - target: {fileID: 2534329421492110483, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 876384248}
     - target: {fileID: 2534329421492110493, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Name
       value: UnitHealthBar
@@ -4824,9 +4865,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3015077797429342326, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
+    - target: {fileID: 3015077797429342326, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
       propertyPath: _charHud
       value: 
       objectReference: {fileID: 1025070756}
+    - target: {fileID: 5539608287233768145, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
     - target: {fileID: 5539608287233768145, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
       propertyPath: _level
       value: 
@@ -4943,6 +4992,10 @@ PrefabInstance:
       propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7437316470646038561, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
 --- !u!114 &2016824654 stripped

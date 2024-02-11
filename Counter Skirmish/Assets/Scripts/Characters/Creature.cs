@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class Creature
@@ -40,6 +38,20 @@ public class Creature
         }
     }
     
+    public void PerformPlayerAbility()
+    {
+        // Unit state = casting;
+
+        Ability ability = Abilities[0]; // Catch ability from creature
+        Resource--; // Spend resource
+        
+        //PlayAttackAnim(); // Attacking animation
+        
+        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
+        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
+        //_enemyHud.UpdateHealth();
+    }
+    
     public void TakeDamage(Ability ability, Creature attacker)
     {
         float critical = 1f;
@@ -76,15 +88,6 @@ public class Creature
         int r = Random.Range(0, Abilities.Count);
         return Abilities[r];
      }
-     
-     public void PlayEnterAnim()
-     {
-     }
-     public void PlayAttackAnim()
-     {
-     }
-     public void PlayHitAnim() => Debug.Log(Base.Name + " hit.");
-     public void PlayFaintAnim() => Debug.Log(Base.Name + " fainted.");
 }
 
 public class DamageDetails

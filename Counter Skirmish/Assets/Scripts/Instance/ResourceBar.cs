@@ -1,17 +1,20 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharHealthBar : MonoBehaviour
+public class ResourceBar : MonoBehaviour
 {
-    [SerializeField] private CharacterHud _charHud;
-    [SerializeField] private Image _mainBar, _incBar, _lossBar;
+    [SerializeField] private InstanceUnit _unit;
+    
+    [Header("These should all be filled.")]
+    [SerializeField] private Image _mainBar;
+    [SerializeField] private Image _incBar, _lossBar;
+    [SerializeField] private float _barSpeed = 1f;
 
     private Coroutine _changingBar;
-
-    private void OnEnable() => _charHud.onHealthChanged += SetBar;
-    private void OnDisable() => _charHud.onHealthChanged -= SetBar;
+    
+    private void OnEnable() => _unit.onResourceChanged += SetBar;
+    private void OnDisable() => _unit.onResourceChanged -= SetBar;
 
     private void SetBar(float healthNormalized)
     {
@@ -25,14 +28,18 @@ public class CharHealthBar : MonoBehaviour
     {
         float cur = _mainBar.fillAmount,
               chaAmt;
-
+        
         if (newH < cur) // Damaged
         {
             chaAmt = cur - newH;
+            _mainBar.fillAmount -= chaAmt;
+            _incBar.fillAmount -= chaAmt;
+            // Dead?
+
             while (cur - newH > Mathf.Epsilon)
             {
-                cur -= chaAmt * Time.deltaTime;
-                _mainBar.fillAmount = cur;
+                cur -= chaAmt * Time.deltaTime * _barSpeed;
+                _lossBar.fillAmount = cur;
                 yield return null;
             }
         }
@@ -42,11 +49,9 @@ public class CharHealthBar : MonoBehaviour
             while (newH - cur > Mathf.Epsilon)
             {
                 cur += chaAmt * Time.deltaTime;
-                _mainBar.fillAmount = cur;
+                _incBar.fillAmount = cur;
                 yield return null;
             }
         }
-
-        _mainBar.fillAmount = newH;
     }
 }
