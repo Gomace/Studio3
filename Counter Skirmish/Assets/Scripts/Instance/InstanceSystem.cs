@@ -7,7 +7,7 @@ public class InstanceSystem : MonoBehaviour
     public static event OnLoadInstance onLoadInstance;
     #endregion Events
 
-    private void Start() => onLoadInstance?.Invoke(); // SetupInstance();
+    //private void Awake() => onLoadInstance?.Invoke(); // SetupInstance();
 
     /*private void SetupInstance()
     {

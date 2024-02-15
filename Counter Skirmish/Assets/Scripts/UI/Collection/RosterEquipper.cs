@@ -1,4 +1,3 @@
-using Mono.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,7 +44,7 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     
     private void LoadInfo() // Reveal details when card is equipped in slot
     {
-        if (!CBase)
+        if (!_cBase)
         {
             foreach (RectTransform element in (RectTransform)transform) // Turn off all Slot elements
                 element.gameObject.SetActive(false);
@@ -56,16 +55,16 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             element.gameObject.SetActive(true);
         _hover.gameObject.SetActive(false); // Hover still not on without hovering
         
-        _name.text = CBase.Name;
-        _icon.sprite = CBase.Icon;
-        _type1.sprite = CBase.Type1.Icon;
-        _type2.sprite = CBase.Type2.Icon;
-        _role.sprite = CBase.Role.Icon;
+        _name.text = _cBase.Name;
+        _icon.sprite = _cBase.Icon;
+        _type1.sprite = _cBase.Type1.Icon;
+        _type2.sprite = _cBase.Type2.Icon;
+        _role.sprite = _cBase.Role.Icon;
     }
 
     public void UnequipCreature() // Removes creature from roster.
     {
-        CBase = null;
+        _cBase = null;
         
         LoadInfo();
     }

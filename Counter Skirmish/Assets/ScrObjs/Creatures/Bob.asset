@@ -17,7 +17,7 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _card: {fileID: 21300000, guid: 6777986ec47ce0e4e86a3de76d18a242, type: 3}
   _splash: {fileID: 0}
-  _model: {fileID: 0}
+  _model: {fileID: 5322900473781982167, guid: 61b3a11806156bd4bbbc81954c8339cf, type: 3}
   _type1: {fileID: 11400000, guid: a618ebd92dda27d4bbe2340cd6ba69ae, type: 2}
   _type2: {fileID: 11400000, guid: 42c976234de47c14d93395004b424616, type: 2}
   _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}
@@ -30,5 +30,8 @@ MonoBehaviour:
   _speed: 105
   _critChance: 1
   _critDamage: 1
-  _learnableAbilities: []
-  _possiblePassives: []
+  _learnableAbilities:
+  - _abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
+    _level: 2
+  _possiblePassives:
+  - _passive: {fileID: 11400000, guid: c36baa883bf828243a82e5811f0acc91, type: 2}

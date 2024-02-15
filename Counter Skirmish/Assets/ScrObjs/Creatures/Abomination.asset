@@ -18,12 +18,12 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _card: {fileID: 21300000, guid: 6aa5c58c725fadc48bbbd6d34d5d209a, type: 3}
   _splash: {fileID: 0}
-  _model: {fileID: 0}
+  _model: {fileID: 1402711332052607686, guid: 21f242436b6b9e34f9f8a341c0031294, type: 3}
   _type1: {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}
   _type2: {fileID: 11400000, guid: 8b8056f274bb7a843b82b70ef0f52567, type: 2}
   _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
   _maxHealth: 2000
-  _maxResource: 0
+  _maxResource: 1000
   _physical: 100
   _magical: 20
   _defense: 80

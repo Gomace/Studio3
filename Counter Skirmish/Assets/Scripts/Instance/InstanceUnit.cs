@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CreatureRoster))]
 public class InstanceUnit : MonoBehaviour
 {
     #region Events
@@ -12,35 +15,55 @@ public class InstanceUnit : MonoBehaviour
     public event OnResourceChanged onResourceChanged;
     #endregion Events
     
-    [SerializeField] private bool isPlayerUnit;
-    
-    [Header("These should always be the same.")]
-    [SerializeField] private CreatureBase _base; // Should not be drag & drop reference
-    [SerializeField] private int _level; // - || -
-    [SerializeField] private GameObject _model;
-    
+    [SerializeField] private Transform _character;
+    private List<GameObject> _usedModels;
+    private List<Creature> _usedCreatures;
+
     private Creature _creature;
 
-    private void OnEnable() => InstanceSystem.onLoadInstance += SetupUnit;
-    private void OnDisable() => InstanceSystem.onLoadInstance -= SetupUnit;
-
-    private void SetupUnit()
+    private void Awake()
     {
-        _creature = new Creature(_base, _level); // add model somehow. Figure it out vvv icon there
+        _usedModels = new List<GameObject>();
+        _usedCreatures = new List<Creature>();
+    }
+
+    private void OnEnable() => GetComponent<CreatureRoster>().onSendCreature += SetupUnit;
+    private void OnDisable() => GetComponent<CreatureRoster>().onSendCreature -= SetupUnit;
+
+    private void SetupUnit(Creature creature)
+    {
+        ChangeCharacter(creature);
+        _creature = creature;
+
         onLoadHUD?.Invoke(_creature);
-        
-        PlayEnterAnim();
     }
     
     public void UpdateHealth() => onHealthChanged?.Invoke((float) _creature.Health / _creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) _creature.Resource / _creature.MaxResource);
-    
-    public void PlayEnterAnim()
-    {
-    }
-    public void PlayAttackAnim()
-    {
-    }
-    public void PlayHitAnim() => Debug.Log(_creature.Base.Name + " hit.");
+
+    public void PlayEnterAnim() => Debug.Log(_creature.Base.Name + " entered.");
+    public void PlayAttackAnim() => Debug.Log(_creature.Base.Name + " is attacking.");
+    public void PlayHitAnim() => Debug.Log(_creature.Base.Name + " was hit.");
     public void PlayFaintAnim() => Debug.Log(_creature.Base.Name + " fainted.");
+
+    private void ChangeCharacter(Creature creature)
+    {
+        foreach (GameObject model in _usedModels)
+                model.SetActive(false);
+
+        for (int i = 0; i < _usedCreatures.Count; ++i) // Check all our used creatures
+        {
+            if (_usedCreatures[i].Base.Model == creature.Base.Model) // Check if creature's model already exists
+            {
+                _usedModels[i].transform.position = _character.position;
+                _usedModels[i].transform.rotation = _character.rotation;
+                _usedModels[i].SetActive(true); // If creature already exists, turn on model
+
+                return;
+            }
+        }
+        
+        _usedCreatures.Add(creature); // If creature not exist, add to list
+        _usedModels.Add(Instantiate(creature.Base.Model, _character.position, _character.rotation, _character)); // Add new creature model to list
+    }
 }

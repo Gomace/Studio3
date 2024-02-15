@@ -2,10 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+[System.Serializable]
 public class Creature
 {
-    public CreatureBase Base { get; set; }
-    public int Level { get; set; }
+    [SerializeField] private CreatureBase _base;
+    [SerializeField] private int _level;
+
+    public CreatureBase Base => _base;
+    public int Level => _level;
+    
     public int Health { get; set; }
     public int Resource { get; set; }
     
@@ -19,10 +24,8 @@ public class Creature
     public int Resistance => Mathf.FloorToInt((Base.Resistance * Level) / 100f) + 5;
     public int Speed => Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5;
 
-    public Creature(CreatureBase cBase, int cLevel)
+    public void Initialize()
     {
-        Base = cBase;
-        Level = cLevel;
         Health = MaxHealth;
         Resource = MaxResource;
 
@@ -55,8 +58,8 @@ public class Creature
     public void TakeDamage(Ability ability, Creature attacker)
     {
         float critical = 1f;
-        if (Random.value * 100f <= 4f /** ability.CritChance * attacker.CritDamage*/)
-            critical = 1.5f/* * ability.CritDamage * attacker.CritDamage*/;
+        if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
+            critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
         
         float type = TypeChart.GetEffectiveness(CreatureType.Earth/*ability.Base.Type*/, CreatureType.Arcane/*this.Base.Type1*/) * TypeChart.GetEffectiveness(CreatureType.Energy/*ability.Base.Type*/, CreatureType.Dark/*this.Base.Type2*/);
 

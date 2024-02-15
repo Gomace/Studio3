@@ -13,8 +13,6 @@ public class UnitHUD : MonoBehaviour
 
     private Transform _mainCam;
 
-    public InstanceUnit Unit => _unit;
-
     private void Awake()
     {
         if (!Camera.main)
@@ -31,6 +29,7 @@ public class UnitHUD : MonoBehaviour
 
     private void SetupHUD(Creature creature)
     {
+        Debug.Log(creature.Base.Name + " entered.");
         _nameText.text = creature.Base.Name;
         _levelText.text = creature.Level.ToString();
         

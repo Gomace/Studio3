@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(InstanceUnit))]
 public class InstanceActions : MonoBehaviour
 {
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private GameObject _roster, _huntScreen, _settings;
 
+    private InstanceUnit _unit;
     private CameraController _camCont;
     private LayerMask _useLayer = 1 << 6;
 
@@ -18,6 +20,8 @@ public class InstanceActions : MonoBehaviour
             _camCont = Camera.main.GetComponent<CameraController>();
         else
             Debug.Log("Put CameraController script on the Camera :|");
+
+        _unit = GetComponent<InstanceUnit>();
     }
 
     #region Actions
