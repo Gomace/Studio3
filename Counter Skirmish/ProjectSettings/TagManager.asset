@@ -14,6 +14,7 @@ TagManager:
   - PrePlacedFire
   - Tool
   - Flamethrower
+  - Enemy
   layers:
   - Default
   - TransparentFX

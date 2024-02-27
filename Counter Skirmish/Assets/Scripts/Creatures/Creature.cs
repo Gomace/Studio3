@@ -8,51 +8,68 @@ public class Creature
     [SerializeField] private CreatureBase _base;
     [SerializeField] private int _level;
 
+    private GameObject _unit;
+    
+    private int _maxHealth, _maxResource;
+    
+    private Dictionary<Stat, int> _stats, _statBoosts;
+
     public CreatureBase Base => _base;
     public int Level => _level;
     
     public int Health { get; set; }
     public int Resource { get; set; }
-    
-    public List<Ability> Abilities { get; set; }
-    
-    public int MaxHealth => Mathf.FloorToInt((Base.MaxHealth * Level) / 100f) + 10;
-    public int MaxResource => Mathf.FloorToInt((Base.MaxResource * Level) / 100f) + 10;
-    public int Physical => Mathf.FloorToInt((Base.Physical * Level) / 100f) + 5;
-    public int Magical => Mathf.FloorToInt((Base.Magical * Level) / 100f) + 5;
-    public int Defense => Mathf.FloorToInt((Base.Defense * Level) / 100f) + 5;
-    public int Resistance => Mathf.FloorToInt((Base.Resistance * Level) / 100f) + 5;
-    public int Speed => Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5;
 
-    public void Initialize()
+    public Ability[] Abilities { get; set; } = new Ability[4];
+
+    public Dictionary<Stat, int> Stats => _stats;
+    public Dictionary<Stat, int> StatBoosts => _statBoosts;
+
+    // Stats
+    public int MaxHealth => _maxHealth;
+    public int MaxResource => _maxResource;
+    
+    public int Physical => GetStat(Stat.Physical);
+    public int Magical => GetStat(Stat.Magical);
+    public int Defense => GetStat(Stat.Defense);
+    public int Resistance => GetStat(Stat.Resistance);
+    public int Speed => GetStat(Stat.Speed);
+
+    public void Initialize(GameObject unit)
     {
-        Health = MaxHealth;
-        Resource = MaxResource;
-
+        _unit = unit;
+        
         // GENERATE MOVES
-        Abilities = new List<Ability>();
-        foreach (LearnableAbility ability in Base.LearnableAbilities)
+        for (int i = 0; i < Abilities.Length; ++i)
+        {
+            /*if (Abilities[i] == null) // TODO Fix when abilities are coming from the Hub
+            {*/
+                if (i < _base.LearnableAbilities.Length)
+                {
+                    if (_base.LearnableAbilities[i].Level <= _level)
+                        Abilities[i] = new Ability(_base.LearnableAbilities[i].Base);
+                }
+                else
+                    break;
+            //}
+            /*else
+                ReplaceAbility();*/
+        }
+        /*foreach (LearnableAbility ability in Base.LearnableAbilities)
         {
             if (ability.Level <= Level)
                 Abilities.Add(new Ability(ability.Base));
 
             if (Abilities.Count >= 4)
                 break;
-        }
-    }
-    
-    public void PerformPlayerAbility()
-    {
-        // Unit state = casting;
+        }*/
+        
+        CalculateStats();
+        ClearBoosts();
+        
+        Health = _maxHealth;
+        Resource = _maxResource;
 
-        Ability ability = Abilities[0]; // Catch ability from creature
-        Resource--; // Spend resource
-        
-        //PlayAttackAnim(); // Attacking animation
-        
-        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
-        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
-        //_enemyHud.UpdateHealth();
     }
     
     public void TakeDamage(Ability ability, Creature attacker)
@@ -85,12 +102,98 @@ public class Creature
             damageDetails.Fainted = true;
         }
     }
-     
-     public Ability GetRandomAbility()
-     {
-        int r = Random.Range(0, Abilities.Count);
+    
+    public void CastAbility(int slotNum, bool modifier)
+    {
+        if (Abilities[slotNum] == null)
+            return;
+        
+        // Unit state = casting;
+        Ability _ability = Abilities[slotNum]; // Get ability from creature
+        
+        _ability.Cast(_unit, this, modifier);
+        Resource -= _ability.Base.Resource; // Spend resource
+        
+        //PlayAttackAnim(); // Attacking animation
+        
+        /* TODO maybe make ScriptObj for AbilityEffects
+        if (ability.Base.Category == abilityCategory.Status)
+        {
+            var effects = ability.Base.Effects;
+            if (effects.Boosts != null)
+            {
+                if (ability.Base.Target == AbilityTarget.Self)
+                    sourceUnit.Creature.ApplyBoosts(effects.Boosts);
+                else
+                    targetUnit.Creature.ApplyBoosts(effects.Boosts);
+            }
+        }*/
+        
+        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
+        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
+        //_enemyHud.UpdateHealth();
+    }
+    
+    public Ability GetRandomAbility()
+    {
+        int r = Random.Range(0, Abilities.Length - 1);
         return Abilities[r];
-     }
+    }
+     
+     
+    private void CalculateStats()
+    {
+        _stats = new Dictionary<Stat, int>
+        {
+            { Stat.Physical, Mathf.FloorToInt((_base.Physical * _level) / 100f) + 5 },
+            { Stat.Magical, Mathf.FloorToInt((_base.Magical * _level) / 100f) + 5 },
+            { Stat.Defense, Mathf.FloorToInt((_base.Defense * _level) / 100f) + 5 },
+            { Stat.Resistance, Mathf.FloorToInt((_base.Resistance * _level) / 100f) + 5 },
+            { Stat.Speed, Mathf.FloorToInt((_base.Speed * _level) / 100f) + 5 }
+        };
+
+        _maxHealth = Mathf.FloorToInt((_base.MaxHealth * _level) / 100f) + 10;
+        _maxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f) + 10;
+    }
+
+    private int GetStat(Stat stat)
+    {
+        int _statVal = _stats[stat];
+        
+        // Apply stat boost
+        int _boost = _statBoosts[stat];
+        float[] _boostValues = { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f };
+
+        if (_boost >= 0)
+            _statVal = Mathf.FloorToInt(_statVal * _boostValues[_boost]);
+        else
+            _statVal = Mathf.FloorToInt(_statVal / _boostValues[-_boost]);
+
+        return _statVal;
+    }
+
+    private void ApplyBoosts(StatBoost[] statBoosts)
+    {
+        foreach (StatBoost statBoost in statBoosts)
+        {
+            Stat _stat = statBoost.Stat;
+            int _boost = statBoost.Boost;
+
+            _statBoosts[_stat] = Mathf.Clamp(_statBoosts[_stat] + _boost, -6, 6);
+        }
+    }
+    
+    private void ClearBoosts()
+    {
+        _statBoosts = new Dictionary<Stat, int>()
+        {
+            {Stat.Physical, 0},
+            {Stat.Magical, 0},
+            {Stat.Defense, 0},
+            {Stat.Resistance, 0},
+            {Stat.Speed, 0}
+        };
+    }
 }
 
 public class DamageDetails

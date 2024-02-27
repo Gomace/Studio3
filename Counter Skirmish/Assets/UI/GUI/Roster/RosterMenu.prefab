@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &9126464504238186343
 RectTransform:
@@ -855,18 +855,6 @@ PrefabInstance:
     - target: {fileID: 5733392744302348, guid: 179e1a90e7e8c624b8563be72f1eb3ea, type: 3}
       propertyPath: m_Name
       value: Slot (0)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038344646771622400, guid: 179e1a90e7e8c624b8563be72f1eb3ea, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038344646771622400, guid: 179e1a90e7e8c624b8563be72f1eb3ea, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.97088087
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038344646771622400, guid: 179e1a90e7e8c624b8563be72f1eb3ea, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2038344646771622400, guid: 179e1a90e7e8c624b8563be72f1eb3ea, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

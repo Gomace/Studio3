@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4c76e8dd3709f44a1ce9cd5be63fbe, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 3c3e633335565ee44b2755f8de44104a, type: 3}
+  m_Name: HighestHealthPercentage
   m_EditorClassIdentifier: 
-  _name: Player
-  _icon: {fileID: 0}
-  _description: Use the casting player's stats to calculate the numbers of the ability.
+  _name: HighestHealthPercentage
+  _description: Automatically targets the character with the highest health percentage
+    within the range of the ability.

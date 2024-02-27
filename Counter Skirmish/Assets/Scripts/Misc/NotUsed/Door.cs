@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -68,4 +68,4 @@ public class Door : MonoBehaviour
         }
         transform.rotation = Quaternion.Slerp(startRotation, endRotation, time);
     }    
-}
+}*/

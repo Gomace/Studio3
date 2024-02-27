@@ -11,6 +11,8 @@ public class InstanceActions : MonoBehaviour
     private CameraController _camCont;
     private LayerMask _useLayer = 1 << 6;
 
+    private bool _modifier = false;
+    
     private void Awake()
     {
         if (!_settings)
@@ -26,24 +28,20 @@ public class InstanceActions : MonoBehaviour
 
     #region Actions
     private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());
-    
-    public void OnAbilityQ()
-    {
-        
-    }
-    public void OnAbilityW()
-    {
-        
-    }
-    public void OnAbilityE()
-    {
-        
-    }
-    public void OnAbilityR()
-    {
-        
-    }
 
+    public void OnIndicatorCast(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            _modifier = true;
+        else if (context.canceled)
+            _modifier = false;
+    }
+    
+    public void OnAbilityQ() => _unit.Creature.CastAbility(0, _modifier);
+    public void OnAbilityW() => _unit.Creature.CastAbility(1, _modifier);
+    public void OnAbilityE() => _unit.Creature.CastAbility(2, _modifier);
+    public void OnAbilityR() => _unit.Creature.CastAbility(3, _modifier);
+    
     private void OnItem1()
     {
         

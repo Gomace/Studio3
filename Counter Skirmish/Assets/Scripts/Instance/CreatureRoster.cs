@@ -10,7 +10,7 @@ public class CreatureRoster : MonoBehaviour
     #endregion Events
     
     [SerializeField] private Creature[] _creatures;
-    private Creature _curCreature;
+    private Creature _curCreature; // TODO get creatures from Hub
     
     public Creature CurCreature
     {
@@ -28,7 +28,7 @@ public class CreatureRoster : MonoBehaviour
     private void Start()
     {
         foreach (Creature creature in _creatures)
-            creature.Initialize();
+            creature.Initialize(gameObject);
         
         onRosterLoaded?.Invoke(_creatures);
         NextCreature();

@@ -21,8 +21,8 @@ public class CreatureBase : ScriptableObject
     // Extra Modifiers
     [SerializeField] private float _critChance = 1f, _critDamage = 1f;
 
-    [SerializeField] private List<LearnableAbility> _learnableAbilities;
-    [SerializeField] private List<PossiblePassives> _possiblePassives;
+    [SerializeField] private LearnableAbility[] _learnableAbilities;
+    [SerializeField] private PossiblePassives[] _possiblePassives;
 
     public string Name => _name;
     public string Description => _description;
@@ -50,8 +50,8 @@ public class CreatureBase : ScriptableObject
     public float CritChance => _critChance;
     public float CritDamage => _critDamage;
     
-    public List<LearnableAbility> LearnableAbilities => _learnableAbilities;
-    public List<PossiblePassives> PossiblePassives => _possiblePassives;
+    public LearnableAbility[] LearnableAbilities => _learnableAbilities;
+    public PossiblePassives[] PossiblePassives => _possiblePassives;
 }
 
 [System.Serializable]
@@ -93,6 +93,15 @@ public enum CreatureType
     Void,
     Water,
     Wind
+}
+
+public enum Stat
+{
+    Physical,
+    Magical,
+    Defense,
+    Resistance,
+    Speed
 }
 
 public class TypeChart

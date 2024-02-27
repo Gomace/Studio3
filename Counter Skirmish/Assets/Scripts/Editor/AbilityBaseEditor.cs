@@ -1,16 +1,15 @@
 #if UNITY_EDITOR
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(AbilityBase))] // Assuming MyComponent is a MonoBehaviour that has a reference to MyScriptableObject
 public class AbilityBaseEditor : Editor
 {
-    private string[] _fields = new[] { "_name", "_icon", "_description", // 0-2
-                                    "_power", "_cooldown", "_resource", "_range", // 3-6
-                                    "_critChance", "_critDamage" }; // 7-8
-    private string[] _scriptObjFields = new [] { "_type", "_targeting", "_abiClass", "_calcNumFrom", "_metric", "_style" }; // All in a row
-    private SerializedProperty[] _scriptObjProps = new SerializedProperty[6];
+    private string[] _fields = { "_name", "_icon", "_description", // 0-2
+                                "_power", "_cooldown", "_resource", "_range", // 3-6
+                                "_critChance", "_critDamage" }; // 7-8
+    private string[] _scriptObjFields = { "_type", "_targeting", "_canAffect", "_abiClass", "_calcNumFrom", "_metric", "_style" }; // All in a row
+    private SerializedProperty[] _scriptObjProps = new SerializedProperty[7];
 
     private void OnEnable()
     {
@@ -49,10 +48,11 @@ public class AbilityBaseEditor : Editor
     private void DrawDropDowns()
     {
         DrawScriptObj<Targeting>(_scriptObjProps[1], "Targeting Method");
-        DrawScriptObj<AbiClass>(_scriptObjProps[2], "Ability Class");
-        DrawScriptObj<CalcNumFrom>(_scriptObjProps[3], "Calc Number From");
-        DrawScriptObj<CalcMetric>(_scriptObjProps[4], "Metric");
-        DrawScriptObj<DmgStyle>(_scriptObjProps[5], "Damage Style");
+        DrawScriptObj<CanAffect>(_scriptObjProps[2], "Can Affect These");
+        DrawScriptObj<AbiClass>(_scriptObjProps[3], "Ability Class");
+        DrawScriptObj<CalcNumFrom>(_scriptObjProps[4], "Calc Number From");
+        DrawScriptObj<CalcMetric>(_scriptObjProps[5], "Metric");
+        DrawScriptObj<DmgStyle>(_scriptObjProps[6], "Damage Style");
     }
     
     private void DrawScriptObj<T>(SerializedProperty property, string label) where T : ScriptableObject

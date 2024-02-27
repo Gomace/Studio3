@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+/*using UnityEngine;
 
 public class ScrollTex : MonoBehaviour
 {
@@ -24,4 +20,4 @@ public class ScrollTex : MonoBehaviour
         float offsetY = Time.time * _scrollY;
         _renderer.material.mainTextureOffset = new Vector2(offsetX, offsetY);
     }
-}
+}*/

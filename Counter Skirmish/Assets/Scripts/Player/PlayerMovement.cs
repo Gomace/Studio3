@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Arrow
+    #region Arrow Variables
     [SerializeField] private Transform _arrowEffect;
     private Transform _circle;
     private Transform[] _arrows = new Transform[4];
@@ -25,20 +25,29 @@ public class PlayerMovement : MonoBehaviour
                                 new Vector3(0.5f, 0.5f, 0f)};
 
     private float _downA = 40f, _forwardA = 3.5f, _timeDiv = 0.2f, _circleS = 0.5f;
+    #endregion Arrow Variables
     
-    // Movement
+    #region Movement Variables
     [SerializeField] private Transform _character;
     private NavMeshAgent _navMA;
     private LayerMask _useLayer = 1 << 7, _groundLayer = (1 << 6);
     
-    private float _maxUseDistance = 1000f;
+    private const float _maxUseDistance = 1000f;
     private Ray _ray;
     private RaycastHit _hit;
 
     private Coroutine _clickAnim;
 
     public bool MoveOnUI { get; set; } = true;
+    #endregion Movement Variables
 
+    #region Targeting Indicator Variables
+    private Coroutine _targeting;
+    
+    public bool Casting { get; set; }
+    public bool Channeling { get; set; }
+    #endregion Targeting Indicator Variables
+    
     private void Awake()
     {
         // Arrow
@@ -58,8 +67,14 @@ public class PlayerMovement : MonoBehaviour
             _character.rotation = Quaternion.LookRotation(_navMA.velocity.normalized);
     }
 
-    private void OnMove()
+    private void OnMove() // TODO make so Cancel ability and Interact (at least in Hub)
     {
+        if (Casting)
+        {
+            Casting = false;
+            return;
+        }
+        
         //Debug.Log("MoveOnUI is: " + MoveOnUI + " and EventSystem is: " + EventSystem.current.IsPointerOverGameObject());
         if (!MoveOnUI && EventSystem.current.IsPointerOverGameObject())
                 return;
@@ -76,6 +91,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    #region Targeting Indicator
+    public void TargetingIndicator(GameObject indicator, bool groundRange, int range)
+    {
+        if (_targeting != null)
+            StopCoroutine(_targeting);
+
+        _targeting = StartCoroutine(Indicator(indicator));
+    }
+    
+    private IEnumerator Indicator(GameObject indicator)
+    {
+        while (Casting)
+        {
+
+            yield return null;
+        }
+
+        yield break;
+    }
+    #endregion Targeting Indicator
+    
     #region Arrow
     private IEnumerator ClickMarker(Vector3 clickSpot)
     {

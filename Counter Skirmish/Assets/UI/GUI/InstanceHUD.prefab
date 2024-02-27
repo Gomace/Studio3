@@ -320,7 +320,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &3538589835291293086
 RectTransform:
@@ -976,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdeabaf904f7e3d4993536e7fa9caee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charHud: {fileID: 0}
+  _unit: {fileID: 0}
   _mainBar: {fileID: 7287706021452681004}
   _incBar: {fileID: 94480243139135538}
   _lossBar: {fileID: 1820405783596497977}
@@ -1329,7 +1329,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7287706020886165824
 RectTransform:
@@ -2074,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7b0b73cd3c25c40b04bbc20b1ff7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charHud: {fileID: 0}
+  _unit: {fileID: 0}
   _mainBar: {fileID: 7287706022585779569}
   _incBar: {fileID: 1697828250887847715}
   _lossBar: {fileID: 2838008139223866567}
@@ -2094,7 +2094,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7287706021332062008
 RectTransform:
@@ -2367,7 +2367,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7287706021571032086
 RectTransform:
@@ -2443,7 +2443,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7287706021578607409
 RectTransform:
@@ -3017,7 +3017,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &7287706022087478468
 RectTransform:
@@ -3560,15 +3560,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce003d341603834d87714e9f9c51b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _unit: {fileID: 0}
   _name: {fileID: 7287706021983756265}
   _icon: {fileID: 7287706020924428477}
   _type1: {fileID: 7287706021242196014}
   _type2: {fileID: 7287706020864327731}
   _role: {fileID: 7287706021075229016}
   _level: {fileID: 6072651171720873745}
-  _healthBar: {fileID: 3015077797429342326}
-  _resBar: {fileID: 7437316470646038561}
 --- !u!1 &7287706022585779571
 GameObject:
   m_ObjectHideFlags: 0

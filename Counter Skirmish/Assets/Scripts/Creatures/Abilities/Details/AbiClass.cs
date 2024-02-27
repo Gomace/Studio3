@@ -8,6 +8,8 @@ public class AbiClass : ScriptableObject
     [TextArea]
     [SerializeField] private string _description;
 
+    [SerializeField] private GameObject _model;
+
     public string Name => _name;
     public string Description => _description;
 }

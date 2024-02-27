@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+/*using UnityEngine;
 using Object = UnityEngine.Object;
 
 public class DontDestroy : MonoBehaviour
@@ -21,9 +18,9 @@ public class DontDestroy : MonoBehaviour
         }
     }*/
     
-    private void Awake() => ObjectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
+    //private void Awake() => ObjectID = name + transform.position.ToString()/* + transform.eulerAngles.ToString()*/;
 
-    private void Start()
+    /*private void Start()
     {
         foreach (DontDestroy script in Object.FindObjectsOfType<DontDestroy>())
         {
@@ -32,7 +29,7 @@ public class DontDestroy : MonoBehaviour
                 if (script.ObjectID == ObjectID)
                     Destroy(gameObject);
             }
-        }
+        }*/
         
         /*for (int i = 0; i < Object.FindObjectsOfType<DontDestroy>().Length; i++)
         {
@@ -42,6 +39,6 @@ public class DontDestroy : MonoBehaviour
                      Destroy(gameObject);
              }
         }*/
-        DontDestroyOnLoad(gameObject);
-    }
-}
+        /*DontDestroyOnLoad(gameObject);
+    }*/
+//}

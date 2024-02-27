@@ -21,7 +21,7 @@ public class RosterMenu : MonoBehaviour
     }
     // Test if instances of the class are shared through reference, or if the new assignments get copies.
 
-    private void ReloadBars(Creature creature) // Update bars on creature in rosterUI
+    private void ReloadBars(Creature creature) // TODO Update bars on creature in rosterUI
     {
         foreach (RosterSlot slot in _slots)
         {
@@ -30,7 +30,7 @@ public class RosterMenu : MonoBehaviour
         }
     }
 
-    private void LevelUp(Creature creature) // Update level on creature in rosterUI
+    private void LevelUp(Creature creature) // TODO Update level on creature in rosterUI
     {
         foreach (RosterSlot slot in _slots)
         {

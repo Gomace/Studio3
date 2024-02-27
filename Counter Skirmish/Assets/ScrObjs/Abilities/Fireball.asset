@@ -20,8 +20,13 @@ MonoBehaviour:
   _cooldown: 5.6
   _resource: 60
   _range: 850
+  _effects:
+    _boosts: []
   _targeting: {fileID: 11400000, guid: 2a015ff0bce598b4e869bec10a444d93, type: 2}
+  _canAffect: {fileID: 0}
   _abiClass: {fileID: 11400000, guid: f2325e0c3ed23e94586e12538691643c, type: 2}
   _calcNumFrom: {fileID: 11400000, guid: 2c1be106ea6ee454a9340721ee1db3ba, type: 2}
   _metric: {fileID: 11400000, guid: 9ad85da9c971072489dcb4c7b0c065e8, type: 2}
   _style: {fileID: 11400000, guid: 7e7a9916b721cee4d923f680860f7cdc, type: 2}
+  _critChance: 1
+  _critDamage: 1

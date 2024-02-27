@@ -6,6 +6,8 @@ public class AbilityBase : ScriptableObject
     [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
 
+    private GameObject[] thing = new GameObject[6];
+    
     [TextArea]
     [SerializeField] private string _description;
     
@@ -14,9 +16,12 @@ public class AbilityBase : ScriptableObject
     [SerializeField] private int _power;
     [SerializeField] private float _cooldown;
     [SerializeField] private int _resource, _range;
+
+    [SerializeField] private AbilityEffects _effects; // TODO remove this later
     
     // Ability Functionality Details
     [SerializeField] private Targeting _targeting;
+    [SerializeField] private CanAffect _canAffect;
     [SerializeField] private AbiClass _abiClass;
     [SerializeField] private CalcNumFrom _calcNumFrom;
     [SerializeField] private CalcMetric _metric;
@@ -35,9 +40,12 @@ public class AbilityBase : ScriptableObject
     public float Cooldown => _cooldown;
     public int Resource => _resource;
     public int Range => _range;
+
+    public AbilityEffects Effects => _effects; // TODO remove this later
     
     // Ability Functionality Details
     public Targeting Targeting => _targeting;
+    public CanAffect CanAffect => _canAffect;
     public AbiClass AbiClass => _abiClass;
     public CalcNumFrom CalcNumFrom => _calcNumFrom;
     public CalcMetric Metric => _metric;
@@ -46,4 +54,19 @@ public class AbilityBase : ScriptableObject
     // Extra Modifiers
     public float CritChance => _critChance;
     public float CritDamage => _critDamage;
+}
+
+[System.Serializable]
+public class AbilityEffects
+{
+    [SerializeField] private StatBoost[] _boosts;
+
+    public StatBoost[] Boosts => _boosts;
+}
+
+[System.Serializable]
+public class StatBoost
+{
+    public Stat Stat { get; set; }
+    public int Boost { get; set; }
 }

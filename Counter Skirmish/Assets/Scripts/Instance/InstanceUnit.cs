@@ -16,17 +16,13 @@ public class InstanceUnit : MonoBehaviour
     #endregion Events
     
     [SerializeField] private Transform _character;
-    private List<GameObject> _usedModels;
-    private List<Creature> _usedCreatures;
+    private List<GameObject> _usedModels = new();
+    private List<Creature> _usedCreatures = new();
 
     private Creature _creature;
 
-    private void Awake()
-    {
-        _usedModels = new List<GameObject>();
-        _usedCreatures = new List<Creature>();
-    }
-
+    public Creature Creature => _creature;
+    
     private void OnEnable() => GetComponent<CreatureRoster>().onSendCreature += SetupUnit;
     private void OnDisable() => GetComponent<CreatureRoster>().onSendCreature -= SetupUnit;
 
@@ -66,4 +62,6 @@ public class InstanceUnit : MonoBehaviour
         _usedCreatures.Add(creature); // If creature not exist, add to list
         _usedModels.Add(Instantiate(creature.Base.Model, _character.position, _character.rotation, _character)); // Add new creature model to list
     }
+    
+    
 }

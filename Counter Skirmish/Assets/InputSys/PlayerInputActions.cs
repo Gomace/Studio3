@@ -37,6 +37,24 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""8717bccd-d33c-4714-b207-30155cc46784"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IndicatorCast"",
+                    ""type"": ""Button"",
+                    ""id"": ""4af99fed-e084-421c-af26-522b247eb9fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""AbilityQ"",
                     ""type"": ""Button"",
                     ""id"": ""42c10d7a-2798-4d54-8382-87362bec8ade"",
@@ -346,6 +364,28 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Hunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""565b6e9d-463b-4d8e-82d3-04ba0dde92ae"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1eb70dd0-cac4-40ea-bf7b-fcdeb7b4e0a3"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""IndicatorCast"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -700,6 +740,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Instance
         m_Instance = asset.FindActionMap("Instance", throwIfNotFound: true);
         m_Instance_Move = m_Instance.FindAction("Move", throwIfNotFound: true);
+        m_Instance_Use = m_Instance.FindAction("Use", throwIfNotFound: true);
+        m_Instance_IndicatorCast = m_Instance.FindAction("IndicatorCast", throwIfNotFound: true);
         m_Instance_AbilityQ = m_Instance.FindAction("AbilityQ", throwIfNotFound: true);
         m_Instance_AbilityW = m_Instance.FindAction("AbilityW", throwIfNotFound: true);
         m_Instance_AbilityE = m_Instance.FindAction("AbilityE", throwIfNotFound: true);
@@ -795,6 +837,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Instance;
     private IInstanceActions m_InstanceActionsCallbackInterface;
     private readonly InputAction m_Instance_Move;
+    private readonly InputAction m_Instance_Use;
+    private readonly InputAction m_Instance_IndicatorCast;
     private readonly InputAction m_Instance_AbilityQ;
     private readonly InputAction m_Instance_AbilityW;
     private readonly InputAction m_Instance_AbilityE;
@@ -815,6 +859,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public InstanceActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Instance_Move;
+        public InputAction @Use => m_Wrapper.m_Instance_Use;
+        public InputAction @IndicatorCast => m_Wrapper.m_Instance_IndicatorCast;
         public InputAction @AbilityQ => m_Wrapper.m_Instance_AbilityQ;
         public InputAction @AbilityW => m_Wrapper.m_Instance_AbilityW;
         public InputAction @AbilityE => m_Wrapper.m_Instance_AbilityE;
@@ -842,6 +888,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
+                @Use.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
+                @Use.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
+                @Use.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
+                @IndicatorCast.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnIndicatorCast;
+                @IndicatorCast.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnIndicatorCast;
+                @IndicatorCast.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnIndicatorCast;
                 @AbilityQ.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityQ;
                 @AbilityQ.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityQ;
                 @AbilityQ.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityQ;
@@ -894,6 +946,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
+                @IndicatorCast.started += instance.OnIndicatorCast;
+                @IndicatorCast.performed += instance.OnIndicatorCast;
+                @IndicatorCast.canceled += instance.OnIndicatorCast;
                 @AbilityQ.started += instance.OnAbilityQ;
                 @AbilityQ.performed += instance.OnAbilityQ;
                 @AbilityQ.canceled += instance.OnAbilityQ;
@@ -1142,6 +1200,8 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IInstanceActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnUse(InputAction.CallbackContext context);
+        void OnIndicatorCast(InputAction.CallbackContext context);
         void OnAbilityQ(InputAction.CallbackContext context);
         void OnAbilityW(InputAction.CallbackContext context);
         void OnAbilityE(InputAction.CallbackContext context);
