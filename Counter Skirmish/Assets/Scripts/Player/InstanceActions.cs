@@ -2,17 +2,20 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(InstanceUnit))]
+[RequireComponent(typeof(PlayerMovement))]
 public class InstanceActions : MonoBehaviour
 {
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private GameObject _roster, _huntScreen, _settings;
 
     private InstanceUnit _unit;
+    private PlayerMovement _movement;
     private CameraController _camCont;
     private LayerMask _useLayer = 1 << 6;
 
+    private int _curAbility;
     private bool _modifier = false;
-    
+
     private void Awake()
     {
         if (!_settings)
@@ -24,23 +27,49 @@ public class InstanceActions : MonoBehaviour
             Debug.Log("Put CameraController script on the Camera :|");
 
         _unit = GetComponent<InstanceUnit>();
+        _movement = GetComponent<PlayerMovement>();
     }
 
     #region Actions
     private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());
 
-    public void OnIndicatorCast(InputAction.CallbackContext context)
+    private void OnUse()
     {
-        if (context.started)
-            _modifier = true;
-        else if (context.canceled)
-            _modifier = false;
+        if (!_movement.Indicating)
+            return;
+        
+        Debug.Log("Turning off Indicator");
+        _movement.Indicating = false;
+        _unit.Creature.CastAbility(_curAbility, false);
     }
     
-    public void OnAbilityQ() => _unit.Creature.CastAbility(0, _modifier);
-    public void OnAbilityW() => _unit.Creature.CastAbility(1, _modifier);
-    public void OnAbilityE() => _unit.Creature.CastAbility(2, _modifier);
-    public void OnAbilityR() => _unit.Creature.CastAbility(3, _modifier);
+    private void OnIndicatorCast(InputValue value) => _modifier = value.isPressed;
+
+    private void OnAbilityQ()
+    {
+        Debug.Log("You Q in");
+        _curAbility = 0;
+        _unit.Creature.CastAbility(0, _modifier);
+    }
+
+    private void OnAbilityW()
+    {
+        Debug.Log("You W in");
+        _curAbility = 1;
+        _unit.Creature.CastAbility(1, _modifier);
+    }
+
+    private void OnAbilityE()
+    {
+        _curAbility = 2;
+        _unit.Creature.CastAbility(2, _modifier);
+    }
+
+    private void OnAbilityR()
+    {
+        _curAbility = 3;
+        _unit.Creature.CastAbility(3, _modifier);
+    }
     
     private void OnItem1()
     {

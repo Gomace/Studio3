@@ -47,12 +47,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""IndicatorCast"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""4af99fed-e084-421c-af26-522b247eb9fb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""AbilityQ"",

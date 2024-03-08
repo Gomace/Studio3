@@ -8,7 +8,7 @@ public class Creature
     [SerializeField] private CreatureBase _base;
     [SerializeField] private int _level;
 
-    private GameObject _unit;
+    private InstanceUnit _unit;
     
     private int _maxHealth, _maxResource;
     
@@ -35,10 +35,10 @@ public class Creature
     public int Resistance => GetStat(Stat.Resistance);
     public int Speed => GetStat(Stat.Speed);
 
-    public void Initialize(GameObject unit)
+    public void Initialize(InstanceUnit unit)
     {
         _unit = unit;
-        
+
         // GENERATE MOVES
         for (int i = 0; i < Abilities.Length; ++i)
         {
@@ -69,7 +69,48 @@ public class Creature
         
         Health = _maxHealth;
         Resource = _maxResource;
+    }
 
+    public void CastAbility(int slotNum, bool modifier)
+    {
+        if (Abilities[slotNum] == null)
+            return;
+        
+        // Unit state = casting;
+        Ability _ability = Abilities[slotNum]; // Get ability from creature
+        
+        if (Resource < _ability.Base.Resource)
+            return;
+        Resource -= _ability.Base.Resource; // Spend resource
+        
+        _ability.Cast(_unit, this, modifier);
+        if (modifier)
+            return;
+        
+        /* TODO maybe make ScriptObj for AbilityEffects
+        if (ability.Base.Category == abilityCategory.Status)
+        {
+            var effects = ability.Base.Effects;
+            if (effects.Boosts != null)
+            {
+                if (ability.Base.Target == AbilityTarget.Self)
+                    sourceUnit.Creature.ApplyBoosts(effects.Boosts);
+                else
+                    targetUnit.Creature.ApplyBoosts(effects.Boosts);
+            }
+        }*/
+        
+        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
+        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
+        //_enemyHud.UpdateHealth();
+        
+        //PlayAttackAnim(); // Attacking animation
+    }
+    
+    public Ability GetRandomAbility()
+    {
+        int r = Random.Range(0, Abilities.Length - 1);
+        return Abilities[r];
     }
     
     public void TakeDamage(Ability ability, Creature attacker)
@@ -103,44 +144,6 @@ public class Creature
         }
     }
     
-    public void CastAbility(int slotNum, bool modifier)
-    {
-        if (Abilities[slotNum] == null)
-            return;
-        
-        // Unit state = casting;
-        Ability _ability = Abilities[slotNum]; // Get ability from creature
-        
-        _ability.Cast(_unit, this, modifier);
-        Resource -= _ability.Base.Resource; // Spend resource
-        
-        //PlayAttackAnim(); // Attacking animation
-        
-        /* TODO maybe make ScriptObj for AbilityEffects
-        if (ability.Base.Category == abilityCategory.Status)
-        {
-            var effects = ability.Base.Effects;
-            if (effects.Boosts != null)
-            {
-                if (ability.Base.Target == AbilityTarget.Self)
-                    sourceUnit.Creature.ApplyBoosts(effects.Boosts);
-                else
-                    targetUnit.Creature.ApplyBoosts(effects.Boosts);
-            }
-        }*/
-        
-        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
-        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
-        //_enemyHud.UpdateHealth();
-    }
-    
-    public Ability GetRandomAbility()
-    {
-        int r = Random.Range(0, Abilities.Length - 1);
-        return Abilities[r];
-    }
-     
-     
     private void CalculateStats()
     {
         _stats = new Dictionary<Stat, int>

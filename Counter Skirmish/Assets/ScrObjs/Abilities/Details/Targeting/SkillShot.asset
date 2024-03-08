@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SkillShot
   m_EditorClassIdentifier: 
   _name: SkillShot
-  _icon: {fileID: 0}
   _description: Choose with the ability range where an area indicator be directed.
     Characters within that area will be affected by the ability.
+  _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
+  _showRange: 0

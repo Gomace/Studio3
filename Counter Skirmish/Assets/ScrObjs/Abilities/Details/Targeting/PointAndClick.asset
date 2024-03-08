@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PointAndClick
   m_EditorClassIdentifier: 
   _name: PointAndClick
-  _icon: {fileID: 0}
   _description: Use the mouse to target directly what character should be impacted
     within the range of the ability.
+  _indicator: {fileID: 5534767127503670974, guid: 5c1ac50448dbe4d40975ab615992cbd0, type: 3}
+  _showRange: 1

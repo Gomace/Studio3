@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ally
   _description: The ability can affect allies, but not the casting character.
+  _affected:
+  - 

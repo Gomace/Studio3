@@ -5,58 +5,33 @@ using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(ClickMarker))]
 public class PlayerMovement : MonoBehaviour
 {
-    #region Arrow Variables
-    [SerializeField] private Transform _arrowEffect;
-    private Transform _circle;
-    private Transform[] _arrows = new Transform[4];
-    private Quaternion[] _arrowRotsFrom = {Quaternion.Euler(-90f, 0f, 0f),
-                                        Quaternion.Euler(90f, 0f, 90f),
-                                        Quaternion.Euler(90f, 0f, 0f),
-                                        Quaternion.Euler(-90f, 0f, -90f)};
-    private Quaternion[] _arrowRotsTo = {Quaternion.identity,
-                                        Quaternion.Euler(0f, -90f, 0f),
-                                        Quaternion.identity,
-                                        Quaternion.Euler(0f, -90f, 0f)};
-    private Vector3[] _arrowPos = {new Vector3(0f, 0.5f, -0.5f),
-                                new Vector3(-0.5f, 0.5f, 0f),
-                                new Vector3(0f, 0.5f, 0.5f),
-                                new Vector3(0.5f, 0.5f, 0f)};
-
-    private float _downA = 40f, _forwardA = 3.5f, _timeDiv = 0.2f, _circleS = 0.5f;
-    #endregion Arrow Variables
-    
-    #region Movement Variables
     [SerializeField] private Transform _character;
+
+    private ClickMarker _clickArrow;
+    private GameObject _abilityIndicator;
     private NavMeshAgent _navMA;
     private LayerMask _useLayer = 1 << 7, _groundLayer = (1 << 6);
     
-    private const float _maxUseDistance = 1000f;
+    private const float _maxUseDistance = 200f;
     private Ray _ray;
     private RaycastHit _hit;
-
-    private Coroutine _clickAnim;
+    
+    private Coroutine _clickAnim, _indicUpdate; // Arrow & Indicator
 
     public bool MoveOnUI { get; set; } = true;
-    #endregion Movement Variables
 
-    #region Targeting Indicator Variables
-    private Coroutine _targeting;
-    
-    public bool Casting { get; set; }
+    // Targeting Indicator
+    public bool Indicating { get; set; }
     public bool Channeling { get; set; }
-    #endregion Targeting Indicator Variables
     
     private void Awake()
     {
-        // Arrow
-        _circle = _arrowEffect.GetChild(0);
+        _clickArrow = GetComponent<ClickMarker>();
         
-        for (int i = 0; i < _arrows.Length; i++)
-            _arrows[i] = _arrowEffect.GetChild(i+1);
-        
-        // Movement
         _navMA = GetComponent<NavMeshAgent>();
         _navMA.updateRotation = false;
     }
@@ -69,9 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove() // TODO make so Cancel ability and Interact (at least in Hub)
     {
-        if (Casting)
+        if (Indicating)
         {
-            Casting = false;
+            Indicating = false;
             return;
         }
         
@@ -87,101 +62,40 @@ public class PlayerMovement : MonoBehaviour
             
             if (_clickAnim != null) // Arrow
                 StopCoroutine(_clickAnim);
-            _clickAnim = StartCoroutine(ClickMarker(_hit.point));
+            _clickAnim = StartCoroutine(_clickArrow.ArrowMarker(_hit.point));
         }
     }
 
-    #region Targeting Indicator
-    public void TargetingIndicator(GameObject indicator, bool groundRange, int range)
+    public void ShowIndicator(GameObject indicator)
     {
-        if (_targeting != null)
-            StopCoroutine(_targeting);
+        if (_abilityIndicator) // Turns off old indicator
+            _abilityIndicator.SetActive(false);
+        
+        if (_indicUpdate != null)
+            StopCoroutine(_indicUpdate);
+        
+        _abilityIndicator = indicator;
+        indicator.SetActive(true); // Turns on new indicator
 
-        _targeting = StartCoroutine(Indicator(indicator));
+        Indicating = true;
+        
+        _indicUpdate = StartCoroutine(IndicUpdate(indicator.transform));
     }
     
-    private IEnumerator Indicator(GameObject indicator)
+    private IEnumerator IndicUpdate(Transform indicator)
     {
-        while (Casting)
+        Debug.Log("Start of Routine");
+        /*while (Indicating)
         {
+            _ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
+            if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))
+                indicator.rotation = Quaternion.LookRotation(_hit.point);
+            
             yield return null;
-        }
+        }*/
 
-        yield break;
+        Debug.Log("After Routine");
+        indicator.gameObject.SetActive(false);
     }
-    #endregion Targeting Indicator
-    
-    #region Arrow
-    private IEnumerator ClickMarker(Vector3 clickSpot)
-    {
-        _arrowEffect.gameObject.SetActive(false);
-        
-        foreach (Transform arrow in _arrows)
-        {
-            arrow.gameObject.SetActive(false);
-            arrow.GetChild(0).GetChild(0).GetComponent<TrailRenderer>().Clear();
-        }
-        
-        _arrowEffect.position = clickSpot;
-        
-        _circle.localScale = new Vector3(0.175f, _circle.localScale.y, 0.175f);
-        _circle.gameObject.SetActive(true);
-
-        for (int i = 0; i < _arrows.Length; i++)
-        {
-            _arrows[i].localPosition = _arrowPos[i];
-            _arrows[i].localRotation = _arrowRotsFrom[i];
-        }
-
-        _arrowEffect.gameObject.SetActive(true);
-        
-        float time = 0f;
-        while (time < 0.1f)
-        {
-            _circle.localScale -= new Vector3(_circleS, 0f, _circleS) * Time.deltaTime;
-            yield return null;
-            time += Time.deltaTime;
-        }
-        foreach (Transform arrow in _arrows)
-            arrow.gameObject.SetActive(true);
-        
-        while (time < 0.2f)
-        {
-            _circle.localScale -= new Vector3(_circleS, 0f, _circleS) * Time.deltaTime;
-
-            _arrows[0].localPosition -= new Vector3(0f, (time - 0.1f) * _downA, -_forwardA * (1 - (time - 0.1f) / _timeDiv)) * Time.deltaTime;
-            _arrows[1].localPosition -= new Vector3(-_forwardA * (1 - (time - 0.1f) / _timeDiv), (time - 0.1f) * _downA, 0f) * Time.deltaTime;
-            _arrows[2].localPosition -= new Vector3(0f, (time - 0.1f) * _downA, _forwardA * (1 - (time - 0.1f) / _timeDiv)) * Time.deltaTime;
-            _arrows[3].localPosition -= new Vector3(_forwardA * (1 - (time - 0.1f) / _timeDiv), (time - 0.1f) * _downA, 0f) * Time.deltaTime;
-            
-            for (int i = 0; i < _arrows.Length; i++)
-                _arrows[i].localRotation = Quaternion.Slerp(_arrowRotsFrom[i], _arrowRotsTo[i], (time - 0.1f) / _timeDiv);
-
-            yield return null;
-            time += Time.deltaTime;
-        }
-        _circle.gameObject.SetActive(false);
-        
-        while (time < 0.3f)
-        {
-            _arrows[0].localPosition -= new Vector3(0f, (time - 0.1f) * _downA, -_forwardA * (1 - (time - 0.1f) / _timeDiv)) * Time.deltaTime;
-            _arrows[1].localPosition -= new Vector3(-_forwardA * (1 - (time - 0.1f) / _timeDiv), (time - 0.1f) * _downA, 0f) * Time.deltaTime;
-            _arrows[2].localPosition -= new Vector3(0f, (time - 0.1f) * _downA, _forwardA * (1 - (time - 0.1f) / _timeDiv)) * Time.deltaTime;
-            _arrows[3].localPosition -= new Vector3(_forwardA * (1 - (time - 0.1f) / _timeDiv), (time - 0.1f) * _downA, 0f) * Time.deltaTime;
-            
-            for (int i = 0; i < _arrows.Length; i++)
-                _arrows[i].localRotation = Quaternion.Slerp(_arrowRotsFrom[i], _arrowRotsTo[i], (time - 0.1f) / _timeDiv);
-            
-            yield return null;
-            time += Time.deltaTime;
-        }
-        
-        for (int i = 0; i < _arrows.Length; i++)
-            _arrows[i].localRotation = Quaternion.Slerp(_arrowRotsFrom[i], _arrowRotsTo[i], (time - 0.1f) / _timeDiv);
-        
-        yield return new WaitForSeconds(0.5f);
-        _arrowEffect.gameObject.SetActive(false);
-    }
-    #endregion
 }

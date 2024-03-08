@@ -15,3 +15,4 @@ MonoBehaviour:
   _name: Projectile
   _description: The ability moves towards the target destination and takes effect
     upon colliding.
+  _model: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}

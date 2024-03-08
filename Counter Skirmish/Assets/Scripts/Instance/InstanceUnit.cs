@@ -9,6 +9,7 @@ public class InstanceUnit : MonoBehaviour
     public delegate void OnLoadHUD(Creature @creature);
     public event OnLoadHUD onLoadHUD;
     
+    // Health
     public delegate void OnHealthChanged(float @normHealth);
     public event OnHealthChanged onHealthChanged;
     public delegate void OnResourceChanged(float @normRes);
@@ -16,17 +17,15 @@ public class InstanceUnit : MonoBehaviour
     #endregion Events
     
     [SerializeField] private Transform _character;
-    private List<GameObject> _usedModels = new();
     private List<Creature> _usedCreatures = new();
+    private List<GameObject> _usedModels = new();
 
     private Creature _creature;
 
+    public Dictionary<string, GameObject> Indicators = new();
     public Creature Creature => _creature;
-    
-    private void OnEnable() => GetComponent<CreatureRoster>().onSendCreature += SetupUnit;
-    private void OnDisable() => GetComponent<CreatureRoster>().onSendCreature -= SetupUnit;
 
-    private void SetupUnit(Creature creature)
+    public void SetupUnit(Creature creature)
     {
         ChangeCharacter(creature);
         _creature = creature;
@@ -47,21 +46,26 @@ public class InstanceUnit : MonoBehaviour
         foreach (GameObject model in _usedModels)
                 model.SetActive(false);
 
-        for (int i = 0; i < _usedCreatures.Count; ++i) // Check all our used creatures
+        if (_usedCreatures.Contains(creature)) // Check if creature's model already exists
         {
-            if (_usedCreatures[i].Base.Model == creature.Base.Model) // Check if creature's model already exists
-            {
-                _usedModels[i].transform.position = _character.position;
-                _usedModels[i].transform.rotation = _character.rotation;
-                _usedModels[i].SetActive(true); // If creature already exists, turn on model
+            int i = _usedCreatures.IndexOf(creature);
+            
+            _usedModels[i].transform.position = _character.position;
+            _usedModels[i].transform.rotation = _character.rotation;
+            _usedModels[i].SetActive(true); // If creature already exists, turn on model
 
-                return;
-            }
+            return;
         }
         
         _usedCreatures.Add(creature); // If creature not exist, add to list
         _usedModels.Add(Instantiate(creature.Base.Model, _character.position, _character.rotation, _character)); // Add new creature model to list
+        foreach (Ability ability in creature.Abilities)
+        {
+            if (ability == null)
+                return;
+            
+            if (!Indicators.ContainsKey(ability.Base.Targeting.Indicator.name))
+                Indicators.Add(ability.Base.Targeting.Indicator.name, Instantiate(ability.Base.Targeting.Indicator, transform));
+        }
     }
-    
-    
 }
