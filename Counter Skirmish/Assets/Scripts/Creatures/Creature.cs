@@ -75,13 +75,13 @@ public class Creature
     {
         if (Abilities[slotNum] == null)
             return;
-        
+
         // Unit state = casting;
         Ability _ability = Abilities[slotNum]; // Get ability from creature
-        
-        if (Resource < _ability.Base.Resource)
+        //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
+    /*if (Resource < _ability.Base.Resource)
             return;
-        Resource -= _ability.Base.Resource; // Spend resource
+        Resource -= _ability.Base.Resource; // Spend resource*/
         
         _ability.Cast(_unit, this, modifier);
         if (modifier)

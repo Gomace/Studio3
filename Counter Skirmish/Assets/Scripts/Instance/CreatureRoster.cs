@@ -42,7 +42,10 @@ public class CreatureRoster : MonoBehaviour
         foreach (Creature creature in _creatures)
         {
             if (creature.Health > 0)
+            {
                 CurCreature = creature; // if CurCreature is changed, it will tell Unit
+                return;
+            }
         }
     }
 }

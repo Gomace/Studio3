@@ -78,24 +78,30 @@ public class PlayerMovement : MonoBehaviour
         indicator.SetActive(true); // Turns on new indicator
 
         Indicating = true;
-        
         _indicUpdate = StartCoroutine(IndicUpdate(indicator.transform));
     }
     
     private IEnumerator IndicUpdate(Transform indicator)
     {
+        Quaternion rotation;
         Debug.Log("Start of Routine");
-        /*while (Indicating)
+        while (Indicating)
         {
             _ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))
-                indicator.rotation = Quaternion.LookRotation(_hit.point);
-            
-            yield return null;
-        }*/
+            {
+                rotation = Quaternion.LookRotation(indicator.position - _hit.point, Vector3.up);
+                rotation.eulerAngles = new Vector3(0f, rotation.eulerAngles.y, 0);
+                indicator.rotation = rotation;
+            }
 
+            yield return null;
+        }
+        
         Debug.Log("After Routine");
         indicator.gameObject.SetActive(false);
+        yield return null;
+        StopCoroutine(_indicUpdate);
     }
 }

@@ -29,11 +29,9 @@ public class Ability
         if (modifier)
         {
             unit.GetComponent<PlayerMovement>().ShowIndicator(_indicator);
-            
             return;
         }
-        else
-            Debug.Log("You did not hold the modifier");
-        Debug.Log("Just wanted to check.");
+        
+        Debug.Log("No modif 2");
     }
 }

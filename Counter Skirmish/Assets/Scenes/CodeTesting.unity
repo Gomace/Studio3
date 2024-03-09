@@ -2721,10 +2721,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _creatures:
-  - _base: {fileID: 11400000, guid: 0039945c75dc5ac4ca0186fe574e180b, type: 2}
-    _level: 7
   - _base: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
     _level: 5
+  - _base: {fileID: 11400000, guid: 0039945c75dc5ac4ca0186fe574e180b, type: 2}
+    _level: 7
 --- !u!114 &876384250
 MonoBehaviour:
   m_ObjectHideFlags: 0

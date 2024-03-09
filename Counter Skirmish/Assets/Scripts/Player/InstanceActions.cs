@@ -47,14 +47,12 @@ public class InstanceActions : MonoBehaviour
 
     private void OnAbilityQ()
     {
-        Debug.Log("You Q in");
         _curAbility = 0;
         _unit.Creature.CastAbility(0, _modifier);
     }
 
     private void OnAbilityW()
     {
-        Debug.Log("You W in");
         _curAbility = 1;
         _unit.Creature.CastAbility(1, _modifier);
     }
