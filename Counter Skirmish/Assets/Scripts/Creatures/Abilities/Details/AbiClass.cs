@@ -9,7 +9,6 @@ public class AbiClass : ScriptableObject
     [SerializeField] private GameObject _model;
     [SerializeField] private float _speed = 0;
     
-
     public string Name => name;
     public string Description => _description;
 

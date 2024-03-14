@@ -8,11 +8,15 @@ public class Ability
     //private bool _showRange;
 
     public AbilityBase Base { get; set; }
+    public Creature Creature { get; set; }
+    
     public float Cooldown { get; set; }
 
-    public Ability(AbilityBase cBase)
+    public Ability(AbilityBase aBase, Creature creature)
     {
-        Base = cBase;
+        Base = aBase;
+        Creature = creature;
+
         //_showRange = Base.Targeting.ShowRange;
     }
 
@@ -21,7 +25,7 @@ public class Ability
         if (!_conjurations.TryPop(out GameObject conjuration)) // Check for used model
         {
             conjuration = GameObject.Instantiate(Base.AbiClass.Model);
-            conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, creature, this);
+            conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this, Base.CanAffect(unit.gameObject.tag));
         }
         
         ConjTransform(conjuration.transform, unit.transform.position, mouse);

@@ -47,7 +47,7 @@ public class Creature
                 if (i < _base.LearnableAbilities.Length)
                 {
                     if (_base.LearnableAbilities[i].Level <= _level)
-                        Abilities[i] = new Ability(_base.LearnableAbilities[i].Base);
+                        Abilities[i] = new Ability(_base.LearnableAbilities[i].Base, this);
                 }
                 else
                     break;
@@ -112,6 +112,7 @@ public class Creature
     
     public void TakeDamage(Ability ability, Creature attacker)
     {
+        Debug.Log($"{attacker.Base.Name} attacked {Base.Name}");
         float critical = 1f;
         if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);

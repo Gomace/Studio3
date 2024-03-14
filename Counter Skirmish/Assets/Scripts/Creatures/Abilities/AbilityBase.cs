@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;using UnityEditor.UI;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ability", menuName = "CouSki/Abilities/Ability", order = -11)]
@@ -22,7 +23,7 @@ public class AbilityBase : ScriptableObject
     [SerializeField] private GameObject _indicator;
     [SerializeField] private Vector3 _indhitBox = new (75f, 100f, 500f);
     [SerializeField] private int _hits = 1;
-    [SerializeField] private string[] _canAffect;
+    [SerializeField] private Affectable _canAffect;
     [SerializeField] private AbiClass _abiClass;
     [SerializeField] private CalcNumFrom _calcNumFrom;
     [SerializeField] private CalcMetric _metric;
@@ -47,7 +48,6 @@ public class AbilityBase : ScriptableObject
     public GameObject Indicator => _indicator;
     public Vector3 IndHitBox => _indhitBox * 0.01f;
     public int Hits => _hits;
-    public string[] CanAffect => _canAffect;
     public AbiClass AbiClass => _abiClass;
     public CalcNumFrom CalcNumFrom => _calcNumFrom;
     public CalcMetric Metric => _metric;
@@ -56,6 +56,43 @@ public class AbilityBase : ScriptableObject
     // Extra Modifiers
     public float CritChance => _critChance;
     public float CritDamage => _critDamage;
+    
+    public string[] CanAffect(string casterTag)
+    {
+        switch (_canAffect)
+        {
+            case Affectable.Enemy:
+                switch (casterTag)
+                {
+                    case "Player":
+                        return new[] { "Enemy" };
+                    case "Enemy":
+                        return new[] { "Player" };
+                }
+                break;
+            case Affectable.Friendly:
+                switch (casterTag)
+                {
+                    case "Player":
+                        return new[] { "Player" };
+                    case "Enemy":
+                        return new[] { "Enemy" };
+                }
+                break;
+            default:
+                Debug.Log($"You didn't make a case for {_canAffect}");
+                break;
+        }
+        
+        Debug.Log($"No Affectable was chosen on ability {name}");
+        return new[] { "Enemy" };
+    }
+    
+    private enum Affectable
+    {
+        Enemy,
+        Friendly
+    }
 }
 
 [System.Serializable]

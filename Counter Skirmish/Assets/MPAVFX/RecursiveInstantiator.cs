@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,7 +36,8 @@ public class RecursiveInstantiator : MonoBehaviour
     private static Stack<Transform> _deadches; // = new Stack<Transform>(); might just work instead
     
     public static Stack<Transform> Deadches => _deadches;
-
+    
+    
     private void Awake()
     {
         _delay = 0; // Perpetual lightning strikes

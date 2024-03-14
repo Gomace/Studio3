@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 2534329420200596395}
   - component: {fileID: 2534329420200596398}
   - component: {fileID: 2534329420200596393}
-  - component: {fileID: 2534329420200596392}
+  - component: {fileID: 9047827250281220975}
   m_Layer: 0
   m_Name: ResourceBar
   m_TagString: Untagged
@@ -521,7 +521,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2534329420200596392
+--- !u!114 &9047827250281220975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2534329420200596394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7b0b73cd3c25c40b04bbc20b1ff7ba, type: 3}
+  m_Script: {fileID: 11500000, guid: cdeabaf904f7e3d4993536e7fa9caee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 0}

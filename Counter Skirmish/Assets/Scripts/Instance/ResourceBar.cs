@@ -10,7 +10,7 @@ public class ResourceBar : MonoBehaviour
     [SerializeField] private Image _mainBar;
     [SerializeField] private Image _incBar, _lossBar;
 
-    private float _barSpeed = 2f;
+    private float _barSpeed = 0.75f;
     private Coroutine _damageBar;
 
     private void Awake()

@@ -9682,6 +9682,10 @@ PrefabInstance:
       value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
+      propertyPath: _collMenu
+      value: 
+      objectReference: {fileID: 2060353992852914347}
+    - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
       propertyPath: _detailScreen
       value: 
       objectReference: {fileID: 0}
@@ -10588,6 +10592,10 @@ PrefabInstance:
       propertyPath: _hover.r
       value: 0.5882353
       objectReference: {fileID: 0}
+    - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
+      propertyPath: _collMenu
+      value: 
+      objectReference: {fileID: 2060353992852914347}
     - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
       propertyPath: _overview
       value: 

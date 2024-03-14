@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CollisionTransmitter : MonoBehaviour
 {
+    private Rigidbody _rb;
+    
     private Stack<GameObject> _conjurations;
     private Ability _conjurer;
     private Creature _creature;
@@ -21,6 +24,7 @@ public class CollisionTransmitter : MonoBehaviour
         get => _hits;
         set
         {
+            Debug.Log($"The hit counter became {value}");
             if (value <= 0) // Might not need? ¯\_(ツ)_/¯
                 AddToStack();
             
@@ -28,19 +32,21 @@ public class CollisionTransmitter : MonoBehaviour
         }
     }
 
+    private void Awake() => _rb = GetComponent<Rigidbody>();
+
     private void OnEnable()
     {
         if (_initialized)
             Activate();
     }
 
-    public void Initialize(Stack<GameObject> conjStack, Creature caster, Ability source)
+    public void Initialize(Stack<GameObject> conjStack, Ability source, string[] casterTags)
     {
         _conjurations = conjStack;
-        _creature = caster;
         _conjurer = source;
+        _creature = source.Creature;
         
-        _canAffect = source.Base.CanAffect; // find tags through checking enemy vs ally
+        _canAffect = casterTags; // find tags through checking enemy vs ally
         
         _initialized = true;
     }
@@ -51,7 +57,7 @@ public class CollisionTransmitter : MonoBehaviour
         _hits = _conjurer.Base.Hits;
 
         _distance = 0;
-        GetComponent<Rigidbody>().AddForce(transform.forward * _conjurer.Base.AbiClass.Speed);
+        _rb.AddForce(transform.forward * _conjurer.Base.AbiClass.Speed);
     }
 
     private void FixedUpdate()
@@ -63,7 +69,7 @@ public class CollisionTransmitter : MonoBehaviour
         //_distance += _conjurer.Base.AbiClass.Speed * Time.fixedDeltaTime;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         foreach (string hitTag in _canAffect)
         {
@@ -77,9 +83,9 @@ public class CollisionTransmitter : MonoBehaviour
         if (_affected.Contains(hitTarget) || _hits < 1)
             return;
         
+        _Hits -= 1;
         _affected.Add(hitTarget);
         hitTarget.TakeDamage(_conjurer, _creature);
-        _Hits -= 1;
         
         //_enemyHud.UpdateHealth();
     }
@@ -88,7 +94,7 @@ public class CollisionTransmitter : MonoBehaviour
     {
         // GameObject dissipate animation
         gameObject.SetActive(false);
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        _rb.velocity = Vector3.zero;
         _conjurations.Push(gameObject);
     }
 }
