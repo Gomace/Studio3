@@ -32,7 +32,7 @@ public class RecursiveInstantiator : MonoBehaviour
 
     private float _delay, _timer; // Zap interval timer
 
-    private static Stack<Transform> _deadches;
+    private static Stack<Transform> _deadches; // = new Stack<Transform>(); might just work instead
     
     public static Stack<Transform> Deadches => _deadches;
 

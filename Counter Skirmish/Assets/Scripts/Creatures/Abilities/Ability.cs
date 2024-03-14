@@ -1,13 +1,11 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Ability
 {
-    private List<Creature> _affected;
-    private string[] _canAffect;
-    private GameObject _indicator;
-    private bool _showRange;
+    private Stack<GameObject> _conjurations = new();
+
+    //private bool _showRange;
 
     public AbilityBase Base { get; set; }
     public float Cooldown { get; set; }
@@ -15,23 +13,32 @@ public class Ability
     public Ability(AbilityBase cBase)
     {
         Base = cBase;
-        Cooldown = cBase.Cooldown;
-        
-        // _canAffect = Base.CanAffect.Affected;
-        _showRange = Base.Targeting.ShowRange;
+        //_showRange = Base.Targeting.ShowRange;
     }
 
-    public void Cast(InstanceUnit unit, Creature creature, bool modifier) // Up down button toggle Shift
+    public void Cast(InstanceUnit unit, Creature creature, Vector3 mouse) // Cast Ability
     {
-        _indicator = unit.Indicators[Base.Targeting.Indicator.name];
-        // Use Range and width to make hitbox
-        
-        if (modifier)
+        if (!_conjurations.TryPop(out GameObject conjuration)) // Check for used model
         {
-            unit.GetComponent<PlayerMovement>().ShowIndicator(_indicator);
-            return;
+            conjuration = GameObject.Instantiate(Base.AbiClass.Model);
+            conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, creature, this);
         }
         
-        Debug.Log("No modif 2");
+        ConjTransform(conjuration.transform, unit.transform.position, mouse);
+        conjuration.gameObject.SetActive(true);
+        
+        Debug.Log($"{creature.Base.Name} cast a {Base.Name}");
+    }
+    
+    private void ConjTransform(Transform conj, Vector3 unitPos, Vector3 mouse)
+    {
+        Quaternion conjRot = Quaternion.LookRotation(mouse - unitPos, Vector3.up); // Rotation
+        conjRot.eulerAngles = new Vector3(0f, conjRot.eulerAngles.y, 0);
+        conj.rotation = conjRot;
+        
+        unitPos += Base.AbiClass.Model.transform.localPosition; // Position
+        conj.position = unitPos;
+                
+        conj.localScale = new Vector3(Base.IndHitBox.x, Base.IndHitBox.x, Base.IndHitBox.x); // Scale
     }
 }

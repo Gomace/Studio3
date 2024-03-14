@@ -4,8 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Creature", menuName = "CouSki/Creature")]
 public class CreatureBase : ScriptableObject
 {
-    [SerializeField] private string _name;
-    
     [TextArea]
     [SerializeField] private string _description;
 
@@ -24,7 +22,7 @@ public class CreatureBase : ScriptableObject
     [SerializeField] private LearnableAbility[] _learnableAbilities;
     [SerializeField] private PossiblePassives[] _possiblePassives;
 
-    public string Name => _name;
+    public string Name => name;
     public string Description => _description;
     
     public Sprite Icon => _icon;
@@ -52,6 +50,18 @@ public class CreatureBase : ScriptableObject
     
     public LearnableAbility[] LearnableAbilities => _learnableAbilities;
     public PossiblePassives[] PossiblePassives => _possiblePassives;
+
+    public float GetEffectiveness(Typing hitType)
+    {
+        float multiplier = 1;
+
+        if (Type1 != null)
+            multiplier *= Type1.TypeChart(hitType);
+        if (Type2 != null)
+            multiplier *= Type2.TypeChart(hitType);
+        
+        return multiplier;
+    }
 }
 
 [System.Serializable]
@@ -72,29 +82,6 @@ public class PossiblePassives
     public Passive Passive => _passive;
 }
 
-public enum CreatureType
-{
-    None,
-    Arcane,
-    Dark,
-    Earth,
-    Energy,
-    Entropy,
-    Ethereal,
-    Fire,
-    Forest,
-    Host,
-    Light,
-    Matter,
-    Predator,
-    Radioactive,
-    Swamp,
-    Tech,
-    Void,
-    Water,
-    Wind
-}
-
 public enum Stat
 {
     Physical,
@@ -102,41 +89,4 @@ public enum Stat
     Defense,
     Resistance,
     Speed
-}
-
-public class TypeChart
-{
-    public static float[][] chart =
-    {
-        //                   ARC    DRK   ERT   NRG   NTP   ETH   FIR   FOR   HOS   LIT   MTR   PRD   RAD   SWP   TEC   VOI   WAT   WIN
-        /*ARC*/new float[] { 1f,    1f,   1f,  0.5f, 1.5f, 1.5f,  1f,   1f,   1f,  1.5f,  1f,   1f,   1f,  0.5f, 1.5f, 0.5f,  1f,   1f },
-        /*DRK*/new float[] { 1.5f, 0.5f,  1f,   1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f,  1f,  0.5f, 0.5f, 0.5f, 0.5f,  1f,   1f,  1.5f },
-        /*ERT*/new float[] { 1f,    1f,  0.5f,  1f,   1f,  0.5f, 1.5f,  1f,   1f,   1f,   1f,  1.5f,  1f,  0.5f, 1.5f, 0.5f, 0.5f,  1f },
-        /*NRG*/new float[] { 1f,   1.5f,  1f,   1f,  0.5f,  1f,   1f,   1f,   1f,  0.5f,  1f,   1f,  0.5f,  1f,   1f,  0.5f, 1.5f,  1f },
-        /*NTP*/new float[] { 1.5f, 0.5f, 1.5f,  1f,   1f,   1f,  0.5f, 1.5f, 1.5f,  1f,  1.5f,  1f,   1f,   1f,  1.5f,  1f,  0.5f, 0.5f },
-        /*ETH*/new float[] { 1f,   1.5f, 0.5f,  1f,   1f,   1f,  0.5f,  1f,  1.5f, 0.5f, 0.5f, 0.5f, 1.5f,  1f,   1f,  0.5f,  1f,   1f },
-        /*FIR*/new float[] { 1f,   1.5f, 0.5f, 0.5f,  1f,  1.5f, 0.5f, 1.5f, 1.5f, 0.5f,  1f,   1f,   1f,   1f,  1.5f,  1f,  0.5f,  1f },
-        /*FOR*/new float[] { 1f,    1f,   1f,   1f,   1f,   1f,  0.5f,  1f,   1f,  1.5f,  1f,   1f,  0.5f,  1f,  1.5f,  1f,  1.5f, 0.5f },
-        /*HOS*/new float[] { 1f,    1f,  1.5f,  1f,  0.5f, 0.5f, 0.5f, 1.5f,  1f,   1f,  1.5f, 1.5f, 0.5f,  1f,  0.5f,  1f,   1f,   1f },
-        /*LIT*/new float[] { 1.5f, 1.5f, 0.5f,  1f,   1f,  1.5f, 0.5f, 0.5f,  1f,  0.5f, 0.5f,  1f,  0.5f, 1.5f,  1f,  1.5f,  1f,  0.5f },
-        /*MTR*/new float[] { 0.5f, 0.5f,  1f,  0.5f, 0.5f, 0.5f,  1f,   1f,   1f,  0.5f,  1f,  1.5f,  1f,   1f,  1.5f, 0.5f,  1f,  0.5f },
-        /*PRD*/new float[] { 1f,   1.5f, 0.5f,  1f,   1f,  0.5f, 0.5f,  1f,  1.5f, 0.5f,  1f,  1.5f,  1f,   1f,  0.5f, 0.5f,  1f,  0.5f },
-        /*RAD*/new float[] { 0.5f,  1f,  0.5f, 0.5f, 1.5f, 1.5f, 1.5f,  1f,   1f,  0.5f, 1.5f, 1.5f, 0.5f,  1f,  1.5f, 0.5f,  1f,   1f },
-        /*SWP*/new float[] { 1f,    1f,  1.5f,  1f,   1f,   1f,   1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f,  1f,  1.5f,  1f,  0.5f, 1.5f },
-        /*TEC*/new float[] { 1f,   1.5f, 1.5f, 1.5f, 0.5f, 0.5f,  1f,  1.5f,  1f,   1f,  1.5f, 1.5f,  1f,  0.5f,  1f,  0.5f, 0.5f,  1f },
-        /*VOI*/new float[] { 1.5f,  1f,  1.5f, 1.5f,  1f,   1f,  1.5f,  1f,  1.5f, 0.5f, 1.5f, 1.5f, 0.5f, 1.5f, 1.5f, 0.5f, 1.5f, 0.5f },
-        /*WAT*/new float[] { 1f,   0.5f, 1.5f,  1f,   1f,   1f,  1.5f, 0.5f, 1.5f,  1f,   1f,   1f,   1f,  0.5f, 1.5f, 0.5f, 0.5f,  1f},
-        /*WIN*/new float[] { 1f,    1f,  0.5f, 0.5f,  1f,  1.5f, 1.5f,  1f,   1f,  0.5f, 0.5f,  1f,   1f,  1.5f, 0.5f, 0.5f,  1f,  0.5f},
-    };
-
-    public static float GetEffectiveness(CreatureType attackType, CreatureType defenseType)
-    {
-        if (attackType == CreatureType.None || defenseType == CreatureType.None)
-            return 1;
-
-        int row = (int)attackType - 1;
-        int col = (int)defenseType - 1;
-
-        return chart[row][col];
-    }
 }

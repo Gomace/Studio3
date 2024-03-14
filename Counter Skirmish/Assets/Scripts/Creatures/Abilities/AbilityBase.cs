@@ -3,10 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ability", menuName = "CouSki/Abilities/Ability", order = -11)]
 public class AbilityBase : ScriptableObject
 {
-    [SerializeField] private string _name;
     [SerializeField] private Sprite _icon;
 
-    private GameObject[] thing = new GameObject[6];
+    //private GameObject[] thing = new GameObject[6]; TODO what is this?
     
     [TextArea]
     [SerializeField] private string _description;
@@ -15,13 +14,15 @@ public class AbilityBase : ScriptableObject
 
     [SerializeField] private int _power;
     [SerializeField] private float _cooldown;
-    [SerializeField] private int _resource, _range;
+    [SerializeField] private int _resource;
 
-    [SerializeField] private AbilityEffects _effects; // TODO remove this later
+    // [SerializeField] private AbilityEffects _effects; // TODO remove this later
     
     // Ability Functionality Details
-    [SerializeField] private Targeting _targeting;
-    [SerializeField] private CanAffect _canAffect;
+    [SerializeField] private GameObject _indicator;
+    [SerializeField] private Vector3 _indhitBox = new (75f, 100f, 500f);
+    [SerializeField] private int _hits = 1;
+    [SerializeField] private string[] _canAffect;
     [SerializeField] private AbiClass _abiClass;
     [SerializeField] private CalcNumFrom _calcNumFrom;
     [SerializeField] private CalcMetric _metric;
@@ -30,7 +31,7 @@ public class AbilityBase : ScriptableObject
     // Extra Modifiers
     [SerializeField] private float _critChance = 1f, _critDamage = 1f;
     
-    public string Name => _name;
+    public string Name => name;
     public Sprite Icon => _icon;
     public string Description => _description;
     
@@ -39,13 +40,14 @@ public class AbilityBase : ScriptableObject
     public int Power => _power;
     public float Cooldown => _cooldown;
     public int Resource => _resource;
-    public int Range => _range;
 
-    public AbilityEffects Effects => _effects; // TODO remove this later
+    // public AbilityEffects Effects => _effects; // TODO remove this later
     
     // Ability Functionality Details
-    public Targeting Targeting => _targeting;
-    public CanAffect CanAffect => _canAffect;
+    public GameObject Indicator => _indicator;
+    public Vector3 IndHitBox => _indhitBox * 0.01f;
+    public int Hits => _hits;
+    public string[] CanAffect => _canAffect;
     public AbiClass AbiClass => _abiClass;
     public CalcNumFrom CalcNumFrom => _calcNumFrom;
     public CalcMetric Metric => _metric;

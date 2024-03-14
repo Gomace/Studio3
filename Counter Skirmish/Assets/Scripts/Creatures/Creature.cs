@@ -71,21 +71,24 @@ public class Creature
         Resource = _maxResource;
     }
 
-    public void CastAbility(int slotNum, bool modifier)
+    public void PerformAbility(int slotNum, Vector3 mouse)
     {
-        if (Abilities[slotNum] == null)
-            return;
-
         // Unit state = casting;
         Ability _ability = Abilities[slotNum]; // Get ability from creature
-        //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
-    /*if (Resource < _ability.Base.Resource)
-            return;
-        Resource -= _ability.Base.Resource; // Spend resource*/
         
-        _ability.Cast(_unit, this, modifier);
-        if (modifier)
+        /*jf (ability.Cooldown > 0)
             return;
+        //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
+        /*if (Resource < _ability.Base.Resource)
+            return;
+        Resource -= _ability.Base.Resource; // Spend resource
+        _unit.UpdateResource();
+        
+        ability.Cooldown = ability.Base.Cooldown; // Go on cooldown
+        _unit.UpdateCooldown(slotNum) // Check this*/ // TODO get this goin
+
+        _ability.Cast(_unit, this, mouse);
+        //PlayAttackAnim(); // Attacking animation
         
         /* TODO maybe make ScriptObj for AbilityEffects
         if (ability.Base.Category == abilityCategory.Status)
@@ -99,12 +102,6 @@ public class Creature
                     targetUnit.Creature.ApplyBoosts(effects.Boosts);
             }
         }*/
-        
-        //_enemyUnit.PlayHitAnim(); // Play this on its own by the enemy, not here
-        //_enemyUnit.Creature.TakeDamage(ability, _playerUnit.Creature);
-        //_enemyHud.UpdateHealth();
-        
-        //PlayAttackAnim(); // Attacking animation
     }
     
     public Ability GetRandomAbility()
@@ -118,29 +115,23 @@ public class Creature
         float critical = 1f;
         if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
+
+        // Use new scalings
         
-        float type = TypeChart.GetEffectiveness(CreatureType.Earth/*ability.Base.Type*/, CreatureType.Arcane/*this.Base.Type1*/) * TypeChart.GetEffectiveness(CreatureType.Energy/*ability.Base.Type*/, CreatureType.Dark/*this.Base.Type2*/);
-
-        DamageDetails damageDetails = new DamageDetails()
-        {
-            TypeEffectiveness = type,
-            Critical = critical,
-            Fainted = false
-        };
-
         //float attack = (ability.Base.IsSpecial) ? attacker.Magical : attacker.Physical;
         //float defense = (ability.Base.IsSpecial) ? Resistance : Defense;
         
-        float modifiers = Random.Range(0.85f, 1f) * type * critical;
-        float a = (2 * attacker.Level + 10) / 250f;
-        float d = a * ability.Base.Power * ((float)attacker.Physical / Defense) + 2;
-        int damage = Mathf.FloorToInt(d * modifiers);
+        float modifiers = Random.Range(0.85f, 1f) * Base.GetEffectiveness(ability.Base.Type) * critical;
+        float att = (2 * attacker.Level + 10) / 250f;
+        float def = att * ability.Base.Power * ((float)attacker.Physical / Defense) + 2;
+        int damage = Mathf.FloorToInt(def * modifiers);
 
         Health -= damage;
+        _unit.UpdateHealth(); // TODO get this right
         if (Health <= 0)
         {
             Health = 0;
-            damageDetails.Fainted = true;
+            // Death animation
         }
     }
     
@@ -197,11 +188,4 @@ public class Creature
             {Stat.Speed, 0}
         };
     }
-}
-
-public class DamageDetails
-{
-    public bool Fainted { get; set; }
-    public float Critical { get; set; }
-    public float TypeEffectiveness { get; set; }
 }

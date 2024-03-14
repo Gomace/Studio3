@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
   m_Name: Lightning Strike
   m_EditorClassIdentifier: 
-  _name: Lightning Strike
   _icon: {fileID: 0}
   _description: Summons a lightning strike in the target area after a short delay.
   _type: {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
   _power: 100
   _cooldown: 7
   _resource: 100
-  _range: 800
-  _effects:
-    _boosts: []
-  _targeting: {fileID: 11400000, guid: 2a015ff0bce598b4e869bec10a444d93, type: 2}
-  _canAffect: {fileID: 11400000, guid: 936547a5a5f6d03418e6aeacf76c8713, type: 2}
+  _indicator: {fileID: 2441275663053342970, guid: 940ca1e3cdc79894891b3ed42246006e, type: 3}
+  _indhitBox: {x: 75, y: 100, z: 500}
+  _hits: 1
+  _canAffect:
+  - 11400000
+  - 936547a5a5f6d03418e6aeacf76c8713
+  - 2
   _abiClass: {fileID: 11400000, guid: 97bda7cdf855a984d8b26495681e44f3, type: 2}
   _calcNumFrom: {fileID: 11400000, guid: 2c1be106ea6ee454a9340721ee1db3ba, type: 2}
   _metric: {fileID: 11400000, guid: 9ad85da9c971072489dcb4c7b0c065e8, type: 2}

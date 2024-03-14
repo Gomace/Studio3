@@ -64,8 +64,8 @@ public class InstanceUnit : MonoBehaviour
             if (ability == null)
                 return;
             
-            if (!Indicators.ContainsKey(ability.Base.Targeting.Indicator.name))
-                Indicators.Add(ability.Base.Targeting.Indicator.name, Instantiate(ability.Base.Targeting.Indicator, transform));
+            if (!Indicators.ContainsKey(ability.Base.Indicator.name))
+                Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
         }
     }
 }

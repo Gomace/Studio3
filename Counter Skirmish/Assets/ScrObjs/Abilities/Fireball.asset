@@ -12,18 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  _name: Fireball
   _icon: {fileID: 0}
   _description: Shoots a fireball from the character in the target direction.
   _type: {fileID: 11400000, guid: ada4b6c1778b17e47be9bce7d0833926, type: 2}
   _power: 70
   _cooldown: 5.6
   _resource: 60
-  _range: 850
-  _effects:
-    _boosts: []
-  _targeting: {fileID: 11400000, guid: 2a015ff0bce598b4e869bec10a444d93, type: 2}
-  _canAffect: {fileID: 11400000, guid: 936547a5a5f6d03418e6aeacf76c8713, type: 2}
+  _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
+  _indhitBox: {x: 75, y: 100, z: 500}
+  _hits: 1
+  _canAffect:
+  - 11400000
+  - 936547a5a5f6d03418e6aeacf76c8713
+  - 2
   _abiClass: {fileID: 11400000, guid: f2325e0c3ed23e94586e12538691643c, type: 2}
   _calcNumFrom: {fileID: 11400000, guid: 2c1be106ea6ee454a9340721ee1db3ba, type: 2}
   _metric: {fileID: 11400000, guid: 9ad85da9c971072489dcb4c7b0c065e8, type: 2}

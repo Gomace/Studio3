@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -106,4 +106,4 @@ public class AbilityBaseEditor : Editor
         return _scriptObjs;
     }
 }
-#endif
+#endif*/

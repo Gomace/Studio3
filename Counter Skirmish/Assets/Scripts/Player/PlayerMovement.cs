@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform _character;
 
+    private Camera _mainCam;
     private ClickMarker _clickArrow;
     private GameObject _abilityIndicator;
     private NavMeshAgent _navMA;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake()
     {
+        _mainCam = Camera.main; 
         _clickArrow = GetComponent<ClickMarker>();
         
         _navMA = GetComponent<NavMeshAgent>();
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         if (!MoveOnUI && EventSystem.current.IsPointerOverGameObject())
                 return;
         
-        _ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        _ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
         
         if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))
         {
@@ -66,6 +68,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public Vector3 MouseLocation()
+    {
+        _ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+        if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))
+            return _hit.point;
+        return Mouse.current.position.ReadValue();
+    }
+    
     public void ShowIndicator(GameObject indicator)
     {
         if (_abilityIndicator) // Turns off old indicator
@@ -78,16 +89,15 @@ public class PlayerMovement : MonoBehaviour
         indicator.SetActive(true); // Turns on new indicator
 
         Indicating = true;
-        _indicUpdate = StartCoroutine(IndicUpdate(indicator.transform));
+        _indicUpdate = StartCoroutine(IndicDirection(indicator.transform));
     }
     
-    private IEnumerator IndicUpdate(Transform indicator)
+    private IEnumerator IndicDirection(Transform indicator)
     {
         Quaternion rotation;
-        Debug.Log("Start of Routine");
         while (Indicating)
         {
-            _ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            _ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
             if (Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer))
             {
@@ -99,9 +109,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         
-        Debug.Log("After Routine");
         indicator.gameObject.SetActive(false);
-        yield return null;
         StopCoroutine(_indicUpdate);
     }
 }

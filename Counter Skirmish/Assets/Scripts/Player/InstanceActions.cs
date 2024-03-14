@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,10 +12,21 @@ public class InstanceActions : MonoBehaviour
     private InstanceUnit _unit;
     private PlayerMovement _movement;
     private CameraController _camCont;
-    private LayerMask _useLayer = 1 << 6;
+    // private LayerMask _useLayer = 1 << 6; TODO remove this later
 
-    private int _curAbility;
+    private GameObject _indicator;
+    private int _curSlot;
     private bool _modifier = false;
+    
+    private int _CurAbility
+    {
+        get => _curSlot;
+        set
+        {
+            _curSlot = value;
+            CastAbility();
+        }
+    }
 
     private void Awake()
     {
@@ -38,36 +50,19 @@ public class InstanceActions : MonoBehaviour
         if (!_movement.Indicating)
             return;
         
-        Debug.Log("Turning off Indicator");
         _movement.Indicating = false;
-        _unit.Creature.CastAbility(_curAbility, false);
+        _unit.Creature.PerformAbility(_CurAbility, _movement.MouseLocation());
     }
     
     private void OnIndicatorCast(InputValue value) => _modifier = value.isPressed;
 
-    private void OnAbilityQ()
-    {
-        _curAbility = 0;
-        _unit.Creature.CastAbility(0, _modifier);
-    }
+    private void OnAbilityQ() => _CurAbility = 0;
 
-    private void OnAbilityW()
-    {
-        _curAbility = 1;
-        _unit.Creature.CastAbility(1, _modifier);
-    }
+    private void OnAbilityW() => _CurAbility = 1;
 
-    private void OnAbilityE()
-    {
-        _curAbility = 2;
-        _unit.Creature.CastAbility(2, _modifier);
-    }
+    private void OnAbilityE() => _CurAbility = 2;
 
-    private void OnAbilityR()
-    {
-        _curAbility = 3;
-        _unit.Creature.CastAbility(3, _modifier);
-    }
+    private void OnAbilityR() => _CurAbility = 3;
     
     private void OnItem1()
     {
@@ -102,4 +97,18 @@ public class InstanceActions : MonoBehaviour
     private void OnHub() => _sceneLoader.LoadScene("Hub");
 
     #endregion Actions
+
+    private void CastAbility()
+    {
+        if (_unit.Creature.Abilities[_CurAbility] == null) // Check if ability is equipped
+            return;
+        
+        _indicator = _unit.Indicators[_unit.Creature.Abilities[_CurAbility].Base.Indicator.name]; // Grab correct indicator
+        _indicator.transform.localScale = _unit.Creature.Abilities[_CurAbility].Base.IndHitBox; // Rescale indicator
+        
+        if (_modifier)
+            _movement.ShowIndicator(_indicator); // Indicator follows mouse (player only)
+        else
+            _unit.Creature.PerformAbility(_CurAbility, _movement.MouseLocation());
+    }
 }

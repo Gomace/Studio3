@@ -15,4 +15,22 @@ public class Typing : ScriptableObject
     
     public Typing[] Strengths => _strengths;
     public Typing[] Weaknesses => _weaknesses;
+
+    public float TypeChart(Typing hitType)
+    {
+        float multiplier = 1;
+
+        foreach (Typing strength in _strengths)
+        {
+            if (strength == hitType)
+                multiplier *= 0.5f;
+        }
+        foreach (Typing weakness in _weaknesses)
+        {
+            if (weakness == hitType)
+                multiplier *= 1.5f;
+        }
+
+        return multiplier;
+    }
 }
