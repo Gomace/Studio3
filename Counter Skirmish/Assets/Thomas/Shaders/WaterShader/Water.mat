@@ -56,7 +56,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Depth: 1.2
-    - _Displacement: 0.43
+    - _Displacement: 0
     - _NormalStrength: 1
     - _QueueControl: 0
     - _QueueOffset: 0
