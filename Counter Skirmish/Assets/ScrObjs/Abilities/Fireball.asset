@@ -15,7 +15,7 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _description: Shoots a fireball from the character in the target direction.
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 500
+  _power: 70
   _cooldown: 5.6
   _resource: 60
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
