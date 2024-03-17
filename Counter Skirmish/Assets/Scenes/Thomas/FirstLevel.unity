@@ -138,8 +138,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &10814496
 Transform:
@@ -674,8 +674,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &40994278
 Transform:
@@ -757,8 +757,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &42475841
 Transform:
@@ -1311,8 +1311,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &58176826
 Transform:
@@ -1491,8 +1491,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &65183333
 Transform:
@@ -1574,8 +1574,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &68577468
 Transform:
@@ -1657,8 +1657,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (39)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &78070003
 Transform:
@@ -1823,8 +1823,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &91839850
 Transform:
@@ -2183,8 +2183,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &105339947
 Transform:
@@ -2446,8 +2446,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &108977140
 Transform:
@@ -2612,8 +2612,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &120204119
 Transform:
@@ -2870,7 +2870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f28d3bffb85a4fb4a883121e9fc4ecb2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042023225869285003, guid: f28d3bffb85a4fb4a883121e9fc4ecb2, type: 3}
       propertyPath: m_LocalScale.x
@@ -3010,8 +3010,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &147132244
 Transform:
@@ -3453,8 +3453,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &164533435
 Transform:
@@ -3929,8 +3929,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &186052708
 Transform:
@@ -4178,8 +4178,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &207929237
 Transform:
@@ -4293,8 +4293,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &212049950
 Transform:
@@ -4556,8 +4556,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &230401539
 Transform:
@@ -4736,8 +4736,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &239482474
 Transform:
@@ -4819,8 +4819,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &243882128
 Transform:
@@ -4902,8 +4902,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &244388137
 Transform:
@@ -4985,8 +4985,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &249136382
 Transform:
@@ -5571,8 +5571,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &282786096
 Transform:
@@ -5582,7 +5582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282786095}
   m_LocalRotation: {x: -0, y: -0.09327216, z: -0, w: 0.99564064}
-  m_LocalPosition: {x: 11.465788, y: -12.37, z: -11.277729}
+  m_LocalPosition: {x: 10.66, y: -12, z: -13.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5931,8 +5931,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &290725843
 Transform:
@@ -6582,8 +6582,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &339282816
 Transform:
@@ -6976,8 +6976,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &358485855
 Transform:
@@ -7779,8 +7779,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &393899359
 Transform:
@@ -7862,8 +7862,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &401761000
 Transform:
@@ -7945,8 +7945,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &420491822
 Transform:
@@ -8157,8 +8157,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &453999818
 Transform:
@@ -8371,8 +8371,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &478716081
 Transform:
@@ -8454,8 +8454,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &479324271
 Transform:
@@ -8620,8 +8620,8 @@ GameObject:
   m_Name: pCube11_Roofs_BossWall_lowModular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &482415411
 Transform:
@@ -8800,8 +8800,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &499245214
 Transform:
@@ -8883,8 +8883,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &503034310
 Transform:
@@ -9270,8 +9270,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &511373116
 Transform:
@@ -10147,8 +10147,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &559632017
 Transform:
@@ -10451,8 +10451,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &593466120
 Transform:
@@ -10617,8 +10617,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &599883361
 Transform:
@@ -10783,8 +10783,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (49)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &604379425
 Transform:
@@ -11726,8 +11726,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &649932677
 Transform:
@@ -12681,8 +12681,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &709623416
 Transform:
@@ -12930,8 +12930,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &717044624
 Transform:
@@ -13335,8 +13335,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &730451415
 Transform:
@@ -13533,8 +13533,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (38)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &742198393
 Transform:
@@ -13980,8 +13980,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &774470359
 Transform:
@@ -14063,8 +14063,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &776420717
 Transform:
@@ -14326,8 +14326,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &781553391
 Transform:
@@ -14736,8 +14736,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &818350777
 Transform:
@@ -14902,8 +14902,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &833963521
 Transform:
@@ -15165,8 +15165,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &854421589
 Transform:
@@ -15248,8 +15248,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &854666403
 Transform:
@@ -15414,8 +15414,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &862627542
 Transform:
@@ -15580,8 +15580,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &863573724
 Transform:
@@ -15829,8 +15829,8 @@ GameObject:
   m_Name: pCube11_Roofs_BossWall_lowModular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &869202445
 Transform:
@@ -16561,8 +16561,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &917190175
 Transform:
@@ -17521,8 +17521,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (44)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &957049965
 Transform:
@@ -17701,8 +17701,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &968571568
 Transform:
@@ -17983,8 +17983,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &979743907
 Transform:
@@ -18066,8 +18066,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &987211448
 Transform:
@@ -18640,8 +18640,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1010179346
 Transform:
@@ -19019,8 +19019,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1031940753
 Transform:
@@ -19102,8 +19102,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1034722748
 Transform:
@@ -19828,8 +19828,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1103833031
 Transform:
@@ -20646,8 +20646,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1126752773
 Transform:
@@ -20812,8 +20812,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1131462438
 Transform:
@@ -20978,8 +20978,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1145902793
 Transform:
@@ -21241,8 +21241,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1160687748
 Transform:
@@ -21381,8 +21381,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1166540245
 Transform:
@@ -21741,8 +21741,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1194840045
 Transform:
@@ -22004,8 +22004,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (48)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1208198930
 Transform:
@@ -22433,8 +22433,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1248636732
 Transform:
@@ -22884,8 +22884,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1268832666
 Transform:
@@ -23081,8 +23081,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1305010776
 Transform:
@@ -23164,8 +23164,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1311040689
 Transform:
@@ -23377,8 +23377,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1317185455
 Transform:
@@ -23942,8 +23942,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1365134094
 Transform:
@@ -24156,8 +24156,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1369674613
 Transform:
@@ -24585,8 +24585,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1394704534
 Transform:
@@ -24668,8 +24668,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1396247451
 Transform:
@@ -25126,8 +25126,8 @@ GameObject:
   m_Name: BossWall_lowModular_Wall10_WallBundle1_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1407670397
 Transform:
@@ -26377,8 +26377,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1486760437
 Transform:
@@ -28659,8 +28659,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1647808897
 Transform:
@@ -28742,8 +28742,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1651721569
 Transform:
@@ -28858,8 +28858,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1669094712
 Transform:
@@ -28941,8 +28941,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1672903609
 Transform:
@@ -29175,8 +29175,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1691165908
 Transform:
@@ -29845,8 +29845,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1716499312
 Transform:
@@ -30189,8 +30189,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1732576729
 Transform:
@@ -30272,8 +30272,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1732897457
 Transform:
@@ -30618,8 +30618,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1754116274
 Transform:
@@ -31129,8 +31129,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1804777252
 Transform:
@@ -31342,8 +31342,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (47)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1806664928
 Transform:
@@ -31619,8 +31619,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (45)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1826977231
 Transform:
@@ -31702,8 +31702,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1831646171
 Transform:
@@ -32131,8 +32131,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1845366993
 Transform:
@@ -33448,8 +33448,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1923239269
 Transform:
@@ -34196,8 +34196,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1957742613
 Transform:
@@ -34667,8 +34667,8 @@ GameObject:
   m_Name: BossWall_lowModular_Wall10_WallBundle1_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2001276251
 Transform:
@@ -34750,8 +34750,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2006158863
 Transform:
@@ -34916,8 +34916,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (46)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2025766113
 Transform:
@@ -34999,8 +34999,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (50)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2038259710
 Transform:
@@ -35296,8 +35296,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2049707546
 Transform:
@@ -35656,8 +35656,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2064442904
 Transform:
@@ -36043,8 +36043,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2090087451
 Transform:
@@ -36403,8 +36403,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2137871944
 Transform:
@@ -36501,8 +36501,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &230437832496371462
 MeshFilter:
@@ -36527,8 +36527,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &575379305201673251
 MeshFilter:
@@ -36647,7 +36647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1014555595963337266
 GameObject:
   m_ObjectHideFlags: 0
@@ -36663,8 +36663,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1019959585421326441
 Transform:
@@ -36788,8 +36788,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1369398887180596716
 MeshRenderer:
@@ -36863,8 +36863,8 @@ GameObject:
   m_Name: BossWall_lowModular_Wall10_WallBundle1_Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &1752959008681475941
 MeshRenderer:
@@ -36938,8 +36938,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2197009525425528639
 GameObject:
@@ -36956,8 +36956,8 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2382329800595056493
 Transform:
@@ -37114,8 +37114,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &3147393862235575785
 MeshFilter:
@@ -37188,8 +37188,8 @@ GameObject:
   m_Name: BossWall_lowModular_WallBundle1_Walls_Wall12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3711802330454077670
 GameObject:
@@ -37206,8 +37206,8 @@ GameObject:
   m_Name: BossWall_lowModular_Cap_Pole_Poles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3815058774961298251
 Transform:
@@ -37403,8 +37403,8 @@ GameObject:
   m_Name: pCube11_Roofs_BossWall_lowModular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &5248867390743585266
 MeshFilter:
@@ -37494,8 +37494,8 @@ GameObject:
   m_Name: BossWall_lowModular_Poles_SpikeRoof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &5750286312312510107
 MeshFilter:
@@ -37765,8 +37765,8 @@ GameObject:
   m_Name: BossWall_lowModular_Pole_Poles_Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &8441596480812793207
 MeshFilter:
@@ -37906,6 +37906,6 @@ GameObject:
   m_Name: Roofs_BossWall_lowModular_pCube13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
