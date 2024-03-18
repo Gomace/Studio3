@@ -23,7 +23,7 @@ public class AbilityBase : ScriptableObject
     // Ability Functionality Details
     [SerializeField] private GameObject _indicator;
     [SerializeField] private Vector3 _indhitBox = new (75f, 100f, 500f);
-    [SerializeField] private float _force = 500;
+    [SerializeField] private float _force = 750;
     [SerializeField] private int _hits = 1;
     [SerializeField] private Affectable _canAffect;
     [SerializeField] private CalcNumFrom _calcNumFrom;

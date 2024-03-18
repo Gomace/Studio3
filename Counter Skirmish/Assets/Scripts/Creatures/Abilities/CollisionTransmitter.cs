@@ -12,12 +12,12 @@ public class CollisionTransmitter : MonoBehaviour
     private Stack<GameObject> _conjurations;
     private Ability _conjurer;
     private Creature _creature;
+    private bool _initialized = false;
     
     private List<Creature> _affected = new();
     private int _hits;
     private string[] _canAffect;
-    private bool _initialized = false;
-    private float _distance;
+    private float _distance, _deviation = 1.75f;
 
     private int _Hits
     {
@@ -66,7 +66,8 @@ public class CollisionTransmitter : MonoBehaviour
             AddToStack();
         
         //transform.Translate(transform.forward * (_conjurer.Base.AbiClass.Speed * Time.deltaTime), Space.World);
-        //_distance += _conjurer.Base.AbiClass.Speed * Time.fixedDeltaTime;
+        _distance += _rb.velocity.magnitude * (Time.fixedDeltaTime / _deviation);
+        Debug.Log(_distance);
     }
 
     private void OnTriggerEnter(Collider other)
