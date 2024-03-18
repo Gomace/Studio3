@@ -72,16 +72,16 @@ public class Creature
         // Unit state = casting;
         Ability _ability = Abilities[slotNum]; // Get ability from creature
         
-        /*jf (ability.Cooldown > 0)
+        if (_ability.Cooldown > 0)
             return;
         //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
-        /*if (Resource < _ability.Base.Resource)
+        if (Resource < _ability.Base.Resource)
             return;
         Resource -= _ability.Base.Resource; // Spend resource
-        _unit.UpdateResource();
+        Unit.UpdateResource();
         
-        ability.Cooldown = ability.Base.Cooldown; // Go on cooldown
-        _unit.UpdateCooldown(slotNum) // Check this*/ // TODO get this goin
+        _ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
+        Unit.ActivateCooldown(slotNum); // Check this*/ // TODO get this goin
 
         _ability.Cast(Unit, this, mouse);
         //PlayAttackAnim(); // Attacking animation
@@ -113,18 +113,16 @@ public class Creature
         if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
 
-        // Use new scalings
-        
-        //float attack = (ability.Base.IsSpecial) ? attacker.Magical : attacker.Physical;
-        //float defense = (ability.Base.IsSpecial) ? Resistance : Defense;
-        
+        float metric = ability.Base.Metric(ability.Base.PowerSource(attacker, this));
+
         float modifiers = Random.Range(0.85f, 1f) * Base.GetEffectiveness(ability.Base.Type) * critical;
         float att = (2 * attacker.Level + 10) / 250f;
-        float def = att * ability.Base.Power * ((float)attacker.Physical / Defense) + 2;
+        float def = att * ability.Base.Power * Mathf.Max(ability.Base.Style(this, metric), 0f) + 2;
         int damage = Mathf.FloorToInt(def * modifiers);
 
+        Debug.Log($"The final damage is {damage}");
         Health -= damage;
-        Unit.UpdateHealth(); // TODO get this right
+        Unit.UpdateHealth();
         if (Health <= 0)
         {
             Health = 0;

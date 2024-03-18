@@ -14,6 +14,9 @@ public class InstanceUnit : MonoBehaviour
     public event OnHealthChanged onHealthChanged;
     public delegate void OnResourceChanged(float @normRes);
     public event OnResourceChanged onResourceChanged;
+    
+    public delegate void OnActivateCooldown(int @slotNum);
+    public event OnActivateCooldown onActivateCooldown;
     #endregion Events
     
     [SerializeField] private Transform _character;
@@ -35,6 +38,8 @@ public class InstanceUnit : MonoBehaviour
     
     public void UpdateHealth() => onHealthChanged?.Invoke((float) _creature.Health / _creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) _creature.Resource / _creature.MaxResource);
+
+    public void ActivateCooldown(int slotNum) => onActivateCooldown?.Invoke(slotNum);
 
     public void PlayEnterAnim() => Debug.Log(_creature.Base.Name + " entered.");
     public void PlayAttackAnim() => Debug.Log(_creature.Base.Name + " is attacking.");

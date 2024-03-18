@@ -1,4 +1,7 @@
-using System.Runtime.CompilerServices;using UnityEditor.UI;
+using System.Runtime.CompilerServices;
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
+using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ability", menuName = "CouSki/Abilities/Ability", order = -11)]
@@ -51,9 +54,6 @@ public class AbilityBase : ScriptableObject
     public Vector3 IndHitBox => _indhitBox * 0.01f;
     public float Force => _force;
     public int Hits => _hits;
-    public CalcNumFrom CalcNumFrom => _calcNumFrom;
-    public CalcMetric Metric => _metric;
-    public DmgStyle Style => _style;
     
     // Extra Modifiers
     public float CritChance => _critChance;
@@ -87,11 +87,78 @@ public class AbilityBase : ScriptableObject
                 Debug.Log($"You didn't make a case for {_canAffect}");
                 break;
         }
-        
         Debug.Log($"No Affectable was chosen on ability {name}");
         return new[] { "Enemy" };
     }
-    
+
+    public Creature PowerSource(Creature attacker, Creature defender)
+    {
+        switch (_calcNumFrom)
+        {
+            case CalcNumFrom.Self: 
+                return attacker;
+            case CalcNumFrom.Target: 
+                return defender;
+            case CalcNumFrom.Random:
+                // Spawn circles around caster and target
+            case CalcNumFrom.Group:
+                // Spawn circles around target and caster
+            case CalcNumFrom.PreSet:
+                return null; // target doesn't matter, just deal the flat damage.
+            default:
+                Debug.Log($"You didn't make a case for {_calcNumFrom}");
+                return attacker;
+        }
+    }
+
+    public float Metric(Creature powerSource)
+    {
+        switch (_metric)
+        {
+            case CalcMetric.Physical:
+                return powerSource.Physical;
+            case CalcMetric.Magical:
+                return powerSource.Magical;
+            case CalcMetric.Defense:
+                return powerSource.Defense;
+            case CalcMetric.Resistance:
+                return powerSource.Resistance;
+            case CalcMetric.Speed:
+                return powerSource.Speed;
+            case CalcMetric.MaxHealth:
+                return powerSource.MaxHealth;
+            case CalcMetric.CurHealth:
+                return powerSource.Health;
+            case CalcMetric.MisHealth:
+                return powerSource.MaxHealth - powerSource.Health;
+            case CalcMetric.PreSet:
+                return 1;
+            default:
+                Debug.Log($"You didn't make a case for {_metric}");
+                return powerSource.Physical;
+        }
+    }
+
+    public float Style(Creature defender, float metric)
+    {
+        switch (_style)
+        {
+            case DmgStyle.Physical:
+                return metric - defender.Defense;
+            case DmgStyle.Magical:
+                return metric - defender.Resistance;
+            case DmgStyle.Mixed:
+                return ((metric / 2) - defender.Defense) + ((metric / 2) - defender.Resistance);
+            case DmgStyle.Direct:
+                return metric - defender.Health;
+            case DmgStyle.Stat:
+                return 0;
+            default:
+                Debug.Log($"No CalcMetric was chosen on ability {name}");
+                return 1;
+        }
+    }
+
     private enum Affectable
     {
         Enemy,
@@ -100,6 +167,37 @@ public class AbilityBase : ScriptableObject
         Self,
         Other,
         Any
+    }
+    
+    private enum CalcNumFrom
+    {
+        Self,
+        Target,
+        Random,
+        Group,
+        PreSet
+    }
+
+    private enum CalcMetric
+    {
+        Physical,
+        Magical,
+        Defense,
+        Resistance,
+        Speed,
+        MaxHealth,
+        CurHealth,
+        MisHealth,
+        PreSet
+    }
+
+    private enum DmgStyle
+    {
+        Physical,
+        Magical,
+        Direct,
+        Mixed,
+        Stat
     }
 }
 

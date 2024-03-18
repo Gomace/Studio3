@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Bob
   m_EditorClassIdentifier: 
-  _name: Bob
   _description: Bob de boop.
   _icon: {fileID: 0}
   _card: {fileID: 21300000, guid: 6777986ec47ce0e4e86a3de76d18a242, type: 3}
@@ -37,5 +36,7 @@ MonoBehaviour:
     _level: 5
   - _abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
     _level: 8
+  - _abilityBase: {fileID: 11400000, guid: 3051722bb1d62a544ae1650f56420487, type: 2}
+    _level: 3
   _possiblePassives:
   - _passive: {fileID: 11400000, guid: c36baa883bf828243a82e5811f0acc91, type: 2}

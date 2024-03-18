@@ -65,9 +65,8 @@ public class CollisionTransmitter : MonoBehaviour
         if (_conjurer.Base.IndHitBox.z < _distance)
             AddToStack();
         
-        //transform.Translate(transform.forward * (_conjurer.Base.AbiClass.Speed * Time.deltaTime), Space.World);
+        // transform.Translate(transform.forward * (_conjurer.Base.Force * Time.deltaTime), Space.World);
         _distance += _rb.velocity.magnitude * (Time.fixedDeltaTime / _deviation);
-        Debug.Log(_distance);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,8 +86,6 @@ public class CollisionTransmitter : MonoBehaviour
         _Hits -= 1;
         _affected.Add(hitTarget);
         hitTarget.TakeDamage(_conjurer, _creature);
-        
-        //_enemyHud.UpdateHealth();
     }
     
     private void AddToStack() 
