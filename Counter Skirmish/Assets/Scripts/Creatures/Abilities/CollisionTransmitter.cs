@@ -40,13 +40,13 @@ public class CollisionTransmitter : MonoBehaviour
             Activate();
     }
 
-    public void Initialize(Stack<GameObject> conjStack, Ability source, string[] casterTags)
+    public void Initialize(Stack<GameObject> conjStack, Ability source)
     {
         _conjurations = conjStack;
         _conjurer = source;
         _creature = source.Creature;
         
-        _canAffect = casterTags; // find tags through checking enemy vs ally
+        _canAffect = source.Base.CanAffect(_creature.Unit.gameObject); // find tags through checking enemy vs ally
         
         _initialized = true;
     }
@@ -57,7 +57,7 @@ public class CollisionTransmitter : MonoBehaviour
         _hits = _conjurer.Base.Hits;
 
         _distance = 0;
-        _rb.AddForce(transform.forward * _conjurer.Base.AbiClass.Speed);
+        _rb.AddForce(transform.forward * _conjurer.Base.Force);
     }
 
     private void FixedUpdate()

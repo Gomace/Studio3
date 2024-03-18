@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityBase : ScriptableObject
 {
     [SerializeField] private Sprite _icon;
+    [SerializeField] private GameObject _model;
 
     //private GameObject[] thing = new GameObject[6]; TODO what is this?
     
@@ -22,9 +23,9 @@ public class AbilityBase : ScriptableObject
     // Ability Functionality Details
     [SerializeField] private GameObject _indicator;
     [SerializeField] private Vector3 _indhitBox = new (75f, 100f, 500f);
+    [SerializeField] private float _force = 500;
     [SerializeField] private int _hits = 1;
     [SerializeField] private Affectable _canAffect;
-    [SerializeField] private AbiClass _abiClass;
     [SerializeField] private CalcNumFrom _calcNumFrom;
     [SerializeField] private CalcMetric _metric;
     [SerializeField] private DmgStyle _style;
@@ -34,6 +35,7 @@ public class AbilityBase : ScriptableObject
     
     public string Name => name;
     public Sprite Icon => _icon;
+    public GameObject Model => _model;
     public string Description => _description;
     
     public Typing Type => _type;
@@ -47,8 +49,8 @@ public class AbilityBase : ScriptableObject
     // Ability Functionality Details
     public GameObject Indicator => _indicator;
     public Vector3 IndHitBox => _indhitBox * 0.01f;
+    public float Force => _force;
     public int Hits => _hits;
-    public AbiClass AbiClass => _abiClass;
     public CalcNumFrom CalcNumFrom => _calcNumFrom;
     public CalcMetric Metric => _metric;
     public DmgStyle Style => _style;
@@ -57,12 +59,12 @@ public class AbilityBase : ScriptableObject
     public float CritChance => _critChance;
     public float CritDamage => _critDamage;
     
-    public string[] CanAffect(string casterTag)
+    public string[] CanAffect(GameObject unit)
     {
         switch (_canAffect)
         {
             case Affectable.Enemy:
-                switch (casterTag)
+                switch (unit.tag)
                 {
                     case "Player":
                         return new[] { "Enemy" };
@@ -71,7 +73,7 @@ public class AbilityBase : ScriptableObject
                 }
                 break;
             case Affectable.Friendly:
-                switch (casterTag)
+                switch (unit.tag)
                 {
                     case "Player":
                         return new[] { "Player" };
@@ -79,6 +81,8 @@ public class AbilityBase : ScriptableObject
                         return new[] { "Enemy" };
                 }
                 break;
+            case Affectable.Any:
+                return new[] { "Player", "Enemy" };
             default:
                 Debug.Log($"You didn't make a case for {_canAffect}");
                 break;
@@ -91,7 +95,11 @@ public class AbilityBase : ScriptableObject
     private enum Affectable
     {
         Enemy,
-        Friendly
+        Friendly,
+        Ally,
+        Self,
+        Other,
+        Any
     }
 }
 

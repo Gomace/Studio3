@@ -24,8 +24,8 @@ public class Ability
     {
         if (!_conjurations.TryPop(out GameObject conjuration)) // Check for used model
         {
-            conjuration = GameObject.Instantiate(Base.AbiClass.Model);
-            conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this, Base.CanAffect(unit.gameObject.tag));
+            conjuration = GameObject.Instantiate(Base.Model);
+            conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this);
         }
         
         ConjTransform(conjuration.transform, unit.transform.position, mouse);
@@ -40,7 +40,7 @@ public class Ability
         conjRot.eulerAngles = new Vector3(0f, conjRot.eulerAngles.y, 0);
         conj.rotation = conjRot;
         
-        unitPos += Base.AbiClass.Model.transform.localPosition; // Position
+        unitPos += Base.Model.transform.localPosition; // Position
         conj.position = unitPos;
                 
         conj.localScale = new Vector3(Base.IndHitBox.x, Base.IndHitBox.x, Base.IndHitBox.x); // Scale

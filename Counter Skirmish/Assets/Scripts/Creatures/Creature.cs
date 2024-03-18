@@ -8,27 +8,23 @@ public class Creature
     [SerializeField] private CreatureBase _base;
     [SerializeField] private int _level;
 
-    private InstanceUnit _unit;
-    
-    private int _maxHealth, _maxResource;
-    
-    private Dictionary<Stat, int> _stats, _statBoosts;
-
     public CreatureBase Base => _base;
     public int Level => _level;
+    
+    public InstanceUnit Unit { get; private set; }
     
     public int Health { get; set; }
     public int Resource { get; set; }
 
     public Ability[] Abilities { get; set; } = new Ability[4];
 
-    public Dictionary<Stat, int> Stats => _stats;
-    public Dictionary<Stat, int> StatBoosts => _statBoosts;
+    public Dictionary<Stat, int> Stats { get; private set; }
+    public Dictionary<Stat, int> StatBoosts { get; private set; }
 
     // Stats
-    public int MaxHealth => _maxHealth;
-    public int MaxResource => _maxResource;
-    
+    public int MaxHealth { get; private set; }
+    public int MaxResource { get; private set; }
+
     public int Physical => GetStat(Stat.Physical);
     public int Magical => GetStat(Stat.Magical);
     public int Defense => GetStat(Stat.Defense);
@@ -37,7 +33,7 @@ public class Creature
 
     public void Initialize(InstanceUnit unit)
     {
-        _unit = unit;
+        Unit = unit;
 
         // GENERATE MOVES
         for (int i = 0; i < Abilities.Length; ++i)
@@ -67,8 +63,8 @@ public class Creature
         CalculateStats();
         ClearBoosts();
         
-        Health = _maxHealth;
-        Resource = _maxResource;
+        Health = MaxHealth;
+        Resource = MaxResource;
     }
 
     public void PerformAbility(int slotNum, Vector3 mouse)
@@ -87,7 +83,7 @@ public class Creature
         ability.Cooldown = ability.Base.Cooldown; // Go on cooldown
         _unit.UpdateCooldown(slotNum) // Check this*/ // TODO get this goin
 
-        _ability.Cast(_unit, this, mouse);
+        _ability.Cast(Unit, this, mouse);
         //PlayAttackAnim(); // Attacking animation
         
         /* TODO maybe make ScriptObj for AbilityEffects
@@ -128,7 +124,7 @@ public class Creature
         int damage = Mathf.FloorToInt(def * modifiers);
 
         Health -= damage;
-        _unit.UpdateHealth(); // TODO get this right
+        Unit.UpdateHealth(); // TODO get this right
         if (Health <= 0)
         {
             Health = 0;
@@ -138,7 +134,7 @@ public class Creature
     
     private void CalculateStats()
     {
-        _stats = new Dictionary<Stat, int>
+        Stats = new Dictionary<Stat, int>
         {
             { Stat.Physical, Mathf.FloorToInt((_base.Physical * _level) / 100f) + 5 },
             { Stat.Magical, Mathf.FloorToInt((_base.Magical * _level) / 100f) + 5 },
@@ -147,16 +143,16 @@ public class Creature
             { Stat.Speed, Mathf.FloorToInt((_base.Speed * _level) / 100f) + 5 }
         };
 
-        _maxHealth = Mathf.FloorToInt((_base.MaxHealth * _level) / 100f) + 10;
-        _maxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f) + 10;
+        MaxHealth = Mathf.FloorToInt((_base.MaxHealth * _level) / 100f) + 10;
+        MaxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f) + 10;
     }
 
     private int GetStat(Stat stat)
     {
-        int _statVal = _stats[stat];
+        int _statVal = Stats[stat];
         
         // Apply stat boost
-        int _boost = _statBoosts[stat];
+        int _boost = StatBoosts[stat];
         float[] _boostValues = { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f };
 
         if (_boost >= 0)
@@ -174,13 +170,13 @@ public class Creature
             Stat _stat = statBoost.Stat;
             int _boost = statBoost.Boost;
 
-            _statBoosts[_stat] = Mathf.Clamp(_statBoosts[_stat] + _boost, -6, 6);
+            StatBoosts[_stat] = Mathf.Clamp(StatBoosts[_stat] + _boost, -6, 6);
         }
     }
     
     private void ClearBoosts()
     {
-        _statBoosts = new Dictionary<Stat, int>()
+        StatBoosts = new Dictionary<Stat, int>()
         {
             {Stat.Physical, 0},
             {Stat.Magical, 0},
