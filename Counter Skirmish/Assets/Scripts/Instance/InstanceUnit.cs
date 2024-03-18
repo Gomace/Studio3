@@ -73,4 +73,9 @@ public class InstanceUnit : MonoBehaviour
                 Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
         }
     }
+
+    /*private IEnumerator AbilityCooldown()
+    {
+        
+    }*/
 }

@@ -74,13 +74,13 @@ public class Creature
         
         if (_ability.Cooldown > 0)
             return;
-        //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
+        Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
         if (Resource < _ability.Base.Resource)
             return;
         Resource -= _ability.Base.Resource; // Spend resource
         Unit.UpdateResource();
         
-        _ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
+        /*_ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
         Unit.ActivateCooldown(slotNum); // Check this*/ // TODO get this goin
 
         _ability.Cast(Unit, this, mouse);

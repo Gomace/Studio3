@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
-  m_Name: IceShard
+  m_Name: FireShot
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
   _description: Shoots a fireball from the character in the target direction.
-  _type: {fileID: 11400000, guid: 6158491a94068424b936388a85d801b4, type: 2}
+  _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
   _power: 100
   _cooldown: 5.6
-  _resource: 20
+  _resource: 60
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
   _indhitBox: {x: 75, y: 100, z: 500}
   _force: 750
@@ -26,6 +26,6 @@ MonoBehaviour:
   _canAffect: 0
   _calcNumFrom: 0
   _metric: 1
-  _style: 0
+  _style: 1
   _critChance: 1
   _critDamage: 1
