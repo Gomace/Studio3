@@ -83,7 +83,7 @@ public class Creature
         
         if (_ability.Cooldown > 0)
             return;
-        Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}");
+        //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}, Power: {_ability.Base.Power}");
         if (Resource < _ability.Base.Resource)
             return;
         Resource -= _ability.Base.Resource; // Spend resource
@@ -151,7 +151,7 @@ public class Creature
         };
 
         MaxHealth = Mathf.FloorToInt((_base.MaxHealth * _level) / 100f) + 10;
-        MaxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f ) + 10;
+        MaxResource = Mathf.FloorToInt((_base.MaxResource * 0.2f) + ((_base.MaxResource * 0.8f) * _level) / 100f) + 10;
     }
 
     private int GetStat(Stat stat)

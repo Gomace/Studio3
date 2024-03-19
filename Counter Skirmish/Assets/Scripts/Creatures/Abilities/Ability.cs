@@ -31,7 +31,7 @@ public class Ability
         ConjTransform(conjuration.transform, unit.transform.position, mouse);
         conjuration.gameObject.SetActive(true);
         
-        Debug.Log($"{creature.Base.Name} cast a {Base.Name}");
+        //Debug.Log($"{creature.Base.Name} cast a {Base.Name}");
     }
     
     private void ConjTransform(Transform conj, Vector3 unitPos, Vector3 mouse)

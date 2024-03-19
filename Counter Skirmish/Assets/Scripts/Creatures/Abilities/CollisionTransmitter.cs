@@ -24,7 +24,7 @@ public class CollisionTransmitter : MonoBehaviour
         get => _hits;
         set
         {
-            Debug.Log($"The hit counter became {value}");
+            //Debug.Log($"The hit counter became {value}");
             if (value <= 0) // Might not need? ¯\_(ツ)_/¯
                 AddToStack();
             
