@@ -151,7 +151,7 @@ public class Creature
         };
 
         MaxHealth = Mathf.FloorToInt((_base.MaxHealth * _level) / 100f) + 10;
-        MaxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f) + 10;
+        MaxResource = Mathf.FloorToInt((_base.MaxResource * _level) / 100f ) + 10;
     }
 
     private int GetStat(Stat stat)

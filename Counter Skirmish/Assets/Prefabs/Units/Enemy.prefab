@@ -243,10 +243,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitHealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.g
+      value: 0.020010373
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973227563341363052, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8291509
+      objectReference: {fileID: 0}
     - target: {fileID: 9047827250281220975, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: _unit
       value: 
       objectReference: {fileID: 1893484249643035902}
+    - target: {fileID: 9167046020048860180, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.b
+      value: 0.058823526
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167046020048860180, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.g
+      value: 0.06483885
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167046020048860180, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30980393
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
 --- !u!224 &4137891936249012777 stripped
