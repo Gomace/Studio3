@@ -77,9 +77,9 @@ public class LearnableAbility
 [System.Serializable]
 public class PossiblePassives
 {
-    [SerializeField] private Passive _passive;
+    [SerializeField] private PassiveBase _passiveBase;
     
-    public Passive Passive => _passive;
+    public PassiveBase Base => _passiveBase;
 }
 
 public enum Stat

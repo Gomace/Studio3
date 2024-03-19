@@ -8,15 +8,16 @@ public class Creature
     [SerializeField] private CreatureBase _base;
     [SerializeField] private int _level;
 
+    public InstanceUnit Unit { get; private set; }
+    
     public CreatureBase Base => _base;
     public int Level => _level;
-    
-    public InstanceUnit Unit { get; private set; }
     
     public int Health { get; set; }
     public int Resource { get; set; }
 
     public Ability[] Abilities { get; set; } = new Ability[4];
+    public Passive Passive { get; set; }
 
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -51,6 +52,14 @@ public class Creature
             /*else
                 ReplaceAbility();*/
         }
+        
+        if (Passive == null) // TODO Fix when passives are coming from the Hub
+        {
+            if (_base.PossiblePassives.Length > 0)
+                Passive = new Passive(_base.PossiblePassives[Random.Range(0, _base.PossiblePassives.Length)].Base);
+        }
+        /*else
+            ReplaceAbility();*/
         /*foreach (LearnableAbility ability in Base.LearnableAbilities)
         {
             if (ability.Level <= Level)
