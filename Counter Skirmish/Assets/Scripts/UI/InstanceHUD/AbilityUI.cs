@@ -12,16 +12,22 @@ public class AbilityUI : MonoBehaviour
 
     private Ability[] _abilities;
 
-    private void OnEnable() => _unit.onLoadHUD += SetAbilityUI;
+    /*private void OnEnable() => _unit.onLoadHUD += SetAbilityUI;
     private void OnDisable() => _unit.onLoadHUD -= SetAbilityUI;
 
     private void SetAbilityUI(Creature creature)
     {
+        Debug.Log($"You have acquired {creature.Base.Name}");
         _abilities = creature.Abilities;
 
         for (int i = 0; i < _abilities.Length; ++i)
-            _abilityUIs[i].sprite = _abilities[i].Base.Icon;
+        {
+            Debug.Log($"{_abilities[i].Base.Icon} is this null? {_abilities[i].Base.Icon != null}");
+            if (_abilities[i].Base.Icon != null)
+                _abilityUIs[i].sprite = _abilities[i].Base.Icon;
+        }
 
-        _passive.sprite = creature.Passive.Base.Icon;
-    }
+        if (creature.Passive.Base.Icon != null)
+            _passive.sprite = creature.Passive.Base.Icon;
+    }*/
 }
