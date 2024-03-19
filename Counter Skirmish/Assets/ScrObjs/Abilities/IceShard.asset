@@ -24,8 +24,8 @@ MonoBehaviour:
   _force: 750
   _hits: 1
   _canAffect: 0
-  _calcNumFrom: 1
-  _metric: 2
-  _style: 1
+  _calcNumFrom: 0
+  _metric: 1
+  _style: 0
   _critChance: 1
   _critDamage: 1
