@@ -1,7 +1,3 @@
-using System.Runtime.CompilerServices;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
-using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ability", menuName = "CouSki/Abilities/Ability", order = -11)]

@@ -89,10 +89,10 @@ public class Creature
         Resource -= _ability.Base.Resource; // Spend resource
         Unit.UpdateResource();
         
-        /*_ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
-        Unit.ActivateCooldown(slotNum); // Check this*/ // TODO get this goin
+        _ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
+        Unit.ActivateCooldown(_ability); // TODO get this goin
 
-        _ability.Cast(Unit, this, mouse);
+        _ability.Cast(mouse);
         //PlayAttackAnim(); // Attacking animation
         
         /* TODO maybe make ScriptObj for AbilityEffects
@@ -117,7 +117,7 @@ public class Creature
     
     public void TakeDamage(Ability ability, Creature attacker)
     {
-        Debug.Log($"{attacker.Base.Name} attacked {Base.Name}");
+        //Debug.Log($"{attacker.Base.Name} attacked {Base.Name}");
         float critical = 1f;
         if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
@@ -129,7 +129,7 @@ public class Creature
         float def = att * ability.Base.Power * Mathf.Max(ability.Base.Style(this, metric), 0f) + 2;
         int damage = Mathf.FloorToInt(def * modifiers);
 
-        Debug.Log($"The final damage is {damage}");
+        //Debug.Log($"The final damage is {damage}");
         Health -= damage;
         Unit.UpdateHealth();
         if (Health <= 0)

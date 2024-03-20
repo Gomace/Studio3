@@ -5,22 +5,26 @@ public class Ability
 {
     private Stack<GameObject> _conjurations = new();
 
-    //private bool _showRange;
-
+    private float _cooldown;
+    
     public AbilityBase Base { get; set; }
     public Creature Creature { get; set; }
-    
-    public float Cooldown { get; set; }
+
+    public float Cooldown
+    {
+        get => _cooldown;
+        set => _cooldown = Mathf.Max(value, 0f);
+    }
 
     public Ability(AbilityBase aBase, Creature creature)
     {
         Base = aBase;
         Creature = creature;
 
-        //_showRange = Base.Targeting.ShowRange;
+        Cooldown = 0;
     }
 
-    public void Cast(InstanceUnit unit, Creature creature, Vector3 mouse) // Cast Ability
+    public void Cast(Vector3 mouse) // Cast Ability
     {
         if (!_conjurations.TryPop(out GameObject conjuration)) // Check for used model
         {
@@ -28,7 +32,7 @@ public class Ability
             conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this);
         }
         
-        ConjTransform(conjuration.transform, unit.transform.position, mouse);
+        ConjTransform(conjuration.transform, Creature.Unit.transform.position, mouse);
         conjuration.gameObject.SetActive(true);
         
         //Debug.Log($"{creature.Base.Name} cast a {Base.Name}");

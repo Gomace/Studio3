@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,13 +8,14 @@ public class InstanceUnit : MonoBehaviour
     public delegate void OnLoadHUD(Creature @creature);
     public event OnLoadHUD onLoadHUD;
     
-    // Health
+    // Health & Resource
     public delegate void OnHealthChanged(float @normHealth);
     public event OnHealthChanged onHealthChanged;
     public delegate void OnResourceChanged(float @normRes);
     public event OnResourceChanged onResourceChanged;
     
-    public delegate void OnActivateCooldown(int @slotNum);
+    // Cooldown
+    public delegate void OnActivateCooldown(Ability @ability);
     public event OnActivateCooldown onActivateCooldown;
     #endregion Events
     
@@ -39,13 +39,8 @@ public class InstanceUnit : MonoBehaviour
     public void UpdateHealth() => onHealthChanged?.Invoke((float) _creature.Health / _creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) _creature.Resource / _creature.MaxResource);
 
-    public void ActivateCooldown(int slotNum) => onActivateCooldown?.Invoke(slotNum);
-
-    public void PlayEnterAnim() => Debug.Log(_creature.Base.Name + " entered.");
-    public void PlayAttackAnim() => Debug.Log(_creature.Base.Name + " is attacking.");
-    public void PlayHitAnim() => Debug.Log(_creature.Base.Name + " was hit.");
-    public void PlayFaintAnim() => Debug.Log(_creature.Base.Name + " fainted.");
-
+    public void ActivateCooldown(Ability ability) => onActivateCooldown?.Invoke(ability);
+    
     private void ChangeCharacter(Creature creature)
     {
         foreach (GameObject model in _usedModels)
@@ -74,8 +69,8 @@ public class InstanceUnit : MonoBehaviour
         }
     }
 
-    /*private IEnumerator AbilityCooldown()
-    {
-        
-    }*/
+    public void PlayEnterAnim() => Debug.Log(_creature.Base.Name + " entered.");
+    public void PlayAttackAnim() => Debug.Log(_creature.Base.Name + " is attacking.");
+    public void PlayHitAnim() => Debug.Log(_creature.Base.Name + " was hit.");
+    public void PlayFaintAnim() => Debug.Log(_creature.Base.Name + " fainted.");
 }
