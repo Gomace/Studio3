@@ -102,8 +102,13 @@ public class InstanceActions : MonoBehaviour
         if (_unit.Creature.Abilities[_CurAbility] == null) // Check if ability is equipped
             return;
         
-        _indicator = _unit.Indicators[_unit.Creature.Abilities[_CurAbility].Base.Indicator.name]; // Grab correct indicator
-        _indicator.transform.localScale = _unit.Creature.Abilities[_CurAbility].Base.IndHitBox; // Rescale indicator
+        Ability curAbi = _unit.Creature.Abilities[_CurAbility];
+
+        if (curAbi.Cooldown > 0)
+            return;
+        
+        _indicator = _unit.Indicators[curAbi.Base.Indicator.name]; // Grab correct indicator
+        _indicator.transform.localScale = curAbi.Base.IndHitBox; // Rescale indicator
         
         if (_modifier)
             _movement.ShowIndicator(_indicator); // Indicator follows mouse (player only)

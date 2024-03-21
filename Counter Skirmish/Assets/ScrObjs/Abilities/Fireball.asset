@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
-  _description: Shoots a fireball from the character in the target direction.
+  _description: Shoots a small fire projectile from the character in the target direction.
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 4
-  _cooldown: 5.6
-  _resource: 60
+  _power: 40
+  _cooldown: 2
+  _resource: 5
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
-  _indhitBox: {x: 75, y: 100, z: 500}
-  _force: 750
+  _indhitBox: {x: 50, y: 100, z: 400}
+  _force: 700
   _hits: 1
   _canAffect: 0
-  _calcNumFrom: 1
-  _metric: 5
+  _calcNumFrom: 0
+  _metric: 1
   _style: 1
   _critChance: 1
   _critDamage: 1
