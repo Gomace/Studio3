@@ -56,11 +56,8 @@ public class InstanceActions : MonoBehaviour
     private void OnIndicatorCast(InputValue value) => _modifier = value.isPressed;
 
     private void OnAbilityQ() => _CurAbility = 0;
-
     private void OnAbilityW() => _CurAbility = 1;
-
     private void OnAbilityE() => _CurAbility = 2;
-
     private void OnAbilityR() => _CurAbility = 3;
     
     private void OnItem1()

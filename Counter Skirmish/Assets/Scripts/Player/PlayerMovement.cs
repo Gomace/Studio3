@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private ClickMarker _clickArrow;
     private GameObject _abilityIndicator;
     private NavMeshAgent _navMA;
-    private LayerMask _useLayer = 1 << 7, _groundLayer = (1 << 6);
+    private readonly LayerMask _groundLayer = (1 << 6)/*, _useLayer = 1 << 7*/;
     
     private const float _maxUseDistance = 200f;
     private Ray _ray;
