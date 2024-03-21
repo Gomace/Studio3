@@ -20,9 +20,19 @@ public class ResourceBar : MonoBehaviour
         _lossBar.fillAmount = 1f;
     }
 
-    private void OnEnable() => _unit.onResourceChanged += SetBar;
-    private void OnDisable() => _unit.onResourceChanged -= SetBar;
+    private void OnEnable()
+    {
+        _unit.onLoadHUD += SetResource;
+        _unit.onResourceChanged += SetBar;
+    }
+    private void OnDisable()
+    {
+        _unit.onLoadHUD -= SetResource;
+        _unit.onResourceChanged -= SetBar;
+    }
 
+    private void SetResource(Creature creature) => _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Resource / creature.MaxResource;
+    
     private void SetBar(float newR)
     {
         if (newR < _mainBar.fillAmount) // Spent

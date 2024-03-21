@@ -9,11 +9,11 @@ public class RosterSlot : MonoBehaviour
     [SerializeField] private Image _healthBar, _resBar, _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _level, _healthNum, _resNum;
 
-    private Creature _creature; // Send this to CreatureRoster
+    private Creature _creature; 
 
     public Creature Creature
     {
-        get => _creature;
+        get => _creature; // This is sent to CreatureRoster
         set => SetRosterUI(value);
     }
     
@@ -28,7 +28,8 @@ public class RosterSlot : MonoBehaviour
         _role.sprite = creature.Base.Role.Icon;
         
         SetLevel();
-        SetBars();
+        SetHealth((float)_creature.Health / _creature.MaxHealth);
+        SetResource((float)_creature.Resource / _creature.MaxResource);
     }
 
     public void SetLevel()
@@ -37,15 +38,20 @@ public class RosterSlot : MonoBehaviour
             _level.text = _creature.Level.ToString();
     }
 
-    public void SetBars()
+    public void SetHealth(float newH)
     {
-        if (_creature != null)
-        {
-            _healthBar.fillAmount = ((float)_creature.Health / _creature.MaxHealth);
-            _healthNum.text = $"{_creature.Health.ToString()}/{_creature.MaxHealth.ToString()}";
-            
-            _resBar.fillAmount = ((float)_creature.Resource / _creature.MaxResource);
-            _resNum.text = $"{_creature.Resource.ToString()}/{_creature.MaxResource.ToString()}";
-        }
+        if (_creature == null)
+            return;
+        
+        _healthBar.fillAmount = newH;
+        _healthNum.text = $"{_creature.Health.ToString()}/{_creature.MaxHealth.ToString()}";
+    }
+    public void SetResource(float newR)
+    {
+        if (_creature == null)
+            return;
+        
+        _resBar.fillAmount = newR;
+        _resNum.text = $"{_creature.Resource.ToString()}/{_creature.MaxResource.ToString()}";
     }
 }

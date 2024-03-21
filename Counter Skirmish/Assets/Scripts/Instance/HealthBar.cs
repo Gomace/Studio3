@@ -20,9 +20,19 @@ public class HealthBar : MonoBehaviour
         _lossBar.fillAmount = 1f;
     }
 
-    private void OnEnable() => _unit.onHealthChanged += SetBar;
-    private void OnDisable() => _unit.onHealthChanged -= SetBar;
+    private void OnEnable()
+    {
+        _unit.onLoadHUD += SetHealth;
+        _unit.onHealthChanged += SetBar;
+    }
+    private void OnDisable()
+    {
+        _unit.onLoadHUD -= SetHealth;
+        _unit.onHealthChanged -= SetBar;
+    }
 
+    private void SetHealth(Creature creature) => _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Health / creature.MaxHealth;
+    
     private void SetBar(float newH)
     {
         if (newH < _mainBar.fillAmount) // Damaged

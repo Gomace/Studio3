@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
@@ -8,8 +9,26 @@ public class RosterMenu : MonoBehaviour
     [Header("These should already be filled.")]
     [SerializeField] private RosterSlot[] _slots;
 
-    private void OnEnable() => _playerRoster.onRosterLoaded += SetupRoster;
-    private void OnDisable() => _playerRoster.onRosterLoaded -= SetupRoster;
+    private InstanceUnit _unit;
+
+    private void Awake()
+    {
+        if (_playerRoster)
+            _unit = _playerRoster.gameObject.GetComponent<InstanceUnit>();
+    }
+
+    private void OnEnable()
+    {
+        _playerRoster.onRosterLoaded += SetupRoster;
+        _unit.onHealthChanged += ReloadHealth;
+        _unit.onResourceChanged += ReloadResource;
+    }
+    private void OnDisable()
+    {
+        _playerRoster.onRosterLoaded -= SetupRoster;
+        _unit.onHealthChanged -= ReloadHealth;
+        _unit.onResourceChanged -= ReloadResource;
+    }
 
     private void SetupRoster(Creature[] creatures) // Put creatures from roster in slots, and disable unfilled ones
     {
@@ -21,12 +40,20 @@ public class RosterMenu : MonoBehaviour
     }
     // Test if instances of the class are shared through reference, or if the new assignments get copies.
 
-    private void ReloadBars(Creature creature) // TODO Update bars on creature in rosterUI
+    private void ReloadHealth(float newH)
     {
         foreach (RosterSlot slot in _slots)
         {
-            if (slot.Creature == creature)
-                slot.SetBars();
+            if (slot.Creature == _unit.Creature)
+                slot.SetHealth(newH);
+        }
+    }
+    private void ReloadResource(float newR)
+    {
+        foreach (RosterSlot slot in _slots)
+        {
+            if (slot.Creature == _unit.Creature)
+                slot.SetResource(newR);
         }
     }
 

@@ -23,21 +23,20 @@ public class InstanceUnit : MonoBehaviour
     private List<Creature> _usedCreatures = new();
     private List<GameObject> _usedModels = new();
 
-    private Creature _creature;
-
     public Dictionary<string, GameObject> Indicators = new();
-    public Creature Creature => _creature;
+    
+    public Creature Creature { get; private set; }
 
     public void SetupUnit(Creature creature)
     {
         ChangeCharacter(creature);
-        _creature = creature;
+        Creature = creature;
 
-        onLoadHUD?.Invoke(_creature);
+        onLoadHUD?.Invoke(Creature);
     }
     
-    public void UpdateHealth() => onHealthChanged?.Invoke((float) _creature.Health / _creature.MaxHealth);
-    public void UpdateResource() => onResourceChanged?.Invoke((float) _creature.Resource / _creature.MaxResource);
+    public void UpdateHealth() => onHealthChanged?.Invoke((float) Creature.Health / Creature.MaxHealth);
+    public void UpdateResource() => onResourceChanged?.Invoke((float) Creature.Resource / Creature.MaxResource);
 
     public void ActivateCooldown(Ability ability) => onActivateCooldown?.Invoke(ability);
     
@@ -68,9 +67,4 @@ public class InstanceUnit : MonoBehaviour
                 Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
         }
     }
-
-    public void PlayEnterAnim() => Debug.Log(_creature.Base.Name + " entered.");
-    public void PlayAttackAnim() => Debug.Log(_creature.Base.Name + " is attacking.");
-    public void PlayHitAnim() => Debug.Log(_creature.Base.Name + " was hit.");
-    public void PlayFaintAnim() => Debug.Log(_creature.Base.Name + " fainted.");
 }
