@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6701865755481528201}
   - component: {fileID: 6701865755481528204}
   - component: {fileID: 6701865755481528205}
-  - component: {fileID: 6701865755481528197}
   - component: {fileID: 6701865755481528196}
+  - component: {fileID: 6701865755481528197}
   - component: {fileID: 6701865755481528202}
   - component: {fileID: 6701865755481528200}
   - component: {fileID: 6701865755481528199}
@@ -75,22 +75,9 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0.925
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6701865755481528197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6701865755481528210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _character: {fileID: 6701865756796613349}
 --- !u!114 &6701865755481528196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +95,19 @@ MonoBehaviour:
     _level: 5
   - _base: {fileID: 11400000, guid: 0039945c75dc5ac4ca0186fe574e180b, type: 2}
     _level: 7
+--- !u!114 &6701865755481528197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701865755481528210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 6701865756796613349}
 --- !u!114 &6701865755481528202
 MonoBehaviour:
   m_ObjectHideFlags: 0

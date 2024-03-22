@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Targeting Indicator
     public bool Indicating { get; set; }
-    public bool Channeling { get; set; }
+    //public bool Channeling { get; set; } // Not used yet
     
     private void Awake()
     {

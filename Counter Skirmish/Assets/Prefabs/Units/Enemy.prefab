@@ -42,8 +42,9 @@ GameObject:
   - component: {fileID: 1893484249643035903}
   - component: {fileID: 1893484249643035900}
   - component: {fileID: 1893484249643035901}
-  - component: {fileID: 1893484249643035902}
   - component: {fileID: 1893484249643035889}
+  - component: {fileID: 1893484249643035902}
+  - component: {fileID: 5221197960530052047}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -104,19 +105,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1893484249643035902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893484249643035897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _character: {fileID: 1893484249525364950}
 --- !u!114 &1893484249643035889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +120,33 @@ MonoBehaviour:
   _creatures:
   - _base: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
     _level: 8
+--- !u!114 &1893484249643035902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893484249643035897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 1893484249525364950}
+--- !u!114 &5221197960530052047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893484249643035897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769196e53406d7f428da3e00fdbc71d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 1893484249525364950}
+  _testPlayer: {fileID: 0}
 --- !u!1001 &1893484249458714299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,15 +260,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.06132078
       objectReference: {fileID: 0}
     - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Color.g
-      value: 0.020010373
+      value: 0.08432763
       objectReference: {fileID: 0}
     - target: {fileID: 2534329421660826921, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Color.r
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5973227563341363052, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_Color.g

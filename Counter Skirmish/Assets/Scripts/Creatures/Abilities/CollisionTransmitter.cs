@@ -12,7 +12,7 @@ public class CollisionTransmitter : MonoBehaviour
     private Stack<GameObject> _conjurations;
     private Ability _conjurer;
     private Creature _creature;
-    private bool _initialized = false;
+    private bool _initialized = false; 
     
     private List<Creature> _affected = new();
     private int _hits;
@@ -88,7 +88,7 @@ public class CollisionTransmitter : MonoBehaviour
         hitTarget.TakeDamage(_conjurer, _creature);
     }
     
-    private void AddToStack() 
+    private void AddToStack()
     {
         // GameObject dissipate animation
         gameObject.SetActive(false);
