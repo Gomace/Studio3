@@ -14,6 +14,8 @@ public class BasicEnemy : MonoBehaviour
     private const float _maxUseDistance = 20f;
     private Ray _ray;
     private RaycastHit _hit;
+
+    private readonly float _variance = 5f;
     
     private void Awake()
     {
@@ -24,12 +26,10 @@ public class BasicEnemy : MonoBehaviour
     private void Update()
     {
         Vector3 dir = transform.position - _testPlayer.position;
-        
         Debug.DrawRay(_testPlayer.position, dir, Color.red);
 
-        Vector3 perpDir = new Vector3(dir.z, 0, -dir.x);
-        
-        Debug.DrawRay((transform.position - perpDir), perpDir, Color.white);
+        Vector3 perpDir = new Vector3(dir.normalized.z, 0, -dir.normalized.x) * _variance;
+        Debug.DrawRay(transform.position - (perpDir * 0.5f), perpDir, Color.white);
     }
     
     private void LateUpdate()
@@ -40,7 +40,17 @@ public class BasicEnemy : MonoBehaviour
     
     private void MoveUnit(Vector3 mouse) => _navMA.SetDestination(mouse);
 
-    private Vector3 MouseLocation()
+    private Vector3 MoveDestination()
+    {
+        //RandomizeMovePos();
+        
+        _ray = new Ray(transform.position + new Vector3(0f, 2f, 0f) + _randPos, Vector3.down);
+        
+        return Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer)
+            ? _hit.point : Vector3.zero;
+    }
+    
+    public Vector3 AbilityDestination(Vector3 target)
     {
         _ray = new Ray(transform.position + new Vector3(0f, 2f, 0f) + _randPos, Vector3.down);
         
