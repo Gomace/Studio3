@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water_Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 458083de2efe4e04fb320f2566004fd0,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 458083de2efe4e04fb320f2566004fd0, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
@@ -56,7 +55,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 0.32
+    - _Depth: 1.81
     - _Displacement: 3
     - _Normal_Strength: 0.26
     - _QueueControl: 0
