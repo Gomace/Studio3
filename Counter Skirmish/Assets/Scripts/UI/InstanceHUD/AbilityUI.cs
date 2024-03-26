@@ -40,14 +40,13 @@ public class AbilityUI : MonoBehaviour
 
     private void SetAbilityUI(Creature creature)
     {
-        Debug.Log($"You have acquired {creature.Base.Name}");
         _abilities = creature.Abilities;
 
         for (int i = 0; i < _abilities.Length; ++i)
         {
             if (_abilities[i] == null)
                 break;
-            Debug.Log($"Is this null? {_abilities[i].Base.Icon != null}");
+            //Debug.Log($"Is this null? {_abilities[i].Base.Icon != null}");
             if (_abilities[i].Base.Icon != null)
                 _abilityUIs[i].sprite = _abilities[i].Base.Icon;
         }

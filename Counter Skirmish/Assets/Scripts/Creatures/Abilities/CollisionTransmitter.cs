@@ -17,7 +17,7 @@ public class CollisionTransmitter : MonoBehaviour
     private List<Creature> _affected = new();
     private int _hits;
     private string[] _canAffect;
-    private float _distance, _deviation = 1.75f;
+    private float _distance, _deviation = 1.75f; // Might grab this from AbilityBase
 
     private int _Hits
     {

@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     {
         _cam = GetComponent<Camera>();
 
-        _cam.transform.localPosition = new Vector3(0, 11f, -7.5f);
+        _cam.transform.localPosition = new Vector3(0, 15f, -10f);
         _cam.transform.localRotation = Quaternion.Euler(60f, 0f, 0f);
     }
     

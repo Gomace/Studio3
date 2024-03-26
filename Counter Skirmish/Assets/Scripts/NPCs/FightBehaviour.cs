@@ -1,11 +1,12 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(InstanceUnit))]
-[RequireComponent(typeof(BasicEnemy))] //[RequireComponent(typeof(NPCMovement))] change this at some point
+[RequireComponent(typeof(NPCMovement))]
 public class FightBehaviour : MonoBehaviour
 {
     private InstanceUnit _unit;
-    private BasicEnemy _movement; //NPCMovement change this at some point
+    private NPCMovement _movement;
 
     private Vector3 _targetPos;
     
@@ -24,7 +25,18 @@ public class FightBehaviour : MonoBehaviour
     private void Awake()
     {
         _unit = GetComponent<InstanceUnit>();
-        _movement = GetComponent<BasicEnemy>(); //NPCMovement change this at some point
+        _movement = GetComponent<NPCMovement>();
+    }
+
+    private void FixedUpdate()
+    {
+        Debug.Log($"{_unit.Creature.Base.Name}'s state is: {_movement.State}");
+        
+        if (_movement.State != NPCState.Combat)
+            return;
+        
+        // square the distance we compare with
+        //if (offset.sqrMagnitude < closeDistance * closeDistance)
     }
 
     private void SelectAbility()
@@ -47,8 +59,7 @@ public class FightBehaviour : MonoBehaviour
 
     private Vector3 MissVariance(Vector3 targetPos)
     {
-        
-        
+
         return Vector3.zero;
     }
 }
