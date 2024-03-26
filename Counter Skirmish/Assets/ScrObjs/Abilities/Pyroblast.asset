@@ -16,9 +16,9 @@ MonoBehaviour:
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
   _description: Shoots a large fireball from the character in the target direction.
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 4
+  _power: 3
   _cooldown: 5
-  _resource: 70
+  _resource: 20
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
   _indhitBox: {x: 100, y: 100, z: 600}
   _force: 200

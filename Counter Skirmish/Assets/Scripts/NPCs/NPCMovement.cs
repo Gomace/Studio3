@@ -12,7 +12,7 @@ public class NPCMovement : MonoBehaviour
     // Movement
     private Vector3 _movePos, _spawnPoint, _myPos, _tarPos;
     private NavMeshAgent _navMA;
-    private readonly float _variance = 5f, _reactionSpeed = 1/3.2f;
+    private readonly float _variance = 5f, _reactionSpeed = 1/2.5f;
     private float _reactionTime = 0f;
 
     // Raycast
