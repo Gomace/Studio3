@@ -12,7 +12,7 @@ public class NPCMovement : MonoBehaviour
     // Movement
     private Vector3 _movePos, _spawnPoint, _myPos, _tarPos;
     private NavMeshAgent _navMA;
-    private readonly float _variance = 5f, _reactionSpeed = 1/2.5f;
+    private const float _turnSpeed = 50f, _variance = 5f, _reactionSpeed = 1/2.5f;
     private float _reactionTime = 0f;
 
     // Raycast
@@ -68,7 +68,7 @@ public class NPCMovement : MonoBehaviour
     private void LateUpdate() // Facing walk direction
     {
         if (_navMA.velocity.sqrMagnitude > Mathf.Epsilon)
-            _character.rotation = Quaternion.LookRotation(_navMA.velocity.normalized);
+            _character.rotation = Quaternion.Slerp(_character.rotation, Quaternion.LookRotation(_navMA.velocity.normalized), Time.deltaTime * _turnSpeed);
     }
     
     private void IdleState()
@@ -82,7 +82,7 @@ public class NPCMovement : MonoBehaviour
         _ray = new Ray(new Vector3(Random.Range(-5f, 5f), 2f, Random.Range(-5f, 5f)) + _spawnPoint, Vector3.down);
         Debug.DrawRay(_ray.origin, Vector3.down * _maxUseDistance, Color.yellow);
         
-        MoveUnit(MoveRay());
+        MoveUnit();
     }
     private void CombatState()
     {
@@ -97,7 +97,7 @@ public class NPCMovement : MonoBehaviour
         _ray = new Ray(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down);
         Debug.DrawRay(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down * _maxUseDistance, Color.red);
         
-        MoveUnit(MoveRay());
+        MoveUnit();
     }
     private void ReturningState()
     {
@@ -115,15 +115,10 @@ public class NPCMovement : MonoBehaviour
         _ray = new Ray(new Vector3(0f, 2f, 0f) + _spawnPoint, Vector3.down);
         Debug.DrawRay(new Vector3(0f, 2f, 0f) + _spawnPoint, Vector3.down * _maxUseDistance, Color.cyan);
         
-        MoveUnit(MoveRay());
+        MoveUnit();
     }
 
-    private void MoveUnit(Vector3 mouse) => _navMA.SetDestination(mouse);
-    private Vector3 MoveRay()
-    {
-        return Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer)
-            ? _hit.point : _myPos;
-    }
+    private void MoveUnit() => _navMA.SetDestination(Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer) ? _hit.point : _myPos);
 
     private void RandomizeMovePos()
     {

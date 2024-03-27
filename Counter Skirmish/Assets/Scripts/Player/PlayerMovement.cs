@@ -14,11 +14,14 @@ public class PlayerMovement : MonoBehaviour
     private ClickMarker _clickArrow;
     private GameObject _abilityIndicator;
     private NavMeshAgent _navMA;
-    private readonly LayerMask _groundLayer = (1 << 6)/*, _useLayer = 1 << 7*/;
+
+    private const float _turnSpeed = 50f;
     
+    // Raycast
     private const float _maxUseDistance = 200f;
     private Ray _ray;
     private RaycastHit _hit;
+    private readonly LayerMask _groundLayer = (1 << 6)/*, _useLayer = 1 << 7*/;
     
     private Coroutine _clickAnim, _indicUpdate; // Arrow & Indicator
 
@@ -40,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     private void LateUpdate()
     {
         if (_navMA.velocity.sqrMagnitude > Mathf.Epsilon)
-            _character.rotation = Quaternion.LookRotation(_navMA.velocity.normalized);
+            _character.rotation = Quaternion.Slerp(_character.rotation, Quaternion.LookRotation(_navMA.velocity.normalized), Time.deltaTime * _turnSpeed);
     }
 
     private void OnMove() // TODO make so Cancel ability and Interact (at least in Hub)
