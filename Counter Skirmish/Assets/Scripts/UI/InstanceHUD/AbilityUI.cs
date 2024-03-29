@@ -72,23 +72,16 @@ public class AbilityUI : MonoBehaviour
     }
     private IEnumerator CooldownTimer(Ability ability, int abiSlot)
     { 
-        while (ability.Cooldown > 0 && _abilities[abiSlot] == ability)
-        {
-            ability.Cooldown -= Time.deltaTime;
-            _radials[abiSlot].fillAmount = ability.Cooldown / ability.Base.Cooldown;
-            
-            _nums[abiSlot].text = ability.Cooldown > 1 ? ability.Cooldown.ToString("N0") : ability.Cooldown.ToString("F1", CultureInfo.InvariantCulture);
-            
-            yield return null;
-        }
-        
-        _abilityUIs[abiSlot].color = Color.white;
-        _radials[abiSlot].gameObject.SetActive(false);
-        
         while (ability.Cooldown > 0)
         {
-            ability.Cooldown -= Time.deltaTime;
+            if (_abilities[abiSlot] == ability)
+            {
+                _radials[abiSlot].fillAmount = ability.Cooldown / ability.Base.Cooldown;
+                _nums[abiSlot].text = ability.Cooldown > 1 ? ability.Cooldown.ToString("N0") : ability.Cooldown.ToString("F1", CultureInfo.InvariantCulture);
+            }
             yield return null;
         }
+        _abilityUIs[abiSlot].color = Color.white;
+        _radials[abiSlot].gameObject.SetActive(false);
     }
 }

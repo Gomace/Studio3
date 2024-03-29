@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CreatureRoster))]
@@ -38,7 +39,11 @@ public class InstanceUnit : MonoBehaviour
     public void UpdateHealth() => onHealthChanged?.Invoke((float) Creature.Health / Creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) Creature.Resource / Creature.MaxResource);
 
-    public void ActivateCooldown(Ability ability) => onActivateCooldown?.Invoke(ability);
+    public void ActivateCooldown(Ability ability)
+    {
+        StartCoroutine(CooldownTimer(ability));
+        onActivateCooldown?.Invoke(ability);
+    }
     
     private void ChangeCharacter(Creature creature)
     {
@@ -65,6 +70,15 @@ public class InstanceUnit : MonoBehaviour
             
             if (!Indicators.ContainsKey(ability.Base.Indicator.name))
                 Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
+        }
+    }
+
+    private IEnumerator CooldownTimer(Ability ability)
+    {
+        while (ability.Cooldown > 0)
+        {
+            ability.Cooldown -= Time.deltaTime;
+            yield return null;
         }
     }
 }

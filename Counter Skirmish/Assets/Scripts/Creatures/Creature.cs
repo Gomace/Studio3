@@ -90,7 +90,7 @@ public class Creature
         Unit.UpdateResource();
         
         _ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
-        Unit.ActivateCooldown(_ability); // TODO get this goin
+        Unit.ActivateCooldown(_ability);
 
         _ability.Cast(mouse);
         //PlayAttackAnim(); // Attacking animation
