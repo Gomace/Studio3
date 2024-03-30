@@ -6,11 +6,16 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCMovement : MonoBehaviour
 {
+    #region Events
+     public delegate void OnReacting();
+     public event OnReacting onReacting;
+     #endregion Events
+     
     [SerializeField] private Transform _character;
     [SerializeField] private Transform _testPlayer;
-
+    
     // Movement
-    private Vector3 _movePos, _spawnPoint, _myPos, _tarPos;
+    private Vector3 _movePos, _spawnPoint, _abiPoint, _myPos, _tarPos;
     private NavMeshAgent _navMA;
     private const float _turnSpeed = 50f, _variance = 5f, _reactionSpeed = 1/2.5f;
     private float _reactionTime = 0f;
@@ -91,7 +96,8 @@ public class NPCMovement : MonoBehaviour
             State = NPCState.Returning;
             return;
         }
-
+        
+        onReacting?.Invoke();
         RandomizeMovePos();
         
         _ray = new Ray(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down);
@@ -129,10 +135,19 @@ public class NPCMovement : MonoBehaviour
         int coin = Random.Range(0, 2);
         _movePos = (coin == 0 ? _myPos - (perpDir * 0.5f) : _myPos - (perpDir * 0.5f) + perpDir);
     }
-    
-    public Vector3 AbilityDestination(Vector3 variance)
+
+    public bool AbilityInRange(Ability ability)
     {
-        _ray = new Ray(_myPos + new Vector3(0f, 2f, 0f) + _movePos, Vector3.down);
+        float dis = ability.Base.IndHitBox.z * ability.Base.Deviation;
+
+        _abiPoint = _tarPos + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
+        
+        return (_myPos - _abiPoint).sqrMagnitude < dis * dis;
+    }
+    
+    public Vector3 AbilityDestination()
+    {
+        _ray = new Ray(_abiPoint + new Vector3(0f, 2f, 0f), Vector3.down);
         
         return Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer)
             ? _hit.point : _myPos;

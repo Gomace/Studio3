@@ -17,7 +17,7 @@ public class CollisionTransmitter : MonoBehaviour
     private List<Creature> _affected = new();
     private int _hits;
     private string[] _canAffect;
-    private float _distance, _deviation = 1.75f; // Might grab this from AbilityBase
+    private float _distance;
 
     private int _Hits
     {
@@ -66,7 +66,7 @@ public class CollisionTransmitter : MonoBehaviour
             AddToStack();
         
         // transform.Translate(transform.forward * (_conjurer.Base.Force * Time.deltaTime), Space.World);
-        _distance += _rb.velocity.magnitude * (Time.fixedDeltaTime / _deviation);
+        _distance += _rb.velocity.magnitude * (Time.fixedDeltaTime / _conjurer.Base.Deviation);
     }
 
     private void OnTriggerEnter(Collider other)
