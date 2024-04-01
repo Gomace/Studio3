@@ -8,14 +8,17 @@ public class RosterSlot : MonoBehaviour
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _healthBar, _resBar, _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _level, _healthNum, _resNum;
+    [SerializeField] private GameObject _dead;
 
-    private Creature _creature; 
-
+    private Creature _creature;
+    
     public Creature Creature
     {
         get => _creature; // This is sent to CreatureRoster
         set => SetRosterUI(value);
     }
+    
+    public GameObject Dead => _dead;
     
     private void SetRosterUI(Creature creature)
     {
@@ -26,6 +29,7 @@ public class RosterSlot : MonoBehaviour
         _type1.sprite = creature.Base.Type1.Icon;
         _type2.sprite = creature.Base.Type2.Icon;
         _role.sprite = creature.Base.Role.Icon;
+        _dead.SetActive(false);
         
         SetLevel();
         SetHealth((float)_creature.Health / _creature.MaxHealth);

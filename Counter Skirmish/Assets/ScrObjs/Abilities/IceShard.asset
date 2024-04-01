@@ -21,6 +21,7 @@ MonoBehaviour:
   _resource: 1
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
   _indhitBox: {x: 25, y: 100, z: 700}
+  _deviation: 1.75
   _force: 1500
   _hits: 1
   _canAffect: 0
@@ -28,4 +29,4 @@ MonoBehaviour:
   _metric: 1
   _style: 0
   _critChance: 1.25
-  _critDamage: 2
+  _critDamage: 10

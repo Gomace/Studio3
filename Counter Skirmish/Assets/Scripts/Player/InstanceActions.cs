@@ -1,17 +1,19 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(InstanceUnit))]
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerInput))]
 public class InstanceActions : MonoBehaviour
 {
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private GameObject _roster, _huntScreen, _settings;
 
+    private PlayerInput _input;
     private InstanceUnit _unit;
     private PlayerMovement _movement;
     private CameraController _camCont;
-    // private LayerMask _useLayer = 1 << 6; TODO remove this later
 
     private GameObject _indicator;
     private int _curSlot;
@@ -37,8 +39,20 @@ public class InstanceActions : MonoBehaviour
         else
             Debug.Log("Put CameraController script on the Camera :|");
 
+        _input = GetComponent<PlayerInput>();
         _unit = GetComponent<InstanceUnit>();
         _movement = GetComponent<PlayerMovement>();
+    }
+
+    private void OnEnable()
+    {
+        _unit.onDead += StopActions;
+        _unit.onLoadHUD += ResumeActions;
+    }
+    private void OnDisable()
+    {
+        _unit.onDead -= StopActions;
+        _unit.onLoadHUD -= ResumeActions;
     }
 
     #region Actions
@@ -85,9 +99,9 @@ public class InstanceActions : MonoBehaviour
         
     }
     
-    private void OnRoster() => _roster.SetActive(!_roster.activeSelf);
+    private void OnRoster(InputValue value) => _roster.SetActive(value.isPressed);
     
-    private void OnMenu() => _settings.SetActive(!_settings.activeSelf);
+    private void OnMenu(InputValue value) => _settings.SetActive(value.isPressed);
 
     private void OnHunt() => _huntScreen.SetActive(!_huntScreen.activeSelf);
     private void OnHub() => _sceneLoader.LoadScene("Hub");
@@ -111,5 +125,14 @@ public class InstanceActions : MonoBehaviour
             _movement.ShowIndicator(_indicator); // Indicator follows mouse (player only)
         else
             _unit.Creature.PerformAbility(_CurAbility, _movement.MouseLocation());
+    }
+
+    private void ResumeActions(Creature creature) => _input.SwitchCurrentActionMap("Instance");
+    
+    private void StopActions()
+    {
+        _movement.Indicating = false;
+        _movement.OnStopMoving();
+        _input.SwitchCurrentActionMap("InstanceDead");
     }
 }

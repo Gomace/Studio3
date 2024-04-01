@@ -132,11 +132,12 @@ public class Creature
         //Debug.Log($"The final damage is {damage}");
         Health -= damage;
         Unit.UpdateHealth();
-        if (Health <= 0)
-        {
-            Health = 0;
-            // Death animation
-        }
+        if (Health > 0)
+            return;
+        Debug.Log($"{attacker.Base.Name} killed {Base.Name} with {ability.Base.Name}");
+        Health = 0;
+        Unit.CreatureDead(attacker);
+        // Death animation
     }
     
     private void CalculateStats()

@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             _character.rotation = Quaternion.Slerp(_character.rotation, Quaternion.LookRotation(_navMA.velocity.normalized), Time.deltaTime * _turnSpeed);
     }
 
-    private void OnMove() // TODO make so Cancel ability and Interact (at least in Hub)
+    private void OnMove() // TODO make so Interact (at least in Hub)
     {
         if (Indicating)
         {
@@ -70,6 +70,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnStopMoving()
+    {
+        _ray = new Ray(transform.position + new Vector3(0f, 2f, 0f), Vector3.down);
+        _navMA.SetDestination(Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer) ? _hit.point : transform.position);
+    }
+    
     public Vector3 MouseLocation()
     {
         _ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());

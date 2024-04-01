@@ -17,6 +17,8 @@ public class CreatureRoster : MonoBehaviour
         get => _curCreature;
         set
         {
+            if (value.Health == 0)
+                return;
             if (_curCreature == value) // Ignore change if creature already current
                 return;
             
@@ -36,7 +38,7 @@ public class CreatureRoster : MonoBehaviour
         NextCreature();
     }
 
-    private void NextCreature() // Send next non-dead creature
+    public void NextCreature() // Send next non-dead creature
     {
         foreach (Creature creature in _creatures)
         {
@@ -46,5 +48,6 @@ public class CreatureRoster : MonoBehaviour
                 return;
             }
         }
+        // If you get here, you're dead. Reset Instance.
     }
 }

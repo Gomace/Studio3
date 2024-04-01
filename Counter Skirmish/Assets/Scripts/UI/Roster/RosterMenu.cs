@@ -22,12 +22,14 @@ public class RosterMenu : MonoBehaviour
         _playerRoster.onRosterLoaded += SetupRoster;
         _unit.onHealthChanged += ReloadHealth;
         _unit.onResourceChanged += ReloadResource;
+        _unit.onDead += CreatureDie;
     }
     private void OnDisable()
     {
         _playerRoster.onRosterLoaded -= SetupRoster;
         _unit.onHealthChanged -= ReloadHealth;
         _unit.onResourceChanged -= ReloadResource;
+        _unit.onDead -= CreatureDie;
     }
 
     private void SetupRoster(Creature[] creatures) // Put creatures from roster in slots, and disable unfilled ones
@@ -57,12 +59,21 @@ public class RosterMenu : MonoBehaviour
         }
     }
 
-    private void LevelUp(Creature creature) // TODO Update level on creature in rosterUI
+    private void LevelUp() // TODO Update level on creature in rosterUI
     {
         foreach (RosterSlot slot in _slots)
         {
-            if (slot.Creature == creature)
+            if (slot.Creature == _unit.Creature)
                 slot.SetLevel();
+        }
+    }
+
+    private void CreatureDie()
+    {
+        foreach (RosterSlot slot in _slots)
+        {
+            if (slot.Creature == _unit.Creature)
+                slot.Dead.SetActive(true);
         }
     }
 

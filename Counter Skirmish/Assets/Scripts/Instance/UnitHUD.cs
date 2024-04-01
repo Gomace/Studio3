@@ -10,6 +10,7 @@ public class UnitHUD : MonoBehaviour
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private TMP_Text _levelText;
     [SerializeField] private Image _type1, _type2;
+    [SerializeField] private GameObject _dead;
 
     private Transform _mainCam;
 
@@ -24,8 +25,16 @@ public class UnitHUD : MonoBehaviour
         _mainCam = Camera.main.transform;
     }
     
-    private void OnEnable() => _unit.onLoadHUD += SetupHUD;
-    private void OnDisable() => _unit.onLoadHUD -= SetupHUD;
+    private void OnEnable()
+    {
+        _unit.onLoadHUD += SetupHUD;
+        _unit.onDead += DeadHUD;
+    }
+    private void OnDisable()
+    {
+        _unit.onLoadHUD -= SetupHUD;
+        _unit.onDead -= DeadHUD;
+    }
 
     private void SetupHUD(Creature creature)
     {
@@ -38,6 +47,11 @@ public class UnitHUD : MonoBehaviour
             _type2.sprite = creature.Base.Type2.Icon;
         else
             _type2.enabled = false;
+
+        _dead.SetActive(false);
     }
+
+    private void DeadHUD() => _dead.SetActive(true);
+    
     private void LateUpdate() => transform.LookAt(transform.position + _mainCam.rotation * Vector3.forward);
 }

@@ -64,6 +64,9 @@ public class NPCMovement : MonoBehaviour
             case NPCState.Returning:
                 ReturningState();
                 break;
+            case NPCState.Dead:
+                DeadState();
+                break;
             default:
                 Debug.Log($"You didn't make a case for {State}");
                 break;
@@ -123,6 +126,11 @@ public class NPCMovement : MonoBehaviour
         
         MoveUnit();
     }
+    private void DeadState()
+    {
+        _ray = new Ray(transform.position + new Vector3(0f, 2f, 0f), Vector3.down);
+        MoveUnit();
+    }
 
     private void MoveUnit() => _navMA.SetDestination(Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer) ? _hit.point : _myPos);
 
@@ -169,5 +177,6 @@ public enum NPCState
 {
     Idle,
     Combat,
-    Returning
+    Returning,
+    Dead
 }

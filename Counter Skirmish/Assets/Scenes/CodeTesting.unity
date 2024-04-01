@@ -2418,9 +2418,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1893484249643035889, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
+      propertyPath: _creatures.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893484249643035889, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
+      propertyPath: _creatures.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
+    - target: {fileID: 1893484249643035889, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
+      propertyPath: _creatures.Array.data[1]._level
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1893484249643035897, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893484249643035897, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1893484249643035903, guid: 7b16941e147f75942b63bc767abb562b, type: 3}
       propertyPath: m_RootOrder
@@ -2540,6 +2556,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6701865755481528199, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
       propertyPath: _arrowEffect
       value: 

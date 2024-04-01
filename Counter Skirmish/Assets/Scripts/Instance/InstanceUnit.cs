@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class InstanceUnit : MonoBehaviour
     #region Events
     public delegate void OnLoadHUD(Creature @creature);
     public event OnLoadHUD onLoadHUD;
+    public delegate void OnDead();
+    public event OnDead onDead;
     
     // Health & Resource
     public delegate void OnHealthChanged(float @normHealth);
@@ -25,14 +28,18 @@ public class InstanceUnit : MonoBehaviour
     private List<GameObject> _usedModels = new();
 
     public Dictionary<string, GameObject> Indicators = new();
-    
+
+    public CreatureRoster CreRoster { get; private set; }
     public Creature Creature { get; private set; }
+
+    public void Awake() => CreRoster = GetComponent<CreatureRoster>();
 
     public void SetupUnit(Creature creature)
     {
         ChangeCharacter(creature);
         Creature = creature;
-
+        gameObject.layer = 14; // Change layer to Unit
+        
         onLoadHUD?.Invoke(Creature);
     }
     
@@ -43,6 +50,13 @@ public class InstanceUnit : MonoBehaviour
     {
         StartCoroutine(CooldownTimer(ability));
         onActivateCooldown?.Invoke(ability);
+    }
+
+    public void CreatureDead(Creature creature) // TODO use this Creature to give exp :) (future)
+    {
+        gameObject.layer = 16; // Change layer to Dead
+        onDead?.Invoke(); // TODO CreatureRoster NextCreature all dead stop moving for NPC
+        CreRoster.NextCreature();
     }
     
     private void ChangeCharacter(Creature creature)

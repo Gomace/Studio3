@@ -37,6 +37,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""StopMoving"",
+                    ""type"": ""Button"",
+                    ""id"": ""a75f92d8-c3b2-44e8-b1c1-d788f54ec807"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Use"",
                     ""type"": ""Button"",
                     ""id"": ""8717bccd-d33c-4714-b207-30155cc46784"",
@@ -146,21 +155,21 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Roster"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""9ea72124-05a3-4da3-903a-5e6228377458"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Menu"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""e7f3840d-0ed9-455a-8fc1-b7e05937c952"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""CameraZoom"",
@@ -388,6 +397,125 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""IndicatorCast"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed0d1f8b-da95-4362-a219-b7b272f12b44"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""StopMoving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""InstanceDead"",
+            ""id"": ""77e9e863-39fd-4c56-aeb1-d2a2b47f460f"",
+            ""actions"": [
+                {
+                    ""name"": ""Roster"",
+                    ""type"": ""Button"",
+                    ""id"": ""493c08bf-e1b7-487e-a95f-0b29cc77da88"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""543fd08f-c2a1-413d-8d57-ea6c06dd020b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""21ce2c5d-3d1b-433a-9299-25252a6bd699"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Hub"",
+                    ""type"": ""Button"",
+                    ""id"": ""900e3b93-bf72-42d2-bda9-2423a3b669c2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Hunt"",
+                    ""type"": ""Button"",
+                    ""id"": ""7126e551-bf52-450b-a4d1-68e5fe15eeba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2983a7c9-673e-4cc6-8929-07413455949b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5627b43-c612-408b-9412-e9905ec91008"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""CameraZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ed0babe-1378-48ef-ac82-252858b385bb"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Roster"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""962bd8bc-82f2-42fc-a4ca-7bd64c72e635"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Hub"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32af2647-ac19-423d-986f-8aaa2e5ca8e3"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hunt"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -399,6 +527,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Button"",
                     ""id"": ""bf8e6337-1ee5-45aa-9ce2-c9e7eacba80f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""StopMoving"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb956eec-8341-494d-9ef0-539b63e61b7d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -578,6 +715,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""410e9d74-f9fc-4a9f-a114-89e23d772597"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""StopMoving"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -740,6 +888,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Instance
         m_Instance = asset.FindActionMap("Instance", throwIfNotFound: true);
         m_Instance_Move = m_Instance.FindAction("Move", throwIfNotFound: true);
+        m_Instance_StopMoving = m_Instance.FindAction("StopMoving", throwIfNotFound: true);
         m_Instance_Use = m_Instance.FindAction("Use", throwIfNotFound: true);
         m_Instance_IndicatorCast = m_Instance.FindAction("IndicatorCast", throwIfNotFound: true);
         m_Instance_AbilityQ = m_Instance.FindAction("AbilityQ", throwIfNotFound: true);
@@ -757,9 +906,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Instance_CameraZoom = m_Instance.FindAction("CameraZoom", throwIfNotFound: true);
         m_Instance_Hub = m_Instance.FindAction("Hub", throwIfNotFound: true);
         m_Instance_Hunt = m_Instance.FindAction("Hunt", throwIfNotFound: true);
+        // InstanceDead
+        m_InstanceDead = asset.FindActionMap("InstanceDead", throwIfNotFound: true);
+        m_InstanceDead_Roster = m_InstanceDead.FindAction("Roster", throwIfNotFound: true);
+        m_InstanceDead_Menu = m_InstanceDead.FindAction("Menu", throwIfNotFound: true);
+        m_InstanceDead_CameraZoom = m_InstanceDead.FindAction("CameraZoom", throwIfNotFound: true);
+        m_InstanceDead_Hub = m_InstanceDead.FindAction("Hub", throwIfNotFound: true);
+        m_InstanceDead_Hunt = m_InstanceDead.FindAction("Hunt", throwIfNotFound: true);
         // Hub
         m_Hub = asset.FindActionMap("Hub", throwIfNotFound: true);
         m_Hub_Move = m_Hub.FindAction("Move", throwIfNotFound: true);
+        m_Hub_StopMoving = m_Hub.FindAction("StopMoving", throwIfNotFound: true);
         m_Hub_Inventory = m_Hub.FindAction("Inventory", throwIfNotFound: true);
         m_Hub_Collection = m_Hub.FindAction("Collection", throwIfNotFound: true);
         m_Hub_Menu = m_Hub.FindAction("Menu", throwIfNotFound: true);
@@ -837,6 +994,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Instance;
     private IInstanceActions m_InstanceActionsCallbackInterface;
     private readonly InputAction m_Instance_Move;
+    private readonly InputAction m_Instance_StopMoving;
     private readonly InputAction m_Instance_Use;
     private readonly InputAction m_Instance_IndicatorCast;
     private readonly InputAction m_Instance_AbilityQ;
@@ -859,6 +1017,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public InstanceActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Instance_Move;
+        public InputAction @StopMoving => m_Wrapper.m_Instance_StopMoving;
         public InputAction @Use => m_Wrapper.m_Instance_Use;
         public InputAction @IndicatorCast => m_Wrapper.m_Instance_IndicatorCast;
         public InputAction @AbilityQ => m_Wrapper.m_Instance_AbilityQ;
@@ -888,6 +1047,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnMove;
+                @StopMoving.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnStopMoving;
+                @StopMoving.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnStopMoving;
+                @StopMoving.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnStopMoving;
                 @Use.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
                 @Use.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
                 @Use.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnUse;
@@ -946,6 +1108,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @StopMoving.started += instance.OnStopMoving;
+                @StopMoving.performed += instance.OnStopMoving;
+                @StopMoving.canceled += instance.OnStopMoving;
                 @Use.started += instance.OnUse;
                 @Use.performed += instance.OnUse;
                 @Use.canceled += instance.OnUse;
@@ -1002,10 +1167,76 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     }
     public InstanceActions @Instance => new InstanceActions(this);
 
+    // InstanceDead
+    private readonly InputActionMap m_InstanceDead;
+    private IInstanceDeadActions m_InstanceDeadActionsCallbackInterface;
+    private readonly InputAction m_InstanceDead_Roster;
+    private readonly InputAction m_InstanceDead_Menu;
+    private readonly InputAction m_InstanceDead_CameraZoom;
+    private readonly InputAction m_InstanceDead_Hub;
+    private readonly InputAction m_InstanceDead_Hunt;
+    public struct InstanceDeadActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public InstanceDeadActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Roster => m_Wrapper.m_InstanceDead_Roster;
+        public InputAction @Menu => m_Wrapper.m_InstanceDead_Menu;
+        public InputAction @CameraZoom => m_Wrapper.m_InstanceDead_CameraZoom;
+        public InputAction @Hub => m_Wrapper.m_InstanceDead_Hub;
+        public InputAction @Hunt => m_Wrapper.m_InstanceDead_Hunt;
+        public InputActionMap Get() { return m_Wrapper.m_InstanceDead; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InstanceDeadActions set) { return set.Get(); }
+        public void SetCallbacks(IInstanceDeadActions instance)
+        {
+            if (m_Wrapper.m_InstanceDeadActionsCallbackInterface != null)
+            {
+                @Roster.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnRoster;
+                @Roster.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnRoster;
+                @Roster.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnRoster;
+                @Menu.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnMenu;
+                @CameraZoom.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
+                @CameraZoom.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
+                @CameraZoom.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
+                @Hub.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
+                @Hub.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
+                @Hub.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
+                @Hunt.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
+                @Hunt.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
+                @Hunt.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
+            }
+            m_Wrapper.m_InstanceDeadActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Roster.started += instance.OnRoster;
+                @Roster.performed += instance.OnRoster;
+                @Roster.canceled += instance.OnRoster;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
+                @CameraZoom.started += instance.OnCameraZoom;
+                @CameraZoom.performed += instance.OnCameraZoom;
+                @CameraZoom.canceled += instance.OnCameraZoom;
+                @Hub.started += instance.OnHub;
+                @Hub.performed += instance.OnHub;
+                @Hub.canceled += instance.OnHub;
+                @Hunt.started += instance.OnHunt;
+                @Hunt.performed += instance.OnHunt;
+                @Hunt.canceled += instance.OnHunt;
+            }
+        }
+    }
+    public InstanceDeadActions @InstanceDead => new InstanceDeadActions(this);
+
     // Hub
     private readonly InputActionMap m_Hub;
     private IHubActions m_HubActionsCallbackInterface;
     private readonly InputAction m_Hub_Move;
+    private readonly InputAction m_Hub_StopMoving;
     private readonly InputAction m_Hub_Inventory;
     private readonly InputAction m_Hub_Collection;
     private readonly InputAction m_Hub_Menu;
@@ -1018,6 +1249,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public HubActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Hub_Move;
+        public InputAction @StopMoving => m_Wrapper.m_Hub_StopMoving;
         public InputAction @Inventory => m_Wrapper.m_Hub_Inventory;
         public InputAction @Collection => m_Wrapper.m_Hub_Collection;
         public InputAction @Menu => m_Wrapper.m_Hub_Menu;
@@ -1037,6 +1269,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_HubActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnMove;
+                @StopMoving.started -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
+                @StopMoving.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
+                @StopMoving.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
                 @Inventory.started -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
@@ -1065,6 +1300,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @StopMoving.started += instance.OnStopMoving;
+                @StopMoving.performed += instance.OnStopMoving;
+                @StopMoving.canceled += instance.OnStopMoving;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
@@ -1200,6 +1438,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IInstanceActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnStopMoving(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
         void OnIndicatorCast(InputAction.CallbackContext context);
         void OnAbilityQ(InputAction.CallbackContext context);
@@ -1218,9 +1457,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnHub(InputAction.CallbackContext context);
         void OnHunt(InputAction.CallbackContext context);
     }
+    public interface IInstanceDeadActions
+    {
+        void OnRoster(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
+        void OnCameraZoom(InputAction.CallbackContext context);
+        void OnHub(InputAction.CallbackContext context);
+        void OnHunt(InputAction.CallbackContext context);
+    }
     public interface IHubActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnStopMoving(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnCollection(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);

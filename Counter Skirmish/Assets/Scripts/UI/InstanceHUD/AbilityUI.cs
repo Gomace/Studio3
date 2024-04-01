@@ -17,6 +17,7 @@ public class AbilityUI : MonoBehaviour
     private readonly Color _tempColor = new (0.7f, 0.7f, 0.7f, 1f);
 
     private Ability[] _abilities;
+    private Coroutine[] _abiCDs;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class AbilityUI : MonoBehaviour
             _radials[i] = _abilityUIs[i].transform.GetChild(0).GetComponent<Image>();
             _nums[i] = _radials[i].transform.GetChild(0).GetComponent<TMP_Text>();
         }
+        _abiCDs = new Coroutine[_abilityUIs.Length + 1]; // Passive is the +1
     }
 
     private void OnEnable()
@@ -46,15 +48,18 @@ public class AbilityUI : MonoBehaviour
         {
             if (_abilities[i] == null)
                 break;
-            //Debug.Log($"Is this null? {_abilities[i].Base.Icon != null}");
+            
             if (_abilities[i].Base.Icon != null)
                 _abilityUIs[i].sprite = _abilities[i].Base.Icon;
+            
+            if (_abilities[i].Cooldown > 0)
+                AbilityCD(_abilities[i]);
         }
 
-        /*if (creature.Passive == null) // TODO idk it not work
+        if (creature.Passive == null)
             return;
         if (creature.Passive.Base.Icon != null)
-            _passive.sprite = creature.Passive.Base.Icon;*/ 
+            _passive.sprite = creature.Passive.Base.Icon;
     }
 
     private void AbilityCD(Ability ability)
@@ -65,20 +70,19 @@ public class AbilityUI : MonoBehaviour
             {
                 _abilityUIs[i].color = _tempColor;
                 _radials[i].gameObject.SetActive(true);
-                StartCoroutine(CooldownTimer(ability, i));
+                if (_abiCDs[i] != null)
+                    StopCoroutine(_abiCDs[i]);
+                _abiCDs[i] = StartCoroutine(CooldownTimer(ability, i));
                 return;
             }
         }
     }
     private IEnumerator CooldownTimer(Ability ability, int abiSlot)
     { 
-        while (ability.Cooldown > 0)
+        while (ability.Cooldown > 0 && _abilities[abiSlot] == ability)
         {
-            if (_abilities[abiSlot] == ability)
-            {
-                _radials[abiSlot].fillAmount = ability.Cooldown / ability.Base.Cooldown;
-                _nums[abiSlot].text = ability.Cooldown > 1 ? ability.Cooldown.ToString("N0") : ability.Cooldown.ToString("F1", CultureInfo.InvariantCulture);
-            }
+            _radials[abiSlot].fillAmount = ability.Cooldown / ability.Base.Cooldown;
+            _nums[abiSlot].text = ability.Cooldown > 1 ? ability.Cooldown.ToString("N0") : ability.Cooldown.ToString("F1", CultureInfo.InvariantCulture);
             yield return null;
         }
         _abilityUIs[abiSlot].color = Color.white;

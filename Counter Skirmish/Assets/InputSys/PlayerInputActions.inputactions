@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "StopMoving",
+                    "type": "Button",
+                    "id": "a75f92d8-c3b2-44e8-b1c1-d788f54ec807",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Use",
                     "type": "Button",
                     "id": "8717bccd-d33c-4714-b207-30155cc46784",
@@ -124,21 +133,21 @@
                 },
                 {
                     "name": "Roster",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "9ea72124-05a3-4da3-903a-5e6228377458",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "initialStateCheck": true
                 },
                 {
                     "name": "Menu",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e7f3840d-0ed9-455a-8fc1-b7e05937c952",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "CameraZoom",
@@ -366,6 +375,125 @@
                     "action": "IndicatorCast",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed0d1f8b-da95-4362-a219-b7b272f12b44",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "StopMoving",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "InstanceDead",
+            "id": "77e9e863-39fd-4c56-aeb1-d2a2b47f460f",
+            "actions": [
+                {
+                    "name": "Roster",
+                    "type": "Button",
+                    "id": "493c08bf-e1b7-487e-a95f-0b29cc77da88",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "543fd08f-c2a1-413d-8d57-ea6c06dd020b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraZoom",
+                    "type": "Value",
+                    "id": "21ce2c5d-3d1b-433a-9299-25252a6bd699",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Hub",
+                    "type": "Button",
+                    "id": "900e3b93-bf72-42d2-bda9-2423a3b669c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hunt",
+                    "type": "Button",
+                    "id": "7126e551-bf52-450b-a4d1-68e5fe15eeba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2983a7c9-673e-4cc6-8929-07413455949b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5627b43-c612-408b-9412-e9905ec91008",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "CameraZoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ed0babe-1378-48ef-ac82-252858b385bb",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Roster",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "962bd8bc-82f2-42fc-a4ca-7bd64c72e635",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Hub",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32af2647-ac19-423d-986f-8aaa2e5ca8e3",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hunt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -377,6 +505,15 @@
                     "name": "Move",
                     "type": "Button",
                     "id": "bf8e6337-1ee5-45aa-9ce2-c9e7eacba80f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "StopMoving",
+                    "type": "Button",
+                    "id": "cb956eec-8341-494d-9ef0-539b63e61b7d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -554,6 +691,17 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "410e9d74-f9fc-4a9f-a114-89e23d772597",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "StopMoving",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
