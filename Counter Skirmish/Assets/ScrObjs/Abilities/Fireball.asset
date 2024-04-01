@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   _icon: {fileID: 0}
-  _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
+  _model: {fileID: 5393136310224786997, guid: c5055e125a9f47848b27217d4923a68e, type: 3}
   _description: Shoots a small fire projectile from the character in the target direction.
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
   _power: 40
