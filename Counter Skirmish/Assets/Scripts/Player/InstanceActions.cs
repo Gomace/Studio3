@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -46,13 +45,13 @@ public class InstanceActions : MonoBehaviour
 
     private void OnEnable()
     {
+        _unit.onSpawn += ResumeActions;
         _unit.onDead += StopActions;
-        _unit.onLoadHUD += ResumeActions;
     }
     private void OnDisable()
     {
+        _unit.onSpawn -= ResumeActions;
         _unit.onDead -= StopActions;
-        _unit.onLoadHUD -= ResumeActions;
     }
 
     #region Actions
@@ -124,10 +123,13 @@ public class InstanceActions : MonoBehaviour
         if (_modifier)
             _movement.ShowIndicator(_indicator); // Indicator follows mouse (player only)
         else
+        {
+            _movement.Indicating = false;
             _unit.Creature.PerformAbility(_CurAbility, _movement.MouseLocation());
+        }
     }
 
-    private void ResumeActions(Creature creature) => _input.SwitchCurrentActionMap("Instance");
+    private void ResumeActions() => _input.SwitchCurrentActionMap("Instance");
     
     private void StopActions()
     {

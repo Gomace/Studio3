@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
@@ -7,9 +6,11 @@ using UnityEngine;
 public class InstanceUnit : MonoBehaviour
 {
     #region Events
-    public delegate void OnLoadHUD(Creature @creature);
+    public delegate void OnLoadHUD(Creature @creature); // Loading HUD
     public event OnLoadHUD onLoadHUD;
-    public delegate void OnDead();
+    public delegate void OnSpawn(); // Creature spawns, revives or swaps in
+    public event OnSpawn onSpawn;
+    public delegate void OnDead(); // Creature dies
     public event OnDead onDead;
     
     // Health & Resource
@@ -41,6 +42,7 @@ public class InstanceUnit : MonoBehaviour
         gameObject.layer = 14; // Change layer to Unit
         
         onLoadHUD?.Invoke(Creature);
+        onSpawn?.Invoke();
     }
     
     public void UpdateHealth() => onHealthChanged?.Invoke((float) Creature.Health / Creature.MaxHealth);

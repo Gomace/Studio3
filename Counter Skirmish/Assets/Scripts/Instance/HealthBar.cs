@@ -31,7 +31,13 @@ public class HealthBar : MonoBehaviour
         _unit.onHealthChanged -= SetBar;
     }
 
-    private void SetHealth(Creature creature) => _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Health / creature.MaxHealth;
+    private void SetHealth(Creature creature)
+    {
+        if (_damageBar != null)
+            StopCoroutine(_damageBar);
+        
+        _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Health / creature.MaxHealth;
+    }
     
     private void SetBar(float newH)
     {

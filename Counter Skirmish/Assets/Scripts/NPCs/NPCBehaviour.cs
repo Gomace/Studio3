@@ -1,19 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(InstanceUnit))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class NPCMovement : MonoBehaviour
+public class NPCBehaviour : MonoBehaviour
 {
-    #region Events
-     public delegate void OnReacting();
-     public event OnReacting onReacting;
-     #endregion Events
-     
     [SerializeField] private Transform _character;
-    [SerializeField] private Transform _testPlayer;
     
+    private InstanceUnit _unit;
+    private Vector3 _targetPos;
+
     // Movement
     private Vector3 _movePos, _spawnPoint, _abiPoint, _myPos, _tarPos;
     private NavMeshAgent _navMA;
@@ -25,20 +22,33 @@ public class NPCMovement : MonoBehaviour
     private Ray _ray;
     private RaycastHit _hit;
     private readonly LayerMask _groundLayer = (1 << 6);
-    
-    public NPCState State { get; private set; } = NPCState.Idle;
-    public Transform Target { get; set; }
 
+    
+    public NPCState State { get; set; } = NPCState.Idle;
+    public Transform Target { get; set; }
+    
     private void Awake()
     {
-        _spawnPoint = transform.position;
-
-        Target = _testPlayer;
-        
+        _unit = GetComponent<InstanceUnit>();
         _navMA = GetComponent<NavMeshAgent>();
         _navMA.updateRotation = false;
+        
+        _spawnPoint = transform.position;
+        Target = GameObject.FindWithTag("Player").transform;
     }
-    
+
+    private void OnEnable()
+    {
+        _unit.onSpawn += CombatState;
+        _unit.onDead += DeadState;
+    }
+
+    private void OnDisable()
+    {
+        _unit.onSpawn -= CombatState;
+        _unit.onDead -= DeadState;
+    }
+
     private void FixedUpdate()
     {
         _myPos = transform.position;
@@ -65,7 +75,6 @@ public class NPCMovement : MonoBehaviour
                 ReturningState();
                 break;
             case NPCState.Dead:
-                DeadState();
                 break;
             default:
                 Debug.Log($"You didn't make a case for {State}");
@@ -78,7 +87,8 @@ public class NPCMovement : MonoBehaviour
         if (_navMA.velocity.sqrMagnitude > Mathf.Epsilon)
             _character.rotation = Quaternion.Slerp(_character.rotation, Quaternion.LookRotation(_navMA.velocity.normalized), Time.deltaTime * _turnSpeed);
     }
-    
+
+    #region States
     private void IdleState()
     {
         if ((_myPos - _tarPos).sqrMagnitude < 10f * 10f)
@@ -100,7 +110,7 @@ public class NPCMovement : MonoBehaviour
             return;
         }
         
-        onReacting?.Invoke();
+        CastAbility(Random.Range(0, _unit.Creature.Abilities.Length));
         RandomizeMovePos();
         
         _ray = new Ray(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down);
@@ -128,10 +138,14 @@ public class NPCMovement : MonoBehaviour
     }
     private void DeadState()
     {
-        _ray = new Ray(transform.position + new Vector3(0f, 2f, 0f), Vector3.down);
+        State = NPCState.Dead;
+        
+        _ray = new Ray(_myPos + new Vector3(0f, 2f, 0f), Vector3.down);
         MoveUnit();
     }
-
+    #endregion States
+    
+    #region Movement
     private void MoveUnit() => _navMA.SetDestination(Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer) ? _hit.point : _myPos);
 
     private void RandomizeMovePos()
@@ -143,23 +157,40 @@ public class NPCMovement : MonoBehaviour
         int coin = Random.Range(0, 2);
         _movePos = (coin == 0 ? _myPos - (perpDir * 0.5f) : _myPos - (perpDir * 0.5f) + perpDir);
     }
-
-    public bool AbilityInRange(Ability ability)
+    #endregion Movement
+    
+    #region Abilities
+    private bool AbilityInRange(Ability ability)
     {
         float dis = ability.Base.IndHitBox.z * ability.Base.Deviation;
 
-        _abiPoint = _tarPos + new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
+        _abiPoint = _tarPos + new Vector3(Random.Range(-1.5f, 1.5f), 0f, Random.Range(-1.5f, 1.5f));
         
         return (_myPos - _abiPoint).sqrMagnitude < dis * dis;
     }
     
-    public Vector3 AbilityDestination()
+    private Vector3 AbilityDestination()
     {
         _ray = new Ray(_abiPoint + new Vector3(0f, 2f, 0f), Vector3.down);
         
         return Physics.Raycast(_ray, out _hit, _maxUseDistance, _groundLayer)
             ? _hit.point : _myPos;
     }
+
+    private void CastAbility(int slotNum)
+    {
+        if (_unit.Creature.Abilities[slotNum] == null) // Check if ability is equipped
+            return;
+        
+        Ability curAbi = _unit.Creature.Abilities[slotNum];
+
+        if (curAbi.Cooldown > 0)
+            return;
+        
+        if (AbilityInRange(curAbi))
+            _unit.Creature.PerformAbility(slotNum, AbilityDestination());
+    }
+    #endregion Abilities
     
     private bool Reacting()
     {

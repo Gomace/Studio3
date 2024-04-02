@@ -14,11 +14,14 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Instances/Forest.unity
     guid: ee42b60ac495d0d4f9b289769eca431f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Thomas/ThomasTesting.unity
     guid: 36f0b7b7d848d1244845c312264a3cf3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Thomas/FirstLevel.unity
     guid: 1aaaf0ca497f7344cad3fd6ffcc9a7cd
+  - enabled: 1
+    path: Assets/Scenes/CodeTesting.unity
+    guid: 6d6021a41fcf08b4a8b542e8821cb7ab
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a897259a4ad5a13499ec24091476074a, type: 2}
