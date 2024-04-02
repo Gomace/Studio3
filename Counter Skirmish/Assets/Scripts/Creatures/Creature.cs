@@ -119,7 +119,7 @@ public class Creature
     {
         //Debug.Log($"{attacker.Base.Name} attacked {Base.Name}");
         float critical = 1f;
-        if (Random.value * 100f <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
+        if (Random.Range(0f, 100f) <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
 
         float metric = ability.Base.Metric(ability.Base.PowerSource(attacker, this));

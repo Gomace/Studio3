@@ -8,8 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(ClickMarker))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Transform _character;
-
+    private Transform _character;
     private Camera _mainCam;
     private ClickMarker _clickArrow;
     private GameObject _abilityIndicator;
@@ -33,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake()
     {
+        _character = transform.Find("Character");
+        
         _mainCam = Camera.main; 
         _clickArrow = GetComponent<ClickMarker>();
         

@@ -6,10 +6,8 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(NavMeshAgent))]
 public class NPCBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform _character;
-    
     private InstanceUnit _unit;
-    private Vector3 _targetPos;
+    private Transform _character;
 
     // Movement
     private Vector3 _movePos, _spawnPoint, _abiPoint, _myPos, _tarPos;
@@ -29,6 +27,8 @@ public class NPCBehaviour : MonoBehaviour
     
     private void Awake()
     {
+        _character = transform.Find("Character");
+            
         _unit = GetComponent<InstanceUnit>();
         _navMA = GetComponent<NavMeshAgent>();
         _navMA.updateRotation = false;
@@ -59,6 +59,9 @@ public class NPCBehaviour : MonoBehaviour
 
         Vector3 perpDir = new Vector3(dir.normalized.z, 0, -dir.normalized.x) * _variance; // perp-line extended
         Debug.DrawRay(_myPos - (perpDir * 0.5f), perpDir, Color.white);
+        
+        Vector3 perpVar = new Vector3(perpDir.normalized.z, 0, -perpDir.normalized.x) * Random.Range(0.01f, 1f); // perp-line variance
+        Debug.DrawRay(_myPos - (perpDir * 0.5f) - (perpVar * 0.5f), perpVar, Color.gray);
         
         if (Reacting())
             return;
@@ -150,12 +153,19 @@ public class NPCBehaviour : MonoBehaviour
 
     private void RandomizeMovePos()
     {
-        Vector3 tarDir = _tarPos - _myPos; // Line to target
-        Vector3 perpDir = new Vector3(tarDir.normalized.z, 0, -tarDir.normalized.x) * _variance; // perp-line extended
-        Vector3 perpVar = new Vector3(perpDir.normalized.z, 0, -perpDir.normalized.x) * Random.Range(0.01f, 1f); // perp-line variance
-
-        int coin = Random.Range(0, 2);
-        _movePos = (coin == 0 ? _myPos - (perpDir * 0.5f) : _myPos - (perpDir * 0.5f) + perpDir);
+        int coin1 = Random.Range(0, 2),
+            coin2 = Random.Range(0, 2);
+        
+                // Angles
+        Vector3 tarDir = _tarPos - _myPos, // Line to target
+                perpDir = new Vector3(tarDir.normalized.z, 0, -tarDir.normalized.x) * _variance, // perp-line extended
+                perpVar = new Vector3(perpDir.normalized.z, 0, -perpDir.normalized.x) * Random.Range(0.01f, 1f), // perp-line variance
+                
+                // Sides
+                pdRan = (coin1 == 0 ? (-perpDir * 0.5f) : (-perpDir * 0.5f) + perpDir),
+                pvRan = (coin2 == 0 ? (-perpVar * 0.5f) : (-perpVar * 0.5f) + perpVar);
+        
+        _movePos = _myPos + pdRan + pvRan;
     }
     #endregion Movement
     
@@ -164,7 +174,7 @@ public class NPCBehaviour : MonoBehaviour
     {
         float dis = ability.Base.IndHitBox.z * ability.Base.Deviation;
 
-        _abiPoint = _tarPos + new Vector3(Random.Range(-1.5f, 1.5f), 0f, Random.Range(-1.5f, 1.5f));
+        _abiPoint = _tarPos + new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
         
         return (_myPos - _abiPoint).sqrMagnitude < dis * dis;
     }
@@ -189,6 +199,8 @@ public class NPCBehaviour : MonoBehaviour
         
         if (AbilityInRange(curAbi))
             _unit.Creature.PerformAbility(slotNum, AbilityDestination());
+        else
+            _ray = new Ray(_tarPos + new Vector3(0f, 2f, 0f), Vector3.down); // Move closer to target
     }
     #endregion Abilities
     

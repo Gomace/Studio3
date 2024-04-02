@@ -32,18 +32,22 @@ public class Ability
             conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this);
         }
         
-        ConjTransform(conjuration.transform, Creature.Unit.transform.position, mouse);
+        ConjTransform(conjuration.transform, Creature.Unit, mouse);
         conjuration.gameObject.SetActive(true);
         
         //Debug.Log($"{creature.Base.Name} cast a {Base.Name}");
     }
     
-    private void ConjTransform(Transform conj, Vector3 unitPos, Vector3 mouse)
+    private void ConjTransform(Transform conj, InstanceUnit unit, Vector3 mouse)
     {
+        Vector3 unitPos = unit.transform.position;
+        
         Quaternion conjRot = Quaternion.LookRotation(mouse - unitPos, Vector3.up); // Rotation
         conjRot.eulerAngles = new Vector3(0f, conjRot.eulerAngles.y, 0);
         conj.rotation = conjRot;
         
+        unit.Character.rotation = conjRot; // Face creature to cast angle
+
         unitPos += Base.Model.transform.localPosition; // Position
         conj.position = unitPos;
                 

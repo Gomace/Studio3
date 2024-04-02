@@ -28,5 +28,5 @@ MonoBehaviour:
   _calcNumFrom: 0
   _metric: 1
   _style: 0
-  _critChance: 1.25
+  _critChance: 2
   _critDamage: 10

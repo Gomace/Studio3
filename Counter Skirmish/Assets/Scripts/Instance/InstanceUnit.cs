@@ -24,7 +24,8 @@ public class InstanceUnit : MonoBehaviour
     public event OnActivateCooldown onActivateCooldown;
     #endregion Events
     
-    [SerializeField] private Transform _character;
+    public Transform Character { get; private set; }
+    
     private List<Creature> _usedCreatures = new();
     private List<GameObject> _usedModels = new();
 
@@ -33,7 +34,12 @@ public class InstanceUnit : MonoBehaviour
     public CreatureRoster CreRoster { get; private set; }
     public Creature Creature { get; private set; }
 
-    public void Awake() => CreRoster = GetComponent<CreatureRoster>();
+    public void Awake()
+    {
+        Character = transform.Find("Character");
+        
+        CreRoster = GetComponent<CreatureRoster>();
+    }
 
     public void SetupUnit(Creature creature)
     {
@@ -56,6 +62,7 @@ public class InstanceUnit : MonoBehaviour
 
     public void CreatureDead(Creature creature) // TODO use this Creature to give exp :) (future)
     {
+        // Give xp to attacker
         gameObject.layer = 16; // Change layer to Dead
         onDead?.Invoke(); // TODO CreatureRoster NextCreature all dead stop moving for NPC
         CreRoster.NextCreature();
@@ -70,15 +77,15 @@ public class InstanceUnit : MonoBehaviour
         {
             int i = _usedCreatures.IndexOf(creature);
             
-            _usedModels[i].transform.position = _character.position;
-            _usedModels[i].transform.rotation = _character.rotation;
+            _usedModels[i].transform.position = Character.position;
+            _usedModels[i].transform.rotation = Character.rotation;
             _usedModels[i].SetActive(true); // If creature already exists, turn on model
 
             return;
         }
         
         _usedCreatures.Add(creature); // If creature not exist, add to list
-        _usedModels.Add(Instantiate(creature.Base.Model, _character.position, _character.rotation, _character)); // Add new creature model to list
+        _usedModels.Add(Instantiate(creature.Base.Model, Character.position, Character.rotation, Character)); // Add new creature model to list
         foreach (Ability ability in creature.Abilities)
         {
             if (ability == null)

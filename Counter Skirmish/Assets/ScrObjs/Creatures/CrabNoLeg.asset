@@ -27,7 +27,7 @@ MonoBehaviour:
   _defense: 70
   _resistance: 80
   _speed: 80
-  _critChance: 1.7
+  _critChance: 2
   _critDamage: 1
   _learnableAbilities:
   - _abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
