@@ -574,15 +574,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Start"",
-                    ""type"": ""Button"",
-                    ""id"": ""e4005cfc-85c7-4f66-800c-a90f1a62335d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -682,17 +673,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""Instance"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3e94dfc0-78ff-4a2c-9953-f2ee43c0ce14"",
-                    ""path"": ""<Keyboard>/m"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -902,7 +882,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Hub_CameraZoom = m_Hub.FindAction("CameraZoom", throwIfNotFound: true);
         m_Hub_Shop = m_Hub.FindAction("Shop", throwIfNotFound: true);
         m_Hub_Instance = m_Hub.FindAction("Instance", throwIfNotFound: true);
-        m_Hub_Start = m_Hub.FindAction("Start", throwIfNotFound: true);
         // Collection
         m_Collection = asset.FindActionMap("Collection", throwIfNotFound: true);
         m_Collection_QuickEquip = m_Collection.FindAction("QuickEquip", throwIfNotFound: true);
@@ -1214,7 +1193,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Hub_CameraZoom;
     private readonly InputAction m_Hub_Shop;
     private readonly InputAction m_Hub_Instance;
-    private readonly InputAction m_Hub_Start;
     public struct HubActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1227,7 +1205,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @CameraZoom => m_Wrapper.m_Hub_CameraZoom;
         public InputAction @Shop => m_Wrapper.m_Hub_Shop;
         public InputAction @Instance => m_Wrapper.m_Hub_Instance;
-        public InputAction @Start => m_Wrapper.m_Hub_Start;
         public InputActionMap Get() { return m_Wrapper.m_Hub; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1261,9 +1238,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Instance.started -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
                 @Instance.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
                 @Instance.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
-                @Start.started -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
-                @Start.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
-                @Start.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_HubActionsCallbackInterface = instance;
             if (instance != null)
@@ -1292,9 +1266,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Instance.started += instance.OnInstance;
                 @Instance.performed += instance.OnInstance;
                 @Instance.canceled += instance.OnInstance;
-                @Start.started += instance.OnStart;
-                @Start.performed += instance.OnStart;
-                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -1445,7 +1416,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnCameraZoom(InputAction.CallbackContext context);
         void OnShop(InputAction.CallbackContext context);
         void OnInstance(InputAction.CallbackContext context);
-        void OnStart(InputAction.CallbackContext context);
     }
     public interface ICollectionActions
     {

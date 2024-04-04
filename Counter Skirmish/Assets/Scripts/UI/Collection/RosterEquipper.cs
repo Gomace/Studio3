@@ -5,12 +5,12 @@ using TMPro;
 
 public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private CollectionMenu _collMenu;
+    [SerializeField] private CardMenu _cardMenu;
     #region Elements
     [Header("These should already be referenced.")] // Slot display elements
     [SerializeField] private TMP_Text _name;
 
-    [SerializeField] private Image _healthBar, _icon, _type1, _type2, _role;
+    [SerializeField] private Image _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _level;
     
     [SerializeField] private RectTransform _hover;
@@ -30,8 +30,8 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     // Add self to CollectionMenu loading pool
-    private void OnEnable() => _collMenu.onCollectionLoad += LoadInfo;
-    private void OnDisable() => _collMenu.onCollectionLoad -= LoadInfo;
+    private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
+    private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
     
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);

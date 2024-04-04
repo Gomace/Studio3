@@ -552,15 +552,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Start",
-                    "type": "Button",
-                    "id": "e4005cfc-85c7-4f66-800c-a90f1a62335d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -660,17 +651,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Instance",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3e94dfc0-78ff-4a2c-9953-f2ee43c0ce14",
-                    "path": "<Keyboard>/m",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

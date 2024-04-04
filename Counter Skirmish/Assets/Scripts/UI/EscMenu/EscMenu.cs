@@ -13,13 +13,13 @@ public class EscMenu : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void LeaveInstance()
+    public void Leave(string sceneName)
     {
         if (_loadingScreen)
-            _loadingScreen.LoadScene("Scenes/Hub");
+            _loadingScreen.LoadScene(sceneName);
         else
-            SceneManager.LoadScene("Scenes/Hub");
+            SceneManager.LoadScene(sceneName);
     }
 
-    public void QuitToDekstop() => Application.Quit();
+    public void QuitToDesktop() => Application.Quit();
 }

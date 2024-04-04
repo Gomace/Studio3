@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 6701865756796613349}
 --- !u!114 &6701865755481528202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f82360ddb3322045af7acaf8b1c2190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneLoader: {fileID: 0}
   _roster: {fileID: 0}
   _huntScreen: {fileID: 0}
-  _settings: {fileID: 0}
+  _escMenu: {fileID: 0}
 --- !u!114 &6701865755481528200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e74c8163227fa046ba48895f89d3950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 6701865756796613349}
 --- !u!114 &6701865755481528199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701865755526395148}
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 0, y: 11, z: -7.5}
+  m_LocalPosition: {x: 0, y: 15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

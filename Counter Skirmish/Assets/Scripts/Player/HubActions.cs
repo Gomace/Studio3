@@ -1,19 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class HubActions : MonoBehaviour
 {
-    [SerializeField] private LoadingScreen loadingScreen;
-    [SerializeField] private GameObject _inventory, _collection, _shop, _settings;
+    [SerializeField] private GameObject _inventory, _collection, _shop, _escMenu;
     
     private CameraController _camCont;
-    private LayerMask _useLayer = 1 << 6;
 
     private void Awake()
     {
-        if (!_settings)
-            Debug.Log("Missing inspector drag & drop reference. Please help :[");
-
         if (Camera.main != null || Camera.main.GetComponent<CameraController>())
             _camCont = Camera.main.GetComponent<CameraController>();
         else
@@ -29,10 +25,9 @@ public class HubActions : MonoBehaviour
 
     private void OnShop() => _shop.SetActive(!_shop.activeSelf);
     
-    private void OnMenu() => _settings.SetActive(!_settings.activeSelf);
+    private void OnMenu() => _escMenu.SetActive(!_escMenu.activeSelf);
     
-    private void OnStart() => loadingScreen.LoadScene("StartMenu");
-    private void OnInstance() => loadingScreen.LoadScene("Forest");
+    private void OnInstance() => SceneManager.LoadScene("Scenes/Instances/Forest");
 
     #endregion Actions
 }

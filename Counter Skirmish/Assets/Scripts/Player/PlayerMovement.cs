@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             _character.rotation = Quaternion.Slerp(_character.rotation, Quaternion.LookRotation(_navMA.velocity.normalized), Time.deltaTime * _turnSpeed);
     }
 
-    private void OnMove() // TODO make so Interact (at least in Hub)
+    private void OnMove()
     {
         if (Indicating)
         {
