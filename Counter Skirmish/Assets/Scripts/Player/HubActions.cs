@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class HubActions : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private LoadingScreen loadingScreen;
     [SerializeField] private GameObject _inventory, _collection, _shop, _settings;
     
     private CameraController _camCont;
@@ -31,8 +31,8 @@ public class HubActions : MonoBehaviour
     
     private void OnMenu() => _settings.SetActive(!_settings.activeSelf);
     
-    private void OnStart() => _sceneLoader.LoadScene("StartMenu");
-    private void OnInstance() => _sceneLoader.LoadScene("Forest");
+    private void OnStart() => loadingScreen.LoadScene("StartMenu");
+    private void OnInstance() => loadingScreen.LoadScene("Forest");
 
     #endregion Actions
 }

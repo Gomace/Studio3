@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class SceneLoader : MonoBehaviour
+public class LoadingScreen : MonoBehaviour
 {
-    [SerializeField] private GameObject _loadingScreen;
-    [SerializeField] private Image _bar;
+    [SerializeField] private GameObject _screen;
+    [SerializeField] private Image _barFill;
     [SerializeField] private TMP_Text _progressTxt, _loadingTxt;
     [SerializeField] private RectTransform _loadingIndicator;
     
@@ -18,9 +18,9 @@ public class SceneLoader : MonoBehaviour
     
     private void Awake()
     {
-        if (!_loadingScreen)
+        if (!_screen)
             Debug.Log("Loading Screen component missing from " + gameObject.name);
-        if (!_bar)
+        if (!_barFill)
             Debug.Log("Slider component missing from " + gameObject.name);
         if (!_progressTxt)
             Debug.Log("Progress Text component missing from " + gameObject.name);
@@ -36,16 +36,16 @@ public class SceneLoader : MonoBehaviour
     
     public void Quit() => Application.Quit();
     
-    public void LoadScene(string sceneName) => StartCoroutine(LoadingScreen(sceneName));
+    public void LoadScene(string sceneName) => StartCoroutine(Loading(sceneName));
     
-    private IEnumerator LoadingScreen(string sceName)
+    private IEnumerator Loading(string sceName)
     {
         AsyncOperation loading = SceneManager.LoadSceneAsync(sceName);
 
-        if (!_loadingScreen)
+        if (!_screen)
             yield break;
         
-        _loadingScreen.SetActive(true);
+        _screen.SetActive(true);
         
         _loadingTxt.text = "Loading";
         _delay = _dots = 0;
@@ -54,8 +54,8 @@ public class SceneLoader : MonoBehaviour
             float progress = Mathf.Clamp01(loading.progress / 0.9f);
             Debug.Log(progress);
             
-            if (_bar)
-                _bar.fillAmount = progress;
+            if (_barFill)
+                _barFill.fillAmount = progress;
             if (_progressTxt)
                 _progressTxt.text = (int)(progress * 100f) + "%";
             
@@ -87,8 +87,8 @@ public class SceneLoader : MonoBehaviour
         _delay = Mathf.Clamp01(_delay);
         Debug.Log(_delay);
             
-        if (_bar)
-            _bar.fillAmount = _delay;
+        if (_barFill)
+            _barFill.fillAmount = _delay;
 
         float progress = _delay * 100f;
         if (_progressTxt)

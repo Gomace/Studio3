@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InstanceActions : MonoBehaviour
 {
-    [SerializeField] private SceneLoader _sceneLoader;
-    [SerializeField] private GameObject _roster, _huntScreen, _settings;
+    [SerializeField] private GameObject _roster, _huntScreen, _escMenu;
 
     private PlayerInput _input;
     private InstanceUnit _unit;
@@ -30,9 +29,6 @@ public class InstanceActions : MonoBehaviour
 
     private void Awake()
     {
-        if (!_settings)
-            Debug.Log($"Missing inspector drag & drop reference in {name} on {gameObject.name}. Please help :[");
-
         if (Camera.main != null && Camera.main.GetComponent<CameraController>())
             _camCont = Camera.main.GetComponent<CameraController>();
         else
@@ -100,10 +96,9 @@ public class InstanceActions : MonoBehaviour
     
     private void OnRoster(InputValue value) => _roster.SetActive(value.isPressed);
     
-    private void OnMenu(InputValue value) => _settings.SetActive(value.isPressed);
+    private void OnMenu() => _escMenu.SetActive(!_escMenu.activeSelf);
 
     private void OnHunt() => _huntScreen.SetActive(!_huntScreen.activeSelf);
-    private void OnHub() => _sceneLoader.LoadScene("Hub");
 
     #endregion Actions
 

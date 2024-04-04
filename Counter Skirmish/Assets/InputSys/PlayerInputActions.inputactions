@@ -142,9 +142,9 @@
                 },
                 {
                     "name": "Menu",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "e7f3840d-0ed9-455a-8fc1-b7e05937c952",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -157,15 +157,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Hub",
-                    "type": "Button",
-                    "id": "8c20c926-350c-40e1-984a-3320f6f619ca",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
                 {
                     "name": "Hunt",
@@ -329,17 +320,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Roster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2aca41ad-8510-4094-84cd-f1dc07cb1422",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Hub",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
