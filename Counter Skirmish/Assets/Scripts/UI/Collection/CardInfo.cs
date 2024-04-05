@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,9 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     #endregion Elements
 
     public CreatureBase CBase => _cBase; //Is this even being used? // Can know what Creature is here, but can't change it
-    
+
+    private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
+    private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
 
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);

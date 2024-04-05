@@ -15,26 +15,12 @@ public class CardMenu : MonoBehaviour
 
     private CreatureBase _curCreature;
 
-    public List<string> Keywords { get; private set; }
+    public List<string> Keywords { get; set; }
 
     private void OnEnable() => LoadCards(); // Load cards on window open
 
     public void LoadCards() => onCardsLoad?.Invoke(); // Load all cards
     
-    public void SelectFilter(string keyword) // Add filter
-    {
-        if (EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>().isOn)
-            Keywords.Add(keyword);
-        else
-            Keywords.Remove(keyword);
-
-        //LoadCards();
-    }
-
-    /*public void PopUpReveal(bool reveal, RectTransform card) // Hover PopUp
-    {
-        _curCreature = card.GetComponent<CardInfo>().CBase;
-    }*/
     public void AddCreatureToRoster(CreatureBase creature) // Add Creature to slot
     {
         foreach (RosterEquipper slot in _slots) // Check creature is not already equipped
@@ -61,4 +47,19 @@ public class CardMenu : MonoBehaviour
         _detailsMenu.GetComponent<DetailsMenu>().CBase = creature;
         gameObject.SetActive(false);
     }
+    
+    public void SelectFilter(string keyword) // Add filter
+    {
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<Toggle>().isOn)
+            Keywords.Add(keyword);
+        else
+            Keywords.Remove(keyword);
+
+        //LoadCards();
+    }
+
+    /*public void PopUpReveal(bool reveal, RectTransform card) // Hover PopUp
+    {
+        _curCreature = card.GetComponent<CardInfo>().CBase;
+    }*/
 }
