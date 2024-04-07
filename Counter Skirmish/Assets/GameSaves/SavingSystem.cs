@@ -4,7 +4,6 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SavingSystem
 {
-
     public static void SaveProgress(Creature creature)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -39,13 +38,13 @@ public static class SavingSystem
 }
 
 /*
- public void SavePlayer()
- {
+public void SavePlayer()
+{
     SaveSystem.SaveProgress(this);
- }
+}
  
- public void LoadProgress()
- {
+public void LoadProgress()
+{
     ProgressData data = SaveSystem.LoadProgress();
     
     _level = data.level;
@@ -56,4 +55,5 @@ public static class SavingSystem
     position.y = data.position[1];
     position.z = data.position[2];
     transform.position = position;
+}
  */
