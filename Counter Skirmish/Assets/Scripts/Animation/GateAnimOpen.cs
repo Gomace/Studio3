@@ -6,6 +6,7 @@ public class GateAnimOpen : MonoBehaviour
 {
 
     public Animator animator;
+    public Animator lockAnim;
     public GameObject openCollider;
 
     private void OnTriggerEnter(Collider other)
@@ -14,6 +15,7 @@ public class GateAnimOpen : MonoBehaviour
         {
             Debug.Log("The player has entered the collider and door should open");
             animator.SetBool("Idle", false);
+            lockAnim.SetBool("doorOpening", true);
             openCollider.SetActive(false);
         }
     }
