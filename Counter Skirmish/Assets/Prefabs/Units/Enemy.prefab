@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375530b984acb7547ac41473001f7c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 1893484249525364950}
 --- !u!114 &8387478983308999636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 769196e53406d7f428da3e00fdbc71d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _character: {fileID: 1893484249525364950}
-  _testPlayer: {fileID: 0}
 --- !u!1001 &1893484249458714299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2534329421492110482, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2534329421492110482, guid: 350d84be9e04df74989a0b58c7d09337, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
