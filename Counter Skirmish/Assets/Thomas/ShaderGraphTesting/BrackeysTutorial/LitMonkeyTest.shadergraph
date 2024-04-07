@@ -714,8 +714,8 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 2.0,
-        "g": 1.301960825920105,
+        "r": 7.999999046325684,
+        "g": 5.235601425170898,
         "b": 0.0,
         "a": 0.0
     },
@@ -812,7 +812,7 @@
     "m_ShaderOutputName": "InMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": -1.0,
+        "x": -1.0299999713897706,
         "y": 1.0
     },
     "m_DefaultValue": {
@@ -1305,8 +1305,8 @@
     "m_ShaderOutputName": "OutMinMax",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.0,
-        "y": 1.0
+        "x": 0.4000000059604645,
+        "y": 3.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -1596,9 +1596,9 @@
     "m_ShaderOutputName": "BaseColor",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.26637592911720278,
-        "y": 0.3687369227409363,
-        "z": 0.7735849022865295
+        "x": 0.4705882668495178,
+        "y": 0.40000003576278689,
+        "z": 0.12941177189350129
     },
     "m_DefaultValue": {
         "x": 0.0,

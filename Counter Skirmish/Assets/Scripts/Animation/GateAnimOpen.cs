@@ -10,6 +10,7 @@ public class GateAnimOpen : MonoBehaviour
     public GameObject openCollider;
 
     public GameObject keyModelChecker;
+    public GameObject keyAnimated;
 
 
 
@@ -19,6 +20,7 @@ public class GateAnimOpen : MonoBehaviour
 
         if (other.tag == "Player" && !keyModelChecker.activeInHierarchy)
         {
+            keyAnimated.SetActive(true);
             Debug.Log("The player has entered the collider and door should open");
             animator.SetBool("Idle", false);
             lockAnim.SetBool("doorOpening", true);
