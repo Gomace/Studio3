@@ -12,23 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Raijinari
   m_EditorClassIdentifier: 
-  _name: 
-  _description: 
+  _description: The Rajinari fight by dual wielding one technique, giving them the
+    ability to use it twice as often, with at the cost of coverage and flexibility.
   _icon: {fileID: 0}
   _card: {fileID: 0}
   _splash: {fileID: 0}
   _model: {fileID: 0}
-  _type1: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
-  _type2: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
-  _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
-  _maxHealth: 0
-  _maxResource: 0
-  _physical: 0
-  _magical: 0
-  _defense: 0
-  _resistance: 0
-  _speed: 0
+  _type1: {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
+  _type2: {fileID: 0}
+  _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}
+  _maxHealth: 1000
+  _maxResource: 2000
+  _physical: 120
+  _magical: 130
+  _defense: 40
+  _resistance: 45
+  _speed: 110
   _critChance: 1
-  _critDamage: 1
-  _learnableAbilities: []
-  _possiblePassives: []
+  _critDamage: 5
+  _learnableAbilities:
+  - _abilityBase: {fileID: 11400000, guid: 3051722bb1d62a544ae1650f56420487, type: 2}
+    _level: 1
+  - _abilityBase: {fileID: 11400000, guid: 3051722bb1d62a544ae1650f56420487, type: 2}
+    _level: 2
+  - _abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
+    _level: 10
+  _possiblePassives:
+  - _passiveBase: {fileID: 11400000, guid: c36baa883bf828243a82e5811f0acc91, type: 2}
