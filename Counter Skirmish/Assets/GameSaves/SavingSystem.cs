@@ -6,8 +6,9 @@ public static class SavingSystem
 {
     public static void SaveProgress(Creature creature)
     {
+        string path = Application.dataPath + "/SaveData/JSON/creature.gg"; // TODO Application.persistentDataPath on release
+        
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/creature.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         ProgressData data = new ProgressData(creature);
@@ -18,7 +19,8 @@ public static class SavingSystem
 
     public static ProgressData LoadProgress()
     {
-        string path = Application.persistentDataPath + "/creature.fun";
+        string path = Application.dataPath + "/SaveData/JSON/CreatureSave.gg"; // TODO Application.persistentDataPath on release
+        
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -31,9 +33,20 @@ public static class SavingSystem
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            Debug.LogError($"Save file not found in {path}");
             return null;
         }
+    }
+}
+
+[System.Serializable]
+public class ProgressData
+{
+    private int _level;
+    
+    public ProgressData(Creature creature)
+    {
+        _level = creature.Level;
     }
 }
 
