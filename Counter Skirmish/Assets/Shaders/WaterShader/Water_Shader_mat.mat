@@ -45,11 +45,11 @@ Material:
     - _Depth: -0.2
     - _Displacement: 0.1
     - _DisplacementSpeed: 20.42
-    - _NormalStrength: 1.53
+    - _NormalStrength: 0.58
     - _NormalTiling: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.857
     - _Strength: 1.25
     m_Colors:
     - _DeepWaterColor: {r: 0.09692062, g: 0.39337963, b: 0.6226415, a: 0.7058824}
