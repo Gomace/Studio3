@@ -10,22 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
-  m_Name: Fireball
+  m_Name: Pyroblast
   m_EditorClassIdentifier: 
+  _name: Pyroblast
   _icon: {fileID: 0}
   _model: {fileID: 5393136310224786997, guid: c5055e125a9f47848b27217d4923a68e, type: 3}
-  _description: Shoots a small fire projectile from the character in the target direction.
+  _description: Shoots a large fireball from the character in the target direction.
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 40
-  _cooldown: 2
-  _resource: 5
+  _power: 3
+  _cooldown: 5
+  _resource: 20
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
-  _indhitBox: {x: 50, y: 100, z: 400}
-  _force: 700
+  _indhitBox: {x: 100, y: 100, z: 600}
+  _deviation: 1.75
+  _force: 200
   _hits: 1
   _canAffect: 0
-  _calcNumFrom: 0
-  _metric: 1
+  _calcNumFrom: 1
+  _metric: 5
   _style: 1
   _critChance: 1
   _critDamage: 1

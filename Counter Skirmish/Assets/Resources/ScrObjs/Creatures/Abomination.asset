@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Abomination
   m_EditorClassIdentifier: 
+  _name: Abomination
   _description: Abomination does things and is a thing. Can not say things that aren't
     abominable.
   _icon: {fileID: 0}

@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ability", menuName = "CouSki/Abilities/Ability", order = -11)]
 public class AbilityBase : ScriptableObject
 {
+    [SerializeField] private string _name;
+    
     [SerializeField] private Sprite _icon;
     [SerializeField] private GameObject _model;
 
@@ -33,7 +35,7 @@ public class AbilityBase : ScriptableObject
     // Extra Modifiers
     [SerializeField] private float _critChance = 1f, _critDamage = 1f;
     
-    public string Name => name;
+    public string Name => _name;
     public Sprite Icon => _icon;
     public GameObject Model => _model;
     public string Description => _description;

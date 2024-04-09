@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Raijinari
   m_EditorClassIdentifier: 
+  _name: Raijinari
   _description: The Rajinari fight by dual wielding one technique, giving them the
     ability to use it twice as often, with at the cost of coverage and flexibility.
   _icon: {fileID: 0}

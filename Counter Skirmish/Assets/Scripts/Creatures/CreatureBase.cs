@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Creature", menuName = "CouSki/Creature")]
 public class CreatureBase : ScriptableObject
 {
+    [SerializeField] private string _name;
+    
     [TextArea]
     [SerializeField] private string _description;
 
@@ -21,7 +23,7 @@ public class CreatureBase : ScriptableObject
     [SerializeField] private LearnableAbility[] _learnableAbilities;
     [SerializeField] private PossiblePassives[] _possiblePassives;
 
-    public string Name => name;
+    public string Name => _name;
     public string Description => _description;
     
     public Sprite Icon => _icon;

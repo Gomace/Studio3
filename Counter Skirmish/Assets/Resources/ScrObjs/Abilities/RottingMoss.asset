@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22414aa1d478da84899d8d3ea8bf9aa0, type: 3}
-  m_Name: Rotting Moss
+  m_Name: RottingMoss
   m_EditorClassIdentifier: 
+  _name: RottingMoss
   _icon: {fileID: 0}
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
   _description: Throws moss at a target, dealing damage to all enemies nearby.
@@ -21,11 +22,12 @@ MonoBehaviour:
   _resource: 90
   _indicator: {fileID: 2441275663053342970, guid: 940ca1e3cdc79894891b3ed42246006e, type: 3}
   _indhitBox: {x: 75, y: 100, z: 500}
+  _deviation: 1.75
   _force: 750
   _hits: 1
   _canAffect: 0
-  _calcNumFrom: {fileID: 11400000, guid: 2c1be106ea6ee454a9340721ee1db3ba, type: 2}
-  _metric: {fileID: 11400000, guid: 9ad85da9c971072489dcb4c7b0c065e8, type: 2}
-  _style: {fileID: 11400000, guid: 7e7a9916b721cee4d923f680860f7cdc, type: 2}
+  _calcNumFrom: 0
+  _metric: 0
+  _style: 0
   _critChance: 1
   _critDamage: 1

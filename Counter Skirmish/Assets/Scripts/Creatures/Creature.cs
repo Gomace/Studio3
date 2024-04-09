@@ -12,7 +12,8 @@ public class Creature
     
     public CreatureBase Base => _base;
     public int Level => _level;
-    
+    public int Exp { get; private set; }
+
     public int Health { get; set; }
     public int Resource { get; set; }
 
@@ -32,6 +33,13 @@ public class Creature
     public int Resistance => GetStat(Stat.Resistance);
     public int Speed => GetStat(Stat.Speed);
 
+    public Creature(CreatureBase cBase, int level, int exp)
+    {
+        _base = cBase;
+        _level = level;
+        Exp = exp;
+    }
+    
     public void Initialize(InstanceUnit unit)
     {
         Unit = unit;

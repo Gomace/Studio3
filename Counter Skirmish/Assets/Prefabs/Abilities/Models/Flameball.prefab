@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5029033391326954371}
   - component: {fileID: -3276740601480173315}
   - component: {fileID: 4916108953865597768}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Flameball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

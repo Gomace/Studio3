@@ -1,32 +1,49 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Unity.VisualScripting;
+
+//using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SavingSystem
 {
-    public static void SaveProgress(Creature creature)
+    public static void SaveToJson<T>(T data, string path)
     {
-        string path = Application.dataPath + "/SaveData/JSON/creature.gg"; // TODO Application.persistentDataPath on release
-        
+        string jsonData = JsonUtility.ToJson(data, true);
+        File.WriteAllText(path, jsonData);
+    }
+
+    public static T LoadFromJson<T>(string path)
+    {
+        if (File.Exists(path)) // Application.persistentDataPath + "/SaveData/Json/SaveData.json"
+        {
+            string jsonData = File.ReadAllText(path);
+            return JsonUtility.FromJson<T>(jsonData);
+        }
+        else
+        {
+            Debug.LogError($"Save file not found in {path}");
+            return default(T);
+        }
+    }
+    
+    /*public static void SaveToBinary<T>(T data, string path) // Binary
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        ProgressData data = new ProgressData(creature);
-        
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static ProgressData LoadProgress()
-    {
-        string path = Application.dataPath + "/SaveData/JSON/CreatureSave.gg"; // TODO Application.persistentDataPath on release
-        
-        if (File.Exists(path))
+    public static T LoadFromBinary<T>(string path) where T : class
+    {        
+        if (File.Exists(path)) // Application.persistentDataPath + "/SaveData/Binary/CreatureSave.bin";
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            ProgressData data = formatter.Deserialize(stream) as ProgressData;
+            T data = formatter.Deserialize(stream) as T;
             stream.Close();
 
             return data;
@@ -34,34 +51,80 @@ public static class SavingSystem
         else
         {
             Debug.LogError($"Save file not found in {path}");
-            return null;
+            return default(T);
         }
-    }
+    }*/
 }
 
 [System.Serializable]
 public class ProgressData
 {
-    private int _level;
-    
+    private int _level, _exp;
+
     public ProgressData(Creature creature)
     {
         _level = creature.Level;
     }
 }
 
-/*
-public void SavePlayer()
+[System.Serializable]
+public class CollectionData // All creatures
 {
-    SaveSystem.SaveProgress(this);
+    private int _level;
+    
+    public CollectionData(Creature creature)
+    {
+        _level = creature.Level;
+    }
+}
+
+[System.Serializable]
+public class RosterData // Equipped creatures
+{
+    public string[] Names { get; private set; } // File name of CreatureBase
+    public int[] Levels { get; private set; }
+    public int[] Exps { get; private set; }
+
+    public string[][] Abilities { get; private set; }
+    public string[] Passives { get; private set; }
+    
+    public RosterData(Creature[] creatures)
+    {
+        int length = creatures.Length;
+        
+        Names = Passives = new string[length];
+        Levels = Exps = new int[length];
+
+        Abilities = new string[length][];
+
+        for (int i = 0; i < length; ++i)
+        {
+            Names[i] = creatures[i].Base.name;
+            Levels[i] = creatures[i].Level;
+            Exps[i] = creatures[i].Exp;
+
+            Passives[i] = creatures[i].Passive.Base.name;
+            
+            int abilities = creatures[i].Abilities.Length;
+            Abilities[i] = new string[abilities];
+            
+            for (int l = 0; l < abilities; ++l)
+                Abilities[i][l] = creatures[i].Abilities[l].Base.name;
+        }
+    }
+}
+
+/*
+public void SaveProgress()
+{
+    SavingSystem.SaveToJson(this);
 }
  
 public void LoadProgress()
 {
-    ProgressData data = SaveSystem.LoadProgress();
+    RosterData data = SaveSystem.LoadFromJson();
     
     _level = data.level;
-    _health = data.health;
     
     Vector3 position;
     position.x = data.position[0];
@@ -69,4 +132,4 @@ public void LoadProgress()
     position.z = data.position[2];
     transform.position = position;
 }
- */
+*/

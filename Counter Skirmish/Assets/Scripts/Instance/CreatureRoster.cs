@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(InstanceUnit))]
@@ -7,7 +8,7 @@ public class CreatureRoster : MonoBehaviour
     public delegate void OnRosterLoaded(Creature[] @creatures);
     public event OnRosterLoaded onRosterLoaded;
     #endregion Events
-    
+
     [SerializeField] private Creature[] _creatures;
     private Creature _curCreature; // TODO get creatures from Hub
     private InstanceUnit _unit;
@@ -27,7 +28,13 @@ public class CreatureRoster : MonoBehaviour
         }
     }
 
-    private void Awake() => _unit = GetComponent<InstanceUnit>();
+    private void Awake()
+    {
+        _unit = GetComponent<InstanceUnit>();
+        
+        if (_creatures == null && CompareTag("Player"))
+            LoadRoster();
+    }
 
     private void Start()
     {
@@ -49,5 +56,24 @@ public class CreatureRoster : MonoBehaviour
             }
         }
         // If you get here, you're dead. Reset Instance.
+    }
+
+    private void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+    private void LoadRoster()
+    {
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+
+        _creatures = new Creature[data.Names.Length];
+
+        for (int i = 0; i < _creatures.Length; ++i)
+        {
+            _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
+            {
+                
+                Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"))
+            };
+            for (int l = 0; l < data.Abilities[i].Length; ++l)
+                _creatures[i].Abilities[l] = new Ability(Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i][l]}"), _creatures[i]);
+        }
     }
 }

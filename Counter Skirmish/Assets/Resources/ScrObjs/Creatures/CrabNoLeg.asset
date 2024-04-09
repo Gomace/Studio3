@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: CrabNoLeg
   m_EditorClassIdentifier: 
+  _name: Crab No Leg
   _description: This crab has no legs.
   _icon: {fileID: 0}
   _card: {fileID: 0}

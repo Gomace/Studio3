@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Drumsticks
   m_EditorClassIdentifier: 
-  _name: 
+  _name: Drumsticks
   _description: 
   _icon: {fileID: 0}
   _card: {fileID: 0}
@@ -22,9 +22,13 @@ MonoBehaviour:
   _type2: {fileID: 11400000, guid: 1aa90ffbf51bbd448b36f591feb8e203, type: 2}
   _role: {fileID: 11400000, guid: 16396f14a9297f1408aefec29655483e, type: 2}
   _maxHealth: 0
+  _maxResource: 0
   _physical: 0
   _magical: 0
   _defense: 0
   _resistance: 0
   _speed: 0
+  _critChance: 1
+  _critDamage: 1
   _learnableAbilities: []
+  _possiblePassives: []
