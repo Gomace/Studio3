@@ -20,7 +20,6 @@ public class HubActions : MonoBehaviour
     private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());
     
     private void OnInventory() => _inventory.SetActive(!_inventory.activeSelf);
-
     private void OnCollection() => _collection.SetActive(!_collection.activeSelf);
 
     private void OnShop() => _shop.SetActive(!_shop.activeSelf);
@@ -28,6 +27,5 @@ public class HubActions : MonoBehaviour
     private void OnMenu() => _escMenu.SetActive(!_escMenu.activeSelf);
     
     private void OnInstance() => SceneManager.LoadScene("Scenes/Instances/Forest");
-
     #endregion Actions
 }

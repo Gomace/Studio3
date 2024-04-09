@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [RequireComponent(typeof(InstanceUnit))]
@@ -10,7 +9,7 @@ public class CreatureRoster : MonoBehaviour
     #endregion Events
 
     [SerializeField] private Creature[] _creatures;
-    private Creature _curCreature; // TODO get creatures from Hub
+    private Creature _curCreature;
     private InstanceUnit _unit;
     
     public Creature CurCreature
@@ -58,7 +57,7 @@ public class CreatureRoster : MonoBehaviour
         // If you get here, you're dead. Reset Instance.
     }
 
-    private void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
     private void LoadRoster()
     {
         RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");
@@ -69,7 +68,6 @@ public class CreatureRoster : MonoBehaviour
         {
             _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {
-                
                 Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"))
             };
             for (int l = 0; l < data.Abilities[i].Length; ++l)
