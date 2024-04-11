@@ -3,16 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private CardMenu _cardMenu;
     #region Elements
     [Header("These should already be referenced.")] // Slot display elements
     [SerializeField] private TMP_Text _name;
-
     [SerializeField] private Image _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _level;
-    
     [SerializeField] private RectTransform _hover;
     #endregion Elements
     
@@ -24,7 +22,7 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         get => _cBase;
         set
         {
-            _cBase = value; 
+            _cBase = value;
             LoadInfo();
         } 
     }
@@ -64,8 +62,8 @@ public class RosterEquipper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void UnequipCreature() // Removes creature from roster.
     {
-        _cBase = null;
         
+        _cBase = null;
         LoadInfo();
     }
 }

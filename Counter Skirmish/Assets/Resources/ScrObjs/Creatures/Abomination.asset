@@ -32,6 +32,8 @@ MonoBehaviour:
   _critChance: 1
   _critDamage: 1
   _learnableAbilities:
+  - _abilityBase: {fileID: 11400000, guid: 89b2e7a79dad6af49bf893f8cba8013c, type: 2}
+    _level: 1
   - _abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
     _level: 3
   - _abilityBase: {fileID: 11400000, guid: 3f929742b3bcea343a95efaaa599b3fd, type: 2}

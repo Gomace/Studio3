@@ -1,4 +1,3 @@
-using System;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,13 +11,9 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     #region Elements
     [Header("These should already be referenced.")] // Card display elements
     [SerializeField] private TMP_Text _name;
-    
     [SerializeField] private Image _card, _type1, _type2, _role;
-    
     [SerializeField] private RectTransform _hover;
     #endregion Elements
-
-    public CreatureBase CBase => _cBase; //Is this even being used? // Can know what Creature is here, but can't change it
 
     private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
     private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
@@ -32,7 +27,7 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             EquipCreature();
     }
     
-    public void LoadInfo() // Put details on card
+    private void LoadInfo() // Put details on card
     {
         if (!_cBase)
         {

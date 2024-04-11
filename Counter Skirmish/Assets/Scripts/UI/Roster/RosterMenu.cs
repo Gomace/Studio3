@@ -1,4 +1,3 @@
-using System;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
@@ -40,7 +39,6 @@ public class RosterMenu : MonoBehaviour
         foreach (RosterSlot slot in _slots)
             slot.gameObject.SetActive(slot.Creature != null);
     }
-    // Test if instances of the class are shared through reference, or if the new assignments get copies.
 
     private void ReloadHealth(float newH)
     {

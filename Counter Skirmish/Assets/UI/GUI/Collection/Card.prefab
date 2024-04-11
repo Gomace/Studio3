@@ -608,7 +608,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 175, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4191219066128974570
 CanvasRenderer:
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cBase: {fileID: 0}
-  _collectionMenu: {fileID: 0}
+  _cardMenu: {fileID: 0}
   _name: {fileID: 4191219065343069978}
   _card: {fileID: 4191219066128974571}
   _type1: {fileID: 4191219066217964224}

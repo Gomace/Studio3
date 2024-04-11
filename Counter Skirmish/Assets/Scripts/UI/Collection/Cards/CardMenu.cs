@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class CardMenu : MonoBehaviour
 {
+    #region Events
     public delegate void OnCardsLoad();
     public event OnCardsLoad onCardsLoad; // All cards add themselves to this
+    #endregion Events
 
+    [SerializeField] private HubCharacter _player;
     [SerializeField] private GameObject _detailsMenu;
-    //[SerializeField] private RectTransform _filters, _cards;
-    //[SerializeField] private GameObject _popUp;
-    [SerializeField] private RosterEquipper[] _slots = new RosterEquipper[6]; // Roster slots
+    
+    [Header("These should already be filled.")]
+    [SerializeField] private RosterCard[] _slots = new RosterCard[6]; // Roster slots
 
     private CreatureBase _curCreature;
 
@@ -23,13 +26,13 @@ public class CardMenu : MonoBehaviour
     
     public void AddCreatureToRoster(CreatureBase creature) // Add Creature to slot
     {
-        foreach (RosterEquipper slot in _slots) // Check creature is not already equipped
+        foreach (RosterCard slot in _slots) // Check creature is not already equipped
         {
             if (slot.CBase == creature)
                 return;
         }
 
-        foreach (RosterEquipper slot in _slots) // Add creature to potentially empty slot
+        foreach (RosterCard slot in _slots) // Add creature to potentially empty slot
         {
             if (slot.CBase == null)
             {
@@ -40,7 +43,7 @@ public class CardMenu : MonoBehaviour
         
         LoadCards();
     }
-    
+
     public void DetailsScreen(CreatureBase creature) // Open that creature's detail screen
     {
         _detailsMenu.SetActive(true);
@@ -57,9 +60,4 @@ public class CardMenu : MonoBehaviour
 
         //LoadCards();
     }
-
-    /*public void PopUpReveal(bool reveal, RectTransform card) // Hover PopUp
-    {
-        _curCreature = card.GetComponent<CardInfo>().CBase;
-    }*/
 }

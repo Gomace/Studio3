@@ -1,24 +1,36 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
+[Serializable]
 public class Creature
 {
     [SerializeField] private CreatureBase _base;
-    [SerializeField] private int _level;
+    [SerializeField] private int _level, _exp = 0;
 
+    [SerializeField] private Ability[] _abilities = new Ability[4];
+    [SerializeField] private Passive _passive;
+    
     public InstanceUnit Unit { get; private set; }
     
     public CreatureBase Base => _base;
     public int Level => _level;
-    public int Exp { get; private set; }
+    public int Exp => _exp;
 
     public int Health { get; set; }
     public int Resource { get; set; }
 
-    public Ability[] Abilities { get; set; } = new Ability[4];
-    public Passive Passive { get; set; }
+    public Ability[] Abilities
+    {
+        get => _abilities;
+        set => _abilities = value;
+    }
+    public Passive Passive
+    {
+        get => _passive;
+        set => _passive = value;
+    }
 
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -37,28 +49,28 @@ public class Creature
     {
         _base = cBase;
         _level = level;
-        Exp = exp;
+        _exp = exp;
     }
     
     public void Initialize(InstanceUnit unit)
     {
         Unit = unit;
 
-        // GENERATE MOVES
-        for (int i = 0; i < Abilities.Length; ++i)
+        /*// GENERATE MOVES
+        for (int i = 0; i < _abilities.Length; ++i)
         {
-            /*if (Abilities[i] == null) // TODO Fix when abilities are coming from the Hub
-            {*/
+            if (_abilities[i] == null) // TODO Fix when abilities are coming from the Hub
+            {
                 if (i < _base.LearnableAbilities.Length)
                 {
                     if (_base.LearnableAbilities[i].Level <= _level)
-                        Abilities[i] = new Ability(_base.LearnableAbilities[i].Base, this);
+                        _abilities[i] = new Ability(_base.LearnableAbilities[i].Base, this);
                 }
                 else
                     break;
-            //}
-            /*else
-                ReplaceAbility();*/
+            }
+            else
+                ReplaceAbility();
         }
         
         if (Passive == null) // TODO Fix when passives are coming from the Hub
@@ -66,14 +78,14 @@ public class Creature
             if (_base.PossiblePassives.Length > 0)
                 Passive = new Passive(_base.PossiblePassives[Random.Range(0, _base.PossiblePassives.Length)].Base);
         }
-        /*else
-            ReplaceAbility();*/
-        /*foreach (LearnableAbility ability in Base.LearnableAbilities)
+        else
+            ReplaceAbility();
+        foreach (LearnableAbility ability in Base.LearnableAbilities)
         {
             if (ability.Level <= Level)
-                Abilities.Add(new Ability(ability.Base));
+                _abilities.Add(new Ability(ability.Base));
 
-            if (Abilities.Count >= 4)
+            if (_abilities.Count >= 4)
                 break;
         }*/
         
@@ -87,20 +99,20 @@ public class Creature
     public void PerformAbility(int slotNum, Vector3 mouse)
     {
         // Unit state = casting;
-        Ability _ability = Abilities[slotNum]; // Get ability from creature
+        Ability ability = _abilities[slotNum]; // Get ability from creature
         
-        if (_ability.Cooldown > 0)
+        if (ability.Cooldown > 0)
             return;
         //Debug.Log($"Resource: {Resource}, Ability cost: {_ability.Base.Resource}, Ability: {_ability.Base.Name}, Power: {_ability.Base.Power}");
-        if (Resource < _ability.Base.Resource)
+        if (Resource < ability.Base.Resource)
             return;
-        Resource -= _ability.Base.Resource; // Spend resource
+        Resource -= ability.Base.Resource; // Spend resource
         Unit.UpdateResource();
         
-        _ability.Cooldown = _ability.Base.Cooldown; // Go on cooldown
-        Unit.ActivateCooldown(_ability);
+        ability.Cooldown = ability.Base.Cooldown; // Go on cooldown
+        Unit.ActivateCooldown(ability);
 
-        _ability.Cast(mouse);
+        ability.Cast(mouse);
         //PlayAttackAnim(); // Attacking animation
         
         /* TODO maybe make ScriptObj for AbilityEffects
@@ -116,13 +128,7 @@ public class Creature
             }
         }*/
     }
-    
-    public Ability GetRandomAbility()
-    {
-        int r = Random.Range(0, Abilities.Length - 1);
-        return Abilities[r];
-    }
-    
+
     public void TakeDamage(Ability ability, Creature attacker)
     {
         //Debug.Log($"{attacker.Base.Name} attacked {Base.Name}");
@@ -200,5 +206,38 @@ public class Creature
             {Stat.Resistance, 0},
             {Stat.Speed, 0}
         };
+    }
+}
+
+[Serializable]
+public class CreatureInfo
+{
+    [SerializeField] private CreatureBase _base;
+    [SerializeField] private int _level = 1, _exp = 0;
+
+    [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
+    [SerializeField] private PassiveBase _passiveBase;
+    
+    
+    public CreatureBase Base { get; private set; }
+    public int Level { get; private set; }
+    public int Exp { get; private set; }
+
+    public AbilityBase[] AbilityBases
+    {
+        get => _abilityBases;
+        set => _abilityBases = value;
+    }
+    public PassiveBase PassiveBase
+    {
+        get => _passiveBase;
+        set => _passiveBase = value;
+    }
+
+    public CreatureInfo(CreatureBase cBase, int level, int exp)
+    {
+        Base = cBase;
+        Level = level;
+        Exp = exp;
     }
 }

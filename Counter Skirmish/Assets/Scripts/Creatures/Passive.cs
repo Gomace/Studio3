@@ -1,11 +1,19 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class Passive
 {
-    public PassiveBase Base { get; set; }
+    [SerializeField] private PassiveBase _base;
+
+    public PassiveBase Base
+    {
+        get => _base;
+        set => _base = value;
+    }
     
     public Passive(PassiveBase pBase)
     {
-        Base = pBase;
+        _base = pBase;
     }
 }

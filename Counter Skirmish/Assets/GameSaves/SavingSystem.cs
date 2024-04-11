@@ -1,8 +1,6 @@
 using UnityEngine;
+using System;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using Unity.VisualScripting;
-
 //using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SavingSystem
@@ -56,18 +54,18 @@ public static class SavingSystem
     }*/
 }
 
-[System.Serializable]
+[Serializable]
 public class ProgressData
 {
-    private int _level, _exp;
+    public bool NewGame { get; private set; }
 
-    public ProgressData(Creature creature)
+    public ProgressData()
     {
-        _level = creature.Level;
+        
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class CollectionData // All creatures
 {
     private int _level;
@@ -78,7 +76,7 @@ public class CollectionData // All creatures
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class RosterData // Equipped creatures
 {
     public string[] Names { get; private set; } // File name of CreatureBase
@@ -110,6 +108,30 @@ public class RosterData // Equipped creatures
             
             for (int l = 0; l < abilities; ++l)
                 Abilities[i][l] = creatures[i].Abilities[l].Base.name;
+        }
+    }
+    public RosterData(CreatureInfo[] creatures)
+    {
+        int length = creatures.Length;
+        
+        Names = Passives = new string[length];
+        Levels = Exps = new int[length];
+
+        Abilities = new string[length][];
+
+        for (int i = 0; i < length; ++i)
+        {
+            Names[i] = creatures[i].Base.name;
+            Levels[i] = creatures[i].Level;
+            Exps[i] = creatures[i].Exp;
+
+            Passives[i] = creatures[i].PassiveBase.name;
+            
+            int abilities = creatures[i].AbilityBases.Length;
+            Abilities[i] = new string[abilities];
+            
+            for (int l = 0; l < abilities; ++l)
+                Abilities[i][l] = creatures[i].AbilityBases[l].name;
         }
     }
 }
