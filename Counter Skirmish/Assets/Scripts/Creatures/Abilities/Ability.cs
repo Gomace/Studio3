@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 public class Ability
 {
     [SerializeField] private AbilityBase _base;

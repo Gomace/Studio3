@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +10,8 @@ public class Creature
     [SerializeField] private CreatureBase _base;
     [SerializeField] private int _level, _exp = 0;
 
-    [SerializeField] private Ability[] _abilities = new Ability[4];
-    [SerializeField] private Passive _passive;
+    [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
+    [SerializeField] private PassiveBase _passiveBase;
     
     public InstanceUnit Unit { get; private set; }
     
@@ -21,16 +22,8 @@ public class Creature
     public int Health { get; set; }
     public int Resource { get; set; }
 
-    public Ability[] Abilities
-    {
-        get => _abilities;
-        set => _abilities = value;
-    }
-    public Passive Passive
-    {
-        get => _passive;
-        set => _passive = value;
-    }
+    public Ability[] Abilities { get; set; } = new Ability[4];
+    public Passive Passive { get; set; }
 
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
@@ -56,39 +49,22 @@ public class Creature
     {
         Unit = unit;
 
-        /*// GENERATE MOVES
-        for (int i = 0; i < _abilities.Length; ++i)
+        if (Abilities.All(ability => ability == null))
         {
-            if (_abilities[i] == null) // TODO Fix when abilities are coming from the Hub
-            {
-                if (i < _base.LearnableAbilities.Length)
-                {
-                    if (_base.LearnableAbilities[i].Level <= _level)
-                        _abilities[i] = new Ability(_base.LearnableAbilities[i].Base, this);
-                }
-                else
-                    break;
-            }
+            if (_abilityBases.Any(aBase => aBase != null))
+                UseAbilityBases();
             else
-                ReplaceAbility();
+                GenerateAbilities();
         }
         
-        if (Passive == null) // TODO Fix when passives are coming from the Hub
+        if (Passive == null)
         {
-            if (_base.PossiblePassives.Length > 0)
+            if (_passiveBase != null)
+                Passive = new Passive(_passiveBase);
+            else if (_base.PossiblePassives.Length > 0)
                 Passive = new Passive(_base.PossiblePassives[Random.Range(0, _base.PossiblePassives.Length)].Base);
         }
-        else
-            ReplaceAbility();
-        foreach (LearnableAbility ability in Base.LearnableAbilities)
-        {
-            if (ability.Level <= Level)
-                _abilities.Add(new Ability(ability.Base));
 
-            if (_abilities.Count >= 4)
-                break;
-        }*/
-        
         CalculateStats();
         ClearBoosts();
         
@@ -99,7 +75,7 @@ public class Creature
     public void PerformAbility(int slotNum, Vector3 mouse)
     {
         // Unit state = casting;
-        Ability ability = _abilities[slotNum]; // Get ability from creature
+        Ability ability = Abilities[slotNum]; // Get ability from creature
         
         if (ability.Cooldown > 0)
             return;
@@ -207,36 +183,31 @@ public class Creature
             {Stat.Speed, 0}
         };
     }
-}
 
-[Serializable]
-public class CreatureInfo
-{
-    [SerializeField] private CreatureBase _base;
-    [SerializeField] private int _level = 1, _exp = 0;
-
-    [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
-    [SerializeField] private PassiveBase _passiveBase;
-
-    public CreatureBase Base { get; private set; }
-    public int Level { get; private set; }
-    public int Exp { get; private set; }
-
-    public AbilityBase[] AbilityBases
+    private void UseAbilityBases()
     {
-        get => _abilityBases;
-        set => _abilityBases = value;
-    }
-    public PassiveBase PassiveBase
-    {
-        get => _passiveBase;
-        set => _passiveBase = value;
+        for (int i = 0; i < Abilities.Length; ++i)
+        {
+            if (_abilityBases[i] == null)
+                continue;
+            
+            Abilities[i] = new Ability(_abilityBases[i], this);
+        }
     }
 
-    public CreatureInfo(CreatureBase cBase, int level, int exp)
+    private void GenerateAbilities()
     {
-        Base = cBase;
-        Level = level;
-        Exp = exp;
+        int abilities = 0;
+
+        foreach (LearnableAbility learnable in _base.LearnableAbilities)
+        {
+            if (learnable.Level > _level) // Level must be high enough
+                continue;
+
+            if (abilities < Abilities.Length) // Only do this for each Abilities slot
+                Abilities[abilities++] = new Ability(learnable.Base, this);
+            else
+                break;
+        }
     }
 }

@@ -35,7 +35,7 @@ public class HubCharacter : MonoBehaviour
     }
 
     public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(Creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
-    private void LoadRoster()
+    private void LoadRoster() // Load CreatureInfo, not Creature
     {
         RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");
 
