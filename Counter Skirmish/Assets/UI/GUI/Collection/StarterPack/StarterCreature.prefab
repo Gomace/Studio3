@@ -285,6 +285,26 @@ PrefabInstance:
       propertyPath: _creature._abilityBases.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 89b2e7a79dad6af49bf893f8cba8013c, type: 2}
+    - target: {fileID: 7041228085697667037, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041228085697667037, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041228085697667037, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041228085697667037, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarterCreature, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7041228085697667037, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: CreatureBase, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0b7c6ad9f5a95d49b9a8241cbeedcdc, type: 3}
 --- !u!224 &2032106004411101093 stripped

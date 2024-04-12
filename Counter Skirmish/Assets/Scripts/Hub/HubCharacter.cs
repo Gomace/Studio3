@@ -29,10 +29,12 @@ public class HubCharacter : MonoBehaviour
                 continue;
             
             Creatures[i] = creature;
+            SaveRoster();
             break;
         }
     }
 
+    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(Creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
     private void LoadRoster()
     {
         RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");

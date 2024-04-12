@@ -31,4 +31,6 @@ public class StarterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         _role.sprite = _creature.Base.Role.Icon;
         _lvl.text = $"Lvl. {_creature.Level}";
     }
+
+    public void ChooseThis() => _starterCreature.SelectStarter(_creature);
 }

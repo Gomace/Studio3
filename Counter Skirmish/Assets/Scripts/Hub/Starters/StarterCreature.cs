@@ -4,9 +4,9 @@ public class StarterCreature : MonoBehaviour
 {
     public HubCharacter Player { private get; set; }
 
-    public void SelectStarter(CreatureBase cBase)
+    public void SelectStarter(CreatureInfo creature)
     {
-        Player.AddCreatureToRoster(new CreatureInfo(cBase, 1, 0));
+        Player.AddCreatureToRoster(creature);
         gameObject.SetActive(false);
     }
 }

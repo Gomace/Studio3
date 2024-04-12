@@ -217,8 +217,7 @@ public class CreatureInfo
 
     [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
     [SerializeField] private PassiveBase _passiveBase;
-    
-    
+
     public CreatureBase Base { get; private set; }
     public int Level { get; private set; }
     public int Exp { get; private set; }
