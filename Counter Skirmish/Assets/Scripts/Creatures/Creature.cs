@@ -187,12 +187,17 @@ public class Creature
 
     private void UseAbilityBases()
     {
-        for (int i = 0; i < Abilities.Length; ++i)
+        int abilities = 0;
+
+        foreach (AbilityBase aBase in _abilityBases)
         {
-            if (_abilityBases[i] == null)
+            if (aBase == null)
                 continue;
             
-            Abilities[i] = new Ability(_abilityBases[i], this);
+            if (abilities < Abilities.Length) // Only do this for each Abilities slot
+                Abilities[abilities++] = new Ability(aBase, this);
+            else
+                break;
         }
     }
 
@@ -202,6 +207,9 @@ public class Creature
 
         foreach (LearnableAbility learnable in _base.LearnableAbilities)
         {
+            if (learnable == null)
+                continue;
+            
             if (learnable.Level > _level) // Level must be high enough
                 continue;
 

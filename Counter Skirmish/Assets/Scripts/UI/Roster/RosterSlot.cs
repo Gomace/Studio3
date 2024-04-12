@@ -26,8 +26,12 @@ public class RosterSlot : MonoBehaviour
         
         _name.text = creature.Base.Name;
         _icon.sprite = creature.Base.Icon;
+        
         _type1.sprite = creature.Base.Type1.Icon;
-        _type2.sprite = creature.Base.Type2 ? creature.Base.Type2.Icon : null;
+        if (creature.Base.Type2)
+            _type2.sprite = creature.Base.Type2.Icon;
+        _type2.enabled = creature.Base.Type2;
+        
         _role.sprite = creature.Base.Role.Icon;
         _dead.SetActive(false);
         

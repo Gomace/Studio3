@@ -1,26 +1,38 @@
 using UnityEngine;
 using System;
 using System.IO;
+
 //using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SavingSystem
 {
+    private const string _jsonFolder = "/SaveData/Json";
+    
     public static void SaveToJson<T>(T data, string path)
     {
-        string jsonData = JsonUtility.ToJson(data, true);
-        File.WriteAllText(path, jsonData);
+        string folder = Application.persistentDataPath + _jsonFolder;
+        
+        if (!Directory.Exists(folder)) // Make sure save folders exist
+            Directory.CreateDirectory(folder);
+        
+        Debug.Log($"I'm saving Json");
+        string jsonData = JsonUtility.ToJson(data);
+        File.WriteAllText(folder + path, jsonData);
     }
 
     public static T LoadFromJson<T>(string path)
     {
-        if (File.Exists(path)) // Application.persistentDataPath + "/SaveData/Json/SaveData.json"
+        string folder = Application.persistentDataPath + _jsonFolder;
+        Debug.Log("I'm in LoadFromJson");
+
+        if (File.Exists(folder + path)) // Application.persistentDataPath + "/SaveData/Json/SaveData.json"
         {
-            string jsonData = File.ReadAllText(path);
+            string jsonData = File.ReadAllText(folder + path);
             return JsonUtility.FromJson<T>(jsonData);
         }
         else
         {
-            Debug.LogError($"Save file not found in {path}");
+            Debug.LogError($"Save file not found in {folder + path}");
             return default(T);
         }
     }
@@ -79,60 +91,123 @@ public class CollectionData // All creatures
 [Serializable]
 public class RosterData // Equipped creatures
 {
-    public string[] Names { get; private set; } // File name of CreatureBase
-    public int[] Levels { get; private set; }
-    public int[] Exps { get; private set; }
+    public string[] Names; // File name of CreatureBase
+    public int[] Levels;
+    public int[] Exps;
 
-    public string[][] Abilities { get; private set; }
-    public string[] Passives { get; private set; }
-    
-    public RosterData(Creature[] creatures)
+    public string[][] Abilities;
+    public string[] Passives;
+
+    public void ApplyCreature(Creature[] creatures)
     {
-        int length = creatures.Length;
+        int length = 0,
+            i = 0;
         
-        Names = Passives = new string[length];
-        Levels = Exps = new int[length];
-
-        Abilities = new string[length][];
-
-        for (int i = 0; i < length; ++i)
+        foreach (Creature creature in creatures)
         {
-            Names[i] = creatures[i].Base.name;
-            Levels[i] = creatures[i].Level;
-            Exps[i] = creatures[i].Exp;
+            if (creature == null)
+                continue;
+            
+            ++length;
+        }
 
-            Passives[i] = creatures[i].Passive.Base.name;
+        ArrayLengths(length);
+
+        foreach (Creature creature in creatures)
+        {
+            if (creature == null)
+                continue;
             
-            int abilities = creatures[i].Abilities.Length;
+            Names[i] = creature.Base.name;
+            Levels[i] = creature.Level;
+            Exps[i] = creature.Exp;
+
+            Passives[i] = creature.Passive.Base.name;
+            
+            int abilities = 0,
+                l = 0;
+            
+            foreach (Ability ability in creature.Abilities)
+            {
+                if (ability == null)
+                    continue;
+            
+                ++abilities;
+            }
+            
             Abilities[i] = new string[abilities];
+
+            foreach (Ability ability in creature.Abilities)
+            {
+                if (ability == null)
+                    continue;
+                
+                Abilities[i][l++] = ability.Base.name;
+            }
             
-            for (int l = 0; l < abilities; ++l)
-                Abilities[i][l] = creatures[i].Abilities[l].Base.name;
+            ++i;
         }
     }
-    public RosterData(CreatureInfo[] creatures)
+    
+    public void ApplyCreatureInfo(CreatureInfo[] creatures)
     {
-        int length = creatures.Length;
+        int length = 0,
+            i = 0;
         
-        Names = Passives = new string[length];
-        Levels = Exps = new int[length];
+        foreach (CreatureInfo creature in creatures)
+        {
+            if (creature == null)
+                continue;
+            
+            ++length;
+        }
+
+        ArrayLengths(length);
+
+        foreach (CreatureInfo creature in creatures)
+        {
+            if (creature == null)
+                continue;
+            
+            Names[i] = creature.Base.name;
+            Levels[i] = creature.Level;
+            Exps[i] = creature.Exp;
+
+            Passives[i] = creature.PassiveBase.name;
+            
+            int abilities = 0,
+                l = 0;
+            
+            foreach (AbilityBase ability in creature.AbilityBases)
+            {
+                if (ability == null)
+                    continue;
+            
+                ++abilities;
+            }
+            
+            Abilities[i] = new string[abilities];
+
+            foreach (AbilityBase ability in creature.AbilityBases)
+            {
+                if (ability == null)
+                    continue;
+                
+                Abilities[i][l++] = ability.name;
+            }
+            
+            ++i;
+        }
+    }
+
+    private void ArrayLengths(int length)
+    {
+        Names = new string[length];
+        Levels = new int[length];
+        Exps = new int[length];
 
         Abilities = new string[length][];
-
-        for (int i = 0; i < length; ++i)
-        {
-            Names[i] = creatures[i].Base.name;
-            Levels[i] = creatures[i].Level;
-            Exps[i] = creatures[i].Exp;
-
-            Passives[i] = creatures[i].PassiveBase.name;
-            
-            int abilities = creatures[i].AbilityBases.Length;
-            Abilities[i] = new string[abilities];
-            
-            for (int l = 0; l < abilities; ++l)
-                Abilities[i][l] = creatures[i].AbilityBases[l].name;
-        }
+        Passives = new string[length];
     }
 }
 

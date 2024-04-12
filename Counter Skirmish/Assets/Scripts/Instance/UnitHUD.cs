@@ -38,15 +38,13 @@ public class UnitHUD : MonoBehaviour
 
     private void SetupHUD(Creature creature)
     {
-        //Debug.Log(creature.Base.Name + " entered.");
         _nameText.text = creature.Base.Name;
         _levelText.text = creature.Level.ToString();
         
         _type1.sprite = creature.Base.Type1.Icon;
         if (creature.Base.Type2)
             _type2.sprite = creature.Base.Type2.Icon;
-        else
-            _type2.enabled = false;
+        _type2.enabled = creature.Base.Type2;
 
         _dead.SetActive(false);
     }

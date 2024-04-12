@@ -9,11 +9,11 @@ public class CreatureRoster : MonoBehaviour
     public event OnRosterLoaded onRosterLoaded;
     #endregion Events
 
-    [SerializeField] private Creature[] _creatures;
+    [SerializeField] private Creature[] _creatures = new Creature[6];
     private Creature _curCreature;
     private InstanceUnit _unit;
 
-    private string _path;
+    private const string _jsonPath = "/RosterData.json";
     
     public Creature CurCreature
     {
@@ -32,8 +32,6 @@ public class CreatureRoster : MonoBehaviour
 
     private void Awake()
     {
-        _path = Application.persistentDataPath + "/SaveData/Json/RosterData.json";
-        
         _unit = GetComponent<InstanceUnit>();
 
         if (_creatures == null && CompareTag("Player"))
@@ -62,17 +60,22 @@ public class CreatureRoster : MonoBehaviour
         // If you get here, you're dead. Reset Instance.
     }
 
-    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), _path);
+    public void SaveRoster()
+    {
+        RosterData data = new RosterData();
+        
+        data.ApplyCreature(_creatures);
+        
+        SavingSystem.SaveToJson(data, _jsonPath);
+    }
     private void LoadRoster() // Load Creature, not CreatureInfo
     {
-        if (!File.Exists(_path))
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonPath);
+        
+        if (data == null)
             return;
-        
-        RosterData data = SavingSystem.LoadFromJson<RosterData>(_path);
-        
-        _creatures = new Creature[data.Names.Length];
 
-        for (int i = 0; i < _creatures.Length; ++i)
+        for (int i = 0; i < data.Names.Length; ++i)
         {
             _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {

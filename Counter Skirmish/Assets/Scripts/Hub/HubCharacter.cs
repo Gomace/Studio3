@@ -1,26 +1,20 @@
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
 // Something something Creature follows you [RequireComponent(typeof(FollowerCreature))]
 public class HubCharacter : MonoBehaviour
 {
-    [Header("This should already be referenced.")]
-    [SerializeField] private GameObject _starterUI;
-    private string _path;
-    
+    private const string _jsonPath = "/RosterData.json";
+
     public CreatureInfo[] Creatures { get; set; } = new CreatureInfo[6];
 
     private void Awake()
     {
-        _path = Application.persistentDataPath + "/SaveData/Json/RosterData.json";
-        
         LoadRoster(); // Check if player has a save
         if (Creatures.Any(creature => creature != null)) // If save had creatures, don't give starter
             return;
-        
-        _starterUI.GetComponent<StarterCreature>().Player = this;// Player has no save, start new game
-        _starterUI.SetActive(true);
+
+        Instantiate(Resources.Load<GameObject>("UI/StarterCreature")).GetComponent<StarterCreature>().Player = this; // Player has no save, start new game
     }
     
     public void AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
@@ -34,26 +28,33 @@ public class HubCharacter : MonoBehaviour
                 continue;
             
             Creatures[i] = creature;
+            Debug.Log($"There be {Creatures}, and there be {Creatures[0].Base}");
             SaveRoster();
             break;
         }
     }
 
-    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(Creatures), _path);
+    public void SaveRoster()
+    {
+        RosterData data = new RosterData();
+        
+        data.ApplyCreatureInfo(Creatures);
+        
+        SavingSystem.SaveToJson(data, _jsonPath);
+    }
     private void LoadRoster() // Load CreatureInfo, not Creature
     {
-        if (!File.Exists(_path))
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonPath);
+
+        if (data == null)
             return;
         
-        RosterData data = SavingSystem.LoadFromJson<RosterData>(_path);
-
-        int length = data.Names.Length;
-
-        for (int i = 0; i < length; ++i)
+        for (int i = 0; i < data.Names.Length; ++i)
         {
             Creatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {
-                PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}")
+                PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
+                AbilityBases = new AbilityBase[4]
             };
             for (int l = 0; l < data.Abilities[i].Length; ++l)
                 Creatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i][l]}");

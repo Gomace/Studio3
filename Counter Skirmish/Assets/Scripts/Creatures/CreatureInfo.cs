@@ -10,9 +10,9 @@ public class CreatureInfo
     [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
     [SerializeField] private PassiveBase _passiveBase;
 
-    public CreatureBase Base { get; private set; }
-    public int Level { get; private set; }
-    public int Exp { get; private set; }
+    public CreatureBase Base => _base;
+    public int Level => _level;
+    public int Exp => _exp;
 
     public AbilityBase[] AbilityBases
     {
@@ -28,8 +28,8 @@ public class CreatureInfo
 
     public CreatureInfo(CreatureBase cBase, int level, int exp)
     {
-        Base = cBase;
-        Level = level;
-        Exp = exp;
+        _base = cBase;
+        _level = level;
+        _exp = exp;
     }
 }
