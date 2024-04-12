@@ -31,4 +31,5 @@ MonoBehaviour:
   _critChance: 1
   _critDamage: 1
   _learnableAbilities: []
-  _possiblePassives: []
+  _possiblePassives:
+  - _passiveBase: {fileID: 0}

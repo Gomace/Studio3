@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,13 +16,17 @@ public class StarterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private GameObject _hover;
     #endregion Elements
 
-    private void Awake() => LoadInfo();
+    private void Start() => LoadInfo();
 
     public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);
     public void OnPointerExit(PointerEventData eventData) => _hover.gameObject.SetActive(false);
     
     private void LoadInfo()
     {
+        Debug.Log(_creature.Base);
+        if (_creature.Base == null)
+            return;
+        
         _name.text = _creature.Base.Name;
         _card.sprite = _creature.Base.Card;
         _type1.sprite = _creature.Base.Type1.Icon;

@@ -18,7 +18,7 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _card: {fileID: 0}
   _splash: {fileID: 0}
-  _model: {fileID: 0}
+  _model: {fileID: 8945242147699138138, guid: 2fb58445f6d9da04abf3d5636adb58c8, type: 3}
   _type1: {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
   _type2: {fileID: 0}
   _role: {fileID: 11400000, guid: c2678f76b68cf1546a3eba9b66e4d526, type: 2}

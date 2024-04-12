@@ -1,21 +1,26 @@
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
 // Something something Creature follows you [RequireComponent(typeof(FollowerCreature))]
 public class HubCharacter : MonoBehaviour
 {
-    [SerializeField] private GameObject _starter;
-
+    [Header("This should already be referenced.")]
+    [SerializeField] private GameObject _starterUI;
+    private string _path;
+    
     public CreatureInfo[] Creatures { get; set; } = new CreatureInfo[6];
 
     private void Awake()
     {
+        _path = Application.persistentDataPath + "/SaveData/Json/RosterData.json";
+        
         LoadRoster(); // Check if player has a save
         if (Creatures.Any(creature => creature != null)) // If save had creatures, don't give starter
             return;
         
-        GameObject starterUI = Instantiate(_starter); // Player has no save, start new game
-        starterUI.GetComponent<StarterCreature>().Player = this;
+        _starterUI.GetComponent<StarterCreature>().Player = this;// Player has no save, start new game
+        _starterUI.SetActive(true);
     }
     
     public void AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
@@ -34,10 +39,13 @@ public class HubCharacter : MonoBehaviour
         }
     }
 
-    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(Creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(Creatures), _path);
     private void LoadRoster() // Load CreatureInfo, not Creature
     {
-        RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+        if (!File.Exists(_path))
+            return;
+        
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(_path);
 
         int length = data.Names.Length;
 

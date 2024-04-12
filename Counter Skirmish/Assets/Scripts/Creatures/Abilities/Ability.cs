@@ -3,17 +3,11 @@ using UnityEngine;
 
 public class Ability
 {
-    [SerializeField] private AbilityBase _base;
-    
     private Stack<GameObject> _conjurations = new();
 
     private float _cooldown;
 
-    public AbilityBase Base
-    {
-        get => _base;
-        set => _base = value;
-    }
+    public AbilityBase Base { get; set; }
     public Creature Creature { get; private set; }
 
     public float Cooldown
@@ -24,7 +18,7 @@ public class Ability
 
     public Ability(AbilityBase aBase, Creature creature)
     {
-        _base = aBase;
+        Base = aBase;
         Creature = creature;
 
         Cooldown = 0;
@@ -34,7 +28,7 @@ public class Ability
     {
         if (!_conjurations.TryPop(out GameObject conjuration)) // Check for used model
         {
-            conjuration = GameObject.Instantiate(_base.Model);
+            conjuration = GameObject.Instantiate(Base.Model);
             conjuration.GetComponent<CollisionTransmitter>().Initialize(_conjurations, this);
         }
         
@@ -54,9 +48,9 @@ public class Ability
         
         unit.Character.rotation = conjRot; // Face creature to cast angle
 
-        unitPos += _base.Model.transform.localPosition; // Position
+        unitPos += Base.Model.transform.localPosition; // Position
         conj.position = unitPos;
                 
-        conj.localScale = new Vector3(_base.IndHitBox.x, _base.IndHitBox.x, _base.IndHitBox.x); // Scale
+        conj.localScale = new Vector3(Base.IndHitBox.x, Base.IndHitBox.x, Base.IndHitBox.x); // Scale
     }
 }

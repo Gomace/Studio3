@@ -48,8 +48,9 @@ public class Creature
     public void Initialize(InstanceUnit unit)
     {
         Unit = unit;
-
-        if (Abilities.All(ability => ability == null))
+        
+        Abilities ??= new Ability[4];
+        if (Abilities.Any(ability => ability == null))
         {
             if (_abilityBases.Any(aBase => aBase != null))
                 UseAbilityBases();

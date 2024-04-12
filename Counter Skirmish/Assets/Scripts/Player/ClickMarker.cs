@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class ClickMarker : MonoBehaviour
 {
-    [SerializeField] private Transform _arrowEffect;
+    [Header("This should already be referenced.")]
+    [SerializeField] private GameObject _arrowPrefab;
     
-    private Transform _circle;
+    private Transform _arrowEffect, _circle;
     private Transform[] _arrows = new Transform[4];
     private TrailRenderer[] _trails = new TrailRenderer[4];
     
@@ -26,6 +27,9 @@ public class ClickMarker : MonoBehaviour
 
     private void Awake()
     {
+        if (_arrowPrefab)
+            _arrowEffect = Instantiate(_arrowPrefab).transform;
+        
         _circle = _arrowEffect.GetChild(0);
 
         for (int i = 0; i < _arrows.Length; ++i)

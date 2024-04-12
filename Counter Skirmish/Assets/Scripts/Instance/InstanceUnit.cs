@@ -86,13 +86,16 @@ public class InstanceUnit : MonoBehaviour
         
         _usedCreatures.Add(creature); // If creature not exist, add to list
         _usedModels.Add(Instantiate(creature.Base.Model, Character.position, Character.rotation, Character)); // Add new creature model to list
-        foreach (Ability ability in creature.Abilities)
+        if (creature.Abilities != null)
         {
-            if (ability == null)
-                return;
-            
-            if (!Indicators.ContainsKey(ability.Base.Indicator.name))
-                Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
+            foreach (Ability ability in creature.Abilities)
+            {
+                if (ability == null)
+                    return;
+
+                if (!Indicators.ContainsKey(ability.Base.Indicator.name))
+                    Indicators.Add(ability.Base.Indicator.name, Instantiate(ability.Base.Indicator, transform));
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 [RequireComponent(typeof(InstanceUnit))]
@@ -11,6 +12,8 @@ public class CreatureRoster : MonoBehaviour
     [SerializeField] private Creature[] _creatures;
     private Creature _curCreature;
     private InstanceUnit _unit;
+
+    private string _path;
     
     public Creature CurCreature
     {
@@ -29,8 +32,10 @@ public class CreatureRoster : MonoBehaviour
 
     private void Awake()
     {
-        _unit = GetComponent<InstanceUnit>();
+        _path = Application.persistentDataPath + "/SaveData/Json/RosterData.json";
         
+        _unit = GetComponent<InstanceUnit>();
+
         if (_creatures == null && CompareTag("Player"))
             LoadRoster();
     }
@@ -57,18 +62,22 @@ public class CreatureRoster : MonoBehaviour
         // If you get here, you're dead. Reset Instance.
     }
 
-    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), Application.persistentDataPath + "/SaveData/Json/RosterData.json");
+    public void SaveRoster() => SavingSystem.SaveToJson(new RosterData(_creatures), _path);
     private void LoadRoster() // Load Creature, not CreatureInfo
     {
-        RosterData data = SavingSystem.LoadFromJson<RosterData>(Application.persistentDataPath + "/SaveData/Json/RosterData.json");
-
+        if (!File.Exists(_path))
+            return;
+        
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(_path);
+        
         _creatures = new Creature[data.Names.Length];
 
         for (int i = 0; i < _creatures.Length; ++i)
         {
             _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {
-                Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"))
+                Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}")),
+                Abilities = new Ability[4]
             };
             for (int l = 0; l < data.Abilities[i].Length; ++l)
                 _creatures[i].Abilities[l] = new Ability(Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i][l]}"), _creatures[i]);

@@ -120,6 +120,13 @@ MonoBehaviour:
   _creatures:
   - _base: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
     _level: 8
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
 --- !u!114 &1893484249643035902
 MonoBehaviour:
   m_ObjectHideFlags: 0

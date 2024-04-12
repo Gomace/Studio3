@@ -93,10 +93,49 @@ MonoBehaviour:
   _creatures:
   - _base: {fileID: 11400000, guid: c8f17a3e21124344eb2b1f72acb0e54b, type: 2}
     _level: 5
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
   - _base: {fileID: 11400000, guid: 0039945c75dc5ac4ca0186fe574e180b, type: 2}
     _level: 7
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
   - _base: {fileID: 11400000, guid: eb72dbdaf143b8d4d9e84cc442cdff75, type: 2}
     _level: 10
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
+  - _base: {fileID: 11400000, guid: 27b2ac30af92c3f40a3c7cf339a00f02, type: 2}
+    _level: 2
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
+  - _base: {fileID: 11400000, guid: 27b2ac30af92c3f40a3c7cf339a00f02, type: 2}
+    _level: 20
+    _exp: 0
+    _abilityBases:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    _passiveBase: {fileID: 0}
 --- !u!114 &6701865755481528197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bff67e5e7453984d82db67b4102def3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _arrowEffect: {fileID: 0}
+  _arrowPrefab: {fileID: 6145847003197986524, guid: 5b2bf0da66d9db04c8eae7f0ae889061, type: 3}
 --- !u!114 &6701865755481528203
 MonoBehaviour:
   m_ObjectHideFlags: 0
