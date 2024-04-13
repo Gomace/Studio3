@@ -12,7 +12,6 @@ public class GateAnimClose : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Close the door");
             closeCollider.SetActive(false);
             animator.SetBool("doorOpen", false);
         }   
