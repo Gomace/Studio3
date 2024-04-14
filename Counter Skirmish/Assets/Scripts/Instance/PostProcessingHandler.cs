@@ -15,6 +15,14 @@ public class PostProcessingHandler : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            stealthPostProcessing.SetActive(true);
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         stealthPostProcessing.SetActive(false);
