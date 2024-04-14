@@ -6,7 +6,7 @@ public class HubCharacter : MonoBehaviour
 {
     private const string _jsonPath = "/RosterData.json";
 
-    public CreatureInfo[] Creatures { get; set; } = new CreatureInfo[6];
+    public CreatureInfo[] Creatures { get; private set; } = new CreatureInfo[6];
 
     private void Awake()
     {
@@ -28,6 +28,25 @@ public class HubCharacter : MonoBehaviour
                 continue;
             
             Creatures[i] = creature;
+            SaveRoster();
+            break;
+        }
+    }
+    public void RemoveCreatureFromRoster(CreatureInfo creature)
+    {
+        if (Creatures.All(slot => slot != creature)) // Check if not equipped
+            return;
+
+        int remaining = Creatures.Count(slot => slot != null);
+        if (remaining - 1 < 1) // Minimum one creature at all times
+            return;
+
+        for (int i = 0; i < Creatures.Length; ++i)
+        {
+            if (Creatures[i] != creature)
+                continue;
+
+            Creatures[i] = null;
             SaveRoster();
             break;
         }

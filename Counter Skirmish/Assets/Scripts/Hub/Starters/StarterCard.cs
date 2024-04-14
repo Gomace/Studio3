@@ -9,7 +9,7 @@ public class StarterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private CreatureInfo _creature;
     
     #region Elements
-    [Header("These should already be referenced.")] // Slot display elements
+    [Header("These should already be referenced.")] // Card display elements
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _card, _type1, _type2, _role;
     [SerializeField] private TMP_Text _lvl;
@@ -23,6 +23,11 @@ public class StarterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     
     private void LoadInfo()
     {
+        if (_creature == null)
+            return;
+        if (_creature.Base == null)
+            return;
+        
         _name.text = _creature.Base.Name;
         _card.sprite = _creature.Base.Card;
         

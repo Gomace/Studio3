@@ -6,28 +6,28 @@ using TMPro;
 public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] private CardMenu _cardMenu;
+    
     #region Elements
     [Header("These should already be referenced.")] // Slot display elements
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon, _type1, _type2, _role;
-    [SerializeField] private TMP_Text _level;
+    [SerializeField] private TMP_Text _lvl;
     [SerializeField] private RectTransform _hover;
     #endregion Elements
     
     // Creature this slot has equipped
-    private CreatureBase _cBase;
+    private CreatureInfo _creature;
 
-    public CreatureBase CBase
+    public CreatureInfo Creature
     {
-        get => _cBase;
+        get => _creature;
         set
         {
-            _cBase = value;
+            _creature = value;
             LoadInfo();
         } 
     }
 
-    // Add self to CollectionMenu loading pool
     private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
     private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
     
@@ -42,7 +42,7 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     
     private void LoadInfo() // Reveal details when card is equipped in slot
     {
-        if (!_cBase)
+        if (_creature == null)
         {
             foreach (RectTransform element in (RectTransform)transform) // Turn off all Slot elements
                 element.gameObject.SetActive(false);
@@ -53,17 +53,20 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             element.gameObject.SetActive(true);
         _hover.gameObject.SetActive(false); // Hover still not on without hovering
         
-        _name.text = _cBase.Name;
-        _icon.sprite = _cBase.Icon;
-        _type1.sprite = _cBase.Type1.Icon;
-        _type2.sprite = _cBase.Type2.Icon;
-        _role.sprite = _cBase.Role.Icon;
+        if (_creature.Base == null)
+            return;
+            
+        _name.text = _creature.Base.Name;
+        _icon.sprite = _creature.Base.Icon;
+        
+        _type1.sprite = _creature.Base.Type1.Icon;
+        if (_creature.Base.Type2)
+            _type2.sprite = _creature.Base.Type2.Icon;
+        _type2.enabled = _creature.Base.Type2;
+        
+        _role.sprite = _creature.Base.Role.Icon;
+        _lvl.text = $"Lvl. {_creature.Level}";
     }
 
-    public void UnequipCreature() // Removes creature from roster.
-    {
-        
-        _cBase = null;
-        LoadInfo();
-    }
+    public void UnequipCreature() => _cardMenu.RemoveCreatureFromRoster(_creature); // Removes creature from Roster
 }

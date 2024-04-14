@@ -703,14 +703,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc774f07cad115744bc4cf70822a7e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cBase: {fileID: 0}
   _cardMenu: {fileID: 0}
+  _creature:
+    _base: {fileID: 0}
+    _level: 0
+    _exp: 0
+    _abilityBases: []
+    _passiveBase: {fileID: 0}
   _name: {fileID: 4191219065343069978}
   _card: {fileID: 4191219066128974571}
   _type1: {fileID: 4191219066217964224}
   _type2: {fileID: 4191219065096697468}
   _role: {fileID: 4191219065969699956}
-  _hover: {fileID: 3894032076068585549}
+  _lvl: {fileID: 6248164293020120816}
+  _hover: {fileID: 8874785451215455297}
 --- !u!1 &4191219066217964226
 GameObject:
   m_ObjectHideFlags: 0

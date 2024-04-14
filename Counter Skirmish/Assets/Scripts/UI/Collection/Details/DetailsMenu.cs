@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class DetailsMenu : MonoBehaviour
 {
-    public delegate void OnDetailsLoad(CreatureBase @base);
+    public delegate void OnDetailsLoad(CreatureInfo @creature);
     public event OnDetailsLoad onDetailsLoad;
-    
-    [SerializeField] private RectTransform _categories, _screens;
+
+    [Header("These should be filled out.")]
+    [SerializeField] private RectTransform _categories;
+    [SerializeField] private RectTransform _screens;
     [SerializeField] private Color _clickColor = new Color(55, 55, 55, 255),
                                     _normalColor = new Color(128, 128, 128, 255);
     
-    private CreatureBase _cBase;
+    private CreatureInfo _creature;
     
-    public CreatureBase CBase
+    public CreatureInfo Creature
     {
-        get => _cBase;
+        get => _creature;
         set
         {
-           _cBase = value; 
+           _creature = value; 
            LoadDetails();
         } 
     }
     
     private void OnEnable() => LoadDetails();
 
-    private void LoadDetails() => onDetailsLoad?.Invoke(CBase);
+    private void LoadDetails() => onDetailsLoad?.Invoke(_creature);
 
     public void SelectCategory(GameObject category)
     {

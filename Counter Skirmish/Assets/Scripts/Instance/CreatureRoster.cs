@@ -7,6 +7,8 @@ public class CreatureRoster : MonoBehaviour
     #region Events
     public delegate void OnRosterLoaded(Creature[] @creatures);
     public event OnRosterLoaded onRosterLoaded;
+    public delegate void OnFullDead();
+    public event OnFullDead onFullDead;
     #endregion Events
 
     [SerializeField] private Creature[] _creatures = new Creature[6];
@@ -62,7 +64,8 @@ public class CreatureRoster : MonoBehaviour
                 return;
             }
         }
-        // If you get here, you're dead. Reset Instance.
+        
+        onFullDead?.Invoke();
     }
 
     public void SaveRoster()

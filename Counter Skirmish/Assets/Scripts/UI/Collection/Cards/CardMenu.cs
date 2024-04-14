@@ -24,31 +24,51 @@ public class CardMenu : MonoBehaviour
 
     public void LoadCards() => onCardsLoad?.Invoke(); // Load all cards
     
-    public void AddCreatureToRoster(CreatureBase creature) // Add Creature to slot
+    public void AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
     {
-        foreach (RosterCard slot in _slots) // Check creature is not already equipped
-        {
-            if (slot.CBase == creature)
-                return;
-        }
+        if (creature.Base == null)
+            return;
 
-        foreach (RosterCard slot in _slots) // Add creature to potentially empty slot
+        _player.AddCreatureToRoster(creature);
+        
+        LoadRoster();
+    }
+    public void RemoveCreatureFromRoster(CreatureInfo creature)
+    {
+        _player.RemoveCreatureFromRoster(creature);
+        
+        LoadRoster();
+    }
+
+    public void DetailsScreen(CreatureInfo creature) // Open that creature's detail screen
+    {
+        if (creature.Base == null)
+            return;
+        
+        _detailsMenu.SetActive(true);
+        _detailsMenu.GetComponent<DetailsMenu>().Creature = creature;
+        gameObject.SetActive(false);
+    }
+    
+    private void LoadRoster()
+    {
+        foreach (RosterCard slot in _slots)
+            slot.Creature = null;
+
+        int equipped = 0;
+
+        foreach (CreatureInfo rosterCreature in _player.Creatures)
         {
-            if (slot.CBase == null)
-            {
-                slot.CBase = creature;
+            if (rosterCreature == null)
+                continue;
+
+            if (equipped < _slots.Length)
+                _slots[equipped++].Creature = rosterCreature;
+            else
                 break;
-            }
         }
         
         LoadCards();
-    }
-
-    public void DetailsScreen(CreatureBase creature) // Open that creature's detail screen
-    {
-        _detailsMenu.SetActive(true);
-        _detailsMenu.GetComponent<DetailsMenu>().CBase = creature;
-        gameObject.SetActive(false);
     }
     
     public void SelectFilter(string keyword) // Add filter
