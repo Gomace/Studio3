@@ -1,4 +1,4 @@
-using System.IO;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(InstanceUnit))]
@@ -33,15 +33,20 @@ public class CreatureRoster : MonoBehaviour
     private void Awake()
     {
         _unit = GetComponent<InstanceUnit>();
-
-        if (_creatures == null && CompareTag("Player"))
+        
+        if (_creatures.Where(creature => creature != null).Any(creature => creature.Base != null)) 
+            return;
+        
+        if (CompareTag("Player"))
             LoadRoster();
+        else
+            Debug.LogError($"{gameObject.name} has no Creatures equipped!");
     }
 
     private void Start()
     {
         foreach (Creature creature in _creatures)
-            creature.Initialize(_unit);
+            creature?.Initialize(_unit);
         
         onRosterLoaded?.Invoke(_creatures);
         NextCreature();
@@ -71,10 +76,12 @@ public class CreatureRoster : MonoBehaviour
     private void LoadRoster() // Load Creature, not CreatureInfo
     {
         RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonPath);
-        
+
         if (data == null)
             return;
 
+        _creatures = new Creature[6];
+        
         for (int i = 0; i < data.Names.Length; ++i)
         {
             _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
@@ -82,8 +89,8 @@ public class CreatureRoster : MonoBehaviour
                 Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}")),
                 Abilities = new Ability[4]
             };
-            for (int l = 0; l < data.Abilities[i].Length; ++l)
-                _creatures[i].Abilities[l] = new Ability(Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i][l]}"), _creatures[i]);
+            for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
+                _creatures[i].Abilities[l] = new Ability(Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}"), _creatures[i]);
         }
     }
 }

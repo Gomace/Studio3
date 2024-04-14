@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.Rendering.UI;
 
 //using System.Runtime.Serialization.Formatters.Binary;
 
@@ -36,7 +37,7 @@ public static class SavingSystem
             return default(T);
         }
     }
-    
+
     /*public static void SaveToBinary<T>(T data, string path) // Binary
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -95,7 +96,9 @@ public class RosterData // Equipped creatures
     public int[] Levels;
     public int[] Exps;
 
-    public string[][] Abilities;
+    public float[][] Test;
+    
+    public AbilityNames[] Abilities;
     public string[] Passives;
 
     public void ApplyCreature(Creature[] creatures)
@@ -134,15 +137,15 @@ public class RosterData // Equipped creatures
             
                 ++abilities;
             }
-            
-            Abilities[i] = new string[abilities];
+
+            Abilities[i] = new AbilityNames(abilities);
 
             foreach (Ability ability in creature.Abilities)
             {
                 if (ability == null)
                     continue;
                 
-                Abilities[i][l++] = ability.Base.name;
+                Abilities[i].Names[l++] = ability.Base.name;
             }
             
             ++i;
@@ -185,15 +188,15 @@ public class RosterData // Equipped creatures
             
                 ++abilities;
             }
-            
-            Abilities[i] = new string[abilities];
+
+            Abilities[i] = new AbilityNames(abilities);
 
             foreach (AbilityBase ability in creature.AbilityBases)
             {
                 if (ability == null)
                     continue;
                 
-                Abilities[i][l++] = ability.name;
+                Abilities[i].Names[l++] = ability.name;
             }
             
             ++i;
@@ -206,9 +209,17 @@ public class RosterData // Equipped creatures
         Levels = new int[length];
         Exps = new int[length];
 
-        Abilities = new string[length][];
+        Abilities = new AbilityNames[length];
         Passives = new string[length];
     }
+}
+
+[Serializable]
+public class AbilityNames
+{
+    public string[] Names;
+    
+    public AbilityNames(int amount) => Names = new string[amount];
 }
 
 /*

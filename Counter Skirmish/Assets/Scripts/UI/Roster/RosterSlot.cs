@@ -23,6 +23,12 @@ public class RosterSlot : MonoBehaviour
     private void SetRosterUI(Creature creature)
     {
         _creature = creature;
+
+        if (creature == null)
+            return;
+
+        if (creature.Base == null)
+            return;
         
         _name.text = creature.Base.Name;
         _icon.sprite = creature.Base.Icon;

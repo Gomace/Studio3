@@ -46,7 +46,7 @@ public class Ability
         conjRot.eulerAngles = new Vector3(0f, conjRot.eulerAngles.y, 0);
         conj.rotation = conjRot;
         
-        unit.Character.rotation = conjRot; // Face creature to cast angle
+        unit.Character.rotation = conjRot; // Face creature to cast angle // TODO make it smooth
 
         unitPos += Base.Model.transform.localPosition; // Position
         conj.position = unitPos;

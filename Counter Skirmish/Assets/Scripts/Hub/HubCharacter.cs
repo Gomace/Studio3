@@ -28,7 +28,6 @@ public class HubCharacter : MonoBehaviour
                 continue;
             
             Creatures[i] = creature;
-            Debug.Log($"There be {Creatures}, and there be {Creatures[0].Base}");
             SaveRoster();
             break;
         }
@@ -48,7 +47,7 @@ public class HubCharacter : MonoBehaviour
 
         if (data == null)
             return;
-        
+
         for (int i = 0; i < data.Names.Length; ++i)
         {
             Creatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
@@ -56,8 +55,8 @@ public class HubCharacter : MonoBehaviour
                 PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
                 AbilityBases = new AbilityBase[4]
             };
-            for (int l = 0; l < data.Abilities[i].Length; ++l)
-                Creatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i][l]}");
+            for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
+                Creatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
         }
     }
 }

@@ -2557,6 +2557,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[2]._base
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[3]._base
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[4]._base
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[0]._level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[1]._level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[2]._level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[3]._level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[4]._level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[0]._abilityBases.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[1]._abilityBases.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[2]._abilityBases.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[3]._abilityBases.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6701865755481528196, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
+      propertyPath: _creatures.Array.data[4]._abilityBases.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6701865755481528199, guid: 29fa12de9947fc5429630f7f1e07d346, type: 3}
       propertyPath: _arrowEffect
       value: 

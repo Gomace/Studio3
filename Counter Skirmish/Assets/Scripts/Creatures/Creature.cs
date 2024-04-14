@@ -50,20 +50,35 @@ public class Creature
         Unit = unit;
         
         Abilities ??= new Ability[4];
-        if (Abilities.Any(ability => ability == null))
+        if (Abilities.All(ability => ability == null))
         {
-            if (_abilityBases.Any(aBase => aBase != null))
-                UseAbilityBases();
-            else
+            bool empty = true;
+            
+            _abilityBases ??= new AbilityBase[4];
+            foreach (AbilityBase aBase in _abilityBases)
+            {
+                if (aBase == null)
+                    continue;
+                
+                empty = false;
+                break;
+            }
+            
+            if (empty)
                 GenerateAbilities();
+            else
+                UseAbilityBases();
         }
         
         if (Passive == null)
         {
             if (_passiveBase != null)
                 Passive = new Passive(_passiveBase);
-            else if (_base.PossiblePassives.Length > 0)
-                Passive = new Passive(_base.PossiblePassives[Random.Range(0, _base.PossiblePassives.Length)].Base);
+            else if (_base != null)
+            {
+                if (_base.PossiblePassives.Length > 0)
+                    Passive = new Passive(_base.PossiblePassives[Random.Range(0, _base.PossiblePassives.Length)].Base);
+            }
         }
 
         CalculateStats();
@@ -133,6 +148,9 @@ public class Creature
     
     private void CalculateStats()
     {
+        if (_base == null)
+            return;
+        
         Stats = new Dictionary<Stat, int>
         {
             { Stat.Physical, Mathf.FloorToInt((_base.Physical * _level) / 100f) + 5 },
@@ -203,6 +221,9 @@ public class Creature
 
     private void GenerateAbilities()
     {
+        if (_base == null)
+            return;
+        
         int abilities = 0;
 
         foreach (LearnableAbility learnable in _base.LearnableAbilities)
