@@ -19,7 +19,7 @@ public class HubCharacter : MonoBehaviour
     
     public void AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
     {
-        if (Creatures.Any(slot => slot == creature))
+        if (Creatures.Any(slot => slot == creature)) // Check if already equipped
             return;
 
         for (int i = 0; i < Creatures.Length; ++i)

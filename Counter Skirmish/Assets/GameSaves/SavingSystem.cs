@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.IO;
-using UnityEngine.Rendering.UI;
 
 //using System.Runtime.Serialization.Formatters.Binary;
 
@@ -221,23 +220,3 @@ public class AbilityNames
     
     public AbilityNames(int amount) => Names = new string[amount];
 }
-
-/*
-public void SaveProgress()
-{
-    SavingSystem.SaveToJson(this);
-}
- 
-public void LoadProgress()
-{
-    RosterData data = SaveSystem.LoadFromJson();
-    
-    _level = data.level;
-    
-    Vector3 position;
-    position.x = data.position[0];
-    position.y = data.position[1];
-    position.z = data.position[2];
-    transform.position = position;
-}
-*/
