@@ -179,15 +179,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Hunt"",
-                    ""type"": ""Button"",
-                    ""id"": ""c98033f3-9eea-45c7-ad35-5d1f049092bf"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -347,17 +338,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e99378a0-9080-4442-8171-d83b8f7add05"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hunt"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""565b6e9d-463b-4d8e-82d3-04ba0dde92ae"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -421,24 +401,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Hub"",
-                    ""type"": ""Button"",
-                    ""id"": ""900e3b93-bf72-42d2-bda9-2423a3b669c2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Hunt"",
-                    ""type"": ""Button"",
-                    ""id"": ""7126e551-bf52-450b-a4d1-68e5fe15eeba"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -472,28 +434,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""Roster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""962bd8bc-82f2-42fc-a4ca-7bd64c72e635"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Hub"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""32af2647-ac19-423d-986f-8aaa2e5ca8e3"",
-                    ""path"": ""<Keyboard>/n"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hunt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -864,14 +804,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Instance_Roster = m_Instance.FindAction("Roster", throwIfNotFound: true);
         m_Instance_Menu = m_Instance.FindAction("Menu", throwIfNotFound: true);
         m_Instance_CameraZoom = m_Instance.FindAction("CameraZoom", throwIfNotFound: true);
-        m_Instance_Hunt = m_Instance.FindAction("Hunt", throwIfNotFound: true);
         // InstanceDead
         m_InstanceDead = asset.FindActionMap("InstanceDead", throwIfNotFound: true);
         m_InstanceDead_Roster = m_InstanceDead.FindAction("Roster", throwIfNotFound: true);
         m_InstanceDead_Menu = m_InstanceDead.FindAction("Menu", throwIfNotFound: true);
         m_InstanceDead_CameraZoom = m_InstanceDead.FindAction("CameraZoom", throwIfNotFound: true);
-        m_InstanceDead_Hub = m_InstanceDead.FindAction("Hub", throwIfNotFound: true);
-        m_InstanceDead_Hunt = m_InstanceDead.FindAction("Hunt", throwIfNotFound: true);
         // Hub
         m_Hub = asset.FindActionMap("Hub", throwIfNotFound: true);
         m_Hub_Move = m_Hub.FindAction("Move", throwIfNotFound: true);
@@ -968,7 +905,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Instance_Roster;
     private readonly InputAction m_Instance_Menu;
     private readonly InputAction m_Instance_CameraZoom;
-    private readonly InputAction m_Instance_Hunt;
     public struct InstanceActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -990,7 +926,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Roster => m_Wrapper.m_Instance_Roster;
         public InputAction @Menu => m_Wrapper.m_Instance_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_Instance_CameraZoom;
-        public InputAction @Hunt => m_Wrapper.m_Instance_Hunt;
         public InputActionMap Get() { return m_Wrapper.m_Instance; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1051,9 +986,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnCameraZoom;
-                @Hunt.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
-                @Hunt.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
-                @Hunt.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnHunt;
             }
             m_Wrapper.m_InstanceActionsCallbackInterface = instance;
             if (instance != null)
@@ -1109,9 +1041,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started += instance.OnCameraZoom;
                 @CameraZoom.performed += instance.OnCameraZoom;
                 @CameraZoom.canceled += instance.OnCameraZoom;
-                @Hunt.started += instance.OnHunt;
-                @Hunt.performed += instance.OnHunt;
-                @Hunt.canceled += instance.OnHunt;
             }
         }
     }
@@ -1123,8 +1052,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_InstanceDead_Roster;
     private readonly InputAction m_InstanceDead_Menu;
     private readonly InputAction m_InstanceDead_CameraZoom;
-    private readonly InputAction m_InstanceDead_Hub;
-    private readonly InputAction m_InstanceDead_Hunt;
     public struct InstanceDeadActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1132,8 +1059,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Roster => m_Wrapper.m_InstanceDead_Roster;
         public InputAction @Menu => m_Wrapper.m_InstanceDead_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_InstanceDead_CameraZoom;
-        public InputAction @Hub => m_Wrapper.m_InstanceDead_Hub;
-        public InputAction @Hunt => m_Wrapper.m_InstanceDead_Hunt;
         public InputActionMap Get() { return m_Wrapper.m_InstanceDead; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1152,12 +1077,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnCameraZoom;
-                @Hub.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
-                @Hub.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
-                @Hub.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHub;
-                @Hunt.started -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
-                @Hunt.performed -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
-                @Hunt.canceled -= m_Wrapper.m_InstanceDeadActionsCallbackInterface.OnHunt;
             }
             m_Wrapper.m_InstanceDeadActionsCallbackInterface = instance;
             if (instance != null)
@@ -1171,12 +1090,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started += instance.OnCameraZoom;
                 @CameraZoom.performed += instance.OnCameraZoom;
                 @CameraZoom.canceled += instance.OnCameraZoom;
-                @Hub.started += instance.OnHub;
-                @Hub.performed += instance.OnHub;
-                @Hub.canceled += instance.OnHub;
-                @Hunt.started += instance.OnHunt;
-                @Hunt.performed += instance.OnHunt;
-                @Hunt.canceled += instance.OnHunt;
             }
         }
     }
@@ -1396,15 +1309,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnRoster(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
-        void OnHunt(InputAction.CallbackContext context);
     }
     public interface IInstanceDeadActions
     {
         void OnRoster(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
-        void OnHub(InputAction.CallbackContext context);
-        void OnHunt(InputAction.CallbackContext context);
     }
     public interface IHubActions
     {

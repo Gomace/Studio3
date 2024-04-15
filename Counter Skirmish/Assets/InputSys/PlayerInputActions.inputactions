@@ -157,15 +157,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Hunt",
-                    "type": "Button",
-                    "id": "c98033f3-9eea-45c7-ad35-5d1f049092bf",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -325,17 +316,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e99378a0-9080-4442-8171-d83b8f7add05",
-                    "path": "<Keyboard>/n",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hunt",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "565b6e9d-463b-4d8e-82d3-04ba0dde92ae",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -399,24 +379,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Hub",
-                    "type": "Button",
-                    "id": "900e3b93-bf72-42d2-bda9-2423a3b669c2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hunt",
-                    "type": "Button",
-                    "id": "7126e551-bf52-450b-a4d1-68e5fe15eeba",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -450,28 +412,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "Roster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "962bd8bc-82f2-42fc-a4ca-7bd64c72e635",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Hub",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "32af2647-ac19-423d-986f-8aaa2e5ca8e3",
-                    "path": "<Keyboard>/n",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hunt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

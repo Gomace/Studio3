@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InstanceActions : MonoBehaviour
 {
-    [SerializeField] private GameObject _roster, _huntScreen, _escMenu;
+    [SerializeField] private GameObject _roster, _escMenu;
 
     private PlayerInput _input;
     private InstanceUnit _unit;
@@ -97,8 +97,6 @@ public class InstanceActions : MonoBehaviour
     private void OnRoster(InputValue value) => _roster.SetActive(value.isPressed);
     
     private void OnMenu() => _escMenu.SetActive(!_escMenu.activeSelf);
-
-    private void OnHunt() => _huntScreen.SetActive(!_huntScreen.activeSelf);
 
     #endregion Actions
 
