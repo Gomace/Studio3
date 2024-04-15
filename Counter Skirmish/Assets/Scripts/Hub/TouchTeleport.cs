@@ -8,6 +8,9 @@ public class TouchTeleport : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player"))
+            return;
+        
         if (_loadingScreen)
             _loadingScreen.LoadScene(_teleportScene);
         else
