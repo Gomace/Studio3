@@ -818,7 +818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482959142850596034, guid: 5ac5829615a1831469af4a9778061990, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Hub
+      value: Scenes/Hub
       objectReference: {fileID: 0}
     - target: {fileID: 1482959142850596034, guid: 5ac5829615a1831469af4a9778061990, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
