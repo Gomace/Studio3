@@ -38,9 +38,9 @@ public class LoadingScreen : MonoBehaviour
     
     public void LoadScene(string sceneName) => StartCoroutine(Loading(sceneName));
     
-    private IEnumerator Loading(string sceName)
+    private IEnumerator Loading(string sceneName)
     {
-        AsyncOperation loading = SceneManager.LoadSceneAsync(sceName);
+        AsyncOperation loading = SceneManager.LoadSceneAsync(sceneName);
 
         if (!_screen)
             yield break;
