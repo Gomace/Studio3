@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,7 +21,9 @@ public class CardMenu : MonoBehaviour
 
     public List<string> Keywords { get; set; }
 
-    private void OnEnable() => LoadCards(); // Load cards on window open
+    private void Start() => LoadRoster();
+    
+    private void OnEnable() => LoadRoster(); // Load cards on window open
 
     public void LoadCards() => onCardsLoad?.Invoke(); // Load all cards
     
