@@ -148,7 +148,7 @@ public class AbilityBase : ScriptableObject
             case DmgStyle.Magical:
                 return metric - defender.Resistance;
             case DmgStyle.Mixed:
-                return ((metric / 2) - defender.Defense) + ((metric / 2) - defender.Resistance);
+                return ((metric / 2) - (defender.Defense / 2)) + ((metric / 2) - (defender.Resistance / 2));
             case DmgStyle.Direct:
                 return metric - defender.Health;
             case DmgStyle.Stat:

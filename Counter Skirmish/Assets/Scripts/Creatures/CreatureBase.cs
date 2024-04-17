@@ -20,6 +20,8 @@ public class CreatureBase : ScriptableObject
     // Extra Modifiers
     [SerializeField] private float _critChance = 1f, _critDamage = 1f;
 
+    [SerializeField] private int _expYield, _catchRate = 255; 
+
     [SerializeField] private LearnableAbility[] _learnableAbilities;
     [SerializeField] private PossiblePassives[] _possiblePassives;
 
@@ -44,10 +46,13 @@ public class CreatureBase : ScriptableObject
     public int Defense => _defense;
     public int Resistance => _resistance;
     public int Speed => _speed;
-    
+
     // Extra Modifiers
     public float CritChance => _critChance;
     public float CritDamage => _critDamage;
+
+    public int ExpYield => _expYield;
+    public int CatchRate => _catchRate;
     
     public LearnableAbility[] LearnableAbilities => _learnableAbilities;
     public PossiblePassives[] PossiblePassives => _possiblePassives;
