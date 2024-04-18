@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,11 @@ public class ResourceBar : MonoBehaviour
     [Header("These should all be filled.")]
     [SerializeField] private Image _mainBar;
     [SerializeField] private Image _incBar, _lossBar;
+    [Header("Ignore this on UnitHUD.")]
+    [SerializeField] private TMP_Text _num;
 
+    private Creature _creature;
+    
     private float _barSpeed = 0.5f;
     private Coroutine _damageBar;
 
@@ -31,7 +36,14 @@ public class ResourceBar : MonoBehaviour
         _unit.onResourceChanged -= SetBar;
     }
 
-    private void SetResource(Creature creature) => _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Resource / creature.MaxResource;
+    private void SetResource(Creature creature)
+    {
+        if (_damageBar != null)
+            StopCoroutine(_damageBar);
+        
+        _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Resource / creature.MaxResource;
+        _creature = creature;
+    }
     
     private void SetBar(float newR)
     {
@@ -59,6 +71,8 @@ public class ResourceBar : MonoBehaviour
         }
         
         _mainBar.fillAmount = newR; // Change _mainBar to new value
+        if (_num && _creature != null)
+            _num.text = $"{_creature.Resource.ToString()}/{_creature.MaxResource.ToString()}";
     }
     
     private IEnumerator DamageBar(float newR)

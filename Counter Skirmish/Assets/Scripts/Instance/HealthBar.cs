@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,11 @@ public class HealthBar : MonoBehaviour
     [Header("These should all be filled.")]
     [SerializeField] private Image _mainBar;
     [SerializeField] private Image _incBar, _lossBar;
+    [Header("Ignore this on UnitHUD.")]
+    [SerializeField] private TMP_Text _num;
 
+    private Creature _creature;
+    
     private float _barSpeed = 0.5f;
     private Coroutine _damageBar;
 
@@ -35,8 +40,9 @@ public class HealthBar : MonoBehaviour
     {
         if (_damageBar != null)
             StopCoroutine(_damageBar);
-        
+
         _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = (float)creature.Health / creature.MaxHealth;
+        _creature = creature;
     }
     
     private void SetBar(float newH)
@@ -65,6 +71,8 @@ public class HealthBar : MonoBehaviour
         }
         
         _mainBar.fillAmount = newH; // Change _mainBar to new Health
+        if (_num && _creature != null)
+            _num.text = $"{_creature.Health.ToString()}/{_creature.MaxHealth.ToString()}";
     }
     
     private IEnumerator DamageBar(float newH)

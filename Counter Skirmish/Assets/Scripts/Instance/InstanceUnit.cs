@@ -13,11 +13,13 @@ public class InstanceUnit : MonoBehaviour
     public delegate void OnDead(); // Creature dies
     public event OnDead onDead;
     
-    // Health & Resource
+    // Health, Resource, & Exp
     public delegate void OnHealthChanged(float @normHealth);
     public event OnHealthChanged onHealthChanged;
     public delegate void OnResourceChanged(float @normRes);
     public event OnResourceChanged onResourceChanged;
+    public delegate void OnExpEarned(float @normExp);
+    public event OnExpEarned onExpEarned;
     
     // Cooldown
     public delegate void OnActivateCooldown(Ability @ability);
@@ -53,18 +55,20 @@ public class InstanceUnit : MonoBehaviour
     
     public void UpdateHealth() => onHealthChanged?.Invoke((float) Creature.Health / Creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) Creature.Resource / Creature.MaxResource);
-
+    public void UpdateExp() => onExpEarned?.Invoke((float)Creature.Base.GetExpForLevel(Creature.Level) / Creature.Base.GetExpForLevel(Creature.Level + 1));
+    
     public void ActivateCooldown(Ability ability)
     {
         StartCoroutine(CooldownTimer(ability));
         onActivateCooldown?.Invoke(ability);
     }
 
-    public void CreatureDead(Creature creature) // TODO use this Creature to give exp :) (future)
+    public void CreatureDead(Creature attacker)
     {
-        // Give xp to attacker
         gameObject.layer = 16; // Change layer to Dead
-        onDead?.Invoke(); // TODO CreatureRoster NextCreature all dead stop moving for NPC
+        if (attacker.Unit.CompareTag("Player"))
+            GiveExp(attacker); // Give XP to player attacker
+        onDead?.Invoke();
         CreRoster.NextCreature();
     }
     
@@ -106,5 +110,16 @@ public class InstanceUnit : MonoBehaviour
             ability.Cooldown -= Time.deltaTime;
             yield return null;
         }
+    }
+    
+    private void GiveExp(Creature attacker)
+    {
+        int expYield = Creature.Base.ExpYield,
+            attackerLvl = Creature.Level;
+        int expGain = Mathf.FloorToInt((expYield * attackerLvl) / 7);
+        
+        attacker.Exp += expGain;
+        attacker.Unit.UpdateExp();
+        // floating purple text number when exp gained
     }
 }

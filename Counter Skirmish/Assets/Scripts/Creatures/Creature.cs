@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class Creature
 {
     [SerializeField] private CreatureBase _base;
-    [SerializeField] private int _level, _exp = 0;
+    [SerializeField] private int _level;
 
     [SerializeField] private AbilityBase[] _abilityBases = new AbilityBase[4];
     [SerializeField] private PassiveBase _passiveBase;
@@ -17,7 +17,7 @@ public class Creature
     
     public CreatureBase Base => _base;
     public int Level => _level;
-    public int Exp => _exp;
+    public int Exp { get; set; }
 
     public int Health { get; set; }
     public int Resource { get; set; }
@@ -42,13 +42,16 @@ public class Creature
     {
         _base = cBase;
         _level = level;
-        _exp = exp;
+        Exp = exp;
     }
     
     public void Initialize(InstanceUnit unit)
     {
         Unit = unit;
-        
+
+        if (_base && _level > 1 && Exp == 0)
+            Exp = _base.GetExpForLevel(_level);
+
         Abilities ??= new Ability[4];
         if (Abilities.All(ability => ability == null))
         {

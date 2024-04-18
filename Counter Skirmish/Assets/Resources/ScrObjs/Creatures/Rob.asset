@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a40b17808344b499193ed12e8efe7d, type: 3}
   m_Name: Rob
   m_EditorClassIdentifier: 
-  _name: Abomination
+  _name: Rob
   _description: Abomination does things and is a thing. Can not say things that aren't
     abominable.
   _icon: {fileID: 0}
@@ -31,6 +31,9 @@ MonoBehaviour:
   _speed: 90
   _critChance: 1
   _critDamage: 1
+  _expYield: 50
+  _growthRate: 0
+  _catchRate: 255
   _learnableAbilities:
   - _abilityBase: {fileID: 11400000, guid: 89b2e7a79dad6af49bf893f8cba8013c, type: 2}
     _level: 1

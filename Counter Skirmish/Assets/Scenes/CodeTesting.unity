@@ -2298,6 +2298,10 @@ PrefabInstance:
       propertyPath: _charHud
       value: 
       objectReference: {fileID: 1025070756}
+    - target: {fileID: 3111779882869650136, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
+      propertyPath: _unit
+      value: 
+      objectReference: {fileID: 876384248}
     - target: {fileID: 5539608287233768145, guid: b4c8c43a57b533348a20f017ed686d6c, type: 3}
       propertyPath: _unit
       value: 

@@ -70,7 +70,7 @@ public class CollisionTransmitter : MonoBehaviour
     {
         foreach (string hitTag in _canAffect)
         {
-            if (other.gameObject.CompareTag(hitTag))
+            if (other.CompareTag(hitTag))
                 Affect(other.gameObject.GetComponent<InstanceUnit>().Creature);
         }
     }

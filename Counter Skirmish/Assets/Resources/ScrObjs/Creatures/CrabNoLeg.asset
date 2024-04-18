@@ -30,6 +30,9 @@ MonoBehaviour:
   _speed: 80
   _critChance: 2
   _critDamage: 1
+  _expYield: 50
+  _growthRate: 0
+  _catchRate: 255
   _learnableAbilities:
   - _abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
     _level: 1

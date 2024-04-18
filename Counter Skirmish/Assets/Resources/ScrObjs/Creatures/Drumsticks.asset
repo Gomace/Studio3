@@ -30,6 +30,9 @@ MonoBehaviour:
   _speed: 0
   _critChance: 1
   _critDamage: 1
+  _expYield: 50
+  _growthRate: 0
+  _catchRate: 255
   _learnableAbilities: []
   _possiblePassives:
   - _passiveBase: {fileID: 0}

@@ -10,7 +10,7 @@ public class CreatureUI : MonoBehaviour
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _level;
-
+    
     private void OnEnable() => _unit.onLoadHUD += SetCreatureUI;
     private void OnDisable() => _unit.onLoadHUD -= SetCreatureUI;
 
