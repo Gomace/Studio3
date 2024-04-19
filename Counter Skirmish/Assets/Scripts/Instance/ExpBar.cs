@@ -41,7 +41,7 @@ public class ExpBar : MonoBehaviour
         
         _mainBar.fillAmount = GetNormExp();
         if (_num ) // Check if _num is referenced
-            _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
+            _num.text = $"{(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
     }
     
     private void SetBar(bool lvled = false)

@@ -110,6 +110,9 @@ public class RosterData // Equipped creatures
             if (creature == null)
                 continue;
             
+            if (creature.Base == null)
+                continue;
+            
             ++length;
         }
 
@@ -118,6 +121,9 @@ public class RosterData // Equipped creatures
         foreach (Creature creature in creatures)
         {
             if (creature == null)
+                continue;
+
+            if (creature.Base == null)
                 continue;
             
             Names[i] = creature.Base.name;
@@ -161,6 +167,9 @@ public class RosterData // Equipped creatures
             if (creature == null)
                 continue;
             
+            if (creature.Base == null)
+                continue;
+            
             ++length;
         }
 
@@ -169,6 +178,9 @@ public class RosterData // Equipped creatures
         foreach (CreatureInfo creature in creatures)
         {
             if (creature == null)
+                continue;
+            
+            if (creature.Base == null)
                 continue;
             
             Names[i] = creature.Base.name;
