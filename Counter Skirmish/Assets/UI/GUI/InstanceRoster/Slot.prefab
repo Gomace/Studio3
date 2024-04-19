@@ -106,7 +106,7 @@ MonoBehaviour:
   _type1: {fileID: 5733393727073783}
   _type2: {fileID: 5733394562172949}
   _role: {fileID: 5733394302906563}
-  _level: {fileID: 6036311263715311421}
+  _lvl: {fileID: 6036311263715311421}
   _healthNum: {fileID: 101336088338594951}
   _resNum: {fileID: 2193221815137078309}
   _dead: {fileID: 6273535011246702940}
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 5969041749356665964}
   - component: {fileID: 5188789656645316226}
   m_Layer: 5
-  m_Name: LevelBox
+  m_Name: LvlBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,7 +1348,7 @@ GameObject:
   - component: {fileID: 7334948689415960610}
   - component: {fileID: 6036311263715311421}
   m_Layer: 5
-  m_Name: LevelText
+  m_Name: LvlTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

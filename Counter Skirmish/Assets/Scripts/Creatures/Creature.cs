@@ -131,9 +131,16 @@ public class Creature
         if (Random.Range(0f, 100f) <= 4f * (ability.Base.CritChance * attacker.Base.CritChance))
             critical = 1.5f * (ability.Base.CritDamage * attacker.Base.CritDamage);
 
-        float metric = ability.Base.Metric(ability.Base.PowerSource(attacker, this));
+        float stab = 1f;
+        if (ability.Base.Type == attacker.Base.Type1)
+            stab = 1.5f;
+        else if (attacker.Base.Type2)
+            if (ability.Base.Type == attacker.Base.Type2)
+                stab = 1.5f;
 
-        float modifiers = Random.Range(0.85f, 1f) * Base.GetEffectiveness(ability.Base.Type) * critical;
+        float metric = ability.Base.Metric(ability.Base.PowerSource(attacker, this));
+        
+        float modifiers = Random.Range(0.85f, 1f) * Base.GetEffectiveness(ability.Base.Type) * stab * critical;
         float att = (2 * attacker.Level + 10) / 250f;
         float def = att * ability.Base.Power * Mathf.Max(ability.Base.Style(this, metric), 0f) + 2;
         int damage = Mathf.FloorToInt(def * modifiers);
@@ -242,5 +249,14 @@ public class Creature
             else
                 break;
         }
+    }
+
+    public bool CheckForLvlUp()
+    {
+        if (Exp < _base.GetExpForLevel(_level + 1))
+            return false;
+        
+        ++_level;
+        return true;
     }
 }

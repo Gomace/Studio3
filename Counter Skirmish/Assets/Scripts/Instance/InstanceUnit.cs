@@ -13,13 +13,17 @@ public class InstanceUnit : MonoBehaviour
     public delegate void OnDead(); // Creature dies
     public event OnDead onDead;
     
-    // Health, Resource, & Exp
+    // Health & Resource
     public delegate void OnHealthChanged(float @normHealth);
     public event OnHealthChanged onHealthChanged;
     public delegate void OnResourceChanged(float @normRes);
     public event OnResourceChanged onResourceChanged;
-    public delegate void OnExpEarned(float @normExp);
+    
+    // Exp & Level Up
+    public delegate void OnExpEarned(bool @lvled);
     public event OnExpEarned onExpEarned;
+    public delegate void OnLvlUp();
+    public event OnLvlUp onLvlUp;
     
     // Cooldown
     public delegate void OnActivateCooldown(Ability @ability);
@@ -55,7 +59,13 @@ public class InstanceUnit : MonoBehaviour
     
     public void UpdateHealth() => onHealthChanged?.Invoke((float) Creature.Health / Creature.MaxHealth);
     public void UpdateResource() => onResourceChanged?.Invoke((float) Creature.Resource / Creature.MaxResource);
-    public void UpdateExp() => onExpEarned?.Invoke((float)Creature.Base.GetExpForLevel(Creature.Level) / Creature.Base.GetExpForLevel(Creature.Level + 1));
+    
+    public void UpdateExp(bool lvled) => onExpEarned?.Invoke(lvled); // Move exp bar before lvling
+    public void LvlUp(bool lvled)
+    {
+        onLvlUp?.Invoke();
+        UpdateExp(lvled);
+    }
     
     public void ActivateCooldown(Ability ability)
     {
@@ -115,11 +125,11 @@ public class InstanceUnit : MonoBehaviour
     private void GiveExp(Creature attacker)
     {
         int expYield = Creature.Base.ExpYield,
-            attackerLvl = Creature.Level;
-        int expGain = Mathf.FloorToInt((expYield * attackerLvl) / 7);
+            defeatedLvl = Creature.Level;
+        int expGain = Mathf.FloorToInt((expYield * defeatedLvl) / 7);
         
-        attacker.Exp += expGain;
-        attacker.Unit.UpdateExp();
+        attacker.Exp += expGain; // Update Creature Exp
+        attacker.Unit.UpdateExp(attacker.CheckForLvlUp()); // Update Exp UI and send if lvled = true
         // floating purple text number when exp gained
     }
 }

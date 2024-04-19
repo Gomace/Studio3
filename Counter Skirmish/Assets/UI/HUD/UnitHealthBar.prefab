@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6500186405733251992}
   - component: {fileID: 9167046020048860180}
   m_Layer: 0
-  m_Name: IncomingHealth
+  m_Name: IncHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 3033162445317802219}
   - component: {fileID: 3628323223006968886}
   m_Layer: 0
-  m_Name: LevelBox
+  m_Name: LvlBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 2534329419971265701}
   - component: {fileID: 2534329419971265700}
   m_Layer: 0
-  m_Name: LevelText
+  m_Name: LvlTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,6 +537,7 @@ MonoBehaviour:
   _mainBar: {fileID: 2534329421225712001}
   _incBar: {fileID: 9096377553674298269}
   _lossBar: {fileID: 2616276485909297085}
+  _num: {fileID: 0}
 --- !u!1 &2534329420255142272
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +635,7 @@ MonoBehaviour:
   _mainBar: {fileID: 2534329421660826921}
   _incBar: {fileID: 9167046020048860180}
   _lossBar: {fileID: 5973227563341363052}
+  _num: {fileID: 0}
 --- !u!1 &2534329420550844645
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +648,7 @@ GameObject:
   - component: {fileID: 2534329420550845208}
   - component: {fileID: 2534329420550845211}
   m_Layer: 0
-  m_Name: NameText
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,8 +1101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 0}
-  _nameText: {fileID: 2534329420550845211}
-  _levelText: {fileID: 2534329419971265700}
+  _name: {fileID: 2534329420550845211}
+  _lvl: {fileID: 2534329419971265700}
   _type1: {fileID: 6252385871795086195}
   _type2: {fileID: 2203740288361099798}
   _dead: {fileID: 5946881781949004342}
@@ -1535,7 +1537,7 @@ GameObject:
   - component: {fileID: 3830358170073922833}
   - component: {fileID: 9096377553674298269}
   m_Layer: 0
-  m_Name: IncomingResource
+  m_Name: IncResource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

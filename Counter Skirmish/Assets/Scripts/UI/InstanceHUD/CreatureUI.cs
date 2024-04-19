@@ -9,13 +9,25 @@ public class CreatureUI : MonoBehaviour
     [Header("These should all be filled.")]
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon, _type1, _type2, _role;
-    [SerializeField] private TMP_Text _level;
+    [SerializeField] private TMP_Text _lvl;
+
+    private Creature _creature;
     
-    private void OnEnable() => _unit.onLoadHUD += SetCreatureUI;
-    private void OnDisable() => _unit.onLoadHUD -= SetCreatureUI;
+    private void OnEnable()
+    {
+        _unit.onLoadHUD += SetCreatureUI;
+        _unit.onLvlUp += SetLvl;
+    }
+    private void OnDisable()
+    {
+        _unit.onLoadHUD -= SetCreatureUI;
+        _unit.onLvlUp -= SetLvl;
+    }
 
     private void SetCreatureUI(Creature creature)
     {
+        _creature = creature;
+        
         _name.text = creature.Base.Name;
         _icon.sprite = creature.Base.Icon;
         
@@ -25,6 +37,13 @@ public class CreatureUI : MonoBehaviour
         _type2.enabled = creature.Base.Type2;
         
         _role.sprite = creature.Base.Role.Icon;
-        _level.text = creature.Level.ToString();
+        
+        SetLvl();
+    }
+
+    private void SetLvl()
+    {
+        if (_creature != null)
+            _lvl.text = _creature.Level.ToString();
     }
 }

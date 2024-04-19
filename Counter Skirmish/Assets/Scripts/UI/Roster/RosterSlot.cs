@@ -7,7 +7,7 @@ public class RosterSlot : MonoBehaviour
     [Header("These should already be filled.")]
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _healthBar, _resBar, _icon, _type1, _type2, _role;
-    [SerializeField] private TMP_Text _level, _healthNum, _resNum;
+    [SerializeField] private TMP_Text _lvl, _healthNum, _resNum;
     [SerializeField] private GameObject _dead;
 
     private Creature _creature;
@@ -41,15 +41,15 @@ public class RosterSlot : MonoBehaviour
         _role.sprite = creature.Base.Role.Icon;
         _dead.SetActive(false);
         
-        SetLevel();
+        SetLvl();
         SetHealth((float)_creature.Health / _creature.MaxHealth);
         SetResource((float)_creature.Resource / _creature.MaxResource);
     }
 
-    public void SetLevel()
+    public void SetLvl()
     {
         if (_creature != null)
-            _level.text = _creature.Level.ToString();
+            _lvl.text = _creature.Level.ToString();
     }
 
     public void SetHealth(float newH)

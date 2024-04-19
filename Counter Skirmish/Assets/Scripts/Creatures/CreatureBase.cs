@@ -74,47 +74,47 @@ public class CreatureBase : ScriptableObject
         return multiplier;
     }
     
-    public int GetExpForLevel(int level)
+    public int GetExpForLevel(int lvl)
     {
         switch (_growthRate)
         {
             case GrowthGroup.Erratic:
-                switch (level)
+                switch (lvl)
                 {
                     case < 50:
-                        return ((int)Math.Pow(level, 3) * (100 - level)) / 50;
+                        return ((int)Math.Pow(lvl, 3) * (100 - lvl)) / 50;
                     case >= 50 and < 68:
-                        return ((int)Math.Pow(level, 3) * (150 - level)) / 100;
+                        return ((int)Math.Pow(lvl, 3) * (150 - lvl)) / 100;
                     case >= 68 and < 98:
-                        return ((int)Math.Pow(level, 3) * ((1911 - 10 * level) / 3)) / 500;
+                        return ((int)Math.Pow(lvl, 3) * ((1911 - 10 * lvl) / 3)) / 500;
                     case >= 98 and < 100:
-                        return ((int)Math.Pow(level, 3) * (160 - level)) / 100;
+                        return ((int)Math.Pow(lvl, 3) * (160 - lvl)) / 100;
                     default:
                         return 600000;
                 }
             case GrowthGroup.Fast:
-                return 4 * (int)Math.Pow(level, 3) / 5;
+                return 4 * (int)Math.Pow(lvl, 3) / 5;
             case GrowthGroup.MediumFast:
-                return (int)Math.Pow(level, 3);
+                return (int)Math.Pow(lvl, 3);
             case GrowthGroup.MediumSlow:
-                return 6 / 5 * (int)Math.Pow(level, 3) - 15 * (int)Math.Pow(level, 2) + 100 * level - 140;
+                return 6 / 5 * (int)Math.Pow(lvl, 3) - 15 * (int)Math.Pow(lvl, 2) + 100 * lvl - 140;
             case GrowthGroup.Slow:
-                return 5 * (int)Math.Pow(level, 3) / 4;
+                return 5 * (int)Math.Pow(lvl, 3) / 4;
             case GrowthGroup.Fluctuating:
-                switch (level)
+                switch (lvl)
                 {
                     case < 15:
-                        return ((int)Math.Pow(level, 3) * (((level + 1) / 3) + 24)) / 50;
+                        return ((int)Math.Pow(lvl, 3) * (((lvl + 1) / 3) + 24)) / 50;
                     case >= 15 and < 36:
-                        return ((int)Math.Pow(level, 3) * (level + 14)) / 50;
+                        return ((int)Math.Pow(lvl, 3) * (lvl + 14)) / 50;
                     case >= 36 and < 100:
-                        return ((int)Math.Pow(level, 3) * ((level / 2) + 32)) / 50;
+                        return ((int)Math.Pow(lvl, 3) * ((lvl / 2) + 32)) / 50;
                     default:
                         return 1640000;
                 }
             default:
                 Debug.Log($"You didn't make a case for {_growthRate}");
-                return (int)Math.Pow(level, 3);
+                return (int)Math.Pow(lvl, 3);
         }
     }
 }
@@ -155,3 +155,62 @@ public enum Stat
     Resistance,
     Speed
 }
+
+/*
+Growth rates? Gotchu fams:
+
+public int GetExpForLevel(int level)
+{
+    switch (growthRate)
+    {
+        case GrowthRate.Erratic:
+            switch (level)
+            {
+                case < 50:
+                    return ((int)Math.Pow(level, 3) * (100 - level)) / 50;
+                case >= 50 and < 68:
+                    return ((int)Math.Pow(level, 3) * (150 - level)) / 100;
+                case >= 68 and < 98:
+                    return ((int)Math.Pow(level, 3) * ((1911 - 10 * level) / 3)) / 500;
+                case >= 98 and < 100:
+                    return ((int)Math.Pow(level, 3) * (160 - level)) / 100;
+                default:
+                    return 600000;
+            }
+        case GrowthRate.Fast:
+            return 4 * (int)Math.Pow(level, 3) / 5;
+        case GrowthRate.MediumFast:
+            return (int)Math.Pow(level, 3);
+        case GrowthRate.MediumSlow:
+            return 6 / 5 * (int)Math.Pow(level, 3) - 15 * (int)Math.Pow(level, 2) + 100 * level - 140;
+        case GrowthRate.Slow:
+            return 5 * (int)Math.Pow(level, 3) / 4;
+        case GrowthRate.Fluctuating:
+            switch (level)
+            {
+                case < 15:
+                    return ((int)Math.Pow(level, 3) * (((level + 1) / 3) + 24)) / 50;
+                case >= 15 and < 36:
+                    return ((int)Math.Pow(level, 3) * (level + 14)) / 50;
+                case >= 36 and < 100:
+                    return ((int)Math.Pow(level, 3) * ((level / 2) + 32)) / 50;
+                default:
+                    return 1640000;
+            }
+        default:
+            Debug.Log($"You didn't make a case for {growthRate}");
+            return (int)Math.Pow(level, 3);
+    }
+}
+
+and ofc:
+public enum GrowthRate
+{   
+    Erratic,
+    Fast,
+    MediumFast,
+    MediumSlow,
+    Slow,
+    Fluctuating
+}
+*/

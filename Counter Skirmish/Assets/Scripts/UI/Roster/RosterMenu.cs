@@ -21,6 +21,7 @@ public class RosterMenu : MonoBehaviour
         _playerRoster.onRosterLoaded += SetupRoster;
         _unit.onHealthChanged += ReloadHealth;
         _unit.onResourceChanged += ReloadResource;
+        _unit.onLvlUp += LvlUp;
         _unit.onDead += CreatureDie;
     }
     private void OnDisable()
@@ -28,6 +29,7 @@ public class RosterMenu : MonoBehaviour
         _playerRoster.onRosterLoaded -= SetupRoster;
         _unit.onHealthChanged -= ReloadHealth;
         _unit.onResourceChanged -= ReloadResource;
+        _unit.onLvlUp -= LvlUp;
         _unit.onDead -= CreatureDie;
     }
 
@@ -57,12 +59,12 @@ public class RosterMenu : MonoBehaviour
         }
     }
 
-    private void LevelUp() // TODO Update level on creature in rosterUI
+    private void LvlUp()
     {
         foreach (RosterSlot slot in _slots)
         {
             if (slot.Creature == _unit.Creature)
-                slot.SetLevel();
+                slot.SetLvl();
         }
     }
 
