@@ -16,10 +16,10 @@ public class ExpBar : MonoBehaviour
 
     private int _curLvlExp, _nxtLvlExp;
 
-    private float _barSpeed = 0.5f;
+    private float _barSpeed = 0.2f;
     private Coroutine _barMove, _lvlUp;
 
-    private void Awake() => _mainBar.fillAmount = 1f;
+    private void Awake() => _mainBar.fillAmount = _gainBar.fillAmount = 0f;
 
     private void OnEnable()
     {
@@ -40,15 +40,17 @@ public class ExpBar : MonoBehaviour
             StopCoroutine(_barMove);
         
         _mainBar.fillAmount = GetNormExp();
+        if (_num ) // Check if _num is referenced
+            _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
     }
     
     private void SetBar(bool lvled = false)
     {
-        float newXP = GetNormExp(); // Get new fill amount
-        
+        float newXP = GetNormExp(lvled); // Get new fill amount
+
         if (_mainBar.fillAmount >= newXP) // Only pass if gained Exp
             return;
-
+        
         if (_lvlUp != null)
             StopCoroutine(_lvlUp);
         _lvlUp = StartCoroutine(WaitForLvlUp(newXP, lvled));
@@ -56,25 +58,21 @@ public class ExpBar : MonoBehaviour
 
     private IEnumerator WaitForLvlUp(float newXP, bool lvled = false)
     {
-        _gainBar.fillAmount += newXP - _mainBar.fillAmount; // Set _gainBar to inc Exp
+        _gainBar.fillAmount = newXP; // Set _gainBar to inc Exp
 
         if (_barMove != null)
             StopCoroutine(_barMove);
         yield return _barMove = StartCoroutine(MoveBar(newXP));
-        
+
         _mainBar.fillAmount = newXP; // Change _mainBar to new value
+        if (_num && _creature != null)
+            _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
 
         if (lvled) // check if lvled
         {
             _mainBar.fillAmount = 0;
 
-            if (_creature != null) // Check if creature is null
-            {
-                if (_num) // Check if _num is referenced
-                    _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
-
-                _creature.Unit.LvlUp(_creature.CheckForLvlUp()); // Send if lvled again, and lvl up one
-            }
+            _creature?.Unit.LvlUp(_creature.CheckForLvlUp()); // Send if lvled again, and lvl up one
         }
     }
     
@@ -87,10 +85,13 @@ public class ExpBar : MonoBehaviour
         }
     }
 
-    private float GetNormExp()
+    private float GetNormExp(bool lvled = false)
     {
-        _curLvlExp = _creature.Base.GetExpForLevel(_creature.Level);
-        _nxtLvlExp = _creature.Base.GetExpForLevel(_creature.Level + 1);
+        if (_creature == null)
+            return 0;
+        
+        _curLvlExp = _creature.Base.GetExpForLevel(_creature.Level - (lvled ? 1 : 0));
+        _nxtLvlExp = _creature.Base.GetExpForLevel(_creature.Level + (lvled ? 0 : 1));
 
         return Mathf.Clamp01((float)(_creature.Exp - _curLvlExp) / (_nxtLvlExp - _curLvlExp));
     }
