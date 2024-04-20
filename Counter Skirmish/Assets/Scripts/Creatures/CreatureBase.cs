@@ -76,6 +76,9 @@ public class CreatureBase : ScriptableObject
     
     public int GetExpForLevel(int lvl)
     {
+        if (lvl == 1)
+            return 0;
+        
         switch (_growthRate)
         {
             case GrowthGroup.Erratic:

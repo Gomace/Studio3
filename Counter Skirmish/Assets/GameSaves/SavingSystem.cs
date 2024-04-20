@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.IO;
+using System.Linq;
 
 //using System.Runtime.Serialization.Formatters.Binary;
 
@@ -104,17 +105,8 @@ public class RosterData // Equipped creatures
     {
         int length = 0,
             i = 0;
-        
-        foreach (Creature creature in creatures)
-        {
-            if (creature == null)
-                continue;
-            
-            if (creature.Base == null)
-                continue;
-            
-            ++length;
-        }
+
+        length += creatures.Where(creature => creature != null).Count(creature => creature.Base != null);
 
         ArrayLengths(length);
 
@@ -134,14 +126,8 @@ public class RosterData // Equipped creatures
             
             int abilities = 0,
                 l = 0;
-            
-            foreach (Ability ability in creature.Abilities)
-            {
-                if (ability == null)
-                    continue;
-            
-                ++abilities;
-            }
+
+            abilities += creature.Abilities.Count(ability => ability != null);
 
             Abilities[i] = new AbilityNames(abilities);
 
@@ -161,17 +147,8 @@ public class RosterData // Equipped creatures
     {
         int length = 0,
             i = 0;
-        
-        foreach (CreatureInfo creature in creatures)
-        {
-            if (creature == null)
-                continue;
-            
-            if (creature.Base == null)
-                continue;
-            
-            ++length;
-        }
+
+        length += creatures.Where(creature => creature != null).Count(creature => creature.Base != null);
 
         ArrayLengths(length);
 
@@ -191,14 +168,8 @@ public class RosterData // Equipped creatures
             
             int abilities = 0,
                 l = 0;
-            
-            foreach (AbilityBase ability in creature.AbilityBases)
-            {
-                if (ability == null)
-                    continue;
-            
-                ++abilities;
-            }
+
+            abilities += creature.AbilityBases.Count(ability => ability != null);
 
             Abilities[i] = new AbilityNames(abilities);
 

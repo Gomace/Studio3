@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -55,18 +56,9 @@ public class Creature
         Abilities ??= new Ability[4];
         if (Abilities.All(ability => ability == null))
         {
-            bool empty = true;
-            
             _abilityBases ??= new AbilityBase[4];
-            foreach (AbilityBase aBase in _abilityBases)
-            {
-                if (aBase == null)
-                    continue;
-                
-                empty = false;
-                break;
-            }
-            
+            bool empty = _abilityBases.All(aBase => aBase == null);
+
             if (empty)
                 GenerateAbilities();
             else
@@ -251,6 +243,23 @@ public class Creature
         }
     }
 
+    public LearnableAbility GetLearnableAbilityAtCurLvl()
+    {
+        return Base.LearnableAbilities.FirstOrDefault(learnable => learnable.Level == _level);
+    }
+
+    public void LearnAbility(LearnableAbility abilityToLearn)
+    {
+        for (int i = 0; i < Abilities.Length; ++i)
+        {
+            if (Abilities[i] != null)
+                continue;
+            
+            Abilities[i] = new Ability(abilityToLearn.Base, this);
+            break;
+        }
+    }
+    
     public bool CheckForLvlUp()
     {
         if (Exp < _base.GetExpForLevel(_level + 1))

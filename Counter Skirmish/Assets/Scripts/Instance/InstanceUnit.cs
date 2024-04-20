@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(CreatureRoster))]
@@ -14,19 +15,21 @@ public class InstanceUnit : MonoBehaviour
     public event OnDead onDead;
     
     // Health & Resource
-    public delegate void OnHealthChanged(float @normHealth);
+    public delegate void OnHealthChanged(float @normHealth); // Health changes
     public event OnHealthChanged onHealthChanged;
-    public delegate void OnResourceChanged(float @normRes);
+    public delegate void OnResourceChanged(float @normRes); // Resource changes
     public event OnResourceChanged onResourceChanged;
     
     // Exp & Level Up
-    public delegate void OnExpEarned(bool @lvled);
+    public delegate void OnExpEarned(bool @lvled); // Update Experience bar
     public event OnExpEarned onExpEarned;
-    public delegate void OnLvlUp();
+    public delegate void OnLvlUp(); // Lvled up
     public event OnLvlUp onLvlUp;
     
-    // Cooldown
-    public delegate void OnActivateCooldown(Ability @ability);
+    // Abilities & Cooldown
+    public delegate void OnLearnAbility(Creature @creature); // Reloading Abilities if learned
+    public event OnLearnAbility onLearnAbility;
+    public delegate void OnActivateCooldown(Ability @ability); // Ability going on CD
     public event OnActivateCooldown onActivateCooldown;
     #endregion Events
     
@@ -64,6 +67,7 @@ public class InstanceUnit : MonoBehaviour
     public void LvlUp(bool lvled)
     {
         onLvlUp?.Invoke();
+        TryToLearnAbility();
         UpdateExp(lvled);
     }
     
@@ -112,15 +116,6 @@ public class InstanceUnit : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator CooldownTimer(Ability ability)
-    {
-        while (ability.Cooldown > 0)
-        {
-            ability.Cooldown -= Time.deltaTime;
-            yield return null;
-        }
-    }
     
     private void GiveExp(Creature attacker)
     {
@@ -131,5 +126,32 @@ public class InstanceUnit : MonoBehaviour
         attacker.Exp += expGain; // Update Creature Exp
         attacker.Unit.UpdateExp(attacker.CheckForLvlUp()); // Update Exp UI and send if lvled = true
         // floating purple text number when exp gained
+    }
+
+    private void TryToLearnAbility()
+    {
+        LearnableAbility newAbility = Creature.GetLearnableAbilityAtCurLvl();
+        
+        if (newAbility == null)
+            return;
+        
+        int abilities = Creature.Abilities.Count(ability => ability != null);
+
+        if (abilities < Creature.Abilities.Length)
+        {
+            Creature.LearnAbility(newAbility);
+            onLearnAbility?.Invoke(Creature);
+        }
+        else
+            return; // "You've learned a new ability! Equip it in the "Abilities" section of your creature's Details summary."
+    }
+    
+    private IEnumerator CooldownTimer(Ability ability)
+    {
+        while (ability.Cooldown > 0)
+        {
+            ability.Cooldown -= Time.deltaTime;
+            yield return null;
+        }
     }
 }

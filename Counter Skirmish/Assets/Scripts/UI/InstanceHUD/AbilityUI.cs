@@ -32,11 +32,13 @@ public class AbilityUI : MonoBehaviour
     private void OnEnable()
     {
         _unit.onLoadHUD += SetAbilityUI;
+        _unit.onLearnAbility += SetAbilityUI;
         _unit.onActivateCooldown += AbilityCD;
     }
     private void OnDisable()
     {
         _unit.onLoadHUD -= SetAbilityUI;
+        _unit.onLearnAbility -= SetAbilityUI;
         _unit.onActivateCooldown -= AbilityCD;
     }
 
@@ -47,10 +49,9 @@ public class AbilityUI : MonoBehaviour
         for (int i = 0; i < _abilities.Length; ++i)
         {
             if (_abilities[i] == null)
-                break;
+                continue;
 
-            if (_abilities[i].Base.Icon != null)
-                _abilityUIs[i].sprite = _abilities[i].Base.Icon;
+            _abilityUIs[i].sprite = _abilities[i].Base.Icon;
 
             if (_abilities[i].Cooldown > 0)
                 AbilityCD(_abilities[i]);

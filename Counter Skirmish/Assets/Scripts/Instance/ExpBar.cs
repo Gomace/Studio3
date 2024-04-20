@@ -59,14 +59,14 @@ public class ExpBar : MonoBehaviour
     private IEnumerator WaitForLvlUp(float newXP, bool lvled = false)
     {
         _gainBar.fillAmount = newXP; // Set _gainBar to inc Exp
+        if (_num && _creature != null)
+            _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
 
         if (_barMove != null)
             StopCoroutine(_barMove);
         yield return _barMove = StartCoroutine(MoveBar(newXP));
 
         _mainBar.fillAmount = newXP; // Change _mainBar to new value
-        if (_num && _creature != null)
-            _num.text = $"{(float)(_creature.Exp - _curLvlExp)}/{(_nxtLvlExp - _curLvlExp)}";
 
         if (lvled) // check if lvled
         {
