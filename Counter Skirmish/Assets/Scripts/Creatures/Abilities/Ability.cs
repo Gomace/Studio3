@@ -49,8 +49,9 @@ public class Ability
         unit.Character.rotation = conjRot; // Face creature to cast angle // TODO make it smooth
 
         unitPos += Base.Model.transform.localPosition; // Position
-        conj.position = unitPos;
+        conj.position = unitPos - new Vector3(0f, 0.5f, 0f);
                 
-        conj.localScale = new Vector3(Base.IndHitBox.x, Base.IndHitBox.x, Base.IndHitBox.x); // Scale
+        if (Base.Rescale)
+            conj.localScale = new Vector3(Base.IndHitBox.x, Base.IndHitBox.x, Base.IndHitBox.x); // Scale
     }
 }

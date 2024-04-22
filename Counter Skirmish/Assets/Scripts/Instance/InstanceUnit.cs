@@ -125,7 +125,7 @@ public class InstanceUnit : MonoBehaviour
         
         attacker.Exp += expGain; // Update Creature Exp
         attacker.Unit.UpdateExp(attacker.CheckForLvlUp()); // Update Exp UI and send if lvled = true
-        // floating purple text number when exp gained
+        // TODO floating purple text number when exp gained
     }
 
     private void TryToLearnAbility()
@@ -143,7 +143,7 @@ public class InstanceUnit : MonoBehaviour
             onLearnAbility?.Invoke(Creature);
         }
         else
-            return; // "You've learned a new ability! Equip it in the "Abilities" section of your creature's Details summary."
+            return; // TODO "You've learned a new ability! Equip it in the "Abilities" section of your creature's Details summary."
     }
     
     private IEnumerator CooldownTimer(Ability ability)

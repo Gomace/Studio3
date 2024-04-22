@@ -35,11 +35,11 @@ MonoBehaviour:
   _growthRate: 0
   _catchRate: 255
   _learnableAbilities:
-  - _abilityBase: {fileID: 11400000, guid: 89b2e7a79dad6af49bf893f8cba8013c, type: 2}
+  - _abilityBase: {fileID: 11400000, guid: e05ffeab5da58514eb3d347bb211013c, type: 2}
     _level: 1
-  - _abilityBase: {fileID: 11400000, guid: 5276d57c828f63141b733d9892b4ac9d, type: 2}
+  - _abilityBase: {fileID: 11400000, guid: 89b2e7a79dad6af49bf893f8cba8013c, type: 2}
     _level: 3
-  - _abilityBase: {fileID: 11400000, guid: 3f929742b3bcea343a95efaaa599b3fd, type: 2}
+  - _abilityBase: {fileID: 11400000, guid: 3051722bb1d62a544ae1650f56420487, type: 2}
     _level: 5
   - _abilityBase: {fileID: 11400000, guid: ba160f01c159c7944b03bf69b9b49d15, type: 2}
     _level: 7

@@ -18,12 +18,7 @@ public class ResourceBar : MonoBehaviour
     private float _barSpeed = 0.5f;
     private Coroutine _damageBar;
 
-    private void Awake()
-    {
-        _mainBar.fillAmount = 1f;
-        _incBar.fillAmount = 1f;
-        _lossBar.fillAmount = 1f;
-    }
+    private void Awake() => _mainBar.fillAmount = _incBar.fillAmount = _lossBar.fillAmount = 1f;
 
     private void OnEnable()
     {

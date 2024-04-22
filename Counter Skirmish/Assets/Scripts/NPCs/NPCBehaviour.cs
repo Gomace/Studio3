@@ -12,7 +12,8 @@ public class NPCBehaviour : MonoBehaviour
     // Movement
     private Vector3 _movePos, _spawnPoint, _abiPoint, _myPos, _tarPos;
     private NavMeshAgent _navMA;
-    private const float _turnSpeed = 50f, _variance = 5f, _reactionSpeed = 1/2.5f;
+    private const float _turnSpeed = 50f, _variance = 5f, _reactionSpeed = 1/3.2f /*2.5f*/, _failRate = 1f,
+                        _spawnRange = 20f, _aggroRange = 10f, _combatRange = 15f, _returningRange = 7f;
     private float _reactionTime = 0f;
 
     // Raycast
@@ -94,7 +95,7 @@ public class NPCBehaviour : MonoBehaviour
     #region States
     private void IdleState()
     {
-        if ((_myPos - _tarPos).sqrMagnitude < 10f * 10f)
+        if ((_myPos - _tarPos).sqrMagnitude < Mathf.Pow(_aggroRange, 2f))
         {
             State = NPCState.Combat;
             return;
@@ -107,14 +108,14 @@ public class NPCBehaviour : MonoBehaviour
     }
     private void CombatState()
     {
-        if ((_myPos - _tarPos).sqrMagnitude > 12f * 12f || (_myPos - _spawnPoint).sqrMagnitude > 20f * 20f)
+        if ((_myPos - _tarPos).sqrMagnitude > Mathf.Pow(_combatRange, 2f) || (_myPos - _spawnPoint).sqrMagnitude > Mathf.Pow(_spawnRange, 2f))
         {
             State = NPCState.Returning;
             return;
         }
         
-        CastAbility(Random.Range(0, _unit.Creature.Abilities.Length));
         RandomizeMovePos();
+        CastAbility(Random.Range(0, _unit.Creature.Abilities.Length));
         
         _ray = new Ray(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down);
         Debug.DrawRay(new Vector3(0f, 2f, 0f) + _movePos, Vector3.down * _maxUseDistance, Color.red);
@@ -123,12 +124,12 @@ public class NPCBehaviour : MonoBehaviour
     }
     private void ReturningState()
     {
-        if ((_myPos - _tarPos).sqrMagnitude < 7 * 7 && (_myPos - _spawnPoint).sqrMagnitude < 20f * 20f)
+        if ((_myPos - _tarPos).sqrMagnitude < Mathf.Pow(_returningRange, 2f) && (_myPos - _spawnPoint).sqrMagnitude < Mathf.Pow(_spawnRange, 2))
         {
             State = NPCState.Combat;
             return;
         }
-        if ((_myPos - _spawnPoint).sqrMagnitude < 2f)
+        if ((_myPos - _spawnPoint).sqrMagnitude < 2f * 2f)
         {
             State = NPCState.Idle;
             return;
@@ -174,9 +175,9 @@ public class NPCBehaviour : MonoBehaviour
     {
         float dis = ability.Base.IndHitBox.z * ability.Base.Deviation;
 
-        _abiPoint = _tarPos + new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+        _abiPoint = _tarPos + new Vector3(Random.Range(-_failRate, _failRate), 0f, Random.Range(-_failRate, _failRate));
         
-        return (_myPos - _abiPoint).sqrMagnitude < dis * dis;
+        return (_myPos - _abiPoint).sqrMagnitude < Mathf.Pow(dis, 2f);
     }
     
     private Vector3 AbilityDestination()
@@ -189,18 +190,18 @@ public class NPCBehaviour : MonoBehaviour
 
     private void CastAbility(int slotNum)
     {
-        if (_unit.Creature.Abilities[slotNum] == null) // Check if ability is equipped
-            return;
-        
+        while (_unit.Creature.Abilities[slotNum] == null) // Check if ability is equipped
+            slotNum = Random.Range(0, _unit.Creature.Abilities.Length); // Go agane until find ability
+
         Ability curAbi = _unit.Creature.Abilities[slotNum];
 
         if (curAbi.Cooldown > 0)
             return;
-        
+
         if (AbilityInRange(curAbi))
             _unit.Creature.PerformAbility(slotNum, AbilityDestination());
         else
-            _ray = new Ray(_tarPos + new Vector3(0f, 2f, 0f), Vector3.down); // Move closer to target
+            _movePos += _tarPos - _myPos; // Move closer to target
     }
     #endregion Abilities
     

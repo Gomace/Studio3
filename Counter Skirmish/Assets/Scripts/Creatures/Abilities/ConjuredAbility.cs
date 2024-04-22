@@ -1,9 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class CollisionTransmitter : MonoBehaviour
+public interface CollisionTransmitter
 {
+    public void Initialize(Stack<GameObject> conjStack, Ability source);
+}
+
+[RequireComponent(typeof(Rigidbody))]
+public class ConjuredAbility : MonoBehaviour, CollisionTransmitter
+{
+    #region Events
+    /*public delegate void OnConjEnable();
+    public event OnConjEnable onConjEnable;*/
+    public delegate void OnConjDisable();
+    public event OnConjDisable onConjDisable;
+    #endregion Events
+    
     private Rigidbody _rb;
     
     private Stack<GameObject> _conjurations;
@@ -21,7 +33,6 @@ public class CollisionTransmitter : MonoBehaviour
         get => _hits;
         set
         {
-            //Debug.Log($"The hit counter became {value}");
             if (value <= 0) // Might not need? ¯\_(ツ)_/¯
                 AddToStack();
             
@@ -29,14 +40,24 @@ public class CollisionTransmitter : MonoBehaviour
         }
     }
 
-    private void Awake() => _rb = GetComponent<Rigidbody>();
-
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _rb.mass = 1;
+        _rb.drag = _rb.angularDrag = 0;
+        _rb.useGravity = _rb.isKinematic = false;
+        _rb.interpolation = RigidbodyInterpolation.Interpolate;
+        _rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+    }
+    
     private void OnEnable()
     {
+        // onConjEnable?.Invoke();
+        
         if (_initialized)
             Activate();
     }
-
+    
     public void Initialize(Stack<GameObject> conjStack, Ability source)
     {
         _conjurations = conjStack;
@@ -87,9 +108,9 @@ public class CollisionTransmitter : MonoBehaviour
     
     private void AddToStack()
     {
-        // GameObject dissipate animation
-        gameObject.SetActive(false);
+        onConjDisable?.Invoke();
         _rb.velocity = Vector3.zero;
+        gameObject.SetActive(false);
         _conjurations.Push(gameObject);
     }
 }

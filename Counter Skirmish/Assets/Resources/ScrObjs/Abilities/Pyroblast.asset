@@ -22,7 +22,8 @@ MonoBehaviour:
   _resource: 20
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
   _indhitBox: {x: 100, y: 100, z: 600}
-  _deviation: 1.75
+  _rescale: 1
+  _deviation: 1.8
   _force: 200
   _hits: 1
   _canAffect: 0

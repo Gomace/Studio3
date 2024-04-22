@@ -24,6 +24,7 @@ public class AbilityBase : ScriptableObject
     // Ability Functionality Details
     [SerializeField] private GameObject _indicator;
     [SerializeField] private Vector3 _indhitBox = new (75f, 100f, 500f);
+    [SerializeField] private bool _rescale = false;
     [SerializeField] private float _deviation = 1.75f;
     [SerializeField] private float _force = 750;
     [SerializeField] private int _hits = 1;
@@ -51,6 +52,7 @@ public class AbilityBase : ScriptableObject
     // Ability Functionality Details
     public GameObject Indicator => _indicator;
     public Vector3 IndHitBox => _indhitBox * 0.01f;
+    public bool Rescale => _rescale;
     public float Deviation => _deviation;
     public float Force => _force;
     public int Hits => _hits;

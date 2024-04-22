@@ -135,7 +135,7 @@ public class Creature
         float modifiers = Random.Range(0.85f, 1f) * Base.GetEffectiveness(ability.Base.Type) * stab * critical;
         float att = (2 * attacker.Level + 10) / 250f;
         float def = att * ability.Base.Power * Mathf.Max(ability.Base.Style(this, metric), 0f) + 2;
-        int damage = Mathf.FloorToInt(def * modifiers);
+        int damage = Mathf.FloorToInt(def * modifiers + 1);
 
         //Debug.Log($"The final damage is {damage}");
         Health -= damage;
