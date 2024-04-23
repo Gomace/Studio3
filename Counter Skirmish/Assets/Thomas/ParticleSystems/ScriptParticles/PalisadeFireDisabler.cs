@@ -5,7 +5,7 @@ using UnityEngine;
 public class PalisadeFireDisabler : MonoBehaviour
 {
 
-    public float timerDisable = 2.0f;
+    public float timerDisable = 4.0f;
 
     private void Update()
     {
@@ -16,6 +16,8 @@ public class PalisadeFireDisabler : MonoBehaviour
             Debug.Log("Timer is zero");
             Destroy(this.gameObject);
         }
+
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -23,9 +25,9 @@ public class PalisadeFireDisabler : MonoBehaviour
         if (other.CompareTag("Palisade"))
         {
             this.GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            
 
-            Destroy(this.transform.parent.GetComponent<GameObject>());
+            Destroy(this.gameObject);
+            //Destroy(this.transform.parent.GetComponent<GameObject>());
         }
     }
 

@@ -25,6 +25,17 @@ public class PalisadeFallOver : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (rb == null)
+        {
+            return;
+        }
+
+        if (ropeRigidbody == null)
+        {
+            return;
+        }
+
         // Set
         if (rb.useGravity = ropeRigidbody.useGravity && timerStart == false)
         {
@@ -40,6 +51,9 @@ public class PalisadeFallOver : MonoBehaviour
                 rb.isKinematic = ropeRigidbody.isKinematic;
             }
         }
+
+        
+
     }
 
     /*private void OnTriggerStay(Collider other)
