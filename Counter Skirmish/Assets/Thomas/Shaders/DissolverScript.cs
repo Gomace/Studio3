@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextureChangeScript : MonoBehaviour
+public class DissolverScript : MonoBehaviour
 {
     // The duration of how long it takes for the lerp to go from 0 to 1 
     public float textureChangeDuration = 5;

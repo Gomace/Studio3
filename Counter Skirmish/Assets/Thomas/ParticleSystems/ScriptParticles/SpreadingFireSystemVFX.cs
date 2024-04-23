@@ -12,6 +12,8 @@ public class SpreadingFireSystemVFX : MonoBehaviour
     // Bool to turn on and off the timer
     private bool timerOnOff = false;
 
+    [SerializeField] GameObject flameParticle;
+
     private void Update()
     {
         // If the Palisade is on fire, start the timer
@@ -52,8 +54,12 @@ public class SpreadingFireSystemVFX : MonoBehaviour
             // Activate the first and second child of the object I collided with
  
             other.transform.GetChild(0).gameObject.SetActive(true);
+            Debug.Log("First child is active");
+            Instantiate(flameParticle, this.transform.position, this.transform.rotation);
 
-            other.transform.GetChild(1).gameObject.SetActive(true);
+            Debug.Log("Object should instantiate now");
+
+            //other.transform.GetChild(1).gameObject.SetActive(true);
         }
      
         if (other.CompareTag("Tool") && other.transform.GetChild(0).gameObject.activeInHierarchy)
@@ -61,7 +67,6 @@ public class SpreadingFireSystemVFX : MonoBehaviour
             // If the child of the other object is active (Seen in the last If statement) then:
             // Set it on fire
             onFire = true;
-            
         }
      }
 }

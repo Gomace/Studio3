@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DissolverScript : MonoBehaviour
+public class TextureChangeScript : MonoBehaviour
 {
+
+    
+
     public float textureChangeDuration = 5;
     public float textureStrength;
+
+    //public GameObject cubeTest;
 
     public void StartTextureChange()
     {
@@ -36,6 +41,14 @@ public class DissolverScript : MonoBehaviour
         if (other.CompareTag("Fire"))
         {
             StartTextureChange();
+        }
+    }
+
+    private void Update()
+    {
+        if (textureStrength == 1.0f)
+        {
+            Destroy(this.gameObject);
         }
     }
 
