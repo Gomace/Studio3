@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -241,11 +240,6 @@ public class Creature
             else
                 break;
         }
-    }
-
-    public LearnableAbility GetLearnableAbilityAtCurLvl()
-    {
-        return Base.LearnableAbilities.FirstOrDefault(learnable => learnable.Level == _level);
     }
 
     public void LearnAbility(LearnableAbility abilityToLearn)

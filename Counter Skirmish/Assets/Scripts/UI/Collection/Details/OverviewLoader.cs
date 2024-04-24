@@ -10,7 +10,7 @@ public class OverviewLoader : MonoBehaviour
     [Header("These should already be referenced.")] // Overview display elements
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _splash, _type1, _type2, _role;
-    [SerializeField] private TMP_Text _lvl;
+    [SerializeField] private TMP_Text _extraName, _title, _description, _lvl;
     
     [Header("Stats")]
     [SerializeField] private TMP_Text _health;
@@ -31,7 +31,10 @@ public class OverviewLoader : MonoBehaviour
             return;
             
         // Elements
-        _name.text = creature.Base.Name;
+        _name.text = _extraName.text = creature.Base.Name;
+        _title.text = creature.Base.Title;
+        _description.text = creature.Base.Description;
+        
         _splash.sprite = creature.Base.Splash;
         
         _type1.sprite = creature.Base.Type1.Icon;

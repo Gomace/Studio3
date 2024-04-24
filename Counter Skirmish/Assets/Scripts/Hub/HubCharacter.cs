@@ -24,7 +24,7 @@ public class HubCharacter : MonoBehaviour
 
         for (int i = 0; i < Creatures.Length; ++i)
         {
-            if (Creatures[i] != null)
+            if (Creatures[i] != null) // Find empty slot
                 continue;
             
             Creatures[i] = creature;
@@ -43,7 +43,7 @@ public class HubCharacter : MonoBehaviour
 
         for (int i = 0; i < Creatures.Length; ++i)
         {
-            if (Creatures[i] != creature)
+            if (Creatures[i] != creature) // Find creature in roster
                 continue;
 
             Creatures[i] = null;

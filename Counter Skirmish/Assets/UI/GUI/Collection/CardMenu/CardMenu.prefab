@@ -8219,7 +8219,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 27b2ac30af92c3f40a3c7cf339a00f02, type: 2}
     - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
       propertyPath: _creature._level
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4191219066128974569, guid: 82c1df5209ec03b40bdaebe206efa4cc, type: 3}
       propertyPath: _creature._passiveBase

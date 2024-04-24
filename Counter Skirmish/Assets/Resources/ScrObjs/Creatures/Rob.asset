@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Rob
   m_EditorClassIdentifier: 
   _name: Rob
+  _title: The Thief
   _description: Abomination does things and is a thing. Can not say things that aren't
     abominable.
   _icon: {fileID: 0}
-  _card: {fileID: 21300000, guid: 6aa5c58c725fadc48bbbd6d34d5d209a, type: 3}
+  _card: {fileID: 21300000, guid: 2c8db3c1c38599a41bfe63ec27554934, type: 3}
   _splash: {fileID: 0}
   _model: {fileID: 4601107157925159478, guid: d73b33cbad7fe694c83e6038213a9ff9, type: 3}
   _type1: {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}

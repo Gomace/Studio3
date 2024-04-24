@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: CrabNoLeg
   m_EditorClassIdentifier: 
   _name: Crab No Leg
+  _title: Ruler of the Beach
   _description: This crab has no legs.
   _icon: {fileID: 0}
-  _card: {fileID: 0}
+  _card: {fileID: 21300000, guid: 87eae8ed28fd8d448921a89d9c86a33a, type: 3}
   _splash: {fileID: 0}
   _model: {fileID: 5322900473781982167, guid: 61b3a11806156bd4bbbc81954c8339cf, type: 3}
   _type1: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}

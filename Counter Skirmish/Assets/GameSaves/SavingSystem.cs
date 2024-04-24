@@ -16,7 +16,7 @@ public static class SavingSystem
         if (!Directory.Exists(folder)) // Make sure save folders exist
             Directory.CreateDirectory(folder);
         
-        Debug.Log($"I'm saving Json");
+        Debug.Log("I'm saving Json");
         string jsonData = JsonUtility.ToJson(data);
         File.WriteAllText(folder + path, jsonData);
     }

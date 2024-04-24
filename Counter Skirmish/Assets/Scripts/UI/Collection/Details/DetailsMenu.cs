@@ -7,6 +7,8 @@ public class DetailsMenu : MonoBehaviour
     public delegate void OnDetailsLoad(CreatureInfo @creature);
     public event OnDetailsLoad onDetailsLoad;
 
+    [SerializeField] private HubCharacter _player;
+    
     [Header("These should be filled out.")]
     [SerializeField] private RectTransform _categories;
     [SerializeField] private RectTransform _screens;
@@ -29,6 +31,12 @@ public class DetailsMenu : MonoBehaviour
 
     private void LoadDetails() => onDetailsLoad?.Invoke(_creature);
 
+    public void UpdateAbilities()
+    {
+        _player.SaveRoster();
+        // _player.SaveCollection();
+    }
+    
     public void SelectCategory(GameObject category)
     {
         foreach (RectTransform btn in _categories)

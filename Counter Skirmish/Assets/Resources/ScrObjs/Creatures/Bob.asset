@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bob
   m_EditorClassIdentifier: 
   _name: Bob
+  _title: The Bob
   _description: Bob de boop.
   _icon: {fileID: 0}
   _card: {fileID: 21300000, guid: 6777986ec47ce0e4e86a3de76d18a242, type: 3}

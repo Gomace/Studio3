@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Coroutine _clickAnim, _indicUpdate; // Arrow & Indicator
 
-    public bool MoveOnUI { get; set; } = true;
+    public bool MoveOnUI { get; set; } = false;
 
     // Targeting Indicator
     public bool Indicating { get; set; }

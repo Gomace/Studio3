@@ -130,7 +130,7 @@ public class InstanceUnit : MonoBehaviour
 
     private void TryToLearnAbility()
     {
-        LearnableAbility newAbility = Creature.GetLearnableAbilityAtCurLvl();
+        LearnableAbility newAbility = Creature.Base.LearnableAbilities.FirstOrDefault(learnable => learnable.Level == Creature.Level); // Get learnable ability at current lvl
         
         if (newAbility == null)
             return;

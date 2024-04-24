@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Abomination
   m_EditorClassIdentifier: 
   _name: Abomination
+  _title: The Swamp King
   _description: Abomination does things and is a thing. Can not say things that aren't
     abominable.
   _icon: {fileID: 0}

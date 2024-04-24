@@ -4,21 +4,20 @@ using UnityEngine;
 public class AbilityBase : ScriptableObject
 {
     [SerializeField] private string _name;
+
+    [TextArea]
+    [SerializeField] private string _description;
     
     [SerializeField] private Sprite _icon;
     [SerializeField] private GameObject _model;
 
-    //private GameObject[] thing = new GameObject[6]; TODO what is this?
-    
-    [TextArea]
-    [SerializeField] private string _description;
-    
     [SerializeField] private Typing _type;
 
     [SerializeField] private int _power;
     [SerializeField] private float _cooldown;
     [SerializeField] private int _resource;
 
+    //private GameObject[] thing = new GameObject[6]; TODO what is this?
     // [SerializeField] private AbilityEffects _effects; // TODO remove this later
     
     // Ability Functionality Details

@@ -12,7 +12,7 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _icon, _type1, _type2, _role;
     [SerializeField] private TMP_Text _lvl;
-    [SerializeField] private RectTransform _hover;
+    [SerializeField] private GameObject _hover;
     #endregion Elements
     
     // Creature this slot has equipped
@@ -32,8 +32,8 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
     
     // Mouse-over-card stuff
-    public void OnPointerEnter(PointerEventData eventData) => _hover.gameObject.SetActive(true);
-    public void OnPointerExit(PointerEventData eventData) => _hover.gameObject.SetActive(false);
+    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(true);
+    public void OnPointerExit(PointerEventData eventData) => _hover.SetActive(false);
     public void OnPointerClick(PointerEventData eventData) // Quick Unequip
     {
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -51,7 +51,7 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         foreach (RectTransform element in (RectTransform)transform) // Turn all slot elements on to display stuff
             element.gameObject.SetActive(true);
-        _hover.gameObject.SetActive(false); // Hover still not on without hovering
+        _hover.SetActive(false); // Hover still not on without hovering
         
         if (_creature.Base == null)
             return;
@@ -69,4 +69,5 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void UnequipCreature() => _cardMenu.RemoveCreatureFromRoster(_creature); // Removes creature from Roster
+    public void DetailsInfo() => _cardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
 }
