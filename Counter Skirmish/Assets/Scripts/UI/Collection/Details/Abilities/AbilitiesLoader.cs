@@ -50,6 +50,18 @@ public class AbilitiesLoader : MonoBehaviour
             _equipped[used++].ABase = aBase; // Put abilities in equipped-slots
         }
 
+        if (creature.AbilityBases.Length < 4) // Make sure length of array is 4 - for bugs
+        {
+            creature.AbilityBases = new AbilityBase[4];
+            for (int i = 0; i < _equipped.Length; ++i)
+            {
+                if (_equipped[i].ABase == null)
+                    continue;
+                
+                creature.AbilityBases[i] = _equipped[i].ABase;
+            }
+        }
+
         int length = creature.Base.LearnableAbilities.Where(learnable => learnable != null).Count(learnable => learnable.Base != null), // Length of non-empty LearnableAbilities
             available = 0;
 

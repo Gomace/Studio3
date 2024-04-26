@@ -16,7 +16,7 @@ public static class SavingSystem
         if (!Directory.Exists(folder)) // Make sure save folders exist
             Directory.CreateDirectory(folder);
         
-        Debug.Log("I'm saving Json");
+        //Debug.Log("I'm saving Json");
         string jsonData = JsonUtility.ToJson(data);
         File.WriteAllText(folder + path, jsonData);
     }
@@ -24,7 +24,7 @@ public static class SavingSystem
     public static T LoadFromJson<T>(string path)
     {
         string folder = Application.persistentDataPath + _jsonFolder;
-        Debug.Log("I'm in LoadFromJson");
+        //Debug.Log("I'm in LoadFromJson");
 
         if (File.Exists(folder + path)) // Application.persistentDataPath + "/SaveData/Json/SaveData.json"
         {

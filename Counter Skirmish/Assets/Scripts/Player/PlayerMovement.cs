@@ -1,8 +1,10 @@
 using System.Collections;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(ClickMarker))]
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     
     private Coroutine _clickAnim, _indicUpdate; // Arrow & Indicator
 
-    public bool MoveOnUI { get; set; } = false;
+    public bool MoveOnUI { get; set; } = true;
 
     // Targeting Indicator
     public bool Indicating { get; set; }
@@ -39,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
         
         _navMA = GetComponent<NavMeshAgent>();
         _navMA.updateRotation = false;
+
+        if (SceneManager.GetActiveScene().name == "Hub")
+            MoveOnUI = false;
     }
     
     private void LateUpdate()
