@@ -5,8 +5,6 @@ using TMPro;
 
 public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private CardMenu _cardMenu;
-    
     #region Elements
     [Header("These should already be referenced.")] // Slot display elements
     [SerializeField] private TMP_Text _name;
@@ -15,9 +13,9 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] private GameObject _hover;
     #endregion Elements
     
-    // Creature this slot has equipped
-    private CreatureInfo _creature;
+    private CreatureInfo _creature; // Creature this slot has equipped
 
+    public CardMenu CardMenu { get; set; }
     public CreatureInfo Creature
     {
         get => _creature;
@@ -27,9 +25,6 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             LoadInfo();
         } 
     }
-
-    private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
-    private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
     
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(true);
@@ -40,7 +35,7 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             UnequipCreature();
     }
     
-    private void LoadInfo() // Reveal details when card is equipped in slot
+    public void LoadInfo() // Reveal details when card is equipped in slot
     {
         if (_creature == null)
         {
@@ -49,13 +44,13 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             return;
         }
         
-        foreach (RectTransform element in (RectTransform)transform) // Turn all slot elements on to display stuff
-            element.gameObject.SetActive(true);
-        _hover.SetActive(false); // Hover still not on without hovering
-        
         if (_creature.Base == null)
+        {
+            foreach (RectTransform element in (RectTransform)transform) // Turn off all Slot elements
+                element.gameObject.SetActive(false);
             return;
-            
+        }
+
         _name.text = _creature.Base.Name;
         _icon.sprite = _creature.Base.Icon;
         
@@ -66,8 +61,13 @@ public class RosterCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         
         _role.sprite = _creature.Base.Role.Icon;
         _lvl.text = $"Lvl. {_creature.Level}";
+        
+        foreach (RectTransform element in (RectTransform)transform) // Turn all slot elements on to display stuff
+            element.gameObject.SetActive(true);
+        _hover.SetActive(false); // Hover still not on without hovering
     }
 
-    public void UnequipCreature() => _cardMenu.RemoveCreatureFromRoster(_creature); // Removes creature from Roster
-    public void DetailsInfo() => _cardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
+    public void UnequipCreature() => CardMenu.RemoveCreatureFromRoster(_creature); // Removes creature from Roster
+    public void DetailsInfo() => CardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
+    public void UpdateSelected() => CardMenu.CurSelected(_creature);
 }

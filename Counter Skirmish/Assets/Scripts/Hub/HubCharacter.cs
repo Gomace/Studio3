@@ -4,51 +4,92 @@ using UnityEngine;
 // Something something Creature follows you [RequireComponent(typeof(FollowerCreature))]
 public class HubCharacter : MonoBehaviour
 {
-    private const string _jsonPath = "/RosterData.json";
+    private const string _jsonRosterPath = "/RosterData.json";
+    private const string _jsonCollectionPath = "/CollectionData.json";
 
-    public CreatureInfo[] Creatures { get; private set; } = new CreatureInfo[6];
+    public CreatureInfo[] RosterCreatures { get; private set; } = new CreatureInfo[6];
+    public CreatureInfo[] CollectionCreatures { get; private set; }
 
     private void Awake()
     {
         LoadRoster(); // Check if player has a save
-        if (Creatures.Any(creature => creature != null)) // If save had creatures, don't give starter
+        LoadCollection();
+        if (RosterCreatures.Any(creature => creature != null)) // If save had creatures, don't give starter
             return;
 
         Instantiate(Resources.Load<GameObject>("UI/StarterCreature")).GetComponent<StarterCreature>().Player = this; // Player has no save, start new game
     }
     
-    public void AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
+    public bool AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
     {
-        if (Creatures.Any(slot => slot == creature)) // Check if already equipped
-            return;
+        if (RosterCreatures.Any(slot => slot == creature)) // Check if already equipped
+            return false;
 
-        for (int i = 0; i < Creatures.Length; ++i)
+        for (int i = 0; i < RosterCreatures.Length; ++i)
         {
-            if (Creatures[i] != null) // Find empty slot
+            if (RosterCreatures[i] != null) // Find empty slot
                 continue;
             
-            Creatures[i] = creature;
+            RosterCreatures[i] = creature;
             SaveRoster();
-            break;
+            RemoveCreatureFromCollection(creature);
+            return true;
         }
+
+        return false;
     }
-    public void RemoveCreatureFromRoster(CreatureInfo creature)
+    public bool RemoveCreatureFromRoster(CreatureInfo creature, bool rental)
     {
-        if (Creatures.All(slot => slot != creature)) // Check if not equipped
-            return;
+        if (RosterCreatures.All(slot => slot != creature)) // Check if not equipped
+            return false;
 
-        int remaining = Creatures.Count(slot => slot != null);
+        int remaining = RosterCreatures.Count(slot => slot != null);
         if (remaining - 1 < 1) // Minimum one creature at all times
-            return;
+            return false;
 
-        for (int i = 0; i < Creatures.Length; ++i)
+        for (int i = 0; i < RosterCreatures.Length; ++i)
         {
-            if (Creatures[i] != creature) // Find creature in roster
+            if (RosterCreatures[i] != creature) // Find creature in roster
                 continue;
 
-            Creatures[i] = null;
+            RosterCreatures[i] = null;
             SaveRoster();
-            break;
+            if (rental == false)
+                AddCreatureToCollection(creature);
+            return true;
+        }
+
+        return false;
+    }
+
+    private void RemoveCreatureFromCollection(CreatureInfo creature)
+    {
+        if (CollectionCreatures.All(slot => slot != creature)) // Check if not stored
+            return;
+        
+        for (int i = 0; i < CollectionCreatures.Length; ++i)
+        {
+            if (CollectionCreatures[i] != creature) // Find Creature in collection
+                continue;
+
+            CollectionCreatures[i] = null;
+            SaveCollection();
+            return;
+        }
+    }
+    private void AddCreatureToCollection(CreatureInfo creature)
+    {
+        if (CollectionCreatures.Any(slot => slot == creature)) // Check if already stored
+            return;
+
+        for (int i = 0; i < CollectionCreatures.Length; ++i)
+        {
+            if (CollectionCreatures[i] != null) // Find empty slot
+                continue;
+            
+            CollectionCreatures[i] = creature;
+            SaveCollection();
+            return;
         }
     }
 
@@ -56,26 +97,58 @@ public class HubCharacter : MonoBehaviour
     {
         RosterData data = new RosterData();
         
-        data.ApplyCreatureInfo(Creatures);
+        data.ApplyCreatureInfo(RosterCreatures);
         
-        SavingSystem.SaveToJson(data, _jsonPath);
+        SavingSystem.SaveToJson(data, _jsonRosterPath);
     }
     private void LoadRoster() // Load CreatureInfo, not Creature
     {
-        RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonPath);
+        RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonRosterPath);
 
         if (data == null)
             return;
 
         for (int i = 0; i < data.Names.Length; ++i)
         {
-            Creatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
+            RosterCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {
                 PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
                 AbilityBases = new AbilityBase[4]
             };
             for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
-                Creatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
+                RosterCreatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
+        }
+    }
+
+    public void SaveCollection()
+    {
+        CollectionData data = new CollectionData();
+        
+        data.ApplyCreatureInfo(CollectionCreatures);
+        
+        SavingSystem.SaveToJson(data, _jsonCollectionPath);
+    }
+    public void LoadCollection() // Load CreatureInfo, not Creature
+    {
+        CollectionData data = SavingSystem.LoadFromJson<CollectionData>(_jsonCollectionPath);
+
+        if (data == null)
+        {
+            CollectionCreatures = new CreatureInfo[5];
+            return;
+        }
+
+        CollectionCreatures = new CreatureInfo[data.Names.Length + 5];
+        
+        for (int i = 0; i < data.Names.Length; ++i)
+        {
+            CollectionCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
+            {
+                PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
+                AbilityBases = new AbilityBase[4]
+            };
+            for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
+                CollectionCreatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
         }
     }
 }

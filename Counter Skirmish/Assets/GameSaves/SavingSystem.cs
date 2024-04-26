@@ -79,13 +79,107 @@ public class ProgressData
 }
 
 [Serializable]
-public class CollectionData // All creatures
+public class CollectionData // All unequipped creatures
 {
-    private int _level;
-    
-    public CollectionData(Creature creature)
+    public string[] Names; // File name of CreatureBase
+    public int[] Levels;
+    public int[] Exps;
+
+    public AbilityNames[] Abilities;
+    public string[] Passives;
+
+    public void ApplyCreature(Creature[] creatures)
     {
-        _level = creature.Level;
+        int length = 0,
+            i = 0;
+
+        length += creatures.Where(creature => creature != null).Count(creature => creature.Base != null);
+
+        ArrayLengths(length);
+
+        foreach (Creature creature in creatures)
+        {
+            if (creature == null)
+                continue;
+
+            if (creature.Base == null)
+                continue;
+            
+            Names[i] = creature.Base.name;
+            Levels[i] = creature.Level;
+            Exps[i] = creature.Exp;
+
+            Passives[i] = creature.Passive.Base.name;
+            
+            int abilities = 0,
+                l = 0;
+
+            abilities += creature.Abilities.Count(ability => ability != null);
+
+            Abilities[i] = new AbilityNames(abilities);
+
+            foreach (Ability ability in creature.Abilities)
+            {
+                if (ability == null)
+                    continue;
+                
+                Abilities[i].Names[l++] = ability.Base.name;
+            }
+            
+            ++i;
+        }
+    }
+    
+    public void ApplyCreatureInfo(CreatureInfo[] creatures)
+    {
+        int length = 0,
+            i = 0;
+
+        length += creatures.Where(creature => creature != null).Count(creature => creature.Base != null);
+
+        ArrayLengths(length);
+
+        foreach (CreatureInfo creature in creatures)
+        {
+            if (creature == null)
+                continue;
+            
+            if (creature.Base == null)
+                continue;
+            
+            Names[i] = creature.Base.name;
+            Levels[i] = creature.Level;
+            Exps[i] = creature.Exp;
+
+            Passives[i] = creature.PassiveBase.name;
+            
+            int abilities = 0,
+                l = 0;
+
+            abilities += creature.AbilityBases.Count(ability => ability != null);
+
+            Abilities[i] = new AbilityNames(abilities);
+
+            foreach (AbilityBase ability in creature.AbilityBases)
+            {
+                if (ability == null)
+                    continue;
+                
+                Abilities[i].Names[l++] = ability.name;
+            }
+            
+            ++i;
+        }
+    }
+
+    private void ArrayLengths(int length)
+    {
+        Names = new string[length];
+        Levels = new int[length];
+        Exps = new int[length];
+
+        Abilities = new AbilityNames[length];
+        Passives = new string[length];
     }
 }
 
@@ -95,8 +189,6 @@ public class RosterData // Equipped creatures
     public string[] Names; // File name of CreatureBase
     public int[] Levels;
     public int[] Exps;
-
-    public float[][] Test;
     
     public AbilityNames[] Abilities;
     public string[] Passives;

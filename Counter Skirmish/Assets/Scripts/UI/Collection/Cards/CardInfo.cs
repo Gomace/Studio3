@@ -5,9 +5,6 @@ using TMPro;
 
 public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [SerializeField] private CardMenu _cardMenu; // Card menu chief
-    [SerializeField] private CreatureInfo _creature;
-    
     #region Elements
     [Header("These should already be referenced.")] // Card display elements
     [SerializeField] private TMP_Text _name;
@@ -15,9 +12,19 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private TMP_Text _lvl;
     [SerializeField] private GameObject _hover;
     #endregion Elements
-
-    private void OnEnable() => _cardMenu.onCardsLoad += LoadInfo;
-    private void OnDisable() => _cardMenu.onCardsLoad -= LoadInfo;
+    
+    private CreatureInfo _creature;
+    
+    public CardMenu CardMenu { get; set; }
+    public CreatureInfo Creature
+    {
+        get => _creature;
+        set
+        {
+           _creature = value;
+           LoadInfo();
+        }
+    }
 
     // Mouse-over-card stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(true);
@@ -28,13 +35,19 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             EquipCreature();
     }
     
-    private void LoadInfo() // Put details on card
+    public void LoadInfo() // Put details on card
     {
         if (_creature == null)
+        {
+            gameObject.SetActive(false);
             return;
+        }
         if (_creature.Base == null)
+        {
+            gameObject.SetActive(false);
             return;
-            
+        }
+        
         _name.text = _creature.Base.Name;
         _card.sprite = _creature.Base.Card;
         
@@ -45,8 +58,11 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
         _role.sprite = _creature.Base.Role.Icon;
         _lvl.text = $"Lvl. {_creature.Level}";
+        
+        gameObject.SetActive(true);
     }
     
-    public void EquipCreature() => _cardMenu.AddCreatureToRoster(_creature); // Adds Creature to open slot in Roster
-    public void DetailsInfo() => _cardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
+    public void EquipCreature() => CardMenu.AddCreatureToRoster(this); // Adds Creature to open slot in Roster
+    public void DetailsInfo() => CardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
+    public void UpdateSelected() => CardMenu.CurSelected(_creature);
 }

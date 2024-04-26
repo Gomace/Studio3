@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 3460960486983116242}
   - component: {fileID: 3460960486983116268}
   - component: {fileID: 3460960486983116243}
-  - component: {fileID: 5601358087005350244}
+  - component: {fileID: 671092540371490954}
   - component: {fileID: 8193224281790675486}
   m_Layer: 5
   m_Name: Slot
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5601358087005350244
+--- !u!114 &671092540371490954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -660,7 +660,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3460960486983116241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -692,6 +692,21 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3460960486983116243}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8193224281790675486}
+        m_TargetAssemblyTypeName: RosterCard, Assembly-CSharp
+        m_MethodName: UpdateSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8193224281790675486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,7 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e816120bc87268b4e8c9c080a8658254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardMenu: {fileID: 0}
   _name: {fileID: 3460960487209472105}
   _icon: {fileID: 3460960487140534791}
   _type1: {fileID: 3460960487445625157}
