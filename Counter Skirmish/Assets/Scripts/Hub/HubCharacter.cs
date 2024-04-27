@@ -43,8 +43,7 @@ public class HubCharacter : MonoBehaviour
         if (RosterCreatures.All(slot => slot != creature)) // Check if not equipped
             return false;
 
-        int remaining = RosterCreatures.Count(slot => slot != null);
-        if (remaining - 1 < 1) // Minimum one creature at all times
+        if (1 >= RosterCreatures.Where(slot => slot != null).Count(slot => slot.Base != null)) // Minimum one creature at all times
             return false;
 
         for (int i = 0; i < RosterCreatures.Length; ++i)
@@ -110,7 +109,7 @@ public class HubCharacter : MonoBehaviour
 
         for (int i = 0; i < data.Names.Length; ++i)
         {
-            RosterCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
+            RosterCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i], data.Rental[i])
             {
                 PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
                 AbilityBases = new AbilityBase[4]
@@ -128,7 +127,7 @@ public class HubCharacter : MonoBehaviour
         
         SavingSystem.SaveToJson(data, _jsonCollectionPath);
     }
-    public void LoadCollection() // Load CreatureInfo, not Creature
+    private void LoadCollection() // Load CreatureInfo, not Creature
     {
         CollectionData data = SavingSystem.LoadFromJson<CollectionData>(_jsonCollectionPath);
 

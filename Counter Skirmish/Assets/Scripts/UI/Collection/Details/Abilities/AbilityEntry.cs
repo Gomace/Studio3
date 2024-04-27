@@ -27,7 +27,7 @@ public class AbilityEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     private void Awake() => _icon = GetComponent<Image>();
 
     // Mouse-over-ability stuff
-    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(true);
+    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(_aBase != null);
     public void OnPointerExit(PointerEventData eventData) => _hover.SetActive(false);
     public void OnPointerClick(PointerEventData eventData) // Quick equip
     {
@@ -35,6 +35,19 @@ public class AbilityEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             EquipAbility();
     }
 
-    public void EquipAbility() => AbiLoader.EquipAbility(_aBase); // Adds ability to actives
-    public void UpdateSelected() => AbiLoader.CurSelected(_aBase);
+    public void EquipAbility() // Adds ability to actives
+    {
+        if (_aBase == null)
+            return;
+        
+        _hover.SetActive(false);
+        AbiLoader.EquipAbility(this);
+    }
+    public void UpdateSelected()
+    {
+        if (_aBase == null)
+            return;
+        
+        AbiLoader.CurSelected(_aBase);
+    }
 }

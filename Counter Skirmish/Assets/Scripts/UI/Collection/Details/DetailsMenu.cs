@@ -34,7 +34,7 @@ public class DetailsMenu : MonoBehaviour
     public void UpdateAbilities()
     {
         _player.SaveRoster();
-        // _player.SaveCollection();
+        _player.SaveCollection();
     }
     
     public void SelectCategory(GameObject category)

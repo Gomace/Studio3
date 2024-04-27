@@ -87,7 +87,7 @@ public class CreatureRoster : MonoBehaviour
         
         for (int i = 0; i < data.Names.Length; ++i)
         {
-            _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
+            _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i], data.Rental[i])
             {
                 Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}")),
                 Abilities = new Ability[4]

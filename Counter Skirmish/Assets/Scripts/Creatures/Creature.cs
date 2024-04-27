@@ -18,6 +18,8 @@ public class Creature
     public CreatureBase Base => _base;
     public int Level => _level;
     public int Exp { get; set; }
+    
+    public bool Rental { get; set; }
 
     public int Health { get; set; }
     public int Resource { get; set; }
@@ -38,11 +40,13 @@ public class Creature
     public int Resistance => GetStat(Stat.Resistance);
     public int Speed => GetStat(Stat.Speed);
 
-    public Creature(CreatureBase cBase, int level, int exp)
+    public Creature(CreatureBase cBase, int level, int exp, bool rental = false)
     {
         _base = cBase;
         _level = level;
         Exp = exp;
+        
+        Rental = rental;
     }
     
     public void Initialize(InstanceUnit unit)

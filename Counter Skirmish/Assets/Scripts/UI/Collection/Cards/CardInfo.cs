@@ -10,7 +10,7 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _card, _type1, _type2, _role;
     [SerializeField] private TMP_Text _lvl;
-    [SerializeField] private GameObject _hover;
+    [SerializeField] private GameObject _rental, _hover;
     #endregion Elements
     
     private CreatureInfo _creature;
@@ -27,7 +27,7 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
     // Mouse-over-card stuff
-    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(true);
+    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(_creature != null);
     public void OnPointerExit(PointerEventData eventData) => _hover.SetActive(false);
     public void OnPointerClick(PointerEventData eventData) // Quick equip
     {
@@ -58,11 +58,37 @@ public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
         _role.sprite = _creature.Base.Role.Icon;
         _lvl.text = $"Lvl. {_creature.Level}";
+        _rental.SetActive(_creature.Rental);
         
         gameObject.SetActive(true);
     }
     
-    public void EquipCreature() => CardMenu.AddCreatureToRoster(this); // Adds Creature to open slot in Roster
-    public void DetailsInfo() => CardMenu.DetailsScreen(_creature); // What Creature to show in DetailsMenu
-    public void UpdateSelected() => CardMenu.CurSelected(_creature);
+    public void EquipCreature() // Adds Creature to open slot in Roster
+    {
+        if (_creature == null)
+            return;
+        if (_creature.Base == null)
+            return;
+        
+        _hover.SetActive(false);
+        CardMenu.AddCreatureToRoster(this);
+    }
+    public void DetailsInfo() // What Creature to show in DetailsMenu
+    {
+        if (_creature == null)
+            return;
+        if (_creature.Base == null)
+            return;
+        
+        CardMenu.DetailsScreen(_creature);
+    }
+    public void UpdateSelected()
+    {
+        if (_creature == null)
+            return;
+        if (_creature.Base == null)
+            return;
+        
+        CardMenu.CurSelected(_creature);
+    }
 }

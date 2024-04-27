@@ -190,6 +190,8 @@ public class RosterData // Equipped creatures
     public int[] Levels;
     public int[] Exps;
     
+    public bool[] Rental;
+    
     public AbilityNames[] Abilities;
     public string[] Passives;
 
@@ -214,6 +216,8 @@ public class RosterData // Equipped creatures
             Levels[i] = creature.Level;
             Exps[i] = creature.Exp;
 
+            Rental[i] = creature.Rental;
+            
             Passives[i] = creature.Passive.Base.name;
             
             int abilities = 0,
@@ -256,6 +260,8 @@ public class RosterData // Equipped creatures
             Levels[i] = creature.Level;
             Exps[i] = creature.Exp;
 
+            Rental[i] = creature.Rental;
+
             Passives[i] = creature.PassiveBase.name;
             
             int abilities = 0,
@@ -282,6 +288,8 @@ public class RosterData // Equipped creatures
         Names = new string[length];
         Levels = new int[length];
         Exps = new int[length];
+
+        Rental = new bool[length];
 
         Abilities = new AbilityNames[length];
         Passives = new string[length];

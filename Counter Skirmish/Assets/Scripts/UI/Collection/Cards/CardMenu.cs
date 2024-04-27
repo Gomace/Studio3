@@ -7,11 +7,6 @@ using TMPro;
 
 public class CardMenu : MonoBehaviour
 {
-    #region Events
-    public delegate void OnCardsLoad();
-    public event OnCardsLoad onCardsLoad; // All cards add themselves to this
-    #endregion Events
-
     [SerializeField] private HubCharacter _player;
     [SerializeField] private GameObject _detailsMenu;
     
@@ -35,12 +30,6 @@ public class CardMenu : MonoBehaviour
         LoadCollection();
         LoadCards();
     }
-    
-    /*private void OnEnable()
-    {
-        LoadRoster(); // Load roster on window open
-        LoadCards();
-    }*/
 
     public void LoadCards() // Load all cards
     {
@@ -66,17 +55,13 @@ public class CardMenu : MonoBehaviour
     }
     public void RemoveCreatureFromRoster(CreatureInfo creature) // Remove Creature from Player
     {
-        if (_player.RemoveCreatureFromRoster(creature, _rentals.Any(slot => slot == creature)))
-        {
-            foreach (CardInfo card in _cards)
-            {
-                if (card.Creature != null)
-                    continue;
-                
-                card.Creature = creature;
-                break;
-            }
-        }
+        if (creature == null)
+            return;
+        if (creature.Base == null)
+            return;
+        
+        if (_player.RemoveCreatureFromRoster(creature, creature.Rental))
+            _cards.First(card => card.Creature == null).Creature = creature;
         
         LoadRoster();
         LoadCards();
