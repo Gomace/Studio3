@@ -113,7 +113,11 @@ public class CollectionData // All unequipped creatures
             Exps[i] = creature.Exp;
 
             Passives[i] = creature.Passive.Base.name;
-            LearnedAbilities[i].Names = creature.LearnedAbilities.ToArray();
+            LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
+            {
+                Names = creature.LearnedAbilities.ToArray()
+            };
+            
             
             int abilities = 0,
                 l = 0;
