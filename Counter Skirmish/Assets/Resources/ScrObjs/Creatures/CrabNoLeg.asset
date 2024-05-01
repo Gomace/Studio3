@@ -31,7 +31,7 @@ MonoBehaviour:
   _speed: 80
   _critChance: 2
   _critDamage: 1
-  _expYield: 50
+  _expYield: 128
   _growthRate: 0
   _catchRate: 255
   _learnableAbilities:

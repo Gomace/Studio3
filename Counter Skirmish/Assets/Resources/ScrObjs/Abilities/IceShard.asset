@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Ice Shard
   _description: Shoots a fireball from the character in the target direction.
-  _icon: {fileID: 21300000, guid: 06490595caad5cd45ba82cad4a598ce8, type: 3}
+  _icon: {fileID: 21300000, guid: d085c0537a81b35448be528686086d9b, type: 3}
   _model: {fileID: 2231967358443348698, guid: 8ca6bd80fc731d94ba4545783321f082, type: 3}
   _type: {fileID: 11400000, guid: 6158491a94068424b936388a85d801b4, type: 2}
   _power: 30

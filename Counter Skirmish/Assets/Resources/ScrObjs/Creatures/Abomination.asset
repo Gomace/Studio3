@@ -16,9 +16,9 @@ MonoBehaviour:
   _title: The Swamp King
   _description: Abomination does things and is a thing. Can not say things that aren't
     abominable.
-  _icon: {fileID: 0}
-  _card: {fileID: 21300000, guid: 6aa5c58c725fadc48bbbd6d34d5d209a, type: 3}
-  _splash: {fileID: 0}
+  _icon: {fileID: 21300000, guid: ac356b8d07bd1e443bc71b8024628bae, type: 3}
+  _card: {fileID: 21300000, guid: 4b38ec45773f68f46aa430fbbf5728de, type: 3}
+  _splash: {fileID: 21300000, guid: a676bb92a9736934cae5153a968d0e08, type: 3}
   _model: {fileID: 4601107157925159478, guid: d73b33cbad7fe694c83e6038213a9ff9, type: 3}
   _type1: {fileID: 11400000, guid: fd63d7827cdc94e48b59b0ce7e88f7ae, type: 2}
   _type2: {fileID: 11400000, guid: 8b8056f274bb7a843b82b70ef0f52567, type: 2}

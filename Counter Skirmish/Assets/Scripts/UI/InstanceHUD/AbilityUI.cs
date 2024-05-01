@@ -45,6 +45,9 @@ public class AbilityUI : MonoBehaviour
     private void SetAbilityUI(Creature creature)
     {
         _abilities = creature.Abilities;
+
+        foreach (Image ability in _abilityUIs)
+            ability.sprite = null;
         
         for (int i = 0; i < _abilities.Length; ++i)
         {
@@ -57,9 +60,7 @@ public class AbilityUI : MonoBehaviour
                 AbilityCD(_abilities[i]);
         }
 
-        if (creature.Passive == null)
-            return;
-        if (creature.Passive.Base.Icon != null)
+        if (creature.Passive?.Base.Icon != null)
             _passive.sprite = creature.Passive.Base.Icon;
     }
 

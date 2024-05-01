@@ -188,7 +188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375554665274791594}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -565,8 +565,10 @@ MonoBehaviour:
     _base: {fileID: 0}
     _level: 1
     _exp: 0
+    _rental: 0
     _abilityBases: []
     _passiveBase: {fileID: 0}
+    LearnedAbilities: []
   _name: {fileID: 1375554666411420594}
   _card: {fileID: 1375554665274791592}
   _type1: {fileID: 1375554665643302555}
