@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Slash
   _description: A quick slash at all nearby targets.
-  _icon: {fileID: 21300000, guid: 44e8ad25d78e1da4d8ae0e3a35e30136, type: 3}
+  _icon: {fileID: 21300000, guid: 8c3e837def8fc194e82ec00e55a4cff8, type: 3}
   _model: {fileID: 2231967358443348698, guid: 628ddffb907138440b2ee732f4fdadf8, type: 3}
   _type: {fileID: 11400000, guid: 86d5cdc3f15a27040aaa1b6706e03df7, type: 2}
   _power: 70

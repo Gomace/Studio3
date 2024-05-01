@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: RottingMoss
   _description: Throws moss at a target, dealing damage to all enemies nearby.
-  _icon: {fileID: 21300000, guid: fd75a80b27e13704e8c6811b9f86a994, type: 3}
+  _icon: {fileID: 21300000, guid: e039d84739d29a146beee57de384b5e7, type: 3}
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
   _type: {fileID: 11400000, guid: d25ee32040d547d43a1a5d98408d2855, type: 2}
   _power: 30

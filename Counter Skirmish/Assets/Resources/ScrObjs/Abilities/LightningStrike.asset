@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Lightning Strike
   _description: Summons a lightning strike in the target area after a short delay.
-  _icon: {fileID: 21300000, guid: fbf093e6d3a8f1a4cae199b39c2d310e, type: 3}
+  _icon: {fileID: 21300000, guid: ad081657127ec984eba828d0a4ab0d0d, type: 3}
   _model: {fileID: 2231967358443348698, guid: cd80abb8a868bf340949166e4a49313d, type: 3}
   _type: {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
   _power: 100
