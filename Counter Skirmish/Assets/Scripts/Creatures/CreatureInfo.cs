@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -16,7 +15,9 @@ public class CreatureInfo
     public CreatureBase Base => _base;
     public int Level => _level;
     public int Exp => _exp;
+    
     public bool Rental => _rental;
+    public AbilityBase[] LearnedAbilities;
 
     public AbilityBase[] AbilityBases
     {
@@ -28,7 +29,7 @@ public class CreatureInfo
         get => _passiveBase;
         set => _passiveBase = value;
     }
-
+    
     public CreatureInfo(CreatureBase cBase, int level, int exp, bool rental = false)
     {
         _base = cBase;

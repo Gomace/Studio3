@@ -19,7 +19,8 @@ public class Creature
     public int Level => _level;
     public int Exp { get; set; }
     
-    public bool Rental { get; set; }
+    public bool Rental { get; private set; }
+    public List<string> LearnedAbilities { get; set; } = new();
 
     public int Health { get; set; }
     public int Resource { get; set; }

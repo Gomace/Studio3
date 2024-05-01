@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -112,10 +113,13 @@ public class HubCharacter : MonoBehaviour
             RosterCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i], data.Rental[i])
             {
                 PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
-                AbilityBases = new AbilityBase[4]
+                AbilityBases = new AbilityBase[4],
+                LearnedAbilities = new AbilityBase[data.LearnedAbilities[i].Names.Length + 3]
             };
             for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
                 RosterCreatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
+            for (int l = 0; l < data.LearnedAbilities[i].Names.Length; ++l)
+                RosterCreatures[i].LearnedAbilities[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.LearnedAbilities[i].Names[l]}");
         }
     }
 
@@ -144,10 +148,13 @@ public class HubCharacter : MonoBehaviour
             CollectionCreatures[i] = new CreatureInfo(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i])
             {
                 PassiveBase = Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}"),
-                AbilityBases = new AbilityBase[4]
+                AbilityBases = new AbilityBase[4],
+                LearnedAbilities = new AbilityBase[data.LearnedAbilities[i].Names.Length + 3]
             };
             for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
                 CollectionCreatures[i].AbilityBases[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}");
+            for (int l = 0; l < data.LearnedAbilities[i].Names.Length; ++l)
+                CollectionCreatures[i].LearnedAbilities[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.LearnedAbilities[i].Names[l]}");
         }
     }
 }

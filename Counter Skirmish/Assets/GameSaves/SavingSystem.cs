@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 //using System.Runtime.Serialization.Formatters.Binary;
 
@@ -87,6 +88,8 @@ public class CollectionData // All unequipped creatures
 
     public AbilityNames[] Abilities;
     public string[] Passives;
+    
+    public AbilityNames[] LearnedAbilities;
 
     public void ApplyCreature(Creature[] creatures)
     {
@@ -110,6 +113,7 @@ public class CollectionData // All unequipped creatures
             Exps[i] = creature.Exp;
 
             Passives[i] = creature.Passive.Base.name;
+            LearnedAbilities[i].Names = creature.LearnedAbilities.ToArray();
             
             int abilities = 0,
                 l = 0;
@@ -168,6 +172,21 @@ public class CollectionData // All unequipped creatures
                 Abilities[i].Names[l++] = ability.name;
             }
             
+            int learned = 0,
+                s = 0;
+
+            learned += creature.LearnedAbilities.Count(ability => ability != null);
+
+            LearnedAbilities[i] = new AbilityNames(learned);
+
+            foreach (AbilityBase ability in creature.LearnedAbilities)
+            {
+                if (ability == null)
+                    continue;
+                
+                LearnedAbilities[i].Names[s++] = ability.name;
+            }
+            
             ++i;
         }
     }
@@ -180,6 +199,7 @@ public class CollectionData // All unequipped creatures
 
         Abilities = new AbilityNames[length];
         Passives = new string[length];
+        LearnedAbilities = new AbilityNames[length];
     }
 }
 
@@ -195,6 +215,8 @@ public class RosterData // Equipped creatures
     public AbilityNames[] Abilities;
     public string[] Passives;
 
+    public AbilityNames[] LearnedAbilities;
+    
     public void ApplyCreature(Creature[] creatures)
     {
         int length = 0,
@@ -219,7 +241,12 @@ public class RosterData // Equipped creatures
             Rental[i] = creature.Rental;
             
             Passives[i] = creature.Passive.Base.name;
-            
+
+            LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
+            {
+                Names = creature.LearnedAbilities.ToArray()
+            };
+
             int abilities = 0,
                 l = 0;
 
@@ -277,6 +304,21 @@ public class RosterData // Equipped creatures
                     continue;
                 
                 Abilities[i].Names[l++] = ability.name;
+            }
+            
+            int learned = 0,
+                s = 0;
+
+            learned += creature.LearnedAbilities.Count(ability => ability != null);
+
+            LearnedAbilities[i] = new AbilityNames(learned);
+
+            foreach (AbilityBase ability in creature.LearnedAbilities)
+            {
+                if (ability == null)
+                    continue;
+                
+                LearnedAbilities[i].Names[s++] = ability.name;
             }
             
             ++i;
@@ -293,6 +335,7 @@ public class RosterData // Equipped creatures
 
         Abilities = new AbilityNames[length];
         Passives = new string[length];
+        LearnedAbilities = new AbilityNames[length];
     }
 }
 

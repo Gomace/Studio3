@@ -143,7 +143,7 @@ public class InstanceUnit : MonoBehaviour
             onLearnAbility?.Invoke(Creature);
         }
         else
-            return; // TODO "You've learned a new ability! Equip it in the "Abilities" section of your creature's Details summary."
+            Creature.LearnedAbilities.Add(newAbility.Base.name); // TODO "You've learned a new ability! Equip it in the "Abilities" section of your creature's Details summary."
     }
     
     private IEnumerator CooldownTimer(Ability ability)

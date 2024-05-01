@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -90,7 +91,8 @@ public class CreatureRoster : MonoBehaviour
             _creatures[i] = new Creature(Resources.Load<CreatureBase>($"ScrObjs/Creatures/{data.Names[i]}"), data.Levels[i], data.Exps[i], data.Rental[i])
             {
                 Passive = new Passive(Resources.Load<PassiveBase>($"ScrObjs/Passives/{data.Passives[i]}")),
-                Abilities = new Ability[4]
+                Abilities = new Ability[4],
+                LearnedAbilities = new List<string>(data.LearnedAbilities[i].Names)
             };
             for (int l = 0; l < data.Abilities[i].Names.Length; ++l)
                 _creatures[i].Abilities[l] = new Ability(Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.Abilities[i].Names[l]}"), _creatures[i]);
