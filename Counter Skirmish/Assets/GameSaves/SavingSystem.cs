@@ -117,8 +117,7 @@ public class CollectionData // All unequipped creatures
             {
                 Names = creature.LearnedAbilities.ToArray()
             };
-            
-            
+
             int abilities = 0,
                 l = 0;
 

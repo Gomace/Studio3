@@ -1,7 +1,8 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class AbilitiesLoader : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class AbilitiesLoader : MonoBehaviour
     [SerializeField] private EquippedAbility[] _equipped = new EquippedAbility[4];
     #endregion Elements
 
+    private Stack<GameObject> _entryStack = new();
     private AbilityEntry[] _entries;
     private CreatureInfo _creature;
 
@@ -29,43 +31,188 @@ public class AbilitiesLoader : MonoBehaviour
     
     private void LoadEntries(CreatureInfo creature)
     {
+        ResetAbilityScreen();
+        
+        if (creature == null)
+            return;
+        if (creature.Base == null)
+            return;
+
         _creature = creature;
         
-        foreach (Transform child in _entryContainer) // Empty the entries
-            Destroy(child.gameObject);
+        SetupEquipped(creature);
+        SetupEntries(creature);
+    }
 
-        foreach (EquippedAbility equipped in _equipped) // Empty the equipped
-            equipped.ABase = null;
+    public void EquipAbility(AbilityEntry entry)
+    {
+        if (entry == null)
+            return;
+        if (entry.ABase == null)
+            return;
+        if (_equipped == null)
+            return;
+        if (_creature?.AbilityBases == null)
+            return;
+        if (_creature?.LearnedAbilities == null)
+            return;
         
-        if (creature == null) // Check if creature exists
-            return;
-        if (creature.Base == null) // Check if Base exists
-            return;
+        for (int i = 0; i < _equipped.Length; ++i)
+        {
+            if (_equipped[i].ABase != null) // Check for empty equip slot
+                continue;
+            if (_creature.AbilityBases[i] != null)
+            {
+                _equipped[i].ABase = _creature.AbilityBases[i];
+                continue;
+            }
 
-        // Equipped
+            _equipped[i].ABase = entry.ABase;
+            _creature.AbilityBases[i] = entry.ABase; // Add to equipped
+
+            for (int l = 0; l < _creature.LearnedAbilities.Length; ++l)
+            {
+                if (_creature.LearnedAbilities[l] != entry.ABase)
+                    continue;
+                
+                Debug.Log($"Equipping ability {entry.ABase.Name}");
+                _creature.LearnedAbilities[l] = null; // Remove ability from Learned
+                break;
+            }
+
+            entry.ABase = null; // Remove ability from entry
+            entry.gameObject.SetActive(false);
+            
+            _detMenu.UpdateAbilities();
+            break;
+        }
+    }
+    public void UnequipAbility(EquippedAbility selectedSlot)
+    {
+        if (selectedSlot == null)
+            return;
+        if (selectedSlot.ABase == null)
+            return;
+        if (_equipped == null)
+            return;
+        if (_entries == null)
+            return;
+        if (_creature?.AbilityBases == null)
+            return;
+        if (_creature?.LearnedAbilities == null)
+            return;
+        
+        if (1 >= _equipped.Where(equipped => equipped != null).Count(equipped => equipped.ABase != null)) // Must have minimum 1 ability
+            return;
+        if (1 >= _creature.AbilityBases.Count(ability => ability != null))
+        {
+            for (int i = 0; i < _creature.AbilityBases.Length; ++i) // Make _equipped match AbilityBases
+                if (i < _equipped.Length)
+                    _equipped[i].ABase = _creature.AbilityBases[i];
+            return;
+        }
+        
+        for (int i = 0; i < _equipped.Length; ++i)
+        {
+            if (_equipped[i] != selectedSlot) // Find the clicked on slot
+                continue;
+            if (_creature.AbilityBases[i] != selectedSlot.ABase)
+            {
+                for (int l = 0; l < _creature.AbilityBases.Length; ++l)
+                    if (l < _equipped.Length)
+                        _equipped[l].ABase = _creature.AbilityBases[l];
+                continue;
+            }
+            
+            AbilityEntry emptyEntry = _entries.FirstOrDefault(entry => !entry.gameObject.activeSelf); // Find empty entry
+            if (emptyEntry == null)
+                return;
+            
+            emptyEntry.ABase = selectedSlot.ABase; // Add ability to entry
+            emptyEntry.gameObject.SetActive(true);
+
+            for (int l = 0; l < _creature.LearnedAbilities.Length; ++l) // Find empty slot in Learned
+            {
+                if (_creature.LearnedAbilities[l] != null)
+                    continue;
+
+                Debug.Log($"Unequipping ability {selectedSlot.ABase.Name}");
+                _creature.LearnedAbilities[l] = selectedSlot.ABase; // Add ability to Learned
+                break;
+            }
+
+            selectedSlot.ABase = null;
+            _creature.AbilityBases[i] = null; // Remove ability from equipped
+
+            _detMenu.UpdateAbilities();
+            break;
+        }
+    }
+
+    public void CurSelected(AbilityBase abiBase)
+    {
+        _name.text = abiBase.Name;
+        _description.text = abiBase.Description;
+    }
+
+    private void ResetAbilityScreen()
+    {
+        if (_equipped != null)
+            foreach (EquippedAbility equipped in _equipped) // Empty the equipped
+            {
+                if (equipped == null)
+                    continue;
+                
+                equipped.ABase = null;
+            }
+        
+        if (_entries != null)
+            foreach (AbilityEntry entry in _entries) // Empty the entries and add to _entryStack
+            {
+                if (entry == null)
+                    continue;
+                
+                entry.ABase = null;
+                
+                entry.gameObject.SetActive(false);
+                _entryStack.Push(entry.gameObject);
+            }
+    }
+
+    private void SetupEquipped(CreatureInfo creature)
+    {
+        if (_equipped == null)
+            return;
+        
         int used = 0;
-
+        
         foreach (AbilityBase aBase in creature.AbilityBases) // Check if Abilities are equipped in Creature
         {
             if (aBase == null)
                 continue;
+
             Debug.Log($"Equipping {used}");
-            _equipped[used++].ABase = aBase; // Put abilities in equipped-slots
+            if (used < _equipped.Length)
+                _equipped[used++].ABase = aBase; // Put abilities in equipped-slots
         }
 
-        if (creature.AbilityBases.Length < 4) // Make sure length of array is 4 - for bugs
+        if (creature.AbilityBases.Length >= 4) // Make sure length of array is 4 - for bugs
+            return;
+        
+        int equip = 0;
+
+        creature.AbilityBases = new AbilityBase[4];
+        foreach (EquippedAbility equipped in _equipped)
         {
-            creature.AbilityBases = new AbilityBase[4];
-            for (int i = 0; i < _equipped.Length; ++i)
-            {
-                if (_equipped[i].ABase == null)
-                    continue;
-                
-                creature.AbilityBases[i] = _equipped[i].ABase;
-            }
-        }
+            if (equipped.ABase == null)
+                continue;
 
-        // Ability Collection Entries
+            creature.AbilityBases[equip++] = equipped.ABase;
+        }
+    }
+
+    private void SetupEntries(CreatureInfo creature)
+    {
         if (creature.LearnedAbilities?.Length > 0) // If have collection of learned
         {
             int length = creature.LearnedAbilities.Count(ability => ability != null), // Length of non-empty LearnedAbilities
@@ -75,8 +222,13 @@ public class AbilitiesLoader : MonoBehaviour
             _entries = new AbilityEntry[length + 3];
             for (int i = 0; i < _entries.Length; ++i) // Create empty prefabs for all non-empty LearnedAbilities
             {
-                _entries[i] = Instantiate(_entryPrefab.GetComponent<AbilityEntry>(), _entryContainer);
-                _entries[i].AbiLoader = this;
+                if (!_entryStack.TryPop(out GameObject entry))
+                {
+                    entry = Instantiate(_entryPrefab, _entryContainer);
+                    entry.GetComponent<AbilityEntry>().AbiLoader = this;
+                }
+                entry.SetActive(true);
+                _entries[i] = entry.GetComponent<AbilityEntry>();
             }
             for (int i = length; i < _entries.Length; ++i) // Turn off unused slots
                 _entries[i].gameObject.SetActive(false);
@@ -91,15 +243,20 @@ public class AbilitiesLoader : MonoBehaviour
         }
         else if (4 == creature.AbilityBases.Count(ability => ability != null)) // If no collection of learned
         {
-            int length = creature.Base.LearnableAbilities.Where(learnable => learnable != null).Count(learnable => learnable.Base != null), // Length of non-empty LearnableAbilities
+            int length = creature.Base.LearnableAbilities.Where(learnable => learnable != null).Where(learnable => learnable.Base != null).Count(learnable => learnable.Level <= creature.Level), // Length of non-empty LearnableAbilities
                 available = 0;
 
             Debug.Log("Creating new");
             _entries = new AbilityEntry[length + 3];
             for (int i = 0; i < _entries.Length; ++i) // Create empty prefabs for all non-empty LearnableAbilities
             {
-                _entries[i] = Instantiate(_entryPrefab.GetComponent<AbilityEntry>(), _entryContainer);
-                _entries[i].AbiLoader = this;
+                if (!_entryStack.TryPop(out GameObject entry))
+                {
+                    entry = Instantiate(_entryPrefab, _entryContainer);
+                    entry.GetComponent<AbilityEntry>().AbiLoader = this;
+                }
+                entry.SetActive(true);
+                _entries[i] = entry.GetComponent<AbilityEntry>();
             }
             for (int i = length; i < _entries.Length; ++i) // Turn off unused slots
                 _entries[i].gameObject.SetActive(false);
@@ -153,87 +310,14 @@ public class AbilitiesLoader : MonoBehaviour
             _entries = new AbilityEntry[3];
             for (int i = 0; i < _entries.Length; ++i) // Create empty prefabs for the slots in case equipped are unequipped.
             {
-                _entries[i] = Instantiate(_entryPrefab.GetComponent<AbilityEntry>(), _entryContainer);
-                _entries[i].AbiLoader = this;
-                _entries[i].gameObject.SetActive(false); // Turn off unused slots
+                if (!_entryStack.TryPop(out GameObject entry))
+                {
+                    entry = Instantiate(_entryPrefab, _entryContainer);
+                    entry.GetComponent<AbilityEntry>().AbiLoader = this;
+                }
+                entry.SetActive(false);
+                _entries[i] = entry.GetComponent<AbilityEntry>();
             }
         }
-    }
-
-    public void EquipAbility(AbilityEntry entry)
-    {
-        if (entry == null)
-            return;
-        if (entry.ABase == null) // Check if this is a real ability
-            return;
-        
-        for (int i = 0; i < _equipped.Length; ++i)
-        {
-            if (_equipped[i].ABase != null) // Check for empty equip slot
-                continue;
-
-            Debug.Log($"Equipping ability {entry.ABase.Name}");
-            _equipped[i].ABase = entry.ABase;
-            _creature.AbilityBases[i] = entry.ABase; // Add to equipped
-
-            for (int l = 0; l < _creature.LearnedAbilities.Length; ++l)
-            {
-                if (_creature.LearnedAbilities[l] != entry.ABase)
-                    continue;
-                
-                _creature.LearnedAbilities[l] = null; // Remove ability from Learned when equipped.
-                break;
-            }
-
-            entry.ABase = null; // Remove ability from entry
-            entry.gameObject.SetActive(false);
-            
-            _detMenu.UpdateAbilities();
-            break;
-        }
-    }
-    public void UnequipAbility(EquippedAbility selectedSlot)
-    {
-        if (selectedSlot == null)
-            return;
-        if (selectedSlot.ABase == null) // Check if this is a real ability
-            return;
-        
-        if (1 >= _equipped.Count(equipped => equipped.ABase != null)) // Must have minimum 1 ability
-            return;
-        
-        for (int i = 0; i < _equipped.Length; ++i)
-        {
-            if (_equipped[i] != selectedSlot) // Find the clicked on slot
-                continue;
-
-            Debug.Log($"Unequipping ability {selectedSlot.ABase.Name}");
-            
-            AbilityEntry emptyEntry = _entries.First(entry => !entry.gameObject.activeSelf); // Find empty entry
-
-            emptyEntry.ABase = selectedSlot.ABase;
-            emptyEntry.gameObject.SetActive(true);
-
-            for (int l = 0; l < _creature.LearnedAbilities.Length; ++l) // Find empty slot in Learned
-            {
-                if (_creature.LearnedAbilities[l] != null)
-                    continue;
-
-                _creature.LearnedAbilities[l] = selectedSlot.ABase; // Add ability to Learned
-                break;
-            }
-
-            selectedSlot.ABase = null;
-            _creature.AbilityBases[i] = null; // Remove ability from equipped
-
-            _detMenu.UpdateAbilities();
-            break;
-        }
-    }
-
-    public void CurSelected(AbilityBase abiBase)
-    {
-        _name.text = abiBase.Name;
-        _description.text = abiBase.Description;
     }
 }
