@@ -17,11 +17,11 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 7627652a4a79ae24598ee82c2e44a401, type: 3}
   _model: {fileID: 5393136310224786997, guid: c5055e125a9f47848b27217d4923a68e, type: 3}
   _type: {fileID: 11400000, guid: bc0b72690960b0146b9e03723b6c16b6, type: 2}
-  _power: 40
-  _cooldown: 2
+  _power: 50
+  _cooldown: 1.8
   _resource: 5
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}
-  _indhitBox: {x: 50, y: 100, z: 400}
+  _indhitBox: {x: 50, y: 100, z: 500}
   _rescale: 1
   _deviation: 1.8
   _force: 700

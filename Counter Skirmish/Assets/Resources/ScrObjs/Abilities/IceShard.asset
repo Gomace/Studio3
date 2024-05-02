@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: IceShard
   m_EditorClassIdentifier: 
   _name: Ice Shard
-  _description: Shoots a fireball from the character in the target direction.
+  _description: Shoots an ice shard from the character in the target direction.
   _icon: {fileID: 21300000, guid: 401ad5611c12a524f8f26643f729f70b, type: 3}
   _model: {fileID: 2231967358443348698, guid: 8ca6bd80fc731d94ba4545783321f082, type: 3}
   _type: {fileID: 11400000, guid: 6158491a94068424b936388a85d801b4, type: 2}
-  _power: 30
+  _power: 20
   _cooldown: 0.35
   _resource: 1
   _indicator: {fileID: 7234665991758362372, guid: 10c06cbaef59879408ecc4bc6e6ddca4, type: 3}

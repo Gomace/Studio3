@@ -19,7 +19,7 @@ MonoBehaviour:
   _type: {fileID: 11400000, guid: 39f4e788c8212a3449c7ff42155dcffc, type: 2}
   _power: 100
   _cooldown: 7
-  _resource: 100
+  _resource: 10
   _indicator: {fileID: 2441275663053342970, guid: 940ca1e3cdc79894891b3ed42246006e, type: 3}
   _indhitBox: {x: 75, y: 100, z: 500}
   _rescale: 0
