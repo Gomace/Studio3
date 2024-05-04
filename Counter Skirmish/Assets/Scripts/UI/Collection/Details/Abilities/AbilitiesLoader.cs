@@ -71,7 +71,11 @@ public class AbilitiesLoader : MonoBehaviour
 
             for (int l = 0; l < _creature.LearnedAbilities.Length; ++l)
             {
-                if (_creature.LearnedAbilities[l] != entry.ABase)
+                if (entry.ABase == null)
+                    continue;
+                if (_creature.LearnedAbilities[l] == null)
+                    continue;
+                if (_creature.LearnedAbilities[l].Name != entry.ABase.Name)
                     continue;
                 
                 Debug.Log($"Equipping ability {entry.ABase.Name}");
@@ -180,6 +184,8 @@ public class AbilitiesLoader : MonoBehaviour
 
     private void SetupEquipped(CreatureInfo creature)
     {
+        if (creature.AbilityBases == null)
+            return;
         if (_equipped == null)
             return;
         
@@ -195,12 +201,9 @@ public class AbilitiesLoader : MonoBehaviour
                 _equipped[used++].ABase = aBase; // Put abilities in equipped-slots
         }
 
-        if (creature.AbilityBases.Length >= 4) // Make sure length of array is 4 - for bugs
-            return;
-        
         int equip = 0;
 
-        creature.AbilityBases = new AbilityBase[4];
+        creature.AbilityBases = new AbilityBase[4]; // Make sure length of array is 4 - for bugs
         foreach (EquippedAbility equipped in _equipped)
         {
             if (equipped.ABase == null)
@@ -277,7 +280,11 @@ public class AbilitiesLoader : MonoBehaviour
             {
                 foreach (AbilityEntry entry in _entries)
                 {
-                    if (entry.ABase != ability)
+                    if (ability == null)
+                        continue;
+                    if (entry.ABase == null)
+                        continue;
+                    if (entry.ABase.Name != ability.Name)
                         continue;
                     Debug.Log($"Removing extra {entry.ABase.Name}");
                     

@@ -17,7 +17,7 @@ public class CreatureInfo
     public int Exp => _exp;
     
     public bool Rental => _rental;
-    public AbilityBase[] LearnedAbilities;
+    public AbilityBase[] LearnedAbilities { get; set; }
 
     public AbilityBase[] AbilityBases
     {
