@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
+        
         _cam = GetComponent<Camera>();
 
         _cam.transform.localPosition = new Vector3(0, 15f, -10f);

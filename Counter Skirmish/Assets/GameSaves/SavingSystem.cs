@@ -112,10 +112,12 @@ public class CollectionData // All unequipped creatures
             Exps[i] = creature.Exp;
 
             Passives[i] = creature.Passive.Base.name;
-            LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
-            {
-                Names = creature.LearnedAbilities.ToArray()
-            };
+
+            if (creature.LearnedAbilities != null)
+                LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
+                {
+                    Names = creature.LearnedAbilities.ToArray()
+                };
 
             int abilities = 0,
                 l = 0;
@@ -174,19 +176,22 @@ public class CollectionData // All unequipped creatures
                 Abilities[i].Names[l++] = ability.name;
             }
             
-            int learned = 0,
-                s = 0;
-
-            learned += creature.LearnedAbilities.Count(ability => ability != null);
-
-            LearnedAbilities[i] = new AbilityNames(learned);
-
-            foreach (AbilityBase ability in creature.LearnedAbilities)
+            if (creature.LearnedAbilities != null)
             {
-                if (ability == null)
-                    continue;
-                
-                LearnedAbilities[i].Names[s++] = ability.name;
+                int learned = 0,
+                    s = 0;
+
+                learned += creature.LearnedAbilities.Count(ability => ability != null);
+
+                LearnedAbilities[i] = new AbilityNames(learned);
+
+                foreach (AbilityBase ability in creature.LearnedAbilities)
+                {
+                    if (ability == null)
+                        continue;
+
+                    LearnedAbilities[i].Names[s++] = ability.name;
+                }
             }
             
             ++i;
@@ -244,10 +249,11 @@ public class RosterData // Equipped creatures
             
             Passives[i] = creature.Passive.Base.name;
 
-            LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
-            {
-                Names = creature.LearnedAbilities.ToArray()
-            };
+            if (creature.LearnedAbilities != null)
+                LearnedAbilities[i] = new AbilityNames(creature.LearnedAbilities.Count(ability => ability != null))
+                {
+                    Names = creature.LearnedAbilities.ToArray()
+                };
 
             int abilities = 0,
                 l = 0;
@@ -307,22 +313,25 @@ public class RosterData // Equipped creatures
                 
                 Abilities[i].Names[l++] = ability.name;
             }
-            
-            int learned = 0,
-                s = 0;
 
-            learned += creature.LearnedAbilities.Count(ability => ability != null);
-
-            LearnedAbilities[i] = new AbilityNames(learned);
-
-            foreach (AbilityBase ability in creature.LearnedAbilities)
+            if (creature.LearnedAbilities != null)
             {
-                if (ability == null)
-                    continue;
-                
-                LearnedAbilities[i].Names[s++] = ability.name;
+                int learned = 0,
+                    s = 0;
+
+                learned += creature.LearnedAbilities.Count(ability => ability != null);
+
+                LearnedAbilities[i] = new AbilityNames(learned);
+
+                foreach (AbilityBase ability in creature.LearnedAbilities)
+                {
+                    if (ability == null)
+                        continue;
+
+                    LearnedAbilities[i].Names[s++] = ability.name;
+                }
             }
-            
+
             ++i;
         }
     }

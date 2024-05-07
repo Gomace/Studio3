@@ -215,7 +215,7 @@ public class AbilitiesLoader : MonoBehaviour
 
     private void SetupEntries(CreatureInfo creature)
     {
-        if (creature.LearnedAbilities?.Length > 0) // If have collection of learned
+        if (creature.LearnedAbilities?.Length > 3) // If have collection of learned
         {
             int length = creature.LearnedAbilities.Count(ability => ability != null), // Length of non-empty LearnedAbilities
                 available = 0;
