@@ -5,7 +5,7 @@ using UnityEngine;
 public class PalisadeFireDisabler : MonoBehaviour
 {
 
-    public float timerDisable = 4.0f;
+    private float timerDisable = 4.0f;
 
     private void Update()
     {

@@ -56,7 +56,7 @@ public class SpreadingFireSystemVFX : MonoBehaviour
             other.transform.GetChild(0).gameObject.SetActive(true);
             Debug.Log("First child is active");
             Instantiate(flameParticle, this.transform.position, this.transform.rotation);
-
+            //other.transform.GetChild(1).gameObject.SetActive(true);
             Debug.Log("Object should instantiate now");
 
             //other.transform.GetChild(1).gameObject.SetActive(true);
