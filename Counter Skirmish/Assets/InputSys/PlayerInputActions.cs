@@ -100,60 +100,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Item1"",
-                    ""type"": ""Button"",
-                    ""id"": ""b04b72b0-fdc5-4d79-a557-9f55471cfa63"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Item2"",
-                    ""type"": ""Button"",
-                    ""id"": ""412b7562-ee09-48fb-b986-a08b37ce4bb6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Item3"",
-                    ""type"": ""Button"",
-                    ""id"": ""458064e7-9378-466e-97bf-c9d286ed2ea6"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Item4"",
-                    ""type"": ""Button"",
-                    ""id"": ""cf6ec2b7-57dc-4c9a-b668-2e1ad9fcd508"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Item5"",
-                    ""type"": ""Button"",
-                    ""id"": ""df86df3f-cae3-4479-97e6-5bb6bd099967"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Item6"",
-                    ""type"": ""Button"",
-                    ""id"": ""077adc71-0afe-4e08-9b80-1cb8ec634aa1"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Roster"",
                     ""type"": ""Value"",
                     ""id"": ""9ea72124-05a3-4da3-903a-5e6228377458"",
@@ -256,72 +202,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""CameraZoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bb5a02ed-6837-489b-a57b-c60af7e50b70"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0ca8b1b5-f2d1-45f5-a3cd-1cdd62abb0ef"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7514aa1c-4727-4298-89c2-7b86f51b3d12"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item3"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""88923dda-162d-4f02-8437-dbffa176dc6a"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item4"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""452164ec-ee2f-400d-80e9-2d945833edb4"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item5"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9b0226a2-41aa-48e2-ba89-2ec4ab082bec"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Item6"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -462,15 +342,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Inventory"",
-                    ""type"": ""Button"",
-                    ""id"": ""c4bea55a-1b86-4414-8ce9-3ea2241b55f4"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Collection"",
                     ""type"": ""Button"",
                     ""id"": ""d8ec06cc-f385-4755-b323-00de56ed945a"",
@@ -496,24 +367,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Shop"",
-                    ""type"": ""Button"",
-                    ""id"": ""6cddcefc-10f0-4738-872e-4c2e0a6966a7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Instance"",
-                    ""type"": ""Button"",
-                    ""id"": ""6e3b7363-450d-4446-b5af-35ae9723056f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -558,61 +411,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""PC"",
                     ""action"": ""CameraZoom"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""01de1069-98a2-4e80-aea8-13a227e13a10"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3bf87e09-4bf6-4b29-af7a-89fb7b8fd5fa"",
-                    ""path"": ""<Keyboard>/i"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""afd55003-932b-450d-ad2b-8d0c22bbc2f5"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Shop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""770b333b-566a-4af7-bb13-e22c03179a54"",
-                    ""path"": ""<Keyboard>/backquote"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bf3eaf40-8a72-415a-8134-2f6cd6a13a0a"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Instance"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -795,12 +593,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Instance_AbilityW = m_Instance.FindAction("AbilityW", throwIfNotFound: true);
         m_Instance_AbilityE = m_Instance.FindAction("AbilityE", throwIfNotFound: true);
         m_Instance_AbilityR = m_Instance.FindAction("AbilityR", throwIfNotFound: true);
-        m_Instance_Item1 = m_Instance.FindAction("Item1", throwIfNotFound: true);
-        m_Instance_Item2 = m_Instance.FindAction("Item2", throwIfNotFound: true);
-        m_Instance_Item3 = m_Instance.FindAction("Item3", throwIfNotFound: true);
-        m_Instance_Item4 = m_Instance.FindAction("Item4", throwIfNotFound: true);
-        m_Instance_Item5 = m_Instance.FindAction("Item5", throwIfNotFound: true);
-        m_Instance_Item6 = m_Instance.FindAction("Item6", throwIfNotFound: true);
         m_Instance_Roster = m_Instance.FindAction("Roster", throwIfNotFound: true);
         m_Instance_Menu = m_Instance.FindAction("Menu", throwIfNotFound: true);
         m_Instance_CameraZoom = m_Instance.FindAction("CameraZoom", throwIfNotFound: true);
@@ -813,12 +605,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Hub = asset.FindActionMap("Hub", throwIfNotFound: true);
         m_Hub_Move = m_Hub.FindAction("Move", throwIfNotFound: true);
         m_Hub_StopMoving = m_Hub.FindAction("StopMoving", throwIfNotFound: true);
-        m_Hub_Inventory = m_Hub.FindAction("Inventory", throwIfNotFound: true);
         m_Hub_Collection = m_Hub.FindAction("Collection", throwIfNotFound: true);
         m_Hub_Menu = m_Hub.FindAction("Menu", throwIfNotFound: true);
         m_Hub_CameraZoom = m_Hub.FindAction("CameraZoom", throwIfNotFound: true);
-        m_Hub_Shop = m_Hub.FindAction("Shop", throwIfNotFound: true);
-        m_Hub_Instance = m_Hub.FindAction("Instance", throwIfNotFound: true);
         // Collection
         m_Collection = asset.FindActionMap("Collection", throwIfNotFound: true);
         m_Collection_QuickEquip = m_Collection.FindAction("QuickEquip", throwIfNotFound: true);
@@ -896,12 +685,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Instance_AbilityW;
     private readonly InputAction m_Instance_AbilityE;
     private readonly InputAction m_Instance_AbilityR;
-    private readonly InputAction m_Instance_Item1;
-    private readonly InputAction m_Instance_Item2;
-    private readonly InputAction m_Instance_Item3;
-    private readonly InputAction m_Instance_Item4;
-    private readonly InputAction m_Instance_Item5;
-    private readonly InputAction m_Instance_Item6;
     private readonly InputAction m_Instance_Roster;
     private readonly InputAction m_Instance_Menu;
     private readonly InputAction m_Instance_CameraZoom;
@@ -917,12 +700,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @AbilityW => m_Wrapper.m_Instance_AbilityW;
         public InputAction @AbilityE => m_Wrapper.m_Instance_AbilityE;
         public InputAction @AbilityR => m_Wrapper.m_Instance_AbilityR;
-        public InputAction @Item1 => m_Wrapper.m_Instance_Item1;
-        public InputAction @Item2 => m_Wrapper.m_Instance_Item2;
-        public InputAction @Item3 => m_Wrapper.m_Instance_Item3;
-        public InputAction @Item4 => m_Wrapper.m_Instance_Item4;
-        public InputAction @Item5 => m_Wrapper.m_Instance_Item5;
-        public InputAction @Item6 => m_Wrapper.m_Instance_Item6;
         public InputAction @Roster => m_Wrapper.m_Instance_Roster;
         public InputAction @Menu => m_Wrapper.m_Instance_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_Instance_CameraZoom;
@@ -959,24 +736,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @AbilityR.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityR;
                 @AbilityR.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityR;
                 @AbilityR.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnAbilityR;
-                @Item1.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem1;
-                @Item1.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem1;
-                @Item1.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem1;
-                @Item2.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem2;
-                @Item2.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem2;
-                @Item2.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem2;
-                @Item3.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem3;
-                @Item3.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem3;
-                @Item3.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem3;
-                @Item4.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem4;
-                @Item4.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem4;
-                @Item4.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem4;
-                @Item5.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem5;
-                @Item5.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem5;
-                @Item5.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem5;
-                @Item6.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem6;
-                @Item6.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem6;
-                @Item6.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnItem6;
                 @Roster.started -= m_Wrapper.m_InstanceActionsCallbackInterface.OnRoster;
                 @Roster.performed -= m_Wrapper.m_InstanceActionsCallbackInterface.OnRoster;
                 @Roster.canceled -= m_Wrapper.m_InstanceActionsCallbackInterface.OnRoster;
@@ -1014,24 +773,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @AbilityR.started += instance.OnAbilityR;
                 @AbilityR.performed += instance.OnAbilityR;
                 @AbilityR.canceled += instance.OnAbilityR;
-                @Item1.started += instance.OnItem1;
-                @Item1.performed += instance.OnItem1;
-                @Item1.canceled += instance.OnItem1;
-                @Item2.started += instance.OnItem2;
-                @Item2.performed += instance.OnItem2;
-                @Item2.canceled += instance.OnItem2;
-                @Item3.started += instance.OnItem3;
-                @Item3.performed += instance.OnItem3;
-                @Item3.canceled += instance.OnItem3;
-                @Item4.started += instance.OnItem4;
-                @Item4.performed += instance.OnItem4;
-                @Item4.canceled += instance.OnItem4;
-                @Item5.started += instance.OnItem5;
-                @Item5.performed += instance.OnItem5;
-                @Item5.canceled += instance.OnItem5;
-                @Item6.started += instance.OnItem6;
-                @Item6.performed += instance.OnItem6;
-                @Item6.canceled += instance.OnItem6;
                 @Roster.started += instance.OnRoster;
                 @Roster.performed += instance.OnRoster;
                 @Roster.canceled += instance.OnRoster;
@@ -1100,24 +841,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IHubActions m_HubActionsCallbackInterface;
     private readonly InputAction m_Hub_Move;
     private readonly InputAction m_Hub_StopMoving;
-    private readonly InputAction m_Hub_Inventory;
     private readonly InputAction m_Hub_Collection;
     private readonly InputAction m_Hub_Menu;
     private readonly InputAction m_Hub_CameraZoom;
-    private readonly InputAction m_Hub_Shop;
-    private readonly InputAction m_Hub_Instance;
     public struct HubActions
     {
         private @PlayerInputActions m_Wrapper;
         public HubActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Hub_Move;
         public InputAction @StopMoving => m_Wrapper.m_Hub_StopMoving;
-        public InputAction @Inventory => m_Wrapper.m_Hub_Inventory;
         public InputAction @Collection => m_Wrapper.m_Hub_Collection;
         public InputAction @Menu => m_Wrapper.m_Hub_Menu;
         public InputAction @CameraZoom => m_Wrapper.m_Hub_CameraZoom;
-        public InputAction @Shop => m_Wrapper.m_Hub_Shop;
-        public InputAction @Instance => m_Wrapper.m_Hub_Instance;
         public InputActionMap Get() { return m_Wrapper.m_Hub; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1133,9 +868,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StopMoving.started -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
                 @StopMoving.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
                 @StopMoving.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnStopMoving;
-                @Inventory.started -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
-                @Inventory.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
-                @Inventory.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnInventory;
                 @Collection.started -= m_Wrapper.m_HubActionsCallbackInterface.OnCollection;
                 @Collection.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnCollection;
                 @Collection.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnCollection;
@@ -1145,12 +877,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
                 @CameraZoom.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnCameraZoom;
-                @Shop.started -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
-                @Shop.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
-                @Shop.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnShop;
-                @Instance.started -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
-                @Instance.performed -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
-                @Instance.canceled -= m_Wrapper.m_HubActionsCallbackInterface.OnInstance;
             }
             m_Wrapper.m_HubActionsCallbackInterface = instance;
             if (instance != null)
@@ -1161,9 +887,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @StopMoving.started += instance.OnStopMoving;
                 @StopMoving.performed += instance.OnStopMoving;
                 @StopMoving.canceled += instance.OnStopMoving;
-                @Inventory.started += instance.OnInventory;
-                @Inventory.performed += instance.OnInventory;
-                @Inventory.canceled += instance.OnInventory;
                 @Collection.started += instance.OnCollection;
                 @Collection.performed += instance.OnCollection;
                 @Collection.canceled += instance.OnCollection;
@@ -1173,12 +896,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @CameraZoom.started += instance.OnCameraZoom;
                 @CameraZoom.performed += instance.OnCameraZoom;
                 @CameraZoom.canceled += instance.OnCameraZoom;
-                @Shop.started += instance.OnShop;
-                @Shop.performed += instance.OnShop;
-                @Shop.canceled += instance.OnShop;
-                @Instance.started += instance.OnInstance;
-                @Instance.performed += instance.OnInstance;
-                @Instance.canceled += instance.OnInstance;
             }
         }
     }
@@ -1300,12 +1017,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnAbilityW(InputAction.CallbackContext context);
         void OnAbilityE(InputAction.CallbackContext context);
         void OnAbilityR(InputAction.CallbackContext context);
-        void OnItem1(InputAction.CallbackContext context);
-        void OnItem2(InputAction.CallbackContext context);
-        void OnItem3(InputAction.CallbackContext context);
-        void OnItem4(InputAction.CallbackContext context);
-        void OnItem5(InputAction.CallbackContext context);
-        void OnItem6(InputAction.CallbackContext context);
         void OnRoster(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
@@ -1320,12 +1031,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnStopMoving(InputAction.CallbackContext context);
-        void OnInventory(InputAction.CallbackContext context);
         void OnCollection(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
-        void OnShop(InputAction.CallbackContext context);
-        void OnInstance(InputAction.CallbackContext context);
     }
     public interface ICollectionActions
     {

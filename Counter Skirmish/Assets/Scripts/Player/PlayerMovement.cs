@@ -60,8 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //Debug.Log("MoveOnUI is: " + MoveOnUI + " and EventSystem is: " + EventSystem.current.IsPointerOverGameObject());
-        if (!MoveOnUI && EventSystem.current.IsPointerOverGameObject())
-                return;
+        if (!MoveOnUI && EventSystem.current.IsPointerOverGameObject()) return;
         
         _ray = _mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
         

@@ -78,60 +78,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Item1",
-                    "type": "Button",
-                    "id": "b04b72b0-fdc5-4d79-a557-9f55471cfa63",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item2",
-                    "type": "Button",
-                    "id": "412b7562-ee09-48fb-b986-a08b37ce4bb6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item3",
-                    "type": "Button",
-                    "id": "458064e7-9378-466e-97bf-c9d286ed2ea6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item4",
-                    "type": "Button",
-                    "id": "cf6ec2b7-57dc-4c9a-b668-2e1ad9fcd508",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item5",
-                    "type": "Button",
-                    "id": "df86df3f-cae3-4479-97e6-5bb6bd099967",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Item6",
-                    "type": "Button",
-                    "id": "077adc71-0afe-4e08-9b80-1cb8ec634aa1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Roster",
                     "type": "Value",
                     "id": "9ea72124-05a3-4da3-903a-5e6228377458",
@@ -234,72 +180,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "CameraZoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bb5a02ed-6837-489b-a57b-c60af7e50b70",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0ca8b1b5-f2d1-45f5-a3cd-1cdd62abb0ef",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7514aa1c-4727-4298-89c2-7b86f51b3d12",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "88923dda-162d-4f02-8437-dbffa176dc6a",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "452164ec-ee2f-400d-80e9-2d945833edb4",
-                    "path": "<Keyboard>/5",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item5",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9b0226a2-41aa-48e2-ba89-2ec4ab082bec",
-                    "path": "<Keyboard>/6",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Item6",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -440,15 +320,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "c4bea55a-1b86-4414-8ce9-3ea2241b55f4",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Collection",
                     "type": "Button",
                     "id": "d8ec06cc-f385-4755-b323-00de56ed945a",
@@ -474,24 +345,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Shop",
-                    "type": "Button",
-                    "id": "6cddcefc-10f0-4738-872e-4c2e0a6966a7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Instance",
-                    "type": "Button",
-                    "id": "6e3b7363-450d-4446-b5af-35ae9723056f",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -536,61 +389,6 @@
                     "processors": "",
                     "groups": "PC",
                     "action": "CameraZoom",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "01de1069-98a2-4e80-aea8-13a227e13a10",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3bf87e09-4bf6-4b29-af7a-89fb7b8fd5fa",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Inventory",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "afd55003-932b-450d-ad2b-8d0c22bbc2f5",
-                    "path": "<Keyboard>/p",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Shop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "770b333b-566a-4af7-bb13-e22c03179a54",
-                    "path": "<Keyboard>/backquote",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bf3eaf40-8a72-415a-8134-2f6cd6a13a0a",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "PC",
-                    "action": "Instance",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

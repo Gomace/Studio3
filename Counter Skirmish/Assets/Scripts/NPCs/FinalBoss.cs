@@ -9,6 +9,10 @@ public class FinalBoss : MonoBehaviour
 
     private void OnEnable() => _roster.onFullDead += SetWin;
     private void OnDisable() => _roster.onFullDead -= SetWin;
-    
-    private void SetWin() => HuntEnd.Win = true;
+
+    private void SetWin()
+    { 
+        HuntEnd.Win = true;
+        HuntEnd.WinGame();
+    }
 }

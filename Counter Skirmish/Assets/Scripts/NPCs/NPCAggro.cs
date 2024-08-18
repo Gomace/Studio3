@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(NPCBehaviour))]
 public class NPCAggro : MonoBehaviour
 {
-    private NPCBehaviour _behaviour;
+    /*private NPCBehaviour _behaviour;
     private Transform _target;
     
     private void Awake()
@@ -13,7 +13,7 @@ public class NPCAggro : MonoBehaviour
         _target = GameObject.FindWithTag("Player").transform;
     }
 
-    /*private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
