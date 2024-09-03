@@ -49,7 +49,7 @@ public class VideoSettings : MonoBehaviour
         _resolutionDropdown.value = currentResolutionIndex;
         _resolutionDropdown.RefreshShownValue();
         
-        OptionIndicators(_resolutions.Length);
+        // OptionIndicators(_resolutions.Length);
     }
 
     private void OptionIndicators(int options)

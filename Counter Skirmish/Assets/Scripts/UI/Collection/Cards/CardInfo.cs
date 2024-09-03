@@ -5,13 +5,13 @@ using TMPro;
 
 public class CardInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    #region Elements
+    #region SerializedFields
     [Header("These should already be referenced.")] // Card display elements
     [SerializeField] private TMP_Text _name;
     [SerializeField] private Image _card, _type1, _type2, _role;
     [SerializeField] private TMP_Text _lvl;
     [SerializeField] private GameObject _rental, _hover;
-    #endregion Elements
+    #endregion SerializedFields
     
     private CreatureInfo _creature;
     
