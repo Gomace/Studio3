@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class VideoSettings : MonoBehaviour
 {
+    #region SerializedFields
     [SerializeField] private TMPro.TMP_Dropdown _resolutionDropdown;
     [SerializeField] private RectTransform _TxtForIndicators, _indicatorPrefab;
     [SerializeField] private Sprite _selected, _notSelected;
+    #endregion SerializedFields
     
     private Resolution[] _resolutions;
     private Image[] _resIndicators;

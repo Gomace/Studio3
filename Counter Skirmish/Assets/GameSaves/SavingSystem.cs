@@ -7,6 +7,7 @@ using System.Linq;
 
 public static class SavingSystem
 {
+    #region JsonSaving
     private const string _jsonFolder = "/SaveData/Json";
     
     public static void SaveToJson<T>(T data, string path)
@@ -31,13 +32,13 @@ public static class SavingSystem
             string jsonData = File.ReadAllText(folder + path);
             return JsonUtility.FromJson<T>(jsonData);
         }
-        else
-        {
-            Debug.LogError($"Save file not found in {folder + path}");
-            return default(T);
-        }
+        
+        Debug.LogError($"Save file not found in {folder + path}");
+        return default;
     }
+    #endregion JsonSaving
 
+    #region BinarySaving
     /*public static void SaveToBinary<T>(T data, string path) // Binary
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -65,9 +66,10 @@ public static class SavingSystem
             return default(T);
         }
     }*/
+    #endregion BinarySaving
 }
 
-[Serializable]
+/*[Serializable] // Soon™
 public class ProgressData
 {
     public bool NewGame { get; private set; }
@@ -76,7 +78,7 @@ public class ProgressData
     {
         
     }
-}
+}*/
 
 [Serializable]
 public class CollectionData // All unequipped creatures
