@@ -20,11 +20,13 @@ public class VideoSettings : MonoBehaviour
             SetupResolutions();
     }
 
+    public void SetFullscreen(bool isFullscreen) { Screen.fullScreen = isFullscreen; }
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = _resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
+    public void SetQuality(int qualityIndex) { QualitySettings.SetQualityLevel(qualityIndex); }
     
     private void SetupResolutions()
     {
@@ -62,7 +64,9 @@ public class VideoSettings : MonoBehaviour
         {
             RectTransform indicator = Instantiate(_indicatorPrefab, _TxtForIndicators);
             indicator.localPosition = new Vector2(
-                options % 2 == 0 ? 26 + (options / 2 * -1 + i) * 52 : (options / 2 * -1 + i) * 52,
+                options % 2 == 0
+                    ? 26 + (options / 2 * -1 + i) * 52
+                    : (options / 2 * -1 + i) * 52,
                 indicator.localPosition.y);
             indicator.GetComponent<Button>().onClick.AddListener(() => { SetResolution(i); });
         }

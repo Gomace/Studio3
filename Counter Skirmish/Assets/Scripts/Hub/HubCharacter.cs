@@ -14,8 +14,7 @@ public class HubCharacter : MonoBehaviour
     {
         LoadRoster(); // Check if player has a save
         LoadCollection();
-        if (RosterCreatures.Any(creature => creature != null)) // If save had creatures, don't give starter
-            return;
+        if (RosterCreatures.Any(creature => creature != null)) return; // If save had creatures, don't give starter
 
         Instantiate(Resources.Load<GameObject>("UI/StarterCreature")).GetComponent<StarterCreature>().Player = this; // Player has no save, start new game
     }
@@ -27,8 +26,7 @@ public class HubCharacter : MonoBehaviour
 
         for (int i = 0; i < RosterCreatures.Length; ++i)
         {
-            if (RosterCreatures[i] != null) // Find empty slot
-                continue;
+            if (RosterCreatures[i] != null) continue; // Find empty slot
             
             RosterCreatures[i] = creature;
             SaveRoster();
@@ -48,8 +46,7 @@ public class HubCharacter : MonoBehaviour
 
         for (int i = 0; i < RosterCreatures.Length; ++i)
         {
-            if (RosterCreatures[i] != creature) // Find creature in roster
-                continue;
+            if (RosterCreatures[i] != creature) continue; // Find creature in roster
 
             RosterCreatures[i] = null;
             SaveRoster();
@@ -63,13 +60,11 @@ public class HubCharacter : MonoBehaviour
 
     private void RemoveCreatureFromCollection(CreatureInfo creature)
     {
-        if (CollectionCreatures.All(slot => slot != creature)) // Check if not stored
-            return;
+        if (CollectionCreatures.All(slot => slot != creature)) return; // Check if not stored
         
         for (int i = 0; i < CollectionCreatures.Length; ++i)
         {
-            if (CollectionCreatures[i] != creature) // Find Creature in collection
-                continue;
+            if (CollectionCreatures[i] != creature) continue; // Find Creature in collection
 
             CollectionCreatures[i] = null;
             SaveCollection();
@@ -78,13 +73,11 @@ public class HubCharacter : MonoBehaviour
     }
     private void AddCreatureToCollection(CreatureInfo creature)
     {
-        if (CollectionCreatures.Any(slot => slot == creature)) // Check if already stored
-            return;
+        if (CollectionCreatures.Any(slot => slot == creature)) return; // Check if already stored
 
         for (int i = 0; i < CollectionCreatures.Length; ++i)
         {
-            if (CollectionCreatures[i] != null) // Find empty slot
-                continue;
+            if (CollectionCreatures[i] != null) continue; // Find empty slot
             
             CollectionCreatures[i] = creature;
             SaveCollection();
@@ -104,8 +97,7 @@ public class HubCharacter : MonoBehaviour
     {
         RosterData data = SavingSystem.LoadFromJson<RosterData>(_jsonRosterPath);
 
-        if (data == null)
-            return;
+        if (data == null) return;
 
         for (int i = 0; i < data.Names.Length; ++i)
         {

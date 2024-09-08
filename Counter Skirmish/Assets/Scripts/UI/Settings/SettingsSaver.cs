@@ -36,15 +36,15 @@ public static class SettingsSaver
 }
 
 [Serializable]
-public class AudioPreferences
+public class AudioData
 {
     public float Master = 1f,
                 Music = 0.5f,
                 SFX = 0.75f;
 
-    // public AudioSave() {}
+    public AudioData() {}
     
-    public AudioPreferences(float master, float music, float sfx)
+    public AudioData(float master, float music, float sfx)
     {
         Master = master;
         Music = music;
@@ -53,7 +53,7 @@ public class AudioPreferences
 }
 
 [Serializable]
-public class VideoPreferences
+public class VideoData
 {
     
 }
