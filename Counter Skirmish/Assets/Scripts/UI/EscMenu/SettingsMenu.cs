@@ -1,13 +1,23 @@
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class SettingsMenu : MonoBehaviour
 {
+    #region Events
+    public delegate void OnSettingsSaved();
+    public event OnSettingsSaved onSettingsSaved;
+    public delegate void OnLoadSettings();
+    public event OnLoadSettings onLoadSettings;
+    #endregion Events
+    
     [SerializeField] private RectTransform _btns, _categories;
     [SerializeField] private Color _clickColor = new(55, 55, 55, 255), 
                                     _normalColor = new(128, 128, 128, 255);
-    
+
+    public void OnEnable() { onLoadSettings?.Invoke(); }
+
     public void SelectCategory(GameObject category)
     {
         foreach (RectTransform btn in _btns) // Reset button colors
@@ -18,4 +28,6 @@ public class SettingsMenu : MonoBehaviour
             cat.gameObject.SetActive(false);
         category.SetActive(true); // Enable selected category
     }
+
+    public void SaveSettings() { onSettingsSaved?.Invoke(); }
 }

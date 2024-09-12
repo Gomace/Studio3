@@ -19,6 +19,8 @@ public class HubCharacter : MonoBehaviour
         Instantiate(Resources.Load<GameObject>("UI/StarterCreature")).GetComponent<StarterCreature>().Player = this; // Player has no save, start new game
     }
     
+    #region ManageCreatures
+        #region Roster
     public bool AddCreatureToRoster(CreatureInfo creature) // Add Creature to slot
     {
         if (RosterCreatures.Any(slot => slot == creature)) // Check if already equipped
@@ -57,7 +59,9 @@ public class HubCharacter : MonoBehaviour
 
         return false;
     }
-
+        #endregion Roster
+        
+        #region Collection
     private void RemoveCreatureFromCollection(CreatureInfo creature)
     {
         if (CollectionCreatures.All(slot => slot != creature)) return; // Check if not stored
@@ -84,7 +88,11 @@ public class HubCharacter : MonoBehaviour
             return;
         }
     }
-
+        #endregion Collection
+    #endregion ManageCreatures
+    
+    #region Saving
+        #region Roster
     public void SaveRoster()
     {
         RosterData data = new RosterData();
@@ -113,7 +121,9 @@ public class HubCharacter : MonoBehaviour
                 RosterCreatures[i].LearnedAbilities[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.LearnedAbilities[i].Names[l]}");
         }
     }
-
+        #endregion Roster
+    
+        #region Collection
     public void SaveCollection()
     {
         CollectionData data = new CollectionData();
@@ -148,4 +158,6 @@ public class HubCharacter : MonoBehaviour
                 CollectionCreatures[i].LearnedAbilities[l] = Resources.Load<AbilityBase>($"ScrObjs/Abilities/{data.LearnedAbilities[i].Names[l]}");
         }
     }
+        #endregion Collection
+    #endregion Saving
 }

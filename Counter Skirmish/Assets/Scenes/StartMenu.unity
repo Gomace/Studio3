@@ -1751,6 +1751,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4707332408192990128, guid: 23c586a78f02aea45bcb72c15a25c1e6, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 1803017405}
+    - target: {fileID: 4707332408192990128, guid: 23c586a78f02aea45bcb72c15a25c1e6, type: 3}
+      propertyPath: _settingsMenu
+      value: 
+      objectReference: {fileID: 834890352}
     - target: {fileID: 4978725063512054183, guid: 23c586a78f02aea45bcb72c15a25c1e6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
