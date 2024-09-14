@@ -10,13 +10,15 @@ public class SettingsMenu : MonoBehaviour
     public event OnSettingsSaved onSettingsSaved;
     public delegate void OnLoadSettings();
     public event OnLoadSettings onLoadSettings;
+    public delegate void OnResetSettings();
+    public event OnResetSettings onResetSettings;
     #endregion Events
     
     [SerializeField] private RectTransform _btns, _categories;
     [SerializeField] private Color _clickColor = new(55, 55, 55, 255), 
                                     _normalColor = new(128, 128, 128, 255);
 
-    public void OnEnable() { onLoadSettings?.Invoke(); }
+    public void OnDisable() { onLoadSettings?.Invoke(); }
 
     public void SelectCategory(GameObject category)
     {
@@ -30,4 +32,5 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void SaveSettings() { onSettingsSaved?.Invoke(); }
+    public void ResetSettings() { onResetSettings?.Invoke(); } // Each category's reset button is set in each category's leading script
 }

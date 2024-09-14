@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -61,17 +59,15 @@ public class AudioManager : MonoBehaviour
         LoadAudio();
     }
 
-    private void LoadAudio()
+    public void LoadAudio()
     {
         AudioData data = SettingsSaver.LoadFromJson<AudioData>(AudioSettingsPath) ?? new AudioData();
 
-        for (int i = 0; i < _musicS.Length; ++i)
-            if (_musicS[i] != null)
-                _musicS[i].volume = _defMusic[i] * data.Music * data.Master;
-
-        for (int i = 0; i < _sfxS.Length; ++i)
-            if (_sfxS[i] != null)
-                _sfxS[i].volume = _defSFX[i] * data.SFX * data.Master;
+        _masterV = data.Master;
+        _musicV = data.Music;
+        _sfxV = data.SFX;
+        
+        ReloadAudio();
     }
 
     #region ReloadingAudio

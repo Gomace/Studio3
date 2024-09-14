@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.IO;
-using System.Linq;
 
 public static class SettingsSaver
 {
@@ -38,11 +37,14 @@ public static class SettingsSaver
 [Serializable]
 public class AudioData
 {
-    public float Master = 1f,
-                Music = 0.5f,
-                SFX = 0.75f;
+    public float Master, Music, SFX;
 
-    public AudioData() {}
+    public AudioData()
+    {
+        Master = 1f;
+        Music = 0.5f;
+        SFX = 0.75f;
+    }
     
     public AudioData(float master, float music, float sfx)
     {
@@ -51,9 +53,18 @@ public class AudioData
         SFX = sfx;
     }
 }
-
 [Serializable]
 public class VideoData
+{
+    
+}
+[Serializable]
+public class GameplayData
+{
+    
+}
+[Serializable]
+public class ControlsData
 {
     
 }
