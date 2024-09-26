@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
     private float _masterV, _musicV, _sfxV;
     private float[] _defMusic, _defSFX;
 
+    public AudioSource[] SFXS => _sfxS; 
+    
     #region Volumes
     public float MasterV
     {
@@ -43,7 +45,7 @@ public class AudioManager : MonoBehaviour
     }
     #endregion Volumes
 
-    public void Awake()
+    private void Awake()
     {
         _defMusic = new float[_musicS.Length]; // Equal amounts of defaults and sources
         _defSFX = new float[_sfxS.Length];

@@ -15,6 +15,7 @@ public class AudioSettings : MonoBehaviour
     private void Awake()
     {
         _settingsMenu.onLoadSettings += _audioManager.LoadAudio;
+        _settingsMenu.onLoadSettings += LoadAudio;
         _settingsMenu.onSettingsSaved += SaveAudioSettings;
         _settingsMenu.onResetSettings += ResetAudioSettings;
     }
@@ -59,6 +60,7 @@ public class AudioSettings : MonoBehaviour
         SetMusicVolume(data?.Music ?? _audioManager.MusicV);
         SetSFXVolume(data?.SFX ?? _audioManager.SFXV);
     }
+    private void LoadAudio() { LoadAudioSettings(); }
     public void ResetAudioSettings() { LoadAudioSettings(new AudioData()); } // Add to reset default current
 }
 

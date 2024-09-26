@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6087378194356598218}
   - component: {fileID: 3720639991333881089}
   - component: {fileID: 2993526891804144464}
+  - component: {fileID: 5690380684613449927}
   m_Layer: 5
   m_Name: Unequip
   m_TagString: Untagged
@@ -134,6 +135,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5690380684613449927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55310223786284153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &1668382590750591616
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +162,7 @@ GameObject:
   - component: {fileID: 5937267707023808615}
   - component: {fileID: 5528285336807959918}
   - component: {fileID: 3019186826539710926}
+  - component: {fileID: 2838744558829671040}
   m_Layer: 5
   m_Name: Ability (Q)
   m_TagString: Untagged
@@ -282,6 +298,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hover: {fileID: 55310223786284153}
+--- !u!114 &2838744558829671040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668382590750591616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &8552650756939524225
 GameObject:
   m_ObjectHideFlags: 0

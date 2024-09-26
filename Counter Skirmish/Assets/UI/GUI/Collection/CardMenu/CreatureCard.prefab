@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5556784331684898473}
   - component: {fileID: 3587016196078068635}
   - component: {fileID: 1926643178288566163}
+  - component: {fileID: 2632834634019299002}
   m_Layer: 5
   m_Name: Details
   m_TagString: Untagged
@@ -145,6 +146,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2632834634019299002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839575889797726587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &2652564341870556151
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +172,7 @@ GameObject:
   - component: {fileID: 7201138949128802937}
   - component: {fileID: 2825895795717902702}
   - component: {fileID: 2005234341368631707}
+  - component: {fileID: 4948915175674362071}
   m_Layer: 5
   m_Name: Equip
   m_TagString: Untagged
@@ -278,6 +294,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4948915175674362071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2652564341870556151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &4191219065096697470
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +608,7 @@ GameObject:
   - component: {fileID: 4191219066128974571}
   - component: {fileID: 1720417431422854452}
   - component: {fileID: 4191219066128974569}
+  - component: {fileID: 7702140229057259797}
   m_Layer: 5
   m_Name: CreatureCard
   m_TagString: Untagged
@@ -727,6 +758,20 @@ MonoBehaviour:
   _lvl: {fileID: 6248164293020120816}
   _rental: {fileID: 8846356118373645972}
   _hover: {fileID: 8874785451215455297}
+--- !u!114 &7702140229057259797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191219066128974565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &4191219066217964226
 GameObject:
   m_ObjectHideFlags: 0

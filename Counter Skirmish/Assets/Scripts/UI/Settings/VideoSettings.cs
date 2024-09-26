@@ -1,104 +1,82 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class VideoSettings : MonoBehaviour
 {
-    private const string VideoSettingsPath = "/VideoData.json";
-    
     #region SerializedFields
     [SerializeField] private SettingsMenu _settingsMenu;
+    [SerializeField] private VideoManager _videoManager;
     [SerializeField] private GameObject _saveCurrent, _resetDefault;
     [SerializeField] private TMP_Dropdown _resolutionDropdown;
-    [SerializeField] private RectTransform _TxtForIndicators, _indicatorPrefab;
-    [SerializeField] private Sprite _selected, _notSelected;
     #endregion SerializedFields
     
-    private Resolution[] _resolutions;
-    private Image[] _resIndicators;
-
     private void Awake()
     {
+        _settingsMenu.onLoadSettings += _videoManager.LoadVideo;
         _settingsMenu.onLoadSettings += LoadVideo;
-        // _settingsMenu.onSettingsSaved += 
-        // _settingsMenu.onResetSettings += 
+        _settingsMenu.onSettingsSaved += SaveVideoSettings;
+        _settingsMenu.onResetSettings += ResetVideoSettings;
     }
     private void OnEnable() { _saveCurrent.SetActive(true); _resetDefault.SetActive(true); }
     private void OnDisable() { _saveCurrent.SetActive(false); _resetDefault.SetActive(false); }
     private void Start()
     {
+        LoadVideoSettings();
+        
         if (_resolutionDropdown)
             SetupResolutions();
-        
-        LoadVideo();
     }
 
-    public void SetFullscreen(bool isFullscreen) { Screen.fullScreen = isFullscreen; }
-    public void SetResolution(int resolutionIndex)
+    #region VideoSettings
+    public void SetFullscreen(bool isFullscreen) { _videoManager.Fullscreen = isFullscreen; }
+    public void SetResolution(int resolutionIndex) { SetResolutionFromIndex(resolutionIndex); }
+    public void SetQuality(int qualityIndex) { _videoManager.Quality = qualityIndex; }
+    #endregion VideoSettings
+
+    public void SaveVideoSettings()
     {
-        Resolution resolution = _resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        VideoData data = new VideoData(_videoManager.Fullscreen, _videoManager.Resolution, _videoManager.Quality);
+        SettingsSaver.SaveToJson(data, VideoManager.VideoSettingsPath);
     }
-    public void SetQuality(int qualityIndex) { QualitySettings.SetQualityLevel(qualityIndex); }
+    private void LoadVideoSettings(VideoData data = null)
+    {
+        SetFullscreen(data?.Fullscreen ?? _videoManager.Fullscreen);
+        _videoManager.Resolution = data?.Resolution ?? _videoManager.Resolution;
+        SetQuality(data?.Quality ?? _videoManager.Quality);
+    }
+    private void LoadVideo() { LoadVideoSettings(); }
+    public void ResetVideoSettings() { LoadVideoSettings(new VideoData()); }
     
     private void SetupResolutions()
     {
-        _resolutions = Screen.resolutions;
-        _resIndicators = new Image[_resolutions.Length];
-        
         _resolutionDropdown.ClearOptions();
         
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
-        for (int i = 0; i < _resolutions.Length; i++)
+        for (int i = 0; i < _videoManager.Resolutions.Length; i++)
         {
-            string option = _resolutions[i].width + "x" + _resolutions[i].height + " @ " + _resolutions[i].refreshRate + "hz";;
+            string option = _videoManager.Resolutions[i].width + "x" + _videoManager.Resolutions[i].height + " @ " + _videoManager.Resolutions[i].refreshRate + "hz";;
             options.Add(option);
 
-            if (_resolutions[i].width == Screen.currentResolution.width &&
-                _resolutions[i].height == Screen.currentResolution.height &&
-                _resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
+            if (_videoManager.Resolutions[i].width == Screen.currentResolution.width &&
+                _videoManager.Resolutions[i].height == Screen.currentResolution.height &&
+                _videoManager.Resolutions[i].refreshRate == Screen.currentResolution.refreshRate)
                 currentResolutionIndex = i;
         }
         
         _resolutionDropdown.AddOptions(options);
         _resolutionDropdown.value = currentResolutionIndex;
         _resolutionDropdown.RefreshShownValue();
-        
-        // OptionIndicators(_resolutions.Length);
     }
-
-    private void OptionIndicators(int options)
+    private void SetResolutionFromIndex(int resolutionIndex)
     {
-        if (options > 6) return;
-        
-        for (int i = 0; i < options; ++i)
+        _videoManager.Resolution = new[]
         {
-            RectTransform indicator = Instantiate(_indicatorPrefab, _TxtForIndicators);
-            indicator.localPosition = new Vector2(
-                options % 2 == 0
-                    ? 26 + (options / 2 * -1 + i) * 52
-                    : (options / 2 * -1 + i) * 52,
-                indicator.localPosition.y);
-            indicator.GetComponent<Button>().onClick.AddListener(() => { SetResolution(i); });
-        }
+            _videoManager.Resolutions[resolutionIndex].width,
+            _videoManager.Resolutions[resolutionIndex].height,
+            _videoManager.Resolutions[resolutionIndex].refreshRate
+        };
     }
-
-    public void SaveVideoSettings()
-    {
-        VideoData data = new VideoData();
-        SettingsSaver.SaveToJson(data, VideoSettingsPath);
-    }
-    private void LoadVideoSettings(VideoData data = null) // Something something
-    {
-        
-    }
-    private void LoadVideo() // something something
-    {
-        
-    }
-    public void ResetVideoSettings() { LoadVideoSettings(new VideoData()); }
 }

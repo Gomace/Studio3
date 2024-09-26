@@ -428,94 +428,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Collection"",
-            ""id"": ""e32e5123-4ce0-4a55-b92d-dec4697a5e6c"",
-            ""actions"": [
-                {
-                    ""name"": ""QuickEquip"",
-                    ""type"": ""Button"",
-                    ""id"": ""d9fea493-0baf-4b7d-9976-c8bef96f4309"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Collection"",
-                    ""type"": ""Button"",
-                    ""id"": ""f599d04a-19d3-410a-af30-a2c9c11c0848"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Exit"",
-                    ""type"": ""Button"",
-                    ""id"": ""0551cb57-d606-476e-9a73-4cae2d112620"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Scroll"",
-                    ""type"": ""Value"",
-                    ""id"": ""1eca24fa-1008-4aed-9d3e-1b5eaed4ddd2"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ecf6f840-4af9-4405-b096-76a963d21606"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""QuickEquip"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8aef6448-5d8f-4edc-b1d8-3b615381a601"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Collection"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""98fe143a-a63a-4225-af3f-bec72c252401"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Exit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""583e8dd6-13fb-40df-931a-21c6d8c71191"",
-                    ""path"": ""<Mouse>/scroll/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""PC"",
-                    ""action"": ""Scroll"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
             ""name"": ""ThomasTesting"",
             ""id"": ""8e8c2cc2-b7e0-47c6-85f3-982755c7d10d"",
             ""actions"": [
@@ -608,12 +520,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Hub_Collection = m_Hub.FindAction("Collection", throwIfNotFound: true);
         m_Hub_Menu = m_Hub.FindAction("Menu", throwIfNotFound: true);
         m_Hub_CameraZoom = m_Hub.FindAction("CameraZoom", throwIfNotFound: true);
-        // Collection
-        m_Collection = asset.FindActionMap("Collection", throwIfNotFound: true);
-        m_Collection_QuickEquip = m_Collection.FindAction("QuickEquip", throwIfNotFound: true);
-        m_Collection_Collection = m_Collection.FindAction("Collection", throwIfNotFound: true);
-        m_Collection_Exit = m_Collection.FindAction("Exit", throwIfNotFound: true);
-        m_Collection_Scroll = m_Collection.FindAction("Scroll", throwIfNotFound: true);
         // ThomasTesting
         m_ThomasTesting = asset.FindActionMap("ThomasTesting", throwIfNotFound: true);
         m_ThomasTesting_FireButton = m_ThomasTesting.FindAction("FireButton", throwIfNotFound: true);
@@ -901,63 +807,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     }
     public HubActions @Hub => new HubActions(this);
 
-    // Collection
-    private readonly InputActionMap m_Collection;
-    private ICollectionActions m_CollectionActionsCallbackInterface;
-    private readonly InputAction m_Collection_QuickEquip;
-    private readonly InputAction m_Collection_Collection;
-    private readonly InputAction m_Collection_Exit;
-    private readonly InputAction m_Collection_Scroll;
-    public struct CollectionActions
-    {
-        private @PlayerInputActions m_Wrapper;
-        public CollectionActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @QuickEquip => m_Wrapper.m_Collection_QuickEquip;
-        public InputAction @Collection => m_Wrapper.m_Collection_Collection;
-        public InputAction @Exit => m_Wrapper.m_Collection_Exit;
-        public InputAction @Scroll => m_Wrapper.m_Collection_Scroll;
-        public InputActionMap Get() { return m_Wrapper.m_Collection; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(CollectionActions set) { return set.Get(); }
-        public void SetCallbacks(ICollectionActions instance)
-        {
-            if (m_Wrapper.m_CollectionActionsCallbackInterface != null)
-            {
-                @QuickEquip.started -= m_Wrapper.m_CollectionActionsCallbackInterface.OnQuickEquip;
-                @QuickEquip.performed -= m_Wrapper.m_CollectionActionsCallbackInterface.OnQuickEquip;
-                @QuickEquip.canceled -= m_Wrapper.m_CollectionActionsCallbackInterface.OnQuickEquip;
-                @Collection.started -= m_Wrapper.m_CollectionActionsCallbackInterface.OnCollection;
-                @Collection.performed -= m_Wrapper.m_CollectionActionsCallbackInterface.OnCollection;
-                @Collection.canceled -= m_Wrapper.m_CollectionActionsCallbackInterface.OnCollection;
-                @Exit.started -= m_Wrapper.m_CollectionActionsCallbackInterface.OnExit;
-                @Exit.performed -= m_Wrapper.m_CollectionActionsCallbackInterface.OnExit;
-                @Exit.canceled -= m_Wrapper.m_CollectionActionsCallbackInterface.OnExit;
-                @Scroll.started -= m_Wrapper.m_CollectionActionsCallbackInterface.OnScroll;
-                @Scroll.performed -= m_Wrapper.m_CollectionActionsCallbackInterface.OnScroll;
-                @Scroll.canceled -= m_Wrapper.m_CollectionActionsCallbackInterface.OnScroll;
-            }
-            m_Wrapper.m_CollectionActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @QuickEquip.started += instance.OnQuickEquip;
-                @QuickEquip.performed += instance.OnQuickEquip;
-                @QuickEquip.canceled += instance.OnQuickEquip;
-                @Collection.started += instance.OnCollection;
-                @Collection.performed += instance.OnCollection;
-                @Collection.canceled += instance.OnCollection;
-                @Exit.started += instance.OnExit;
-                @Exit.performed += instance.OnExit;
-                @Exit.canceled += instance.OnExit;
-                @Scroll.started += instance.OnScroll;
-                @Scroll.performed += instance.OnScroll;
-                @Scroll.canceled += instance.OnScroll;
-            }
-        }
-    }
-    public CollectionActions @Collection => new CollectionActions(this);
-
     // ThomasTesting
     private readonly InputActionMap m_ThomasTesting;
     private IThomasTestingActions m_ThomasTestingActionsCallbackInterface;
@@ -1034,13 +883,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnCollection(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
-    }
-    public interface ICollectionActions
-    {
-        void OnQuickEquip(InputAction.CallbackContext context);
-        void OnCollection(InputAction.CallbackContext context);
-        void OnExit(InputAction.CallbackContext context);
-        void OnScroll(InputAction.CallbackContext context);
     }
     public interface IThomasTestingActions
     {

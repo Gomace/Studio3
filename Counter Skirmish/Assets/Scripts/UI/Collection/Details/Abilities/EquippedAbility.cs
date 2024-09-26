@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class EquippedAbility : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private GameObject _hover;
     #endregion Elements
 
+    private HoverSound _hoverSound;
     private Image _icon;
     
     private AbilityBase _aBase;
@@ -24,13 +26,18 @@ public class EquippedAbility : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
     
-    private void Awake() => _icon = GetComponent<Image>();
+    private void Awake()
+    {
+        _icon = GetComponent<Image>();
+        _hoverSound = GetComponent<HoverSound>();
+    }
 
     // Mouse-over-ability stuff
-    public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(_aBase != null);
+    public void OnPointerEnter(PointerEventData eventData) { _hover.SetActive(_aBase != null); }
     public void OnPointerExit(PointerEventData eventData) => _hover.SetActive(false);
     public void OnPointerClick(PointerEventData eventData) // Quick unequip
     {
+        _hoverSound.ActivateClickSound();
         if (eventData.button == PointerEventData.InputButton.Right)
             UnequipAbility();
     }

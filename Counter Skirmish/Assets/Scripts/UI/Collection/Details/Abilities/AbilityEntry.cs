@@ -9,6 +9,7 @@ public class AbilityEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private GameObject _hover;
     #endregion Elements
     
+    private HoverSound _hoverSound;
     private Image _icon;
     
     private AbilityBase _aBase;
@@ -24,13 +25,18 @@ public class AbilityEntry : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
     }
 
-    private void Awake() => _icon = GetComponent<Image>();
+    private void Awake()
+    {
+        _icon = GetComponent<Image>();
+        _hoverSound = GetComponent<HoverSound>();
+    }
 
     // Mouse-over-ability stuff
     public void OnPointerEnter(PointerEventData eventData) => _hover.SetActive(_aBase != null);
     public void OnPointerExit(PointerEventData eventData) => _hover.SetActive(false);
     public void OnPointerClick(PointerEventData eventData) // Quick equip
     {
+        _hoverSound.ActivateClickSound();
         if (eventData.button == PointerEventData.InputButton.Right)
             EquipAbility();
     }

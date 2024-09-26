@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 687422843831278802}
   - component: {fileID: 7650635796013057278}
   - component: {fileID: 5944829499105098192}
+  - component: {fileID: 3906753898879490663}
   m_Layer: 5
   m_Name: AbilityEntry
   m_TagString: Untagged
@@ -148,6 +149,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hover: {fileID: 7298619834497617076}
+--- !u!114 &3906753898879490663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836916997158213505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &7298619834497617076
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +175,7 @@ GameObject:
   - component: {fileID: 3484842872602303397}
   - component: {fileID: 7351704277432368203}
   - component: {fileID: 176787254432830877}
+  - component: {fileID: 1391194685233816836}
   m_Layer: 5
   m_Name: Equip
   m_TagString: Untagged
@@ -281,3 +297,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1391194685233816836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298619834497617076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07

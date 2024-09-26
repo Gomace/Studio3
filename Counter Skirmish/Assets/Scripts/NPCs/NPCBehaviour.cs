@@ -42,12 +42,14 @@ public class NPCBehaviour : MonoBehaviour
     {
         _unit.onSpawn += CombatState;
         _unit.onDead += DeadState;
+        _unit.onSpawn += IdleState;
     }
 
     private void OnDisable()
     {
         _unit.onSpawn -= CombatState;
         _unit.onDead -= DeadState;
+        _unit.onSpawn -= IdleState;
     }
 
     private void FixedUpdate()
@@ -96,7 +98,7 @@ public class NPCBehaviour : MonoBehaviour
     private void IdleState()
     {
         if ((_myPos - _tarPos).sqrMagnitude < Mathf.Pow(_aggroRange, 2f))
-        {
+        { 
             State = NPCState.Combat;
             return;
         }

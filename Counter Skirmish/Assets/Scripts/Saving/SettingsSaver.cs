@@ -56,7 +56,23 @@ public class AudioData
 [Serializable]
 public class VideoData
 {
-    
+    public bool Fullscreen;
+    public int[] Resolution;
+    public int Quality;
+
+    public VideoData()
+    {
+        Fullscreen = true;
+        Resolution = new[] { 1920, 1080, 120 };
+        Quality = 5;
+    }
+
+    public VideoData(bool fullscreen, int[] resolution, int quality)
+    {
+        Fullscreen = fullscreen;
+        Resolution = resolution;
+        Quality = quality;
+    }
 }
 [Serializable]
 public class GameplayData

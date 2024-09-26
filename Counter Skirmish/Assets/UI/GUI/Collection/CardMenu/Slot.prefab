@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4329141996676211006}
   - component: {fileID: 8663614197674350825}
   - component: {fileID: 2196923922564619722}
+  - component: {fileID: 42535577616006165}
   m_Layer: 5
   m_Name: Details
   m_TagString: Untagged
@@ -145,6 +146,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &42535577616006165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2763170618412490726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &3460960485503027461
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +459,7 @@ GameObject:
   - component: {fileID: 3460960486726820439}
   - component: {fileID: 3460960486726820438}
   - component: {fileID: 3460960486726820437}
+  - component: {fileID: 5449841625806262982}
   m_Layer: 5
   m_Name: Unequip
   m_TagString: Untagged
@@ -566,6 +582,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5449841625806262982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460960486726820443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &3460960486983116241
 GameObject:
   m_ObjectHideFlags: 0
@@ -579,6 +609,7 @@ GameObject:
   - component: {fileID: 3460960486983116243}
   - component: {fileID: 671092540371490954}
   - component: {fileID: 8193224281790675486}
+  - component: {fileID: 6151367459907006751}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -728,6 +759,20 @@ MonoBehaviour:
   _lvl: {fileID: 3460960486266344062}
   _rental: {fileID: 5377071366886628603}
   _hover: {fileID: 7109051048626539881}
+--- !u!114 &6151367459907006751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460960486983116241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030feff1cbaf4ab43be1aa545c5e41c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enter: {fileID: 0}
+  _offset: 0.07
 --- !u!1 &3460960487140534789
 GameObject:
   m_ObjectHideFlags: 0

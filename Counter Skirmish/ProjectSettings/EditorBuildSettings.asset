@@ -15,11 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Instances/Forest.unity
     guid: ee42b60ac495d0d4f9b289769eca431f
   - enabled: 0
-    path: Assets/Scenes/Thomas/ThomasTesting.unity
-    guid: 36f0b7b7d848d1244845c312264a3cf3
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Thomas/FirstLevel.unity
-    guid: 1aaaf0ca497f7344cad3fd6ffcc9a7cd
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/CodeTesting.unity
     guid: 6d6021a41fcf08b4a8b542e8821cb7ab
