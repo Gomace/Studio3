@@ -24,7 +24,7 @@ public class HubActions : MonoBehaviour
     private void OnCameraZoom(InputValue value) => _camCont.CameraZoom(value.Get<float>());
     
     private void OnInventory() => _inventory.SetActive(!_inventory.activeSelf);
-    private void OnCollection() => _collection.SetActive(!_collection.activeSelf);
+    public void OnCollection() => _collection.SetActive(!_collection.activeSelf);
 
     private void OnShop() => _shop.SetActive(!_shop.activeSelf);
     
